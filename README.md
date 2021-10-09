@@ -70,6 +70,10 @@ To make the window title bar appear again, press the maximize button again.
 
 The application window settings can be found in appsettings.json
 
+
+The buttons only work with keyboard bindings. 
+So, when there is only a binding to a joystick / controller / mouse for a function, then you need to add a keyboard binding first.
+
 The button profiles (i.e. the top row buttons) can be configured in the Data\profiles.json file :
 
 ```
