@@ -52,7 +52,8 @@ Button possibilities:
 The button functionality works, by changing the focus back to elite dangerous, when pressing a button on the touch screen.
 
 This focus change mechanism is ONLY enabled, if the application runs full screen on the touch screen.
-Otherwise, touching a button on the touch screen will have NO EFFECT in the game.
+
+**Otherwise, touching a button on the touch screen will have NO EFFECT in the game.**
 
 The easiest way to set this up, is to first drag the application to the touch screen area, then press the maximize button:
 
