@@ -1,87 +1,75 @@
 {
   "buttons": [
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "FriendsMenu",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "GalnetAudio_ClearQueue",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "GalnetAudio_Play_Pause",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "GalnetAudio_SkipBackward",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "GalnetAudio_SkipForward",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "MicrophoneMute",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "OpenCodexGoToDiscovery",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "Pause",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HMDReset",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "OculusReset",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "RadarDecreaseRange",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "RadarIncreaseRange",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     }
   ]

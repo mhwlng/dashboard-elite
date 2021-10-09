@@ -1,115 +1,99 @@
 {
   "buttons": [
     {
-      "buttonType": "ToggleButton",
-      "function":  "FocusCommsPanel",
+      "buttonType": "StaticButton",
+      "function": "FocusCommsPanel",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "FocusLeftPanel",
+      "buttonType": "StaticButton",
+      "function": "FocusLeftPanel",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "FocusRadarPanel",
+      "buttonType": "StaticButton",
+      "function": "FocusRadarPanel",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "FocusRightPanel",
+      "buttonType": "StaticButton",
+      "function": "FocusRightPanel",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "QuickCommsPanel",
+      "buttonType": "StaticButton",
+      "function": "QuickCommsPanel",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "EjectAllCargo",
+      "buttonType": "StaticButton",
+      "function": "EjectAllCargo",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "HeadLookToggle",
+      "buttonType": "StaticButton",
+      "function": "HeadLookToggle",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "MouseReset",
+      "buttonType": "StaticButton",
+      "function": "MouseReset",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "OrbitLinesToggle",
+      "buttonType": "StaticButton",
+      "function": "OrbitLinesToggle",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "SelectTargetsTarget",
+      "buttonType": "StaticButton",
+      "function": "SelectTargetsTarget",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "WingNavLock",
+      "buttonType": "StaticButton",
+      "function": "WingNavLock",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "TargetWingman0",
+      "buttonType": "StaticButton",
+      "function": "TargetWingman0",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "TargetWingman1",
+      "buttonType": "StaticButton",
+      "function": "TargetWingman1",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "TargetWingman2",
+      "buttonType": "StaticButton",
+      "function": "TargetWingman2",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "EngineColourToggle",
+      "buttonType": "StaticButton",
+      "function": "EngineColourToggle",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
-      "function":  "WeaponColourToggle",
+      "buttonType": "StaticButton",
+      "function": "WeaponColourToggle",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     }
   ]

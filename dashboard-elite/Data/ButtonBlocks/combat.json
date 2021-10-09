@@ -1,73 +1,63 @@
 {
   "buttons": [
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "ChargeECM",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "CycleFireGroupNext",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "CycleFireGroupPrevious",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "CycleNextHostileTarget",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "CyclePreviousHostileTarget",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "CycleNextSubsystem",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "CyclePreviousSubsystem",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "CycleNextTarget",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "CyclePreviousTarget",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "SelectTarget",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     }
   ]

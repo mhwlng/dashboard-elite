@@ -1,220 +1,189 @@
 {
   "buttons": [
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidPrimaryInteractButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSecondaryInteractButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSelectPrimaryWeaponButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSelectSecondaryWeaponButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidHideWeaponButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSwitchWeapon",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSelectUtilityWeaponButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSelectNextWeaponButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSelectPreviousWeaponButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidReloadButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSelectNextGrenadeTypeButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSelectPreviousGrenadeTypeButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidThrowGrenadeButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidMeleeButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSwitchToRechargeTool",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSwitchToCompAnalyser",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidToggleToolModeButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidToggleNightVisionButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSwitchToSuitTool",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidToggleFlashlightButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "FocusCommsPanel_Humanoid",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "QuickCommsPanel_Humanoid",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidConflictContextualUIButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidToggleShieldsButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidToggleMissionHelpPanelButton",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidClearAuthorityLevel",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidHealthPack",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidBattery",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSelectFragGrenade",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSelectEMPGrenade",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "HumanoidSelectShieldGrenade",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     }
   ]

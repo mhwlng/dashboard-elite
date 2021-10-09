@@ -96,17 +96,109 @@ If none of the above profiles are activated, then a profile with the file name d
 
 Each button set is configured via a .json file in the Data\ButtonBlocks directory.
 
+various button type can be configured, each with their own set of parameters :
+
+**ToggleButton**
+
+```
+{
+	"buttonType": "ToggleButton",
+	"function": "FocusLeftPanel",
+	"primaryIcon": "nav-panel.svg",
+	"secondaryIcon": "nav-panel.svg",
+	"clickSound": "beep-3.wav"
+}
+```
+
+**AlarmButton**
+
+```
+{
+	"buttonType": "AlarmButton",
+	"function": "SelectHighestThreat",
+	"primaryIcon": "target-highest.svg",
+	"secondaryIcon": "target-highest.svg",
+	"clickSound": "beep-3.wav"
+}
+```
+
+**FSSButton**
+
+```
+{
+	"buttonType": "FSSButton",
+	"primaryIcon": "fss.svg",
+	"secondaryIcon": "fss.svg",
+	"tertiaryIcon": "fss.svg",
+	"clickSound": "",
+	"errorSound": "",
+	"dontSwitchToCombatMode": false
+}
+```
+
+**HyperspaceButton**
+
+```
+{
+	"buttonType": "HyperspaceButton",
+	"function": "HyperSuperCombination",
+	"primaryIcon": "hyperspace.svg",
+	"secondaryIcon": "hyperspace.svg",
+	"tertiaryIcon": "hyperspace.svg",
+	"clickSound": "",
+	"errorSound": ""
+}
+```
+
+**LimpetButton**
+
+```
+{
+	"buttonType": "LimpetButton",
+	"firegroup": "E",
+	"fire": "Secondary",
+	"primaryIcon": "limpet-collector.svg",
+	"secondaryIcon": "limpet-collector.svg",
+	"clickSound": "",
+	"errorSound": ""
+}
+```
+
+**PowerButton**
+
+```
+{
+  "buttonType": "PowerButton",
+  "function": "SYS",
+  "primaryIcon": "shield-power.svg",
+  "secondaryIcon": "shield-power.svg",
+  "tertiaryIcon": "shield-power.svg",
+  "clickSound": "beep-3.wav"
+}
+```
+
+**StaticButton**
+
+```
+{
+  "buttonType": "StaticButton",
+  "function": "SelectTarget",
+  "primaryIcon": "xxx.svg",
+  "clickSound": ""
+}
+```
+
 
 Button sounds can be found in the Sounds directory.
 
 All the button svg images can be found in the wwwroot\img\buttons directory. 
 
-The button captions are inside the svg files. 
+The button captions are inside the svg files.
 
 Animated SVG files are possible.
 
 Technology used:
-- [.net 5.0](https://dotnet.microsoft.com/download/dotnet/5.0/runtime)  choose download x64
+- [.net 5.0](https://dotnet.microsoft.com/download/dotnet/5.0/runtime)  choose : download x64
 - [WebView2 Runtime](https://go.microsoft.com/fwlink/p/?LinkId=2124703)
 - blazor server
 - mudblazor

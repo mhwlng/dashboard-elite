@@ -22,38 +22,33 @@
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "RecallDismissShip",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "BuggyToggleReverseThrottleInput",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "DecreaseSpeedButtonMax",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "IncreaseSpeedButtonMax",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     },
     {
-      "buttonType": "ToggleButton",
+      "buttonType": "StaticButton",
       "function": "SelectTarget_Buggy",
       "primaryIcon": "xxx.svg",
-      "secondaryIcon": "xxx.svg",
       "clickSound": ""
     }
   ]
