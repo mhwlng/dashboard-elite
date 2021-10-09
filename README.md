@@ -210,19 +210,6 @@ The supported alarm-buttons are:
 | WEP      | Weapons     |                                                    |
 | RST      | Reset       |                                                    |
 
-**FSSButton**
-
-```
-{
-	"buttonType": "FSSButton",
-	"primaryIcon": "fss.svg",
-	"secondaryIcon": "fss.svg",
-	"tertiaryIcon": "fss.svg",
-	"clickSound": "",
-	"errorSound": "",
-	"dontSwitchToCombatMode": false
-}
-```
 **LimpetButton**
 
 ```
@@ -244,6 +231,20 @@ The button shows the current number of limpets in the cargo hold. (The same valu
 There is no specific keybind for any type of limpet controller.
 Instead, you need to set up a fire group letter and primary or secondary fire button.
 
+**FSSButton**
+
+```
+{
+	"buttonType": "FSSButton",
+	"primaryIcon": "fss.svg",
+	"secondaryIcon": "fss.svg",
+	"tertiaryIcon": "fss.svg",
+	"clickSound": "",
+	"errorSound": "",
+	"dontSwitchToCombatMode": false
+}
+```
+
 **StaticButton**
 
 ```
@@ -254,6 +255,138 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
   "clickSound": ""
 }
 ```
+
+| Function                | Combat     |
+| ----------------------- | --------------- |
+| ChargeECM | ECM |
+| CycleFireGroupNext | Next Fire Group |
+| CycleFireGroupPrevious | Prev Fire Group |
+| CycleNextHostileTarget | Next Hostile |
+| CyclePreviousHostileTarget | Prev Hostile |
+| CycleNextSubsystem | Next Subsystem |
+| CyclePreviousSubsystem | Prev Subsystem |
+| CycleNextTarget | Next Contact |
+| CyclePreviousTarget | Prev Contact |
+| SelectTarget | Target Ahead |
+
+| Function                | Fighter     |
+| ----------------------- | --------------- |
+
+| OpenOrders | Crew Orders |
+| OrderAggressiveBehaviour | Be Aggressive |
+| OrderDefensiveBehaviour | Be Defensive |
+| OrderFocusTarget | Attack My Target |
+| OrderFollow | Follow |
+| OrderHoldFire | Hold Fire |
+| OrderHoldPosition | Hold Position |
+| OrderRequestDock | Dock SLF |
+
+| Function                | Misc     |
+| ----------------------- | --------------- |
+
+| FriendsMenu | Friends |
+| GalnetAudio_ClearQueue | Clear Audio Queue |
+| GalnetAudio_Play_Pause | Play/Pause Audio |
+| GalnetAudio_SkipBackward | Prev Audio Track |
+| GalnetAudio_SkipForward | Next Audio Track |
+| MicrophoneMute | Microphone |
+| OpenCodexGoToDiscovery | Codex |
+| Pause | Main Menu |
+| HMDReset | Reset HMD |
+| OculusReset | Reset Oculus |
+| RadarDecreaseRange | Dec Sensor Range |
+| RadarIncreaseRange | Inc Sensor Range |
+
+| Function                | Navigation     |
+| ----------------------- | --------------- |
+
+| SetSpeed100 | 100% Throttle |
+| SetSpeed75 | 75% Throttle |
+| SetSpeed50 | 50% Throttle |
+| SetSpeed25 | 25% Throttle |
+| SetSpeedMinus100 | 100% Reverse |
+| SetSpeedMinus75 | 75% Reverse |
+| SetSpeedMinus50 | 50% Reverse |
+| SetSpeedMinus25 | 25% Reverse |
+| SetSpeedZero | All Stop |
+| TargetNextRouteSystem | Next Jump Dest |
+| ToggleReverseThrottleInput | Reverse |
+| UseAlternateFlightValuesToggle | Alternate Controls |
+| UseBoostJuice | Boost |
+| DisableRotationCorrectToggle | Rotational Correction |
+
+| Function                | Ship     |
+| ----------------------- | --------------- |
+
+| FocusCommsPanel | Comms Panel |
+| FocusLeftPanel | Nav Panel |
+| FocusRadarPanel | Role Panel |
+| FocusRightPanel | Systems Panel |
+| QuickCommsPanel | Quick Comms |
+| EjectAllCargo | Eject All Cargo |
+| HeadLookToggle | Toggle Headlook |
+| MouseReset | Reset Mouse |
+| OrbitLinesToggle | Orbit Lines |
+| SelectTargetsTarget | Wingman's target |
+| WingNavLock | Wingman Navlock |
+| TargetWingman0 | Wingman 1 |
+| TargetWingman1 | Wingman 2 |
+| TargetWingman2 | Wingman 3 |
+| EngineColourToggle | Engine Colour |
+| WeaponColourToggle | Weapon Colour |
+
+| Function                | SRV     |
+| ----------------------- | --------------- |
+
+| RecallDismissShip | Recall/Dismiss Ship |
+| BuggyToggleReverseThrottleInput | Reverse |
+| DecreaseSpeedButtonMax | Zero Speed |
+| IncreaseSpeedButtonMax | Maximum Speed |
+| SelectTarget_Buggy | Target Ahead |
+
+| Function                | Hyperspace     |
+| ----------------------- | --------------- |
+
+| Supercruise | Supercruise |
+| Hyperspace | Hyperspace Jump |
+
+| Function                | On Foot     |
+| ----------------------- | --------------- |
+| HumanoidPrimaryInteractButton | Primary Interact |
+| HumanoidSecondaryInteractButton | Secondary Interact |
+| HumanoidSelectPrimaryWeaponButton | Select Primary Weapon |
+| HumanoidSelectSecondaryWeaponButton | Select Secondary Weapon |
+| HumanoidHideWeaponButton | Holster Weapon |
+| HumanoidSwitchWeapon | Switch Weapon |
+| HumanoidSelectUtilityWeaponButton | Select Tool |
+| HumanoidSelectNextWeaponButton | Next Weapon |
+| HumanoidSelectPreviousWeaponButton | Previous Weapon |
+| HumanoidReloadButton | Reload |
+| HumanoidSelectNextGrenadeTypeButton | Next Grenade Type |
+| HumanoidSelectPreviousGrenadeTypeButton | Previous Grenade Type |
+| HumanoidThrowGrenadeButton | Throw Grenade |
+| HumanoidMeleeButton | Melee |
+| HumanoidSwitchToRechargeTool | Energy Link |
+| HumanoidSwitchToCompAnalyser | Profile Analyser |
+| HumanoidToggleToolModeButton | Tool Mode |
+| HumanoidToggleNightVisionButton | Night Vision |
+| HumanoidSwitchToSuitTool | Suit Specific Tool |
+| HumanoidToggleFlashlightButton | Flashlight |
+| GalaxyMapOpen_Humanoid | Galaxy Map |
+| SystemMapOpen_Humanoid | System Map |
+| FocusCommsPanel_Humanoid | Comms Panel |
+| QuickCommsPanel_Humanoid | Quick Comms |
+| HumanoidConflictContextualUIButton | Conflict Zone Battle Stats |
+| HumanoidToggleShieldsButton | Shields |
+| HumanoidToggleMissionHelpPanelButton | Help |
+| HumanoidClearAuthorityLevel | Clear Stolen Profile |
+| HumanoidHealthPack | Use Medkit |
+| HumanoidBattery | Use Energy Cells |
+| HumanoidSelectFragGrenade | Select Frag Grenade |
+| HumanoidSelectEMPGrenade | Select EMP Grenade |
+| HumanoidSelectShieldGrenade | Select Shield Grenade |
+            
+
 
 
 
