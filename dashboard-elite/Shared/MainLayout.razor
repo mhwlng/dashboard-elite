@@ -1,0 +1,27 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="_currentTheme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout Style="height:100vh" Class="d-flex">
+    <MudAppBar Elevation="0">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="DrawerToggle" />
+        <MudSpacer />
+
+        <MudIconButton Icon="@Icons.Material.Filled.Maximize" Color="Color.Inherit" OnClick="Maximize" />
+
+        <MudIconButton Icon="@Icons.Material.Filled.Close" Color="Color.Inherit" OnClick="Close" />
+
+
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
+        <MudDrawerHeader >
+            @*<MudText Typo="Typo.h6">Mudblazor Template</MudText>*@
+        </MudDrawerHeader>
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent Class="d-flex flex-column">
+            @Body
+    </MudMainContent>
+</MudLayout>

@@ -1,0 +1,74 @@
+{
+  "buttons": [
+    {
+      "buttonType": "ToggleButton",
+      "function": "ChargeECM",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "CycleFireGroupNext",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "CycleFireGroupPrevious",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "CycleNextHostileTarget",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "CyclePreviousHostileTarget",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "CycleNextSubsystem",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "CyclePreviousSubsystem",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "CycleNextTarget",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "CyclePreviousTarget",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "SelectTarget",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    }
+  ]
+}

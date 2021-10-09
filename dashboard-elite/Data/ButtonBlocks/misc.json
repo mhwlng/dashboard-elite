@@ -1,0 +1,88 @@
+{
+  "buttons": [
+    {
+      "buttonType": "ToggleButton",
+      "function": "FriendsMenu",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "GalnetAudio_ClearQueue",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "GalnetAudio_Play_Pause",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "GalnetAudio_SkipBackward",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "GalnetAudio_SkipForward",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "MicrophoneMute",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "OpenCodexGoToDiscovery",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "Pause",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HMDReset",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "OculusReset",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "RadarDecreaseRange",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "RadarIncreaseRange",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    }
+  ]
+}

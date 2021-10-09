@@ -1,0 +1,15 @@
+﻿@namespace MudBlazor
+@inherits MudComponentBase
+
+<MudIconButton Icon="@(State == MudTripleIconButtonState.Secondary ? SecondaryIcon : State == MudTripleIconButtonState.Tertiary ? TertiaryIcon : PrimaryIcon)"
+               Size="Size"
+               Color="(State == MudTripleIconButtonState.Secondary ? SecondaryColor : State == MudTripleIconButtonState.Tertiary ? TertiaryColor : PrimaryColor)"
+               Title="@(State == MudTripleIconButtonState.Secondary && SecondaryTitle != null ? SecondaryTitle : State == MudTripleIconButtonState.Tertiary && TertiaryTitle != null ? TertiaryTitle : PrimaryTitle)"
+               Variant="Variant"
+               Disabled="Disabled"
+               Edge="Edge"
+               DisableRipple="DisableRipple"
+               OnClick="OnClick"
+               Class="@Class"
+               Style="@Style"
+               @attributes="UserAttributes" />

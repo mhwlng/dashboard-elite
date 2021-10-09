@@ -1,0 +1,5 @@
+﻿
+@foreach (var button in ProfileCacheService.ProfileCache)
+{
+    <ProfileButton ProfileData="button" @bind-ActiveButtonBlock="@ActiveButtonBlock" />
+}

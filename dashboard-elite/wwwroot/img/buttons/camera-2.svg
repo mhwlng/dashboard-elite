@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
+  <path d="M34.018 8.216c-6.417 0-11.641 5.226-11.641 11.643 0 6.417 5.224 11.64 11.64 11.64 6.418 0 11.643-5.223 11.643-11.64 0-6.417-5.225-11.643-11.642-11.643zm0 2.117a9.51 9.51 0 0 1 9.525 9.526 9.51 9.51 0 0 1-9.525 9.525 9.51 9.51 0 0 1-9.526-9.525 9.51 9.51 0 0 1 9.526-9.526z" color="currentColor" overflow="visible" fill="currentColor" paint-order="markers fill stroke" stop-color="currentColor"/>
+  <path d="M24.914 12.724 5.557 16.872v6.147h2.117v-4.436l17.683-3.79Z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <path d="M5.557 16.954v6.147l19.357 4.148.443-2.07L7.674 21.39v-4.436z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <path d="m43.041 12.724-.443 2.068 17.683 3.791v4.436h2.117v-6.147z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <path d="M60.281 16.954v4.436l-17.683 3.789.443 2.07 19.357-4.148v-6.147z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <path d="M34.018 11.086a8.773 8.773 0 0 0-8.773 8.772 8.773 8.773 0 0 0 8.773 8.773 8.773 8.773 0 0 0 8.773-8.773 8.773 8.773 0 0 0-8.773-8.772zm.092 2.18a6.596 6.596 0 0 1 6.5 6.392l.02.66-1.323.041-.02-.663a5.269 5.269 0 0 0-6.345-4.998l-.649.135-.27-1.295.649-.134a6.59 6.59 0 0 1 1.438-.139z" fill="currentColor" paint-order="markers fill stroke"/>
+  <path d="M44.979 19.447v.795h15.875v-.795z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <path d="M6.615 19.447v.795h17.198v-.795z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <text xml:space="preserve" style="line-height:1.25;" x="29.356" y="44.839" font-weight="400" font-size="14.817" font-family="Consolas" fill="currentColor" stroke-width=".265"><tspan x="29.356" y="44.839" style="">2</tspan></text>
+
+  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+
+</svg>

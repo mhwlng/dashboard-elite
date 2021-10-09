@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
+  <path d="M11.906 31.75h3.969v9.26h-3.969z" fill="currentColor" paint-order="markers fill stroke"/>
+  <path d="M18.521 27.781h3.969V41.01h-3.969z" fill="currentColor" paint-order="markers fill stroke"/>
+  <path d="M31.75 26.458h3.969V41.01H31.75z" fill="currentColor" paint-order="markers fill stroke"/>
+  <path d="M38.365 33.073h3.969v7.937h-3.969z" fill="currentColor" paint-order="markers fill stroke"/>
+  <path d="M44.979 30.427h3.969V41.01h-3.969z" fill="currentColor" paint-order="markers fill stroke"/>
+  <path d="M51.594 26.458h3.969V41.01h-3.969z" fill="currentColor" paint-order="markers fill stroke"/>
+  <path d="M25.135 22.49h3.969v18.521h-3.969z" fill="currentColor" paint-order="markers fill stroke"/>
+  <path d="m11.906 13.23 6.615 5.29 6.614-5.29 5.292 5.29 6.615 3.97 6.614-9.26 5.292 5.29 6.614-5.29" fill="none" stroke="currentColor" stroke-width=".794" stop-color="currentColor"/>
+  <circle cx="11.953" cy="13.182" r="1.323" fill="currentColor" paint-order="markers fill stroke"/>
+  <circle cx="18.426" cy="18.568" r="1.323" fill="currentColor" paint-order="markers fill stroke"/>
+  <circle cx="25.277" cy="13.182" r="1.323" fill="currentColor" paint-order="markers fill stroke"/>
+  <circle cx="30.616" cy="18.568" r="1.323" fill="currentColor" paint-order="markers fill stroke"/>
+  <circle cx="36.947" cy="22.537" r="1.323" fill="currentColor" paint-order="markers fill stroke"/>
+  <circle cx="43.798" cy="13.135" r="1.323" fill="currentColor" paint-order="markers fill stroke"/>
+  <circle cx="49.042" cy="18.379" r="1.323" fill="currentColor" paint-order="markers fill stroke"/>
+  <circle cx="55.61" cy="13.182" r="1.323" fill="currentColor" paint-order="markers fill stroke"/>
+  <path d="M6.689 5.368a1.248 1.285 0 0 0-1.246 1.285v37.109a1.248 1.285 0 0 0 1.246 1.283h54.06a1.248 1.285 0 0 0 1.249-1.283V6.653a1.248 1.285 0 0 0-1.249-1.285Zm1.248 2.57h51.566v34.537H7.937Z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+
+  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+
+</svg>

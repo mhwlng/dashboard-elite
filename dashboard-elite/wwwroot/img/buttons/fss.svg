@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
+  <path d="M24.803 20.68a4.73 4.823 0 0 0-4.723 4.826v139.318a4.73 4.823 0 0 0 4.723 4.819h204.92a4.73 4.823 0 0 0 4.732-4.819V25.506a4.73 4.823 0 0 0-4.732-4.826H24.803zm4.732 9.654H225V160H29.535V30.334z" transform="scale(.26458)" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <path d="M7.673 25.135H59.53" fill="none" stroke="currentColor" stroke-width="1.326"/>
+  <path d="M10.054 25.135V23.02" fill="none" stroke="currentColor"/>
+  <path d="m13.212 25.135.017-6.085" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M16.369 25.135V16.14" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M19.526 25.135V12.7" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M22.684 25.135V16.14" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M25.841 25.135V19.05" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M28.998 25.135v-1.852" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M32.156 25.135v-3.704" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M35.313 25.135v-7.673" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M38.47 25.135V13.494" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M41.628 25.135V8.731" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M44.785 25.135V13.23" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M47.942 25.135v-7.937" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M51.1 25.135v-3.704" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M54.257 25.135v-5.291" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M57.415 25.135v-3.704" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M10.054 25.137v2.117" fill="none" stroke="currentColor"/>
+  <path d="m13.212 25.137.017 6.086" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M16.369 25.137v8.996" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M19.526 25.137v12.436" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M22.684 25.137v8.996" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M25.841 25.137v6.086" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M28.998 25.137v1.852" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M32.156 25.137v3.705" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M35.313 25.137v7.673" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M38.47 25.137V36.78" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M41.628 25.137v16.405" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M44.785 25.137v11.907" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M47.942 25.137v7.938" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M51.1 25.137v3.705" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M54.257 25.137v5.292" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M57.415 25.137v3.705" fill="none" stroke="currentColor" stroke-width="1.323"/>
+  <path d="M5.88 11.906h54.24" fill="none" stroke="currentColor" stroke-width=".794" stroke-dasharray=".79375,1.5875"/>
+  <path d="M5.88 38.365h54.24" fill="none" stroke="currentColor" stroke-width=".794" stroke-dasharray=".79375,1.5875"/>
+
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">FSS</text>
+</svg>

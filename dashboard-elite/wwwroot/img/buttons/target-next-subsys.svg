@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
+  <path d="M5.292 5.292V18.11h3.282V8.208h12.821V5.292Zm40.781 0v2.916h12.822v9.902h3.282V5.292ZM5.292 32.16v12.82h16.103v-2.917H8.574V32.16zm53.603 0v9.903H46.073v2.916h16.104V32.16Z" fill="currentColor" paint-order="markers fill stroke"/>
+  <path d="M42.087 11.906v2.646h1.975c.586 0 1.058.472 1.058 1.058v1.323h2.647v1.588H45.12v5.82h2.647v1.589H45.12v5.556h2.647v1.586H45.12v1.588c0 .587-.472 1.059-1.058 1.059h-1.975v2.646H40.5V35.72h-5.82v2.646h-1.587V35.72h-5.557v2.646h-1.588V35.72H23.69a1.056 1.056 0 0 1-1.058-1.059v-1.55h-2.646v-1.586h2.646v-5.557h-2.646V24.38h2.646v-5.82h-2.646v-1.588h2.646v-1.36c0-.587.472-1.059 1.058-1.059h2.258v-2.646h1.588v2.646h5.557v-2.646h1.587v2.646h5.82v-2.646Zm-13.23 5.556v15.61l12.177-7.804z" color="currentColor" overflow="visible" fill="currentColor" paint-order="markers fill stroke" stop-color="currentColor"/>
+
+  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
+  <path d="M127.5 19.746c-16.78 0-33.546 2.207-47.281 6.77S55.379 37.983 51.275 48.55a4 4 0 0 0-.273 1.447V95.55l5.418-2.71a8 8 0 0 1 2.584-.778V51.135c2.842-6.796 11.344-12.905 23.74-17.024 12.603-4.187 28.685-6.363 44.756-6.363 16.07 0 32.153 2.176 44.756 6.363 12.396 4.119 20.898 10.228 23.74 17.024v40.928a8 8 0 0 1 2.584.779l5.418 2.709V49.998a4 4 0 0 0-.273-1.447c-4.105-10.568-15.209-17.472-28.944-22.035-13.735-4.563-30.5-6.77-47.281-6.77zm-68.496 89.697-8.002 4.002V135a4 4 0 0 0 4 4.002h66.644v-8.004H59.004v-21.555zm136.992 0v21.555h-58.353v8.004h62.355a4 4 0 0 0 4-4.002v-21.555l-8.002-4.002z" transform="scale(.26458)" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <path d="m15.875 26.458-7.938 3.97 3.97 11.905v0" fill="none" stroke="currentColor" stroke-width="2.646" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m51.594 26.458 7.937 3.97-3.968 11.905v0" fill="none" stroke="currentColor" stroke-width="2.646" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M34.396 31.75v11.906" fill="none" stroke="currentColor" stroke-width="2.117" stroke-linecap="round"/>
+
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">collector {0}</text>
+</svg>

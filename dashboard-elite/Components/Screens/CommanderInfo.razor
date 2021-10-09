@@ -1,0 +1,124 @@
+﻿
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+  <tbody>
+
+      <tr>
+
+          <td style="vertical-align: top;" width="50%">
+              <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Elevation="0">
+                  <tbody>
+                      
+                      <tr>
+                          <td class=" center" colspan="3" style="margin-top: 20px;"><strong>COMMANDER</strong></td>
+                      </tr>
+
+                      @if (!string.IsNullOrEmpty(Data.CommanderData.Name))
+                      {
+                          <tr>
+                              <td>Commander</td>
+                              <td class="mud-text-secondary" colspan="2">@Data.CommanderData.Name</td>
+                          </tr>
+                      }
+                      @if (!string.IsNullOrEmpty(Data.StatusData.LegalState))
+                      {
+                          <tr>
+                              <td>Legal State</td>
+                              <td class="mud-text-secondary @(Data.StatusData.LegalState != "Clean" ? "alarm" : "")" colspan="2">@Data.StatusData.LegalState.Trim()</td>
+                          </tr>
+                      }
+                      @if (Data.CommanderData.Credits > 0)
+                      {
+                          <tr>
+                              <td>Credits</td>
+                              <td class="mud-text-secondary" colspan="2">@Data.CommanderData.Credits.ToString("N0") CR</td>
+                          </tr>
+                      }
+
+                      <tr>
+                          <td class=" center" colspan="3" style="padding-top: 20px;"><strong>REPUTATION</strong></td>
+                      </tr>
+                      @if (Data.CommanderData.FederationReputation >= -100 && Data.CommanderData.FederationReputation <= 100)
+                      {
+
+                          <tr>
+                              <td>Federation</td>
+                              <td class="mud-text-secondary">@Data.CommanderData.FederationReputationState</td>
+                              <td class="mud-text-secondary right">@Data.CommanderData.FederationReputation.ToString("N0") %</td>
+                          </tr>
+                      }
+                      @if (Data.CommanderData.EmpireReputation >= -100 && Data.CommanderData.EmpireReputation <= 100)
+                      {
+
+                          <tr>
+                              <td>Empire</td>
+                              <td class="mud-text-secondary">@Data.CommanderData.EmpireReputationState</td>
+                              <td class="mud-text-secondary right">@Data.CommanderData.EmpireReputation.ToString("N0") %</td>
+                          </tr>
+                      }
+                      @if (Data.CommanderData.AllianceReputation >= -100 && Data.CommanderData.AllianceReputation <= 100)
+                      {
+
+                          <tr>
+                              <td>Alliance</td>
+                              <td class="mud-text-secondary">@Data.CommanderData.AllianceReputationState</td>
+                              <td class="mud-text-secondary right">@Data.CommanderData.AllianceReputation.ToString("N0") %</td>
+                          </tr>
+                      }
+
+                  </tbody>
+              </MudSimpleTable>
+          </td>
+
+          <td style="vertical-align: top;" >
+
+              <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Elevation="0">
+                  <tbody>
+                      <tr>
+                          <td class=" center" colspan="3"><strong>RANK</strong></td>
+                      </tr>
+                      <tr>
+                          <td>Federation</td>
+                          <td class="mud-text-secondary">@Data.CommanderData.FederationRank</td>
+                          <td class="mud-text-secondary right">@Data.CommanderData.FederationRankProgress %</td>
+                      </tr>
+                      <tr>
+                          <td>Empire</td>
+                          <td class="mud-text-secondary">@Data.CommanderData.EmpireRank</td>
+                          <td class="mud-text-secondary right">@Data.CommanderData.EmpireRankProgress %</td>
+                      </tr>
+                      <tr>
+                          <td>Combat</td>
+                          <td class="mud-text-secondary">@Data.CommanderData.CombatRank</td>
+                          <td class="mud-text-secondary right">@Data.CommanderData.CombatRankProgress %</td>
+                      </tr>
+                      <tr>
+                          <td>Trade</td>
+                          <td class="mud-text-secondary">@Data.CommanderData.TradeRank</td>
+                          <td class="mud-text-secondary right">@Data.CommanderData.TradeRankProgress %</td>
+                      </tr>
+                      <tr>
+                          <td>Explorer</td>
+                          <td class="mud-text-secondary">@Data.CommanderData.ExplorationRank</td>
+                          <td class="mud-text-secondary right">@Data.CommanderData.ExplorationRankProgress %</td>
+                      </tr>
+                      <tr>
+                          <td>CQC</td>
+                          <td class="mud-text-secondary">@Data.CommanderData.CqcRank</td>
+                          <td class="mud-text-secondary right">@Data.CommanderData.CqcRankProgress %</td>
+                      </tr>
+                      <tr>
+                          <td>Soldier</td>
+                          <td class="mud-text-secondary">@Data.CommanderData.SoldierRank</td>
+                          <td class="mud-text-secondary right">@Data.CommanderData.SoldierRankProgress %</td>
+                      </tr>
+                      <tr>
+                          <td>Exobiologist</td>
+                          <td class="mud-text-secondary">@Data.CommanderData.ExobiologistRank</td>
+                          <td class="mud-text-secondary right">@Data.CommanderData.ExobiologistRankProgress %</td>
+                      </tr>
+                  </tbody>
+              </MudSimpleTable>
+          </td>
+      </tr>
+    </tbody>
+</MudSimpleTable>

@@ -1,0 +1,1 @@
+svgo --config test.config -f . -o work

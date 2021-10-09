@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
+  <g transform="translate(-3.355 4.725)" fill="currentColor" paint-order="markers fill stroke">
+    <rect width="3.969" height="9.26" x="32.459" y="17.765" rx=".794" ry=".794"/>
+    <rect width="3.969" height="2.646" x="32.459" y="28.348" rx=".794" ry=".794"/>
+  </g>
+  <rect width="22.49" height="18.521" x="19.844" y="19.844" rx=".794" ry=".794" fill="none" stroke="currentColor" stroke-width="1.587" stroke-linecap="round" stroke-linejoin="round" paint-order="markers fill stroke"/>
+  <path d="m52.917 29.104-5.953 3.437v-6.874Z" fill="currentColor" paint-order="markers fill stroke"/>
+  <path d="M22.49 14.552V7.937" fill="none" stroke="currentColor" stroke-width="1.587" stroke-linecap="round" stroke-linejoin="round" paint-order="markers fill stroke"/>
+  <path d="M28.222 17.198v-6.615" fill="none" stroke="currentColor" stroke-width="1.587" stroke-linecap="round" stroke-linejoin="round" paint-order="markers fill stroke"/>
+  <path d="M33.955 14.552V7.937" fill="none" stroke="currentColor" stroke-width="1.587" stroke-linecap="round" stroke-linejoin="round" paint-order="markers fill stroke"/>
+  <path d="M39.688 17.198v-6.615" fill="none" stroke="currentColor" stroke-width="1.587" stroke-linecap="round" stroke-linejoin="round" paint-order="markers fill stroke"/>
+
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">heat sink</text>
+
+</svg>

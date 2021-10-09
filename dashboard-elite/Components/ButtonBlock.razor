@@ -1,0 +1,38 @@
+﻿@using dashboard_elite.Services
+@using ButtonType = dashboard_elite.Services.ButtonType
+<MudPaper Height="100%" class="pa-2 buttonblock">
+
+    @foreach (var button in ButtonCacheService.ButtonPage(Data.ActiveButtonBlock))
+    {
+        if (button.ButtonType == ButtonType.ToggleButton)
+        {
+            <ToggleButton ButtonData="button" Data="Data" />
+        }
+        else if (button.ButtonType == ButtonType.AlarmButton)
+        {
+            <AlarmButton ButtonData="button" Data="Data" @bind-UnderAttack="@Data.UnderAttack" />
+        }
+        else if (button.ButtonType == ButtonType.FSSButton)
+        {
+            <FSSButton ButtonData="button" Data="Data" />
+        }
+        else if (button.ButtonType == ButtonType.HyperspaceButton)
+        {
+            <HyperspaceButton ButtonData="button" Data="Data" />
+        }
+        else if (button.ButtonType == ButtonType.LimpetButton)
+        {
+            <LimpetButton ButtonData="button" Data="Data" />
+        }
+        else if (button.ButtonType == ButtonType.PowerButton)
+        {
+            <PowerButton ButtonData="button" Data="Data" @bind-Pips="@Data.StatusData.Pips" @bind-UnderAttack="@Data.UnderAttack" />
+        }
+        else if (button.ButtonType == ButtonType.StaticButton)
+        {
+            <StaticButton ButtonData="button"  />
+        }
+
+    }
+
+</MudPaper>

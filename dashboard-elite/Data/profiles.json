@@ -1,0 +1,45 @@
+{
+	"default": {
+		"primaryIcon": "profile-default.svg",
+		"secondaryIcon": "profile-default.svg",
+		"clickSound": ""
+	},
+	"ship": {
+		"primaryIcon": "profile-ship.svg",
+		"secondaryIcon": "profile-ship.svg",
+		"clickSound": ""
+	},
+	"srv": {
+		"primaryIcon": "profile-srv.svg",
+		"secondaryIcon": "profile-srv.svg",
+		"clickSound": ""
+	},
+	"fighter": {
+		"primaryIcon": "profile-fighter.svg",
+		"secondaryIcon": "profile-fighter.svg",
+		"clickSound": ""
+	},
+	"combat": {
+		"primaryIcon": "profile-combat.svg",
+		"secondaryIcon": "profile-combat.svg",
+		"clickSound": ""
+	},
+	"navigation": {
+		"primaryIcon": "profile-navigation.svg",
+		"secondaryIcon": "profile-navigation.svg",
+		"clickSound": ""
+	},
+  "misc": {
+    "primaryIcon": "profile-misc.svg",
+    "secondaryIcon": "profile-misc.svg",
+    "clickSound": ""
+  },
+
+	"onfoot": {
+		"primaryIcon": "profile-onfoot.svg",
+		"secondaryIcon": "profile-onfoot.svg",
+		"clickSound": ""
+	}
+
+}
+

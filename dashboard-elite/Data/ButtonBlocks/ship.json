@@ -1,0 +1,116 @@
+{
+  "buttons": [
+    {
+      "buttonType": "ToggleButton",
+      "function":  "FocusCommsPanel",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "FocusLeftPanel",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "FocusRadarPanel",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "FocusRightPanel",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "QuickCommsPanel",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "EjectAllCargo",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "HeadLookToggle",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "MouseReset",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "OrbitLinesToggle",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "SelectTargetsTarget",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "WingNavLock",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "TargetWingman0",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "TargetWingman1",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "TargetWingman2",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "EngineColourToggle",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function":  "WeaponColourToggle",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "buttons": [
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidPrimaryInteractButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSecondaryInteractButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSelectPrimaryWeaponButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSelectSecondaryWeaponButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidHideWeaponButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSwitchWeapon",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSelectUtilityWeaponButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSelectNextWeaponButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSelectPreviousWeaponButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidReloadButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSelectNextGrenadeTypeButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSelectPreviousGrenadeTypeButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidThrowGrenadeButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidMeleeButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSwitchToRechargeTool",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSwitchToCompAnalyser",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidToggleToolModeButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidToggleNightVisionButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSwitchToSuitTool",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidToggleFlashlightButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "FocusCommsPanel_Humanoid",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "QuickCommsPanel_Humanoid",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidConflictContextualUIButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidToggleShieldsButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidToggleMissionHelpPanelButton",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidClearAuthorityLevel",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidHealthPack",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidBattery",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSelectFragGrenade",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSelectEMPGrenade",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "HumanoidSelectShieldGrenade",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    }
+  ]
+}

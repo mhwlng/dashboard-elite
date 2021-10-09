@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
+  <path d="M31.288 16.585a13.184 8.963 0 0 0-13.138 8.962 13.184 8.963 0 0 0 13.138 8.962z" fill="currentColor" stroke="currentColor" stroke-width="2.428" stroke-linejoin="round"/>
+  <path d="M36.447 18.877h11.178" fill="currentColor" stroke="currentColor" stroke-width="2.913" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M36.447 25.313h11.178" fill="currentColor" stroke="currentColor" stroke-width="2.913" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M36.447 31.75h11.178" fill="currentColor" stroke="currentColor" stroke-width="2.913" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6.542 5.29a1.252 1.282 0 0 0-1.25 1.284v37.042a1.252 1.282 0 0 0 1.25 1.281h54.24a1.252 1.282 0 0 0 1.252-1.28V6.573a1.252 1.282 0 0 0-1.253-1.283Zm1.252 2.567h51.737v34.476H7.794Z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">lights</text>
+</svg>

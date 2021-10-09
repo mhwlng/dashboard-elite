@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
+  <path d="M34.018 13.508c-6.417 0-11.641 5.225-11.641 11.642s5.224 11.641 11.64 11.641c6.418 0 11.643-5.224 11.643-11.64 0-6.418-5.225-11.643-11.642-11.643zm0 2.117a9.51 9.51 0 0 1 9.525 9.525 9.51 9.51 0 0 1-9.525 9.526 9.51 9.51 0 0 1-9.526-9.526 9.51 9.51 0 0 1 9.526-9.525z" color="currentColor" overflow="visible" fill="currentColor" paint-order="markers fill stroke" stop-color="currentColor"/>
+  <path d="M24.914 18.016 5.557 22.164v6.147h2.117v-4.436l17.683-3.791-.443-2.068z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <path d="M5.557 22.246v6.147l19.357 4.148.443-2.07-17.683-3.79v-4.435H5.557z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <path d="m43.041 18.016-.443 2.068 17.683 3.791v4.436h2.117v-6.147l-19.357-4.148z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <path d="M60.281 22.246v4.436L42.598 30.47l.443 2.07 19.357-4.148v-6.147h-2.117z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <path d="M34.018 16.377a8.773 8.773 0 0 0-8.773 8.773 8.773 8.773 0 0 0 8.773 8.773 8.773 8.773 0 0 0 8.772-8.773 8.773 8.773 0 0 0-8.772-8.773zm.091 2.18a6.596 6.596 0 0 1 3.99 1.413 6.596 6.596 0 0 1 2.51 4.98l.02.659-1.323.041-.02-.662a5.269 5.269 0 0 0-2.007-3.979 5.268 5.268 0 0 0-4.338-1.02l-.648.136-.27-1.295.648-.135a6.59 6.59 0 0 1 1.438-.138z" fill="currentColor" paint-order="markers fill stroke"/>
+  <path d="M44.979 24.738v.795h15.875v-.795H44.979z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+  <path d="M6.615 24.738v.795h17.198v-.795H6.614z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+
+  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+
+</svg>

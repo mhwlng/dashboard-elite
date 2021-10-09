@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
+  <path d="M45.178 51A111.016 111.016 0 0 1 45 109.523V110l119 35c16.007-21.815 25.102-60.09 12-94zm7.799 3.186h116.318l.428 1.103c11.559 29.918 3.625 63.404-10.573 82.752l-.718.977-105.08-30.907v-1.935l.062-.227a94.065 94.065 0 0 0 .15-49.588zm4.43 3.45a97.457 97.457 0 0 1-.362 47.964L157 135c12.845-18.217 20.144-49.507 9.883-77.363z" transform="matrix(.28061 0 0 .27814 -1.723 -1.83)" color="currentColor" overflow="visible" fill="currentColor" paint-order="markers fill stroke" stop-color="currentColor"/>
+  <path d="M7.985 9.686h40.292v2.41H7.985z" transform="matrix(1.06058 0 0 1.05125 -1.723 -1.83)" fill="currentColor" stroke="currentColor" stroke-width="1.587" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.903 30.427 46.264 41.01" transform="matrix(1.06058 0 0 1.05125 -1.723 -1.83)" fill="none" stroke="currentColor" stroke-width="2.117" stroke-linecap="round"/>
+  <path d="m56.555 30.156-4.86-8.343h9.72z" fill="currentColor"/>
+
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">cargo scoop</text>
+</svg>

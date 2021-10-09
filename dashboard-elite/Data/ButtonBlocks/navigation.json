@@ -1,0 +1,102 @@
+{
+  "buttons": [
+    {
+      "buttonType": "ToggleButton",
+      "function": "SetSpeed100",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "SetSpeed75",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "SetSpeed50",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "SetSpeed25",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "SetSpeedMinus100",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "SetSpeedMinus75",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "SetSpeedMinus50",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "SetSpeedMinus25",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "SetSpeedZero",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "TargetNextRouteSystem",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "ToggleReverseThrottleInput",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "UseAlternateFlightValuesToggle",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "UseBoostJuice",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "DisableRotationCorrectToggle",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    }
+  ]
+}

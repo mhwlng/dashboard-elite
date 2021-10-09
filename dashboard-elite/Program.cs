@@ -1,0 +1,333 @@
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Configuration;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using dashboard_elite.EliteData;
+using Elite;
+using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Hosting.Server.Features;
+using PhotinoNET;
+using Serilog;
+using Serilog.Events;
+using Serilog.Formatting;
+
+
+namespace dashboard_elite
+{
+    public class Program
+    {
+        public static readonly object RefreshJsonLock = new object();
+        public static readonly object RefreshSystemLock = new object();
+
+        public static string ExePath;
+        public static string WebRootPath;
+
+        public static IConfigurationRoot Configuration;
+
+        private static CachedSound _clickSound = null;
+
+        public static Dictionary<BindingType, UserBindings> Binding = new Dictionary<BindingType, UserBindings>();
+
+        public static void PlayClickSound()
+        {
+            if (_clickSound != null)
+            {
+                try
+                {
+                    AudioPlaybackEngine.Instance.PlaySound(_clickSound);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error($"PlaySound: {ex}");
+                }
+            }
+        }
+
+        public static void PlaySound(ref CachedSound clickSound, string fileName)
+        {
+            if (!string.IsNullOrEmpty(fileName) && clickSound == null)
+            {
+                var path = Path.Combine(dashboard_elite.Program.ExePath, "Sounds", fileName);
+
+                if (File.Exists(path))
+                {
+                    try
+                    {
+                        clickSound = new CachedSound(path);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Logger.Error(ex, $"CachedSound: {fileName}");
+                        clickSound = null;
+                    }
+                }
+            }
+
+            if (clickSound != null)
+            {
+                try
+                {
+                    AudioPlaybackEngine.Instance.PlaySound(clickSound);
+                }
+                catch (Exception ex)
+                {
+                    Log.Logger.Error(ex, $"PlaySound: {fileName}");
+                }
+            }
+        }
+
+        public static PhotinoWindow mainWindow;
+
+        [STAThread]
+        public static int Main(string[] args)
+        {
+            return MainImpl(args).Result;
+        }
+
+        private static string GetExePath()
+        {
+            var strExeFilePath = Assembly.GetEntryAssembly().Location;
+            return Path.GetDirectoryName(strExeFilePath);
+        }
+
+
+        public static async Task<int> MainImpl(string[] args)
+        {
+            ExePath = GetExePath();
+
+            Directory.SetCurrentDirectory(ExePath);
+
+            Configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+                .Enrich.FromLogContext()
+                .ReadFrom.Configuration(Configuration)
+                .CreateLogger();
+
+
+            Log.Information("Starting");
+
+            _clickSound = null;
+
+            var soundpath = Configuration.GetValue<string>("ClickSound");
+
+            var fileName = Path.Combine(ExePath, "Sounds", soundpath);
+
+            if (File.Exists(fileName))
+            {
+                try
+                {
+                    _clickSound = new CachedSound(fileName);
+                }
+                catch (Exception ex)
+                {
+                    _clickSound = null;
+
+                    Log.Error($"CachedSound: {ex}");
+                }
+
+            }
+
+            var host = CreateHostBuilder(args).Build();
+
+            var applicationLifetime =
+                host.Services.GetService(typeof(IHostApplicationLifetime)) as IHostApplicationLifetime;
+
+            //[Special for DesktopLoveBlazorWeb]
+            TaskCompletionSource<string> futureAddr = new TaskCompletionSource<string>();
+            applicationLifetime?.ApplicationStarted.Register((futureAddrObj) =>
+            {
+                var server = host.Services.GetService(typeof(IServer)) as IServer;
+                var logger = host.Services.GetService(typeof(ILogger<Program>)) as ILogger<Program>;
+
+                var addressFeature = server.Features.Get<IServerAddressesFeature>();
+                foreach (var addresses in addressFeature.Addresses)
+                {
+                    logger.LogInformation("Listening on address: " + addresses);
+                }
+
+                var addr = addressFeature.Addresses.First();
+                (futureAddrObj as TaskCompletionSource<string>).SetResult(addr);
+            }, futureAddr);
+
+            //[Special for DesktopLoveBlazorWeb]
+#pragma warning disable CS4014
+            host.RunAsync();
+#pragma warning restore CS4014
+
+            //[Special for DesktopLoveBlazorWeb]
+            OpenInLine(await futureAddr.Task, Configuration);
+
+            //TODO
+            return 0;
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .UseSerilog()
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    //[Special for DesktopLoveBlazorWeb]
+                    //use any available port on localhost
+                    webBuilder.ConfigureKestrel(serverOptions => { serverOptions.Listen(IPAddress.Loopback, 0); });
+                    webBuilder.UseStaticWebAssets();
+                    webBuilder.UseStartup<Startup>();
+                });
+
+        public static void OpenInLine(string address, IConfigurationRoot configuration)
+        {
+            Console.WriteLine($"Try to view blazor application on {address}");
+            string windowTitle = "Elite Dangerous Dashboard";
+            var iconFile = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+                ? "wwwroot/img/elite.ico"
+                : "wwwroot/img/elite.png";
+
+
+            var top = configuration.GetValue<int>("Dimensions:Top");
+            var left = configuration.GetValue<int>("Dimensions:left");
+            var height = configuration.GetValue<int>("Dimensions:Height");
+            var width = configuration.GetValue<int>("Dimensions:Width");
+            var fullScreen = configuration.GetValue<bool>("Dimensions:FullScreen");
+            var zoom = configuration.GetValue<int>("Dimensions:Zoom");
+
+            mainWindow = new PhotinoWindow()
+
+                .SetIconFile(iconFile)
+
+                .SetTitle(windowTitle)
+                .SetUseOsDefaultSize(false)
+                .SetUseOsDefaultLocation(false)
+                .SetSize(new Size(width, height))
+                .SetLeft(left)
+                .SetTop(top)
+                .SetResizable(true)
+                //.SetMaximized(fullScreen)
+                .SetChromeless(fullScreen)
+                .SetContextMenuEnabled(!fullScreen)
+                .SetDevToolsEnabled(!fullScreen)
+                .SetZoom(zoom)
+                //.RegisterCustomSchemeHandler("appscript", AppCustomSchemeUsed)
+                /*
+                .RegisterCustomSchemeHandler("app",
+                    (object sender, string scheme, string url, out string contentType) =>
+                    {
+                        contentType = "text/javascript";
+                        return new MemoryStream(Encoding.UTF8.GetBytes(@"
+                        (() =>{
+                            window.setTimeout(() => {
+                                alert(`YYY Dynamically inserted JavaScript.`);
+                            }, 5000);
+                        })();
+                    "));
+                    })*/
+                .RegisterWindowCreatingHandler(WindowCreating)
+                .RegisterWindowCreatedHandler(WindowCreated)
+                .RegisterLocationChangedHandler(WindowLocationChanged)
+                .RegisterSizeChangedHandler(WindowSizeChanged)
+                .RegisterWebMessageReceivedHandler(MessageReceivedFromWindow)
+                .RegisterWindowClosingHandler(WindowIsClosing)
+
+                //.SetTemporaryFilesPath(@"C:\Temp")
+
+                .SetLogVerbosity(2)
+
+                .Load(address);
+
+            mainWindow.WaitForClose(); // Starts the application event loop
+
+        }
+
+        //These are the event handlers I'm hooking up
+        /*
+        private static Stream AppCustomSchemeUsed(object sender, string scheme, string url, out string contentType)
+        {
+            Log.Information($"Custom scheme '{scheme}' was used.");
+            var currentWindow = sender as PhotinoWindow;
+
+            contentType = "text/javascript";
+
+            var js =
+                @"
+(() =>{
+    window.setTimeout(() => {
+        const title = document.getElementById('Title');
+        const lineage = document.getElementById('Lineage');
+        title.innerHTML = "
+
+                + $"'{currentWindow.Title}';" + "\n"
+
+                + $"        lineage.innerHTML = `PhotinoWindow Id: {currentWindow.Id} <br>`;" + "\n";
+
+            //show lineage of this window
+            var p = currentWindow.Parent;
+            while (p != null)
+            {
+                js += $"        lineage.innerHTML += `Parent Id: {p.Id} <br>`;" + "\n";
+                p = p.Parent;
+            }
+
+            js +=
+                @"        alert(`XXX Dynamically inserted JavaScript.`);
+    }, 1000);
+})();
+";
+            return new MemoryStream(Encoding.UTF8.GetBytes(js));
+        }*/
+
+        private static void MessageReceivedFromWindow(object sender, string message)
+        {
+            //Log.Information($"MessageRecievedFromWindow Callback Fired.");
+        }
+
+        private static void WindowCreating(object sender, EventArgs e)
+        {
+            //Log.Information("WindowCreating Callback Fired.");
+        }
+
+        private static void WindowCreated(object sender, EventArgs e)
+        {
+            //Log.Information("WindowCreated Callback Fired.");
+        }
+
+        private static void WindowLocationChanged(object sender, Point location)
+        {
+            CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Top", location.Y);
+            CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Left", location.X);
+
+            //Log.Information($"WindowLocationChanged Callback Fired.  Left: {location.X}  Top: {location.Y}");
+        }
+
+        private static void WindowSizeChanged(object sender, Size size)
+        {
+            CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Height", size.Height);
+            CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Width", size.Width);
+
+            //Log.Information( $"WindowSizeChanged Callback Fired.  Height: {size.Height}  Width: {size.Width}");
+        }
+
+        private static bool WindowIsClosing(object sender, EventArgs e)
+        {
+            //Log.Information("WindowIsClosing Callback Fired.");
+            return false;   //return true to block closing of the window
+        }
+
+
+    }
+
+}

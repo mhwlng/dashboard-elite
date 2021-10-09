@@ -1,0 +1,60 @@
+{
+  "buttons": [
+    {
+      "buttonType": "ToggleButton",
+      "function": "ToggleBuggyTurretButton",
+      "primaryIcon": "srv-turret.svg",
+      "secondaryIcon": "srv-turret.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "ToggleDriveAssist",
+      "primaryIcon": "srv-drive-assist.svg",
+      "secondaryIcon": "srv-drive-assist.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "AutoBreakBuggyButton",
+      "primaryIcon": "srv.svg",
+      "secondaryIcon": "srv.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "RecallDismissShip",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "BuggyToggleReverseThrottleInput",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "DecreaseSpeedButtonMax",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "IncreaseSpeedButtonMax",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "SelectTarget_Buggy",
+      "primaryIcon": "xxx.svg",
+      "secondaryIcon": "xxx.svg",
+      "clickSound": ""
+    }
+  ]
+}

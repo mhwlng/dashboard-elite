@@ -1,0 +1,208 @@
+{
+	"buttons": [
+
+		{
+			"buttonType": "ToggleButton",
+			"function": "FocusLeftPanel",
+			"primaryIcon": "nav-panel.svg",
+			"secondaryIcon": "nav-panel.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "ToggleButton",
+			"function": "FocusRadarPanel",
+			"primaryIcon": "role-panel.svg",
+			"secondaryIcon": "role-panel.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "ToggleButton",
+			"function": "FocusCommsPanel",
+			"primaryIcon": "comms-panel.svg",
+			"secondaryIcon": "comms-panel.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "ToggleButton",
+			"function": "FocusRightPanel",
+			"primaryIcon": "system-panel.svg",
+			"secondaryIcon": "system-panel.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "ToggleButton",
+			"function": "GalaxyMap",
+			"primaryIcon": "galaxy-map.svg",
+			"secondaryIcon": "galaxy-map.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "ToggleButton",
+			"function": "SystemMap",
+			"primaryIcon": "system-map.svg",
+			"secondaryIcon": "system-map.svg",
+			"clickSound": ""
+		},
+
+
+		{
+			"buttonType": "ToggleButton",
+			"function": "ShipSpotLightToggle",
+			"primaryIcon": "ship-lights.svg",
+			"secondaryIcon": "ship-lights.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "ToggleButton",
+			"function": "PlayerHUDModeToggle",
+			"primaryIcon": "analysis-mode.svg",
+			"secondaryIcon": "analysis-mode.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "ToggleButton",
+			"function": "NightVisionToggle",
+			"primaryIcon": "night-vision.svg",
+			"secondaryIcon": "night-vision.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "ToggleButton",
+			"function": "ToggleButtonUpInput",
+			"primaryIcon": "silent-running.svg",
+			"secondaryIcon": "silent-running.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "ToggleButton",
+			"function": "LandingGearToggle",
+			"primaryIcon": "landing-gear.svg",
+			"secondaryIcon": "landing-gear.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "ToggleButton",
+			"function": "ToggleCargoScoop",
+			"primaryIcon": "cargo-scoop.svg",
+			"secondaryIcon": "cargo-scoop.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "ToggleButton",
+			"function": "ToggleFlightAssist",
+			"primaryIcon": "flight-assist.svg",
+			"secondaryIcon": "flight-assist.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "ToggleButton",
+			"function": "DeployHardpointToggle",
+			"primaryIcon": "hardpoints.svg",
+			"secondaryIcon": "hardpoints.svg",
+			"clickSound": ""
+		},
+
+		{
+			"buttonType": "AlarmButton",
+			"function": "SelectHighestThreat",
+			"primaryIcon": "target-highest.svg",
+			"secondaryIcon": "target-highest.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "AlarmButton",
+			"function": "DeployChaff",
+			"primaryIcon": "chaff.svg",
+			"secondaryIcon": "chaff.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "AlarmButton",
+			"function": "DeployHeatsink",
+			"primaryIcon": "heat-sink.svg",
+			"secondaryIcon": "heat-sink.svg",
+			"clickSound": ""
+		},
+		{
+			"buttonType": "AlarmButton",
+			"function": "DeployShieldCell",
+			"primaryIcon": "shield-cell.svg",
+			"secondaryIcon": "shield-cell.svg",
+			"clickSound": ""
+		},
+
+		{
+			"buttonType": "PowerButton",
+      "function": "RST",
+      "primaryIcon": "balance-power.svg",
+      "secondaryIcon": "balance-power.svg",
+      "tertiaryIcon": "balance-power.svg",
+      "clickSound": "beep-3.wav"
+    },
+    {
+      "buttonType": "PowerButton",
+      "function": "SYS",
+      "primaryIcon": "shield-power.svg",
+      "secondaryIcon": "shield-power.svg",
+      "tertiaryIcon": "shield-power.svg",
+      "clickSound": "beep-3.wav"
+    },
+    {
+      "buttonType": "PowerButton",
+      "function": "ENG",
+      "primaryIcon": "engine-power.svg",
+      "secondaryIcon": "engine-power.svg",
+      "tertiaryIcon": "engine-power.svg",
+      "clickSound": "beep-3.wav"
+    },
+    {
+      "buttonType": "PowerButton",
+      "function": "WEP",
+      "primaryIcon": "weapon-power.svg",
+      "secondaryIcon": "weapon-power.svg",
+      "tertiaryIcon": "weapon-power.svg",
+      "clickSound": "beep-3.wav"
+    },
+
+
+		{
+			"buttonType": "FSSButton",
+			"primaryIcon": "fss.svg",
+			"secondaryIcon": "fss.svg",
+			"tertiaryIcon": "fss.svg",
+			"clickSound": "",
+			"errorSound": "",
+			"dontSwitchToCombatMode": false
+		},
+		{
+			"buttonType": "HyperspaceButton",
+			"function": "HyperSuperCombination",
+			"primaryIcon": "hyperspace.svg",
+			"secondaryIcon": "hyperspace.svg",
+			"tertiaryIcon": "hyperspace.svg",
+			"clickSound": "",
+			"errorSound": ""
+		},
+		{
+			"buttonType": "HyperspaceButton",
+			"function": "Supercruise",
+			"primaryIcon": "supercruise.svg",
+			"secondaryIcon": "supercruise.svg",
+			"tertiaryIcon": "supercruise.svg",
+			"clickSound": "",
+			"errorSound": ""
+		},
+		{
+			"buttonType": "LimpetButton",
+			"firegroup": "E",
+			"fire": "Secondary",
+			"primaryIcon": "limpet-collector.svg",
+			"secondaryIcon": "limpet-collector.svg",
+			"clickSound": "",
+			"errorSound": ""
+		}
+
+
+	]
+}
+

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
+  <path d="M29.823 34.396V30.63" fill="none" stroke="currentColor" stroke-width="1.489" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M38.365 34.396V30.63" fill="none" stroke="currentColor" stroke-width="1.489" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M34.094 34.396V30.63" fill="none" stroke="currentColor" stroke-width="1.489" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M43.656 24.956h-3.563" fill="none" stroke="currentColor" stroke-width="1.304" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M43.656 21.398h-3.563" fill="none" stroke="currentColor" stroke-width="1.304" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M43.656 28.323h-3.563" fill="none" stroke="currentColor" stroke-width="1.304" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M27.688 24.956h-3.875" fill="none" stroke="currentColor" stroke-width="1.36" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M27.688 21.398h-3.875" fill="none" stroke="currentColor" stroke-width="1.36" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M27.688 28.323h-3.875" fill="none" stroke="currentColor" stroke-width="1.36" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M28.033 18.471c-.473 0-.854.309-.854.693v11.31c0 .384.381.693.854.693h11.918c.473 0 .854-.309.854-.693v-11.31c0-.384-.381-.693-.854-.693H28.033zm7.665.515-1.186 5.56 2.589-.364s-4.555 6.42-4.695 6.58l1.186-5.56-2.589.363s4.555-6.42 4.695-6.579z" fill="currentColor" paint-order="markers fill stroke"/>
+  <circle cx="33.657" cy="25.106" r="14.427" fill="none" stroke="currentColor" stroke-width="1.749" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <circle cx="33.657" cy="25.106" r="18.402" fill="none" stroke="currentColor" stroke-width="1.749" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M29.823 19.05v-3.765" fill="none" stroke="currentColor" stroke-width="1.489" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M38.365 19.05v-3.765" fill="none" stroke="currentColor" stroke-width="1.489" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M34.094 19.05v-3.765" fill="none" stroke="currentColor" stroke-width="1.489" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">SCB</text>
+
+</svg>

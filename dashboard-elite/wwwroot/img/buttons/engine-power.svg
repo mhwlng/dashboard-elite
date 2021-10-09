@@ -1,0 +1,15 @@
+<svg viewBox="0 0 67.733 67.733" xmlns="http://www.w3.org/2000/svg">
+  <path d="M26.91 5.358v8.583l-1.18 1.182v6.218l2.515 7.545h11.42l2.513-7.545v-6.218l-1.179-1.182V5.358Zm1.11 1.112h11.867v7.146H28.02Zm.61.422v6.301h1.109v-6.3Zm2.357 0v6.301H32.1v-6.3Zm2.361 0v6.301h1.112v-6.3Zm2.36 0v6.301h1.111v-6.3Zm2.358 0v6.301h1.112v-6.3Zm-10.371 7.836h12.518l.07.07H27.625Zm-.854 1.179h14.227v4.787H26.84Zm.069.07v4.65H41v-4.65zm1.11 1.111h11.867v2.428h-1.249v-2.36h-3.47v1.181H32.74v-1.182h-4.297v1.112h3.185v1.18h4.651v-1.18h1.25v1.249H28.02zm-.965 4.718h2.299l.996 5.967h-1.304zm3.424 0h3.039v5.967h-2.044Zm4.147 0h2.803l-.996 5.967h-1.807Zm3.926 0h2.302l-1.991 5.967h-1.305zm-9.88 7.974v2.763h1.108V29.78zm2.359 0v5.123h1.11V29.78zm2.359 0v3.943h1.112V29.78zm2.36 0v5.123h1.11V29.78zm2.361 0v2.763h1.109V29.78z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
+
+  <path d="M7.88 38.516h9.052v8.99H7.88Z"  stroke="#808080" fill="#808080" stroke-width="1.5" stroke-linecap="square" style="{0}" />
+  <path d="M22.365 38.516h9.051v8.99h-9.051z" stroke="#808080" fill="#808080" stroke-width="1.5" stroke-linecap="square" style="{1}"/>
+  <path d="M36.847 38.516H45.9v8.99h-9.052z"  stroke="#808080" fill="#808080" stroke-width="1.5" stroke-linecap="square" style="{2}"/>
+  <path d="M51.33 38.516h9.052v8.99H51.33z" stroke="#808080" fill="#808080" stroke-width="1.5" stroke-linecap="square" style="{3}"/>
+
+  <path d="M7.88 38.516h9.052v8.99H7.88Z"  stroke="currentColor" fill="currentColor" stroke-width="1.5" stroke-linecap="square" style="{4}"/>
+  <path d="M22.365 38.516h9.051v8.99h-9.051z" stroke="currentColor" fill="currentColor" stroke-width="1.5" stroke-linecap="square" style="{5}"/>
+  <path d="M36.847 38.516H45.9v8.99h-9.052z"  stroke="currentColor" fill="currentColor" stroke-width="1.5" stroke-linecap="square" style="{6}"/>
+  <path d="M51.33 38.516h9.052v8.99H51.33z" stroke="currentColor" fill="currentColor" stroke-width="1.5" stroke-linecap="square" style="{7}"/>
+
+  <text x="50%" y="93%" font-size="12" text-anchor="middle">ENG</text>
+</svg>

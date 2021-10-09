@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
+  <path d="M7.284 10.865a.695.7 0 0 0-.694.7v2.126a.695.7 0 0 0 .694.698h35.28a.695.7 0 0 0 .694-.698v-2.126a.695.7 0 0 0-.695-.7Zm3.476 4.058a26.087 26.087 0 0 1-.042 13.656v.111l27.568 8.167c3.708-5.09 5.815-14.021 2.78-21.934zm1.806.744h26.946l.1.257c2.677 6.981.84 14.795-2.45 19.31l-.166.227-24.343-7.211v-.452l.015-.053a22.104 22.104 0 0 0 .035-11.57zm1.027.805c.897 3.68.87 7.524-.084 11.192l23.155 6.86c2.976-4.25 4.667-11.552 2.29-18.052zm13.602 2.96h1.176c.488 0 .882.331.882.741v4.689c0 .41-.394.74-.882.74h-1.176c-.489 0-.882-.33-.882-.74v-4.689c0-.41.393-.74.882-.74zm0 7.404h1.176c.488 0 .882.33.882.74v.987c0 .41-.394.74-.882.74h-1.176c-.489 0-.882-.33-.882-.74v-.987c0-.41.393-.74.882-.74zm-18.24 2.087a.927.933 0 0 0-.03.001.927.933 0 0 0-.85.672.927.933 0 0 0 .63 1.158l31.837 9.334a.927.933 0 0 0 1.15-.636.927.933 0 0 0-.632-1.157L9.224 28.96a.927.933 0 0 0-.27-.037z" color="currentColor" overflow="visible" fill="currentColor" paint-order="markers fill stroke" stop-color="currentColor"/>
+  <path d="m47.773 19.433 11.758-2.961" fill="none" stroke="currentColor" stroke-width="1.77" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="m47.773 32.758 11.758 2.96" fill="none" stroke="currentColor" stroke-width="1.77" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="M48.408 25.937h12.12" fill="none" stroke="currentColor" stroke-width="1.77" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+
+</svg>

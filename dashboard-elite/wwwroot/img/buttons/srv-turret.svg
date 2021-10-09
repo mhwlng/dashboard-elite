@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
+  <g stroke-width="1.747" color="currentColor" fill="currentColor">
+    <path d="M25.256 9.625a.928.935 0 0 0-.928.935v12.855a.928.935 0 0 0 .928.936h15.082a.928.935 0 0 0 .929-.936V10.56a.928.935 0 0 0-.929-.935Zm1.16 1.17h12.763a.928.935 0 0 1 .928.934v7.012a.928.935 0 0 1-.928.936H26.416a.928.935 0 0 1-.929-.936V11.73a.928.935 0 0 1 .929-.934z" transform="translate(15.258 23.476) scale(.57255)" overflow="visible" stop-color="currentColor"/>
+    <path d="M12.492 19.072a3.175 3.175 0 0 0-3.174 3.174v8.182a3.175 3.175 0 0 0 3.174 3.174 3.175 3.175 0 0 0 3.176-3.174v-8.182a3.175 3.175 0 0 0-3.176-3.174z" transform="translate(15.258 23.476) scale(.57255)" overflow="visible" stop-color="currentColor"/>
+    <path d="M20.615 19.072a3.175 3.175 0 0 0-3.176 3.174v8.182a3.175 3.175 0 0 0 3.176 3.174 3.175 3.175 0 0 0 3.174-3.174v-8.182a3.175 3.175 0 0 0-3.174-3.174z" transform="translate(15.258 23.476) scale(.57255)" overflow="visible" stop-color="currentColor"/>
+    <path d="M44.979 19.072a3.175 3.175 0 0 0-3.174 3.174v8.182a3.175 3.175 0 0 0 3.174 3.174 3.175 3.175 0 0 0 3.175-3.174v-8.182a3.175 3.175 0 0 0-3.175-3.174z" transform="translate(15.258 23.476) scale(.57255)" overflow="visible" stop-color="currentColor"/>
+    <path d="M53.102 19.072a3.175 3.175 0 0 0-3.176 3.174v8.182a3.175 3.175 0 0 0 3.176 3.174 3.175 3.175 0 0 0 3.173-3.174v-8.182a3.175 3.175 0 0 0-3.173-3.174z" transform="translate(15.258 23.476) scale(.57255)" overflow="visible" stop-color="currentColor"/>
+    <path d="M26.416 25.863a1.058 1.058 0 0 0-1.059 1.059 1.058 1.058 0 0 0 1.059 1.058h12.762a1.058 1.058 0 0 0 1.058-1.058 1.058 1.058 0 0 0-1.058-1.059z" transform="translate(15.258 23.476) scale(.57255)" overflow="visible" stop-color="currentColor"/>
+    <path d="M18.887 7.164a1.058 1.058 0 0 0-.78.363 1.058 1.058 0 0 0 .104 1.494l4.03 3.506a1.058 1.058 0 0 0 1.491-.103 1.058 1.058 0 0 0-.103-1.494l-4.027-3.506a1.058 1.058 0 0 0-.715-.26Z" transform="translate(15.258 23.476) scale(.57255)" overflow="visible" stop-color="currentColor"/>
+    <path d="M46.64 7.166a1.058 1.058 0 0 0-.648.258l-4.027 3.506a1.058 1.058 0 0 0-.104 1.494 1.058 1.058 0 0 0 1.493.103l4.029-3.506a1.058 1.058 0 0 0 .103-1.494 1.058 1.058 0 0 0-.845-.361Z" transform="translate(15.258 23.476) scale(.57255)" overflow="visible" stop-color="currentColor"/>
+    <path d="M15.314-4.249h2.325V2.75h-2.325z" transform="matrix(.48277 .3078 -.30465 .48477 15.258 23.476)" overflow="visible" stop-color="currentColor"/>
+    <path d="M15.314-5.307a1.058 1.058 0 0 0-1.058 1.059v6.996a1.058 1.058 0 0 0 1.058 1.059h2.325a1.058 1.058 0 0 0 1.058-1.059v-6.996a1.058 1.058 0 0 0-1.058-1.059zm1.059 2.118h.207v4.88h-.207z" transform="matrix(.48277 .3078 -.30465 .48477 15.258 23.476)" overflow="visible" stop-color="currentColor"/>
+    <path d="M-40.063 30.817h2.326v6.997h-2.326z" transform="matrix(-.48277 .3078 .30465 .48477 15.258 23.476)" overflow="visible" stop-color="currentColor"/>
+    <path d="M-40.063 29.758a1.058 1.058 0 0 0-1.058 1.058v6.998a1.058 1.058 0 0 0 1.059 1.059h2.324a1.058 1.058 0 0 0 1.058-1.059v-6.998a1.058 1.058 0 0 0-1.058-1.058zm1.06 2.117h.208v4.88h-.209z" transform="matrix(-.48277 .3078 .30465 .48477 15.258 23.476)" overflow="visible" stop-color="currentColor"/>
+  </g>
+  <g stroke-width="1.292" fill="currentColor" paint-order="markers fill stroke">
+    <path d="M26.283 18.03h16.07c.34 0 .614.275.614.615v1.843c0 .34-.274.614-.614.614h-16.07a.613.613 0 0 1-.614-.614v-1.843c0-.341.274-.614.614-.614z"/>
+    <path d="M34.32 9.84c-4.276-.001-7.912 2.957-8.554 6.96l17.104.005a7.88 7.88 0 0 0-1.18-3.055l-2.8 1.68a1.024 1.024 0 0 1-1.403-.351 1.024 1.024 0 0 1 .35-1.404l2.514-1.508a8.59 8.59 0 0 0-.831-.678l-2.471 1.484a1.024 1.024 0 0 1-1.405-.352 1.024 1.024 0 0 1 .35-1.405l1.403-.84a9.06 9.06 0 0 0-3.077-.537Z"/>
+    <path d="m39.423 15.081 6.614-3.968" transform="translate(7.853 2.88) scale(.77395)" color="currentColor" overflow="visible" stop-color="currentColor"/>
+    <path d="m37.042 11.906 6.614-3.969" transform="translate(7.853 2.88) scale(.77395)" color="currentColor" overflow="visible" stop-color="currentColor"/>
+    <g color="currentColor" >
+      <path d="m39.423 15.081 6.615-3.968" transform="translate(7.853 2.88) scale(.77395)" overflow="visible" stop-color="currentColor"/>
+      <path d="M46.021 10.188a.926.926 0 0 0-.46.13l-6.614 3.97a.926.926 0 0 0-.318 1.27.926.926 0 0 0 1.27.317l6.615-3.969a.926.926 0 0 0 .318-1.27.926.926 0 0 0-.81-.448Z" transform="translate(7.853 2.88) scale(.77395)" overflow="visible" stop-color="currentColor"/>
+    </g>
+    <g color="currentColor" >
+      <path d="m37.042 11.906 6.614-3.968" transform="translate(7.853 2.88) scale(.77395)" overflow="visible" stop-color="currentColor"/>
+      <path d="M43.639 7.012a.926.926 0 0 0-.46.13l-6.615 3.97a.926.926 0 0 0-.316 1.27.926.926 0 0 0 1.27.32l6.615-3.97a.926.926 0 0 0 .318-1.271.926.926 0 0 0-.812-.45z" transform="translate(7.853 2.88) scale(.77395)" overflow="visible" stop-color="currentColor"/>
+    </g>
+  </g>
+  <path d="m16.23 17.198-2.292-3.969h4.583z" fill="currentColor" stroke="currentColor" stroke-width="1.852" stroke-linecap="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+  <path d="m52.917 14.155-2.292 3.969h4.583z" fill="currentColor" stroke="currentColor" stroke-width="1.852" stroke-linecap="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
+
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">turret</text>
+</svg>

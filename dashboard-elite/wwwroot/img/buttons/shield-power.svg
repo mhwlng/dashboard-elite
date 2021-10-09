@@ -1,0 +1,15 @@
+<svg viewBox="0 0 67.733 67.733" xmlns="http://www.w3.org/2000/svg">
+  <path d="M33.856 5.86c-7.794 0-14.125 6.33-14.125 14.124 0 7.793 6.331 14.126 14.125 14.126 7.793 0 14.126-6.333 14.126-14.126 0-7.793-6.333-14.124-14.126-14.124zm0 1.28c7.1 0 12.843 5.743 12.843 12.844 0 7.1-5.742 12.845-12.843 12.845s-12.844-5.744-12.844-12.845c0-7.1 5.743-12.843 12.844-12.843zm0 1.632c-6.185 0-11.212 5.027-11.212 11.212s5.027 11.214 11.212 11.214 11.213-5.03 11.213-11.214c0-6.185-5.028-11.212-11.213-11.212zm0 1.281a9.921 9.921 0 0 1 9.93 9.931 9.923 9.923 0 0 1-9.93 9.933 9.923 9.923 0 0 1-9.931-9.933 9.921 9.921 0 0 1 9.93-9.93zm-1.726 4.912a.535.535 0 0 0-.374.153l-6.379 6.256a.532.532 0 0 0-.16.38v1.401c0 .293.241.534.534.534h16.164a.538.538 0 0 0 .535-.534v-1.4a.532.532 0 0 0-.16-.381l-6.38-6.256a.536.536 0 0 0-.374-.153zm.983 1.068h1.511l-.755.76zm-.71.197 1.014 1.019-3.798 3.823zm2.885.046 2.66 4.626-3.627-3.653zm-4.252 1.044-3.048 5.302h-1.702v-.643zm5.595 0 4.75 4.66v.642h-1.703l-1.224-2.131zm-2.762.386 4.883 4.916h-9.765Z" color="currentColor" overflow="visible" fill="currentColor" paint-order="markers fill stroke" stop-color="currentColor"/>
+
+  <path d="M7.88 38.516h9.052v8.99H7.88Z"  stroke="#808080" fill="#808080" stroke-width="1.5" stroke-linecap="square" style="{0}" />
+  <path d="M22.365 38.516h9.051v8.99h-9.051z" stroke="#808080" fill="#808080" stroke-width="1.5" stroke-linecap="square" style="{1}"/>
+  <path d="M36.847 38.516H45.9v8.99h-9.052z"  stroke="#808080" fill="#808080" stroke-width="1.5" stroke-linecap="square" style="{2}"/>
+  <path d="M51.33 38.516h9.052v8.99H51.33z" stroke="#808080" fill="#808080" stroke-width="1.5" stroke-linecap="square" style="{3}"/>
+
+  <path d="M7.88 38.516h9.052v8.99H7.88Z"  stroke="currentColor" fill="currentColor" stroke-width="1.5" stroke-linecap="square" style="{4}"/>
+  <path d="M22.365 38.516h9.051v8.99h-9.051z" stroke="currentColor" fill="currentColor" stroke-width="1.5" stroke-linecap="square" style="{5}"/>
+  <path d="M36.847 38.516H45.9v8.99h-9.052z"  stroke="currentColor" fill="currentColor" stroke-width="1.5" stroke-linecap="square" style="{6}"/>
+  <path d="M51.33 38.516h9.052v8.99H51.33z" stroke="currentColor" fill="currentColor" stroke-width="1.5" stroke-linecap="square" style="{7}"/>
+
+  <text x="50%" y="93%" font-size="12" text-anchor="middle">SYS</text>
+</svg>
