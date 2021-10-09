@@ -41,17 +41,17 @@ The button arrangement is customizable..
 The button images are SVG vector images from [Keath Milligan](https://keathmilligan.net/themeable-icon-pack-for-streamdeck-elite).
 
 button possibilities:
-Separate SVG button images for each state
-Animated SVG button images
-Multiple button profiles
-Automatic profile switching
-Button press sounds
+- Separate SVG button images for each state
+- Animated SVG button images
+- Multiple button profiles
+- Automatic profile switching
+- Button press sounds
 
 Technology used:
-[.net 5.0](https://dotnet.microsoft.com/download/dotnet/5.0/runtime)  choose download x64
-[WebView2 Runtime](https://go.microsoft.com/fwlink/p/?LinkId=2124703)
-blazor server
-mudblazor
+- [.net 5.0](https://dotnet.microsoft.com/download/dotnet/5.0/runtime)  choose download x64
+- [WebView2 Runtime](https://go.microsoft.com/fwlink/p/?LinkId=2124703)
+- blazor server
+- mudblazor
 
 Thanks to :
 
