@@ -3,85 +3,85 @@
     {
       "buttonType": "StaticButton",
       "function": "SetSpeed100",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-setspeed100.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "SetSpeed75",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-setspeed75.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "SetSpeed50",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-setspeed50.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "SetSpeed25",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-setspeed25.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "SetSpeedMinus100",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-setspeedminus100.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "SetSpeedMinus75",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-setspeedminus75.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "SetSpeedMinus50",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-setspeedminus50.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "SetSpeedMinus25",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-setspeedminus25.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "SetSpeedZero",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-setspeedzero.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "TargetNextRouteSystem",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-targetnextroutesystem.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "ToggleReverseThrottleInput",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-togglereversethrottleinput.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "UseAlternateFlightValuesToggle",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-usealternateflightvaluestoggle.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "UseBoostJuice",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-useboostjuice.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "DisableRotationCorrectToggle",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-disablerotationcorrecttoggle.svg",
       "clickSound": ""
     }
   ]

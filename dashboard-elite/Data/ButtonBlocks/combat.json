@@ -3,61 +3,61 @@
     {
       "buttonType": "StaticButton",
       "function": "ChargeECM",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-chargeecm.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "CycleFireGroupNext",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-cyclefiregroupnext.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "CycleFireGroupPrevious",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-cyclefiregroupprevious.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "CycleNextHostileTarget",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-cyclenexthostiletarget.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "CyclePreviousHostileTarget",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-cycleprevioushostiletarget.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "CycleNextSubsystem",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-cyclenextsubsystem.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "CyclePreviousSubsystem",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-cycleprevioussubsystem.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "CycleNextTarget",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-cyclenexttarget.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "CyclePreviousTarget",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-cycleprevioustarget.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "SelectTarget",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-selecttarget.svg",
       "clickSound": ""
     }
   ]

@@ -2,98 +2,74 @@
   "buttons": [
     {
       "buttonType": "StaticButton",
-      "function": "FocusCommsPanel",
-      "primaryIcon": "xxx.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "FocusLeftPanel",
-      "primaryIcon": "xxx.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "FocusRadarPanel",
-      "primaryIcon": "xxx.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "FocusRightPanel",
-      "primaryIcon": "xxx.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
       "function": "QuickCommsPanel",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-quickcommspanel.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "EjectAllCargo",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-ejectallcargo.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "HeadLookToggle",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-headlooktoggle.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "MouseReset",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-mousereset.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrbitLinesToggle",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-orbitlinestoggle.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "SelectTargetsTarget",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-selecttargetstarget.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "WingNavLock",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-wingnavlock.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "TargetWingman0",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-targetwingman0.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "TargetWingman1",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-targetwingman1.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "TargetWingman2",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-targetwingman2.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "EngineColourToggle",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-enginecolourtoggle.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "WeaponColourToggle",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-weaponcolourtoggle.svg",
       "clickSound": ""
     }
   ]

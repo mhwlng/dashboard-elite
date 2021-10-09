@@ -132,38 +132,37 @@
 		},
 
 		{
-			"buttonType": "PowerButton",
-      "function": "RST",
-      "primaryIcon": "balance-power.svg",
-      "secondaryIcon": "balance-power.svg",
-      "tertiaryIcon": "balance-power.svg",
-      "clickSound": "beep-3.wav"
-    },
-    {
-      "buttonType": "PowerButton",
-      "function": "SYS",
-      "primaryIcon": "shield-power.svg",
-      "secondaryIcon": "shield-power.svg",
-      "tertiaryIcon": "shield-power.svg",
-      "clickSound": "beep-3.wav"
-    },
-    {
-      "buttonType": "PowerButton",
-      "function": "ENG",
-      "primaryIcon": "engine-power.svg",
-      "secondaryIcon": "engine-power.svg",
-      "tertiaryIcon": "engine-power.svg",
-      "clickSound": "beep-3.wav"
-    },
-    {
-      "buttonType": "PowerButton",
-      "function": "WEP",
-      "primaryIcon": "weapon-power.svg",
-      "secondaryIcon": "weapon-power.svg",
-      "tertiaryIcon": "weapon-power.svg",
-      "clickSound": "beep-3.wav"
-    },
-
+		  	"buttonType": "PowerButton",
+	      	"function": "RST",
+	      	"primaryIcon": "balance-power.svg",
+	      	"secondaryIcon": "balance-power.svg",
+	      	"tertiaryIcon": "balance-power.svg",
+	      	"clickSound": "beep-3.wav"
+	    },
+	    {
+	      	"buttonType": "PowerButton",
+	      	"function": "SYS",
+	      	"primaryIcon": "shield-power.svg",
+	      	"secondaryIcon": "shield-power.svg",
+	      	"tertiaryIcon": "shield-power.svg",
+	      	"clickSound": "beep-3.wav"
+	    },
+	    {
+	      	"buttonType": "PowerButton",
+	      	"function": "ENG",
+	      	"primaryIcon": "engine-power.svg",
+	      	"secondaryIcon": "engine-power.svg",
+	      	"tertiaryIcon": "engine-power.svg",
+	      	"clickSound": "beep-3.wav"
+	    },
+	    {
+	      	"buttonType": "PowerButton",
+	      	"function": "WEP",
+	      	"primaryIcon": "weapon-power.svg",
+	      	"secondaryIcon": "weapon-power.svg",
+	      	"tertiaryIcon": "weapon-power.svg",
+	      	"clickSound": "beep-3.wav"
+	    },
 
 		{
 			"buttonType": "FSSButton",

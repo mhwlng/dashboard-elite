@@ -1,6 +1,4 @@
 # dashboard-elite
-Elite Dangerous dashboard for bar style ultra-wide touch screens
-
 Use a wide 'bar style' touch screen as a game dashboard (like [fip-panels](https://github.com/mhwlng/fip-elite)) and button box (like [streamdeck](https://github.com/mhwlng/streamdeck-elite)) for Elite Dangerous :
 
 
@@ -78,9 +76,9 @@ The button profiles (i.e. the top row buttons) can be configured in the Data\pro
 
 ```
 "onfoot": {
-	"primaryIcon": "profile-onfoot.svg",
-	"secondaryIcon": "profile-onfoot.svg",
-	"clickSound": "beep-3.wav"
+"primaryIcon": "profile-onfoot.svg",
+"secondaryIcon": "profile-onfoot.svg",
+"clickSound": "beep-3.wav"
 }
 ```
 
@@ -107,9 +105,9 @@ Each button set is configured via a .json file in the Data\ButtonBlocks director
 
 Button sounds can be found in the Sounds directory.
 
-All the button svg images can be found in the wwwroot\img\buttons directory. 
+All the button SVG images can be found in the wwwroot\img\buttons directory. 
 
-The button captions are inside the svg files.
+The button captions are inside the .svg files.
 
 Animated SVG files are possible.
 
@@ -119,34 +117,34 @@ Various button type can be configured, each with their own set of parameters :
 
 ```
 {
-	"buttonType": "ToggleButton",
-	"function": "FocusLeftPanel",
-	"primaryIcon": "nav-panel.svg",
-	"secondaryIcon": "nav-panel.svg",
-	"clickSound": "beep-3.wav"
+"buttonType": "ToggleButton",
+"function": "FocusLeftPanel",
+"primaryIcon": "nav-panel.svg",
+"secondaryIcon": "nav-panel.svg",
+"clickSound": "beep-3.wav"
 }
 ```
 
-| Function                | Description     |
-| ----------------------- | --------------- |
-| PlayerHUDModeToggle     | Analysis Mode   |
-| ToggleCargoScoop        | Cargo Scoop     |
-| ToggleFlightAssist      | Flight Assist   |
-| GalaxyMap               | Galaxy Map      |
-| DeployHardpointToggle   | Hardpoints      |
-| LandingGearToggle       | Landing Gear    |
-| ShipSpotLightToggle     | Lights          |
-| NightVisionToggle       | Night Vision    |
-| ToggleButtonUpInput     | Silent Running  |
-| ToggleDriveAssist       | Srv DriveAssist |
-| AutoBreakBuggyButton    | Srv Handbrake   |
-| ToggleBuggyTurretButton | Srv Turret      |
-| Supercruise             | Supercruise     |
-| SystemMap               | System Map      |
-| FocusCommsPanel         | Comms Panel     |
-| FocusLeftPanel          | Nav Panel       |
-| FocusRadarPanel         | Role Panel      |
-| FocusRightPanel         | Systems Panel   |
+| Function               Description    
+| --------------------------------------
+| PlayerHUDModeToggle    Analysis Mode  
+| ToggleCargoScoop       Cargo Scoop    
+| ToggleFlightAssist     Flight Assist  
+| GalaxyMap              Galaxy Map     
+| DeployHardpointToggle  Hardpoints     
+| LandingGearToggle      Landing Gear   
+| ShipSpotLightToggle    Lights         
+| NightVisionToggle      Night Vision   
+| ToggleButtonUpInput    Silent Running 
+| ToggleDriveAssist      Srv DriveAssist
+| AutoBreakBuggyButton   Srv Handbrake  
+| ToggleBuggyTurretButtonSrv Turret     
+| Supercruise            Supercruise    
+| SystemMap              System Map     
+| FocusCommsPanel        Comms Panel    
+| FocusLeftPanel         Nav Panel      
+| FocusRadarPanel        Role Panel     
+| FocusRightPanel        Systems Panel  
 
 For Odyssey, when On Foot, the Galaxy Map,System Map,Lights & Night Vision buttons will call the on-foot key bindings, 
 but there is no state feedback. So the button state won't change.
@@ -155,40 +153,40 @@ but there is no state feedback. So the button state won't change.
 
 ```
 {
-	"buttonType": "AlarmButton",
-	"function": "SelectHighestThreat",
-	"primaryIcon": "target-highest.svg",
-	"secondaryIcon": "target-highest.svg",
-	"clickSound": "beep-3.wav"
+"buttonType": "AlarmButton",
+"function": "SelectHighestThreat",
+"primaryIcon": "target-highest.svg",
+"secondaryIcon": "target-highest.svg",
+"clickSound": "beep-3.wav"
 }
 ```
 
-| Function            | Description      | Note                         |
-| ------------------- | ---------------- | ---------------------------- |
-| SelectHighestThreat | Highest Threat   | alarm = under attack status  | 
-| DeployHeatsink      | Heat sink        | alarm = under attack status  | 
-| DeployChaff         | Chaff            | alarm = overheating status   | 
-| DeployShieldCell    | Shield Cell Bank | alarm = shields down status. In that case DON'T fire a shield cell bank.   | 
+| Function           Description     Note                        
+| ---------------------------------------------------------------
+| SelectHighestThreatHighest Threat  alarm = under attack status 
+| DeployHeatsink     Heat sink       alarm = under attack status 
+| DeployChaff        Chaff           alarm = overheating status  
+| DeployShieldCell   Shield Cell Bankalarm = shields down status. In that case DON'T fire a shield cell bank.  
 
 **HyperspaceButton**
 
 ```
 {
-	"buttonType": "HyperspaceButton",
-	"function": "HyperSuperCombination",
-	"primaryIcon": "hyperspace.svg",
-	"secondaryIcon": "hyperspace.svg",
-	"tertiaryIcon": "hyperspace.svg",
-	"clickSound": "",
-	"errorSound": ""
+"buttonType": "HyperspaceButton",
+"function": "HyperSuperCombination",
+"primaryIcon": "hyperspace.svg",
+"secondaryIcon": "hyperspace.svg",
+"tertiaryIcon": "hyperspace.svg",
+"clickSound": "",
+"errorSound": ""
 }
 ```
 
-| Function              | Description     | Note                                |
-| --------------------- | --------------- | ----------------------------------- |
-| HyperSuperCombination | Toggle FSD      | also shows remaining jumps in route |
-| Supercruise           | Supercruise     |                                     |
-| Hyperspace            | Hyperspace Jump | also shows remaining jumps in route |
+| Function             Description    Note                               
+| -----------------------------------------------------------------------
+| HyperSuperCombinationToggle FSD     also shows remaining jumps in route
+| Supercruise          Supercruise                                       
+| Hyperspace           Hyperspace Jumpalso shows remaining jumps in route
 
 **PowerButton**
 
@@ -203,24 +201,24 @@ but there is no state feedback. So the button state won't change.
 }
 ```
 
-| Function | Description | Note                                               |
-| -------- | ----------- | -------------------------------------------------- |
-| SYS      | System      | shows alarm state when under attack and not 4 pips |
-| ENG      | Engines     |                                                    |
-| WEP      | Weapons     |                                                    |
-| RST      | Reset       |                                                    |
+| FunctionDescriptionNote                                              
+| ---------------------------------------------------------------------
+| SYS     System     shows alarm state when under attack and not 4 pips
+| ENG     Engines                                                      
+| WEP     Weapons                                                      
+| RST     Reset                                                        
 
 **LimpetButton**
 
 ```
 {
-	"buttonType": "LimpetButton",
-	"firegroup": "E",
-	"fire": "Secondary",
-	"primaryIcon": "limpet-collector.svg",
-	"secondaryIcon": "limpet-collector.svg",
-	"clickSound": "",
-	"errorSound": ""
+"buttonType": "LimpetButton",
+"firegroup": "E",
+"fire": "Secondary",
+"primaryIcon": "limpet-collector.svg",
+"secondaryIcon": "limpet-collector.svg",
+"clickSound": "",
+"errorSound": ""
 }
 ```
 
@@ -235,13 +233,13 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 
 ```
 {
-	"buttonType": "FSSButton",
-	"primaryIcon": "fss.svg",
-	"secondaryIcon": "fss.svg",
-	"tertiaryIcon": "fss.svg",
-	"clickSound": "",
-	"errorSound": "",
-	"dontSwitchToCombatMode": false
+"buttonType": "FSSButton",
+"primaryIcon": "fss.svg",
+"secondaryIcon": "fss.svg",
+"tertiaryIcon": "fss.svg",
+"clickSound": "",
+"errorSound": "",
+"dontSwitchToCombatMode": false
 }
 ```
 
@@ -256,129 +254,129 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 }
 ```
 
-| Function                | Combat     |
-| ----------------------- | --------------- |
-| ChargeECM | ECM |
-| CycleFireGroupNext | Next Fire Group |
-| CycleFireGroupPrevious | Prev Fire Group |
-| CycleNextHostileTarget | Next Hostile |
-| CyclePreviousHostileTarget | Prev Hostile |
-| CycleNextSubsystem | Next Subsystem |
-| CyclePreviousSubsystem | Prev Subsystem |
-| CycleNextTarget | Next Contact |
-| CyclePreviousTarget | Prev Contact |
-| SelectTarget | Target Ahead |
+| Function               Combat    
+| --------------------------------------
+| ChargeECMECM
+| CycleFireGroupNextNext Fire Group
+| CycleFireGroupPreviousPrev Fire Group
+| CycleNextHostileTargetNext Hostile
+| CyclePreviousHostileTargetPrev Hostile
+| CycleNextSubsystemNext Subsystem
+| CyclePreviousSubsystemPrev Subsystem
+| CycleNextTargetNext Contact
+| CyclePreviousTargetPrev Contact
+| SelectTargetTarget Ahead
 
-| Function                | Fighter     |
-| ----------------------- | --------------- |
-| OpenOrders | Crew Orders |
-| OrderAggressiveBehaviour | Be Aggressive |
-| OrderDefensiveBehaviour | Be Defensive |
-| OrderFocusTarget | Attack My Target |
-| OrderFollow | Follow |
-| OrderHoldFire | Hold Fire |
-| OrderHoldPosition | Hold Position |
-| OrderRequestDock | Dock SLF |
+| Function               Fighter    
+| --------------------------------------
+| OpenOrdersCrew Orders
+| OrderAggressiveBehaviourBe Aggressive
+| OrderDefensiveBehaviourBe Defensive
+| OrderFocusTargetAttack My Target
+| OrderFollowFollow
+| OrderHoldFireHold Fire
+| OrderHoldPositionHold Position
+| OrderRequestDockDock SLF
 
-| Function                | Misc     |
-| ----------------------- | --------------- |
-| FriendsMenu | Friends |
-| GalnetAudio_ClearQueue | Clear Audio Queue |
-| GalnetAudio\_Play\_Pause | Play/Pause Audio |
-| GalnetAudio_SkipBackward | Prev Audio Track |
-| GalnetAudio_SkipForward | Next Audio Track |
-| MicrophoneMute | Microphone |
-| OpenCodexGoToDiscovery | Codex |
-| Pause | Main Menu |
-| HMDReset | Reset HMD |
-| OculusReset | Reset Oculus |
-| RadarDecreaseRange | Dec Sensor Range |
-| RadarIncreaseRange | Inc Sensor Range |
+| Function               Misc    
+| --------------------------------------
+| FriendsMenuFriends
+| GalnetAudio_ClearQueueClear Audio Queue
+| GalnetAudio\_Play\_PausePlay/Pause Audio
+| GalnetAudio_SkipBackwardPrev Audio Track
+| GalnetAudio_SkipForwardNext Audio Track
+| MicrophoneMuteMicrophone
+| OpenCodexGoToDiscoveryCodex
+| PauseMain Menu
+| HMDResetReset HMD
+| OculusResetReset Oculus
+| RadarDecreaseRangeDec Sensor Range
+| RadarIncreaseRangeInc Sensor Range
 
-| Function                | Navigation     |
-| ----------------------- | --------------- |
-| SetSpeed100 | 100% Throttle |
-| SetSpeed75 | 75% Throttle |
-| SetSpeed50 | 50% Throttle |
-| SetSpeed25 | 25% Throttle |
-| SetSpeedMinus100 | 100% Reverse |
-| SetSpeedMinus75 | 75% Reverse |
-| SetSpeedMinus50 | 50% Reverse |
-| SetSpeedMinus25 | 25% Reverse |
-| SetSpeedZero | All Stop |
-| TargetNextRouteSystem | Next Jump Dest |
-| ToggleReverseThrottleInput | Reverse |
-| UseAlternateFlightValuesToggle | Alternate Controls |
-| UseBoostJuice | Boost |
-| DisableRotationCorrectToggle | Rotational Correction |
+| Function               Navigation    
+| --------------------------------------
+| SetSpeed100100% Throttle
+| SetSpeed7575% Throttle
+| SetSpeed5050% Throttle
+| SetSpeed2525% Throttle
+| SetSpeedMinus100100% Reverse
+| SetSpeedMinus7575% Reverse
+| SetSpeedMinus5050% Reverse
+| SetSpeedMinus2525% Reverse
+| SetSpeedZeroAll Stop
+| TargetNextRouteSystemNext Jump Dest
+| ToggleReverseThrottleInputReverse
+| UseAlternateFlightValuesToggleAlternate Controls
+| UseBoostJuiceBoost
+| DisableRotationCorrectToggleRotational Correction
 
-| Function                | Ship     |
-| ----------------------- | --------------- |
-| FocusCommsPanel | Comms Panel |
-| FocusLeftPanel | Nav Panel |
-| FocusRadarPanel | Role Panel |
-| FocusRightPanel | Systems Panel |
-| QuickCommsPanel | Quick Comms |
-| EjectAllCargo | Eject All Cargo |
-| HeadLookToggle | Toggle Headlook |
-| MouseReset | Reset Mouse |
-| OrbitLinesToggle | Orbit Lines |
-| SelectTargetsTarget | Wingman's target |
-| WingNavLock | Wingman Navlock |
-| TargetWingman0 | Wingman 1 |
-| TargetWingman1 | Wingman 2 |
-| TargetWingman2 | Wingman 3 |
-| EngineColourToggle | Engine Colour |
-| WeaponColourToggle | Weapon Colour |
+| Function               Ship    
+| --------------------------------------
+| FocusCommsPanelComms Panel
+| FocusLeftPanelNav Panel
+| FocusRadarPanelRole Panel
+| FocusRightPanelSystems Panel
+| QuickCommsPanelQuick Comms
+| EjectAllCargoEject All Cargo
+| HeadLookToggleToggle Headlook
+| MouseResetReset Mouse
+| OrbitLinesToggleOrbit Lines
+| SelectTargetsTargetWingman's target
+| WingNavLockWingman Navlock
+| TargetWingman0Wingman 1
+| TargetWingman1Wingman 2
+| TargetWingman2Wingman 3
+| EngineColourToggleEngine Colour
+| WeaponColourToggleWeapon Colour
 
-| Function                | SRV     |
-| ----------------------- | --------------- |
-| RecallDismissShip | Recall/Dismiss Ship |
-| BuggyToggleReverseThrottleInput | Reverse |
-| DecreaseSpeedButtonMax | Zero Speed |
-| IncreaseSpeedButtonMax | Maximum Speed |
-| SelectTarget_Buggy | Target Ahead |
+| Function               SRV    
+| --------------------------------------
+| RecallDismissShipRecall/Dismiss Ship
+| BuggyToggleReverseThrottleInputReverse
+| DecreaseSpeedButtonMaxZero Speed
+| IncreaseSpeedButtonMaxMaximum Speed
+| SelectTarget_BuggyTarget Ahead
 
-| Function                | Hyperspace     |
-| ----------------------- | --------------- |
-| Supercruise | Supercruise |
-| Hyperspace | Hyperspace Jump |
+| Function               Hyperspace    
+| --------------------------------------
+| SupercruiseSupercruise
+| HyperspaceHyperspace Jump
 
-| Function                | On Foot     |
-| ----------------------- | --------------- |
-| HumanoidPrimaryInteractButton | Primary Interact |
-| HumanoidSecondaryInteractButton | Secondary Interact |
-| HumanoidSelectPrimaryWeaponButton | Select Primary Weapon |
-| HumanoidSelectSecondaryWeaponButton | Select Secondary Weapon |
-| HumanoidHideWeaponButton | Holster Weapon |
-| HumanoidSwitchWeapon | Switch Weapon |
-| HumanoidSelectUtilityWeaponButton | Select Tool |
-| HumanoidSelectNextWeaponButton | Next Weapon |
-| HumanoidSelectPreviousWeaponButton | Previous Weapon |
-| HumanoidReloadButton | Reload |
-| HumanoidSelectNextGrenadeTypeButton | Next Grenade Type |
-| HumanoidSelectPreviousGrenadeTypeButton | Previous Grenade Type |
-| HumanoidThrowGrenadeButton | Throw Grenade |
-| HumanoidMeleeButton | Melee |
-| HumanoidSwitchToRechargeTool | Energy Link |
-| HumanoidSwitchToCompAnalyser | Profile Analyser |
-| HumanoidToggleToolModeButton | Tool Mode |
-| HumanoidToggleNightVisionButton | Night Vision |
-| HumanoidSwitchToSuitTool | Suit Specific Tool |
-| HumanoidToggleFlashlightButton | Flashlight |
-| GalaxyMapOpen_Humanoid | Galaxy Map |
-| SystemMapOpen_Humanoid | System Map |
-| FocusCommsPanel_Humanoid | Comms Panel |
-| QuickCommsPanel_Humanoid | Quick Comms |
-| HumanoidConflictContextualUIButton | Conflict Zone Battle Stats |
-| HumanoidToggleShieldsButton | Shields |
-| HumanoidToggleMissionHelpPanelButton | Help |
-| HumanoidClearAuthorityLevel | Clear Stolen Profile |
-| HumanoidHealthPack | Use Medkit |
-| HumanoidBattery | Use Energy Cells |
-| HumanoidSelectFragGrenade | Select Frag Grenade |
-| HumanoidSelectEMPGrenade | Select EMP Grenade |
-| HumanoidSelectShieldGrenade | Select Shield Grenade |
+| Function               On Foot    
+| --------------------------------------
+| HumanoidPrimaryInteractButtonPrimary Interact
+| HumanoidSecondaryInteractButtonSecondary Interact
+| HumanoidSelectPrimaryWeaponButtonSelect Primary Weapon
+| HumanoidSelectSecondaryWeaponButtonSelect Secondary Weapon
+| HumanoidHideWeaponButtonHolster Weapon
+| HumanoidSwitchWeaponSwitch Weapon
+| HumanoidSelectUtilityWeaponButtonSelect Tool
+| HumanoidSelectNextWeaponButtonNext Weapon
+| HumanoidSelectPreviousWeaponButtonPrevious Weapon
+| HumanoidReloadButtonReload
+| HumanoidSelectNextGrenadeTypeButtonNext Grenade Type
+| HumanoidSelectPreviousGrenadeTypeButtonPrevious Grenade Type
+| HumanoidThrowGrenadeButtonThrow Grenade
+| HumanoidMeleeButtonMelee
+| HumanoidSwitchToRechargeToolEnergy Link
+| HumanoidSwitchToCompAnalyserProfile Analyser
+| HumanoidToggleToolModeButtonTool Mode
+| HumanoidToggleNightVisionButtonNight Vision
+| HumanoidSwitchToSuitToolSuit Specific Tool
+| HumanoidToggleFlashlightButtonFlashlight
+| GalaxyMapOpen_HumanoidGalaxy Map
+| SystemMapOpen_HumanoidSystem Map
+| FocusCommsPanel_HumanoidComms Panel
+| QuickCommsPanel_HumanoidQuick Comms
+| HumanoidConflictContextualUIButtonConflict Zone Battle Stats
+| HumanoidToggleShieldsButtonShields
+| HumanoidToggleMissionHelpPanelButtonHelp
+| HumanoidClearAuthorityLevelClear Stolen Profile
+| HumanoidHealthPackUse Medkit
+| HumanoidBatteryUse Energy Cells
+| HumanoidSelectFragGrenadeSelect Frag Grenade
+| HumanoidSelectEMPGrenadeSelect EMP Grenade
+| HumanoidSelectShieldGrenadeSelect Shield Grenade
 
 
 

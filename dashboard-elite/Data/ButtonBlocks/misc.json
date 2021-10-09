@@ -3,73 +3,73 @@
     {
       "buttonType": "StaticButton",
       "function": "FriendsMenu",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-friendsmenu.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "GalnetAudio_ClearQueue",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-galnetaudio_clearqueue.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "GalnetAudio_Play_Pause",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-galnetaudio_play_pause.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "GalnetAudio_SkipBackward",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-galnetaudio_skipbackward.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "GalnetAudio_SkipForward",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-galnetaudio_skipforward.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "MicrophoneMute",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-microphonemute.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OpenCodexGoToDiscovery",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-opencodexgotodiscovery.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "Pause",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-pause.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "HMDReset",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-hmdreset.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OculusReset",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-oculusreset.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "RadarDecreaseRange",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-radardecreaserange.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "RadarIncreaseRange",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-radarincreaserange.svg",
       "clickSound": ""
     }
   ]

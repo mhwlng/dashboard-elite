@@ -3,49 +3,49 @@
     {
       "buttonType": "StaticButton",
       "function": "OpenOrders",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-openorders.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderAggressiveBehaviour",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-orderaggressivebehaviour.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderDefensiveBehaviour",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-orderdefensivebehaviour.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderFocusTarget",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-orderfocustarget.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderFollow",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-orderfollow.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderHoldFire",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-orderholdfire.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderHoldPosition",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-orderholdposition.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderRequestDock",
-      "primaryIcon": "xxx.svg",
+      "primaryIcon": "empty-orderrequestdock.svg",
       "clickSound": ""
     }
   ]
