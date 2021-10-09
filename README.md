@@ -62,7 +62,7 @@ The easiest way to set this up, is to first drag the application to the touch sc
 
 ![touch screen](https://i.imgur.com/14qcSb1.png)
 
-This will causes the application to restart and then the application should be full screen and the window title bar should no longer be visible.
+This will cause the application to restart and then the application should be full screen and the window title bar should no longer be visible.
 
 To make the window title bar appear again, press the maximize button again.
 
