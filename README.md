@@ -47,6 +47,17 @@ button possibilities:
 - Automatic profile switching
 - Button press sounds
 
+The button functionality works, by changing the focus back to elite dangerous when pressing a button on the touch screen.
+This focus change mechanism is only enabled when the application runs full screen on the touch screen.
+The easiest way is to drag the application to the touch screen, then press the maximize button.
+
+![touch screen](https://i.imgur.com/14qcSb1.png)
+
+This will causes the application to restart and the window title bar should no longer be visible.
+
+
+
+
 Technology used:
 - [.net 5.0](https://dotnet.microsoft.com/download/dotnet/5.0/runtime)  choose download x64
 - [WebView2 Runtime](https://go.microsoft.com/fwlink/p/?LinkId=2124703)
