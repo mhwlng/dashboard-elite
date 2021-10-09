@@ -209,20 +209,8 @@ namespace dashboard_elite.Components.Buttons
                 case "explorationfsszoomout":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ExplorationFSSZoomOut);
                     break;
-                case "focuscommspanel":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FocusCommsPanel);
-                    break;
-                case "focusleftpanel":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FocusLeftPanel);
-                    break;
                 case "quickcommspanel":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].QuickCommsPanel);
-                    break;
-                case "focusradarpanel":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FocusRadarPanel);
-                    break;
-                case "focusrightpanel":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FocusRightPanel);
                     break;
                 case "uifocus":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].UIFocus);
@@ -746,23 +734,11 @@ namespace dashboard_elite.Components.Buttons
                 case "photocameratoggle_buggy":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].PhotoCameraToggle_Buggy);
                     break;
-                case "focuscommspanel_buggy":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].FocusCommsPanel_Buggy);
-                    break;
                 case "ejectallcargo_buggy":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].EjectAllCargo_Buggy);
                     break;
-                case "focusleftpanel_buggy":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].FocusLeftPanel_Buggy);
-                    break;
                 case "quickcommspanel_buggy":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].QuickCommsPanel_Buggy);
-                    break;
-                case "focusradarpanel_buggy":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].FocusRadarPanel_Buggy);
-                    break;
-                case "focusrightpanel_buggy":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].FocusRightPanel_Buggy);
                     break;
                 case "headlooktoggle_buggy":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].HeadLookToggle_Buggy);
@@ -947,9 +923,6 @@ namespace dashboard_elite.Components.Buttons
                     break;
                 case "systemmapopen_humanoid":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].SystemMapOpen_Humanoid);
-                    break;
-                case "focuscommspanel_humanoid":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].FocusCommsPanel_Humanoid);
                     break;
                 case "quickcommspanel_humanoid":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].QuickCommsPanel_Humanoid);

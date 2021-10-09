@@ -312,10 +312,6 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 
 | Function               Ship    
 | --------------------------------------
-| FocusCommsPanelComms Panel
-| FocusLeftPanelNav Panel
-| FocusRadarPanelRole Panel
-| FocusRightPanelSystems Panel
 | QuickCommsPanelQuick Comms
 | EjectAllCargoEject All Cargo
 | HeadLookToggleToggle Headlook
@@ -366,7 +362,6 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 | HumanoidToggleFlashlightButtonFlashlight
 | GalaxyMapOpen_HumanoidGalaxy Map
 | SystemMapOpen_HumanoidSystem Map
-| FocusCommsPanel_HumanoidComms Panel
 | QuickCommsPanel_HumanoidQuick Comms
 | HumanoidConflictContextualUIButtonConflict Zone Battle Stats
 | HumanoidToggleShieldsButtonShields
