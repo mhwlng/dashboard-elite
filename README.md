@@ -50,13 +50,15 @@ button possibilities:
 
 The button functionality works, by changing the focus back to elite dangerous when pressing a button on the touch screen.
 
-This focus change mechanism is only enabled if the application runs full screen on the touch screen.
+This focus change mechanism is ONLY enabled if the application runs full screen on the touch screen.
+Otherwise, touching a button on the touch screen will have no effect in the game.
 
-The easiest way is to drag the application to the touch screen area, then press the maximize button:
+The easiest way to set this up is to first drag the application to the touch screen area, then press the maximize button:
 
 ![touch screen](https://i.imgur.com/14qcSb1.png)
 
-This will causes the application to restart and then the window title bar should no longer be visible.
+This will causes the application to restart and then the application should be full screen and the window title bar should no longer be visible.
+To make the window title bar appear again, press the maximize button again.
 
 The application window settings can be found in appsettings.json
 
@@ -70,9 +72,9 @@ The button profiles (i.e. the top row buttons) can be configured in the Data\pro
 }
 ```
 
-The name of each section refers to the name of the related button set json file in the Data\ButtonBlocks directory.
+The name of each section refers to the name of the related button set .json file in the Data\ButtonBlocks directory.
 
-Each button set is configured via a .json file the Data\ButtonBlocks directory.
+Each button set is configured via a .json file in the Data\ButtonBlocks directory.
 
 An automatic profile switching mechanism will be used, in case button sets exist with these file names:
 
@@ -91,7 +93,9 @@ An automatic profile switching mechanism will be used, in case button sets exist
 
 If none of the above profiles are activated, then a profile with the file name default.json will be activated.
 
-All the button svg images can be found in the wwwroot\img\buttons directory.
+All the button svg images can be found in the wwwroot\img\buttons directory. 
+The button captions are inside the svg files. 
+Animated SVG files are possible.
 
 Technology used:
 - [.net 5.0](https://dotnet.microsoft.com/download/dotnet/5.0/runtime)  choose download x64
