@@ -16,7 +16,6 @@ Technology used:
 - [.net 5.0](https://dotnet.microsoft.com/download/dotnet/5.0/runtime)  choose : download x64
 - [WebView2 Runtime](https://go.microsoft.com/fwlink/p/?LinkId=2124703)
 - blazor server
-- mudblazor
 
 The touch screen is connected via hdmi as a secondary monitor.
 
