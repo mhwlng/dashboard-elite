@@ -71,7 +71,7 @@ To make the window title bar appear again, press the maximize button again.
 The application window settings can be found in appsettings.json
 
 
-The buttons only work with keyboard bindings. 
+The buttons will only work with keyboard bindings. 
 So, when there is only a binding to a joystick / controller / mouse for a function, then you need to add a keyboard binding first.
 
 The button profiles (i.e. the top row buttons) can be configured in the Data\profiles.json file :
@@ -127,8 +127,6 @@ various button type can be configured, each with their own set of parameters :
 }
 ```
 
-The supported toggle-buttons are:
-
 | Function                | Description     |
 | ----------------------- | --------------- |
 | PlayerHUDModeToggle     | Analysis Mode   |
@@ -151,7 +149,7 @@ The supported toggle-buttons are:
 | FocusRightPanel         | Systems Panel   |
 
 For Odyssey, when On Foot, the Galaxy Map,System Map,Lights & Night Vision buttons will call the on-foot key bindings, 
-but there is no state feedback. So the button image won't change.
+but there is no state feedback. So the button state won't change.
 
 **AlarmButton**
 
@@ -164,8 +162,6 @@ but there is no state feedback. So the button image won't change.
 	"clickSound": "beep-3.wav"
 }
 ```
-
-The supported alarm-buttons are:
 
 | Function            | Description      | Note                         |
 | ------------------- | ---------------- | ---------------------------- |
@@ -383,9 +379,6 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 | HumanoidSelectFragGrenade | Select Frag Grenade |
 | HumanoidSelectEMPGrenade | Select EMP Grenade |
 | HumanoidSelectShieldGrenade | Select Shield Grenade |
-            
-
-
 
 
 
