@@ -19,6 +19,7 @@ So, this will not work on e.g. a tablet or a separate device.
 The game has to be set to borderless mode. Fullscreen mode won't work.
 
 The actual on/off state of a button comes from the game.
+
 When pressing a button on the touch screen, it will send the e.g. 'toggle light' keypress (from the game keyboard binding file) to the game.
 
 Big display 1920x515 (12.6 inch, IPS panel):
@@ -59,7 +60,17 @@ This will causes the application to restart and then the window title bar should
 
 The application window settings can be found in appsettings.json
 
-The button profiles (i.e. the top row buttons) can be configured in the Data\profiles.json file.
+The button profiles (i.e. the top row buttons) can be configured in the Data\profiles.json file :
+
+```
+"onfoot": {
+	"primaryIcon": "profile-onfoot.svg",
+	"secondaryIcon": "profile-onfoot.svg",
+	"clickSound": "beep-3.wav"
+}
+```
+
+The name of each section refers to the name of the related button set json file in the Data\ButtonBlocks directory.
 
 Each button set is configured via a .json file the Data\ButtonBlocks directory.
 
