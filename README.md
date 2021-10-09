@@ -138,8 +138,6 @@ The supported toggle-buttons are:
 | FocusRadarPanel         | Role Panel      |
 | FocusRightPanel         | Systems Panel   |
 
-
-
 For Odyssey, when On Foot, the Galaxy Map,System Map,Lights & Night Vision buttons will call the on-foot key bindings, 
 but there is no state feedback. So the button image won't change.
 
@@ -154,6 +152,15 @@ but there is no state feedback. So the button image won't change.
 	"clickSound": "beep-3.wav"
 }
 ```
+
+The supported alarm-buttons are:
+
+| Function            | Description      | Note                         |
+| ------------------- | ---------------- | ---------------------------- |
+| SelectHighestThreat | Highest Threat   | alarm = under attack status  | 
+| DeployHeatsink      | Heat sink        | alarm = under attack status  | 
+| DeployChaff         | Chaff            | alarm = overheating status   | 
+| DeployShieldCell    | Shield Cell Bank | alarm = shields down status. In that case DON'T fire a shield cell bank.   | 
 
 **FSSButton**
 
