@@ -162,19 +162,7 @@ The supported alarm-buttons are:
 | DeployChaff         | Chaff            | alarm = overheating status   | 
 | DeployShieldCell    | Shield Cell Bank | alarm = shields down status. In that case DON'T fire a shield cell bank.   | 
 
-**FSSButton**
 
-```
-{
-	"buttonType": "FSSButton",
-	"primaryIcon": "fss.svg",
-	"secondaryIcon": "fss.svg",
-	"tertiaryIcon": "fss.svg",
-	"clickSound": "",
-	"errorSound": "",
-	"dontSwitchToCombatMode": false
-}
-```
 
 **HyperspaceButton**
 
@@ -185,20 +173,6 @@ The supported alarm-buttons are:
 	"primaryIcon": "hyperspace.svg",
 	"secondaryIcon": "hyperspace.svg",
 	"tertiaryIcon": "hyperspace.svg",
-	"clickSound": "",
-	"errorSound": ""
-}
-```
-
-**LimpetButton**
-
-```
-{
-	"buttonType": "LimpetButton",
-	"firegroup": "E",
-	"fire": "Secondary",
-	"primaryIcon": "limpet-collector.svg",
-	"secondaryIcon": "limpet-collector.svg",
 	"clickSound": "",
 	"errorSound": ""
 }
@@ -216,6 +190,40 @@ The supported alarm-buttons are:
   "clickSound": "beep-3.wav"
 }
 ```
+
+**FSSButton**
+
+```
+{
+	"buttonType": "FSSButton",
+	"primaryIcon": "fss.svg",
+	"secondaryIcon": "fss.svg",
+	"tertiaryIcon": "fss.svg",
+	"clickSound": "",
+	"errorSound": "",
+	"dontSwitchToCombatMode": false
+}
+```
+**LimpetButton**
+
+```
+{
+	"buttonType": "LimpetButton",
+	"firegroup": "E",
+	"fire": "Secondary",
+	"primaryIcon": "limpet-collector.svg",
+	"secondaryIcon": "limpet-collector.svg",
+	"clickSound": "",
+	"errorSound": ""
+}
+```
+
+The limpet controller button works with any type of limpet controller.
+
+The button shows the current number of limpets in the cargo hold. (The same value is shown on all buttons).
+
+There is no specific keybind for any type of limpet controller.
+Instead, you need to set up a fire group letter and primary or secondary fire button.
 
 **StaticButton**
 
