@@ -271,7 +271,6 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 
 | Function                | Fighter     |
 | ----------------------- | --------------- |
-
 | OpenOrders | Crew Orders |
 | OrderAggressiveBehaviour | Be Aggressive |
 | OrderDefensiveBehaviour | Be Defensive |
@@ -283,7 +282,6 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 
 | Function                | Misc     |
 | ----------------------- | --------------- |
-
 | FriendsMenu | Friends |
 | GalnetAudio_ClearQueue | Clear Audio Queue |
 | GalnetAudio_Play_Pause | Play/Pause Audio |
@@ -299,7 +297,6 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 
 | Function                | Navigation     |
 | ----------------------- | --------------- |
-
 | SetSpeed100 | 100% Throttle |
 | SetSpeed75 | 75% Throttle |
 | SetSpeed50 | 50% Throttle |
@@ -317,7 +314,6 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 
 | Function                | Ship     |
 | ----------------------- | --------------- |
-
 | FocusCommsPanel | Comms Panel |
 | FocusLeftPanel | Nav Panel |
 | FocusRadarPanel | Role Panel |
@@ -337,7 +333,6 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 
 | Function                | SRV     |
 | ----------------------- | --------------- |
-
 | RecallDismissShip | Recall/Dismiss Ship |
 | BuggyToggleReverseThrottleInput | Reverse |
 | DecreaseSpeedButtonMax | Zero Speed |
@@ -346,7 +341,6 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 
 | Function                | Hyperspace     |
 | ----------------------- | --------------- |
-
 | Supercruise | Supercruise |
 | Hyperspace | Hyperspace Jump |
 
