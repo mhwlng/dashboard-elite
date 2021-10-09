@@ -30,14 +30,15 @@ Small display 1920x480 (8.8 inch, IPS panel):
 
 https://www.aliexpress.com/item/1005003014364673.html
 
-(note that these kinds of displays come with or without a touch controller and with or without a case)
+(Note, that these kinds of displays come with or without a touch controller and with or without a case)
 
 When connecting these screens, the touch screen needs to be configured via : Control Panel \ Tablet PC settings \ Setup
 
 ![touch screen](https://i.imgur.com/S6Xy3NO.png)
 
 To get similar button sizes on both displays, the buttons are arranged in a 8x4 grid on the big screen and a 10x3 grid on the small screen.
-The button arrangement is customizable..
+
+The button arrangement is customizable. (see the wwwroot\css\site.css file)
 
 The button images are SVG vector images from [Keath Milligan](https://keathmilligan.net/themeable-icon-pack-for-streamdeck-elite).
 
@@ -48,7 +49,7 @@ Button possibilities:
 - Automatic profile switching
 - Button press sounds
 
-The button functionality works, by changing the focus back to elite dangerous when pressing a button on the touch screen.
+The button functionality works, by changing the focus back to elite dangerous, when pressing a button on the touch screen.
 
 This focus change mechanism is ONLY enabled, if the application runs full screen on the touch screen.
 Otherwise, touching a button on the touch screen will have NO EFFECT in the game.
