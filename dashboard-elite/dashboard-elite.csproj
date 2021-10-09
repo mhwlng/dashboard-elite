@@ -25,15 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\EDEngineer\EDEngineer\Resources\Data\blueprints.json" Link="Data\blueprints.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\EDEngineer\EDEngineer\Resources\Data\entryData.json" Link="Data\entryData.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\img\buttons\readme.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

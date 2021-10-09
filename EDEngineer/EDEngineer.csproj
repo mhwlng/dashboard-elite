@@ -75,7 +75,6 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy /E /Y "$(TargetDir)..\..\EDEngineer\Resources\Data\*.json" "$(SolutionDir)dashboard-elite\Data\"</PostBuildEvent>
   </PropertyGroup>
 </Project>
