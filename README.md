@@ -101,6 +101,14 @@ If none of the above profiles are activated, then a profile with the file name d
 
 Each button set is configured via a .json file in the Data\ButtonBlocks directory.
 
+Button sounds can be found in the Sounds directory.
+
+All the button svg images can be found in the wwwroot\img\buttons directory. 
+
+The button captions are inside the svg files.
+
+Animated SVG files are possible.
+
 various button type can be configured, each with their own set of parameters :
 
 **ToggleButton**
@@ -162,8 +170,6 @@ The supported alarm-buttons are:
 | DeployChaff         | Chaff            | alarm = overheating status   | 
 | DeployShieldCell    | Shield Cell Bank | alarm = shields down status. In that case DON'T fire a shield cell bank.   | 
 
-
-
 **HyperspaceButton**
 
 ```
@@ -177,6 +183,12 @@ The supported alarm-buttons are:
 	"errorSound": ""
 }
 ```
+
+| Function              | Description     | Note                                |
+| --------------------- | --------------- | ----------------------------------- |
+| HyperSuperCombination | Toggle FSD      | also shows Remaining Jumps In Route |
+| Supercruise           | Supercruise     |                                     |
+| Hyperspace            | Hyperspace Jump | also shows Remaining Jumps In Route |
 
 **PowerButton**
 
@@ -237,13 +249,6 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 ```
 
 
-Button sounds can be found in the Sounds directory.
-
-All the button svg images can be found in the wwwroot\img\buttons directory. 
-
-The button captions are inside the svg files.
-
-Animated SVG files are possible.
 
 
 Thanks to :
