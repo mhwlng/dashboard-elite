@@ -115,6 +115,34 @@ various button type can be configured, each with their own set of parameters :
 }
 ```
 
+The supported toggle-buttons are:
+
+| Function                | Description     |
+| ----------------------- | --------------- |
+| PlayerHUDModeToggle     | Analysis Mode   |
+| ToggleCargoScoop        | Cargo Scoop     |
+| ToggleFlightAssist      | Flight Assist   |
+| GalaxyMap               | Galaxy Map      |
+| DeployHardpointToggle   | Hardpoints      |
+| LandingGearToggle       | Landing Gear    |
+| ShipSpotLightToggle     | Lights          |
+| NightVisionToggle       | Night Vision    |
+| ToggleButtonUpInput     | Silent Running  |
+| ToggleDriveAssist       | Srv DriveAssist |
+| AutoBreakBuggyButton    | Srv Handbrake   |
+| ToggleBuggyTurretButton | Srv Turret      |
+| Supercruise             | Supercruise     |
+| SystemMap               | System Map      |
+| FocusCommsPanel         | Comms Panel     |
+| FocusLeftPanel          | Nav Panel       |
+| FocusRadarPanel         | Role Panel      |
+| FocusRightPanel         | Systems Panel   |
+
+
+
+For Odyssey, when On Foot, the Galaxy Map,System Map,Lights & Night Vision buttons will call the on-foot key bindings, 
+but there is no state feedback. So the button image won't change.
+
 **AlarmButton**
 
 ```
