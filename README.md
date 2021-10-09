@@ -19,9 +19,10 @@ Technology used:
 - mudblazor
 
 The touch screen is connected via hdmi as a secondary monitor.
-So, this will not work on e.g. a tablet or a separate device.
 
-The game has to be set to borderless mode. Fullscreen mode won't work.
+So, this will NOT work on e.g. a tablet or a separate device.
+
+The game has to be set to borderless mode. Fullscreen mode WON'T work.
 
 The actual on/off state of a button comes from the game.
 
@@ -43,7 +44,7 @@ When connecting these screens, the touch screen needs to be configured via : Con
 
 To get similar button sizes on both displays, the buttons are arranged in a 8x4 grid on the big screen and a 10x3 grid on the small screen.
 
-The button arrangement is customizable. (see the wwwroot\css\site.css file)
+The button arrangement is customizable. (See the wwwroot\css\site.css file.)
 
 The button images are SVG vector images from [Keath Milligan](https://keathmilligan.net/themeable-icon-pack-for-streamdeck-elite).
 
