@@ -39,14 +39,12 @@ When connecting these screens, the touch screen needs to be configured via : Con
 
 ![touch screen](https://i.imgur.com/S6Xy3NO.png)
 
-S6Xy3NO.png
-
 ---------------------------
 
 To get similar button sizes on both displays, the buttons are arranged in a 8x4 grid on the big screen and a 10x3 grid on the small screen.
 The button arrangement is customizable..
 
-The button images are SVG vector images from Keath Milligan .
+The button images are SVG vector images from [Keath Milligan](https://keathmilligan.net/themeable-icon-pack-for-streamdeck-elite) .
 
 button possibilities:
 Separate SVG button images for each state
@@ -63,7 +61,7 @@ https://www.tryphotino.io/
 
 https://mudblazor.com/
 
-
+---------------------------
 
 https://github.com/EDCD/EDDI
 
