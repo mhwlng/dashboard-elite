@@ -1,7 +1,7 @@
 # dashboard-elite
 Elite Dangerous dashboard for bar style ultra-wide touch screens
 
-Use a wide 'bar style' touch screen as a game dashboard (like [fip-panels](https://github.com/mhwlng/fip-elite)) and button box (like [streamdeck](https://github.com/mhwlng/streamdeck-elite)streamdeck) for Elite Dangerous :
+Use a wide 'bar style' touch screen as a game dashboard (like [fip-panels](https://github.com/mhwlng/fip-elite)) and button box (like [streamdeck](https://github.com/mhwlng/streamdeck-elite)) for Elite Dangerous :
 
 
 VERY UNFINISHED PRE-ALPHA RELEASE
@@ -39,12 +39,10 @@ When connecting these screens, the touch screen needs to be configured via : Con
 
 ![touch screen](https://i.imgur.com/S6Xy3NO.png)
 
----------------------------
-
 To get similar button sizes on both displays, the buttons are arranged in a 8x4 grid on the big screen and a 10x3 grid on the small screen.
 The button arrangement is customizable..
 
-The button images are SVG vector images from [Keath Milligan](https://keathmilligan.net/themeable-icon-pack-for-streamdeck-elite) .
+The button images are SVG vector images from [Keath Milligan](https://keathmilligan.net/themeable-icon-pack-for-streamdeck-elite).
 
 button possibilities:
 Separate SVG button images for each state
@@ -60,8 +58,6 @@ https://github.com/congzhangzh/desktoploveblazorweb
 https://www.tryphotino.io/
 
 https://mudblazor.com/
-
----------------------------
 
 https://github.com/EDCD/EDDI
 
