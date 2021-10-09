@@ -192,12 +192,12 @@ but there is no state feedback. So the button state won't change.
 
 ```
 {
-  "buttonType": "PowerButton",
-  "function": "SYS",
-  "primaryIcon": "shield-power.svg",
-  "secondaryIcon": "shield-power.svg",
-  "tertiaryIcon": "shield-power.svg",
-  "clickSound": "beep-3.wav"
+	"buttonType": "PowerButton",
+	"function": "SYS",
+	"primaryIcon": "shield-power.svg",
+	"secondaryIcon": "shield-power.svg",
+	"tertiaryIcon": "shield-power.svg",
+	"clickSound": "beep-3.wav"
 }
 ```
 
@@ -247,10 +247,10 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 
 ```
 {
-  "buttonType": "StaticButton",
-  "function": "SelectTarget",
-  "primaryIcon": "xxx.svg",
-  "clickSound": ""
+	"buttonType": "StaticButton",
+	"function": "SelectTarget",
+	"primaryIcon": "xxx.svg",
+	"clickSound": ""
 }
 ```
 
