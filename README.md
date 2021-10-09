@@ -31,10 +31,6 @@ https://www.aliexpress.com/item/1005003014364673.html
 
 (note that these kinds of displays come with or without a touch controller and with or without a case)
 
-The big display looks like the one that is used in the asus duo laptop (google NV126B5M):
-
-https://www.asus.com/Laptops/For-Home/ZenBook/ZenBook-Duo-14-UX482/
-
 When connecting these screens, the touch screen needs to be configured via : Control Panel \ Tablet PC settings \ Setup
 
 ![touch screen](https://i.imgur.com/S6Xy3NO.png)
@@ -50,6 +46,12 @@ Animated SVG button images
 Multiple button profiles
 Automatic profile switching
 Button press sounds
+
+Technology used:
+[.net 5.0](https://dotnet.microsoft.com/download/dotnet/5.0/runtime)  choose download x64
+[WebView2 Runtime](https://go.microsoft.com/fwlink/p/?LinkId=2124703)
+blazor server
+mudblazor
 
 Thanks to :
 
