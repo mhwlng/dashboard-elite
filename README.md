@@ -186,9 +186,9 @@ The supported alarm-buttons are:
 
 | Function              | Description     | Note                                |
 | --------------------- | --------------- | ----------------------------------- |
-| HyperSuperCombination | Toggle FSD      | also shows Remaining Jumps In Route |
+| HyperSuperCombination | Toggle FSD      | also shows remaining jumps in route |
 | Supercruise           | Supercruise     |                                     |
-| Hyperspace            | Hyperspace Jump | also shows Remaining Jumps In Route |
+| Hyperspace            | Hyperspace Jump | also shows remaining jumps in route |
 
 **PowerButton**
 
@@ -202,6 +202,13 @@ The supported alarm-buttons are:
   "clickSound": "beep-3.wav"
 }
 ```
+
+| Function | Description | Note                                               |
+| -------- | ----------- | -------------------------------------------------- |
+| SYS      | System      | shows alarm state when under attack and not 4 pips |
+| ENG      | Engines     |                                                    |
+| WEP      | Weapons     |                                                    |
+| RST      | Reset       |                                                    |
 
 **FSSButton**
 
