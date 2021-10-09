@@ -113,7 +113,7 @@ The button captions are inside the svg files.
 
 Animated SVG files are possible.
 
-various button type can be configured, each with their own set of parameters :
+Various button type can be configured, each with their own set of parameters :
 
 **ToggleButton**
 
@@ -284,7 +284,7 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 | ----------------------- | --------------- |
 | FriendsMenu | Friends |
 | GalnetAudio_ClearQueue | Clear Audio Queue |
-| GalnetAudio_Play_Pause | Play/Pause Audio |
+| GalnetAudio\_Play\_Pause | Play/Pause Audio |
 | GalnetAudio_SkipBackward | Prev Audio Track |
 | GalnetAudio_SkipForward | Next Audio Track |
 | MicrophoneMute | Microphone |
@@ -389,6 +389,8 @@ https://github.com/congzhangzh/desktoploveblazorweb
 https://www.tryphotino.io/
 
 https://mudblazor.com/
+
+https://keathmilligan.net/themeable-icon-pack-for-streamdeck-elite for the button icons
 
 https://github.com/EDCD/EDDI
 
