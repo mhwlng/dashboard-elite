@@ -353,9 +353,6 @@ namespace dashboard_elite.Components.Buttons
                 case "forwardthrustbutton_landing":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ForwardThrustButton_Landing);
                     break;
-                case "hypersupercombination":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].HyperSuperCombination);
-                    break;
                 case "targetnextroutesystem":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].TargetNextRouteSystem);
                     break;
@@ -437,14 +434,6 @@ namespace dashboard_elite.Components.Buttons
                 case "yawtorollbutton":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].YawToRollButton);
                     break;
-
-
-                case "supercruise":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].Supercruise);
-                    break;
-                case "hyperspace":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].Hyperspace);
-                   break;
 
 
                 // general

@@ -333,11 +333,6 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 | IncreaseSpeedButtonMax | Maximum Speed |
 | SelectTarget_Buggy | Target Ahead |
 
-| Function                | Hyperspace     |
-| ----------------------- | --------------- |
-| Supercruise | Supercruise |
-| Hyperspace | Hyperspace Jump |
-
 | Function                | On Foot     |
 | ----------------------- | --------------- |
 | HumanoidPrimaryInteractButton | Primary Interact |
