@@ -360,7 +360,7 @@ namespace dashboard_elite
         {
             var currentstate = Program.mainWindow.Chromeless;
 
-            if (currentstate || !Minimized)
+            if ((currentstate || !Minimized) && location.Y > 0 && location.X > 0)
             {
                 CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Top", location.Y);
                 CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Left", location.X);
@@ -373,7 +373,7 @@ namespace dashboard_elite
         {
             var currentstate = Program.mainWindow.Chromeless;
 
-            if (currentstate || !Minimized)
+            if (currentstate || !Minimized && size.Height > 300 && size.Width > 600)
             {
                 CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Height", size.Height);
                 CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Width", size.Width);
