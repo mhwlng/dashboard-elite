@@ -17,13 +17,13 @@ Technology used:
 
 The touch screen is connected via hdmi as a secondary monitor on the same PC that elite dangerous runs on.
 
-You can also control this on a separate device in a different way:
+You can also control this from a separate device in a different way:
 
-You run this application mininized and then start a web browser on another device.
+You run this application mininized on the elite dangerous PC and then start a web browser on another device.
 
-That browser connects to the web server that is built into this application.
+That browser connects to the web server, that is built into this application.
 
-This won't work if the web browser runs on the SAME pc as Elite Dangerous.
+This won't work, if the web browser runs on the SAME pc as Elite Dangerous.
 
 The game has to be set to borderless mode. Fullscreen mode WON'T work.
 
@@ -82,7 +82,7 @@ In that case, only the internal touch screen window will be available.
 The external URL should be http://MyIpAddress:ExternalPort/index
 
 The application window settings can be found in appsettings.json. 
-There is also a setting that will automatically minimize the application at startup, after the initialization is finished.
+There is also a Minimized value, that will automatically minimize the application at startup, after the initialization has finished.
 
 The buttons will only work with keyboard bindings. 
 So, when there is only a binding to a joystick / controller / mouse for a function, then you need to add a keyboard binding first.
