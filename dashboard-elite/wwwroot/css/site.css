@@ -92,3 +92,23 @@ button:hover {
     }
 }
 
+
+
+@media screen and (min-height: 600px) {
+
+    .buttonblock > .mud-icon-button-size-large.mud-button > .mud-icon-button-label > .mud-icon-size-large {
+        font-size: 4.1rem;
+        letter-spacing: -0.001em;
+    }
+
+    .buttonblockwidth {
+        width: 435px;
+        min-width: 435px !important;
+    }
+
+    .mud-simple-table table * tr > td, .mud-simple-table table * tr th {
+        font-size: 1.0rem;
+    }
+
+}
+
