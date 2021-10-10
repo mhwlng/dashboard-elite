@@ -9,6 +9,6 @@
   <path d="M6.615 19.447v.795h17.198v-.795z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
   <text xml:space="preserve" style="line-height:1.25;" x="29.356" y="44.839" font-weight="400" font-size="14.817" font-family="Consolas" fill="currentColor" stroke-width=".265"><tspan x="29.356" y="44.839" style="">1</tspan></text>
 
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">???</text>
 
 </svg>

@@ -3,6 +3,6 @@
   <path d="M40.499 5.78v2.296c6.57 2.707 11.189 9.166 11.189 16.722 0 7.557-4.618 14.018-11.19 16.725v2.296c7.772-2.825 13.334-10.282 13.334-19.02 0-8.74-5.562-16.194-13.333-19.019zm-13.904.04C18.881 8.674 13.372 16.1 13.372 24.798c0 8.699 5.509 16.126 13.223 18.981v-2.298c-6.513-2.734-11.078-9.167-11.078-16.683 0-7.515 4.565-13.947 11.078-16.68z" color="currentColor" overflow="visible" fill="currentColor" paint-order="markers fill stroke" stop-color="currentColor"/>
   <path d="m24.892 11.936-3.637-5.962 6.983-.169Z" fill="currentColor" paint-order="markers fill stroke"/>
   <path d="m44.445 44.45-6.981-.167 3.636-5.964Z" fill="currentColor" paint-order="markers fill stroke"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">rot. corr.</text>
 
 </svg>

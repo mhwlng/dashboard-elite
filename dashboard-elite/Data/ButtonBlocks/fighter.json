@@ -3,49 +3,49 @@
     {
       "buttonType": "StaticButton",
       "function": "OpenOrders",
-      "primaryIcon": "empty-openorders.svg",
+      "primaryIcon": "fighter-crew-orders.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderAggressiveBehaviour",
-      "primaryIcon": "empty-orderaggressivebehaviour.svg",
+      "primaryIcon": "fight-aggressive.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderDefensiveBehaviour",
-      "primaryIcon": "empty-orderdefensivebehaviour.svg",
+      "primaryIcon": "fighter-defend.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderFocusTarget",
-      "primaryIcon": "empty-orderfocustarget.svg",
+      "primaryIcon": "fighter-attack-my-target.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderFollow",
-      "primaryIcon": "empty-orderfollow.svg",
+      "primaryIcon": "fighter-follow.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderHoldFire",
-      "primaryIcon": "empty-orderholdfire.svg",
+      "primaryIcon": "fighter-hold-fire.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderHoldPosition",
-      "primaryIcon": "empty-orderholdposition.svg",
+      "primaryIcon": "fighter-hold-position.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "OrderRequestDock",
-      "primaryIcon": "empty-orderrequestdock.svg",
+      "primaryIcon": "fighter-dock.svg",
       "clickSound": ""
     }
   ]

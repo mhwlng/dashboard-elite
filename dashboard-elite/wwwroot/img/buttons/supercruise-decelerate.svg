@@ -3,5 +3,5 @@
   <path d="M28.425 32.504V20.115l-.273-.136v12.63zm-1.483.573V19.379l-.336-.167v13.994zm-1.835.708V18.468l-.42-.208v15.687zm-2.326.898v-17.37l-.542-.268v17.847zm-3.046 1.176V15.802l-.725-.36v20.697zm-4.16 1.606V13.737l-1.023-.508v24.63zm-6.027 2.327V10.745L8.004 9.98v30.409Z" color="currentColor" overflow="visible" fill="currentColor" paint-order="markers fill stroke" stop-color="currentColor"/>
   <path d="M5.292 25.844h56.885" fill="none" stroke="currentColor" stroke-width=".529" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
   <path d="M29.25 17.875v12.464h-5.09l9.763 9.348 9.762-9.348h-5.088V17.875Z" fill="currentColor" paint-order="markers stroke fill"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">???</text>
 </svg>

@@ -2,6 +2,12 @@
   "buttons": [
     {
       "buttonType": "StaticButton",
+      "function": "QuickCommsPanel_Humanoid",
+      "primaryIcon": "comms.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
       "function": "HumanoidPrimaryInteractButton",
       "primaryIcon": "empty-humanoidprimaryinteractbutton.svg",
       "clickSound": ""
@@ -104,12 +110,6 @@
     },
     {
       "buttonType": "StaticButton",
-      "function": "HumanoidToggleNightVisionButton",
-      "primaryIcon": "empty-humanoidtogglenightvisionbutton.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
       "function": "HumanoidSwitchToSuitTool",
       "primaryIcon": "empty-humanoidswitchtosuittool.svg",
       "clickSound": ""
@@ -118,12 +118,6 @@
       "buttonType": "StaticButton",
       "function": "HumanoidToggleFlashlightButton",
       "primaryIcon": "empty-humanoidtoggleflashlightbutton.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "QuickCommsPanel_Humanoid",
-      "primaryIcon": "empty-quickcommspanel_humanoid.svg",
       "clickSound": ""
     },
     {
@@ -179,6 +173,13 @@
       "function": "HumanoidSelectShieldGrenade",
       "primaryIcon": "empty-humanoidselectshieldgrenade.svg",
       "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
+      "function": "HumanoidToggleNightVisionButton",
+      "primaryIcon": "night-vision.svg",
+      "clickSound": ""
     }
+
   ]
 }

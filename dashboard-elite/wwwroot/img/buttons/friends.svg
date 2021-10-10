@@ -13,6 +13,6 @@
       <path d="M23.283 21.166a2.112 2.112 0 0 0-2.117 2.117v11.642c0 1.172.944 2.116 2.117 2.116h20.902a2.112 2.112 0 0 0 2.116-2.116V23.283a2.112 2.112 0 0 0-2.116-2.117zm2.646 6.615h1.06v9.26h-1.06zm14.55 0h1.06v9.26h-1.06z"/>
     </g>
   </g>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">friends</text>
 
 </svg>

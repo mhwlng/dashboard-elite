@@ -17,6 +17,6 @@
   <circle cx="55.61" cy="13.182" r="1.323" fill="currentColor" paint-order="markers fill stroke"/>
   <path d="M6.689 5.368a1.248 1.285 0 0 0-1.246 1.285v37.109a1.248 1.285 0 0 0 1.246 1.283h54.06a1.248 1.285 0 0 0 1.249-1.283V6.653a1.248 1.285 0 0 0-1.249-1.285Zm1.248 2.57h51.566v34.537H7.937Z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
 
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">???</text>
 
 </svg>

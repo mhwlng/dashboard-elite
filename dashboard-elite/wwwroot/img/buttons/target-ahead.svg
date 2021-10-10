@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
   <path d="M5.292 5.292V18.11h3.282V8.208h12.821V5.292Zm40.781 0v2.916h12.822v9.902h3.282V5.292ZM5.292 32.16v12.82h16.103v-2.917H8.574V32.16zm53.603 0v9.903H46.073v2.916h16.104V32.16Z" fill="currentColor" paint-order="markers fill stroke"/>
   <path d="M33.625 14.599 21.247 27.45h24.757L33.625 14.6zM18.698 30.096l-3.05 3.166h35.955l-3.05-3.166H18.698z" fill="currentColor" paint-order="markers fill stroke"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">tgt ahead</text>
 </svg>

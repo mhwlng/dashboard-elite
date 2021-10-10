@@ -3,6 +3,6 @@
   <path d="m47.773 19.433 11.758-2.961" fill="none" stroke="currentColor" stroke-width="1.77" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
   <path d="m47.773 32.758 11.758 2.96" fill="none" stroke="currentColor" stroke-width="1.77" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
   <path d="M48.408 25.937h12.12" fill="none" stroke="currentColor" stroke-width="1.77" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">eject all</text>
 
 </svg>

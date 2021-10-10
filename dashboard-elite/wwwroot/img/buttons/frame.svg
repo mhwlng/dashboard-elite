@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
   <path d="M25.281 20.287a4.716 4.855 0 0 0-4.709 4.86v140.251a4.716 4.855 0 0 0 4.71 4.85h204.322a4.716 4.855 0 0 0 4.718-4.85V25.146a4.716 4.855 0 0 0-4.718-4.859zM30 30h194.895v130.535H30Z" transform="scale(.26458)" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">???</text>
 
 </svg>

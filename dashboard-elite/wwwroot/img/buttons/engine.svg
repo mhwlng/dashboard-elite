@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
   <path d="M24.884 5.951v11.123l-1.552 1.552v8.02l3.232 9.69h14.622l3.229-9.69v-8.02l-1.549-1.552V5.951Zm.929.932h16.121v9.919H25.813Zm1.33 1.085v7.75h.93v-7.75Zm3.099 0v7.75h.931v-7.75Zm3.1 0v7.75h.932v-7.75Zm3.102 0v7.75h.93v-7.75Zm3.099 0v7.75h.931v-7.75ZM25.54 17.734h16.667l.621.62H24.92Zm-1.276 1.549h19.222v6.82H24.264Zm.62.62v5.582h17.982v-5.582zm.929.932h16.121v3.718h-2.17v-3.1h-4.03v1.551h-3.719v-1.552h-5.117v.932h4.186v1.55h5.582v-1.55h2.17v2.17H25.813Zm-1.37 6.2h3.612l1.396 8.369h-2.217zm4.554 0h4.568v8.369h-3.173zm5.497 0h4.258l-1.396 8.369h-2.862zm5.199 0h3.613l-2.79 8.369h-2.218ZM27.198 38.04v3.102h.929V38.04zm3.1 0v6.2h.93v-6.2zm3.1 0v4.65h.931v-4.65zm3.1 0v6.2h.93v-6.2zm3.102 0v3.102h.93V38.04z" color="currentColor" overflow="visible" fill="currentColor" stroke="currentColor" stroke-width=".529" stop-color="currentColor"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">???</text>
 
 </svg>

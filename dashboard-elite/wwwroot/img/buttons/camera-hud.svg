@@ -5,6 +5,6 @@
   <path d="M9.26 11.906h7.938" fill="none" stroke="currentColor" stroke-width=".794" stop-color="currentColor"/>
   <path d="M9.26 33.073v7.937h13.23" fill="none" stroke="currentColor" stroke-width=".794" stop-color="currentColor"/>
   <path d="M44.98 9.26v7.938h13.228V9.26Z" fill="none" stroke="currentColor" stroke-width=".794" stop-color="currentColor"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">???</text>
 
 </svg>

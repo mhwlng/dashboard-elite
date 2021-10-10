@@ -8,6 +8,6 @@
   <path d="M44.979 19.447v.795h15.875v-.795z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
   <path d="M6.615 19.447v.795h17.198v-.795z" color="currentColor" overflow="visible" fill="currentColor" stop-color="currentColor"/>
   <path d="m29.859 39.381 7.938 5.598V33.782z" fill="currentColor" paint-order="markers fill stroke"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">???</text>
 
 </svg>

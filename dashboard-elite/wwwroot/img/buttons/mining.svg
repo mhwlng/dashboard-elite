@@ -23,6 +23,6 @@
   <path d="m55.562 29.104-5.291-1.323-2.646 1.323" fill="none" stroke="currentColor" stroke-width=".794" stop-color="currentColor"/>
   <path d="m30.427 43.656 2.646-3.968" fill="none" stroke="currentColor" stroke-width=".794" stop-color="currentColor"/>
   <path d="m14.552 37.042 5.292-3.97 1.323-2.645" fill="none" stroke="currentColor" stroke-width=".794" stop-color="currentColor"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">???</text>
 
 </svg>

@@ -2,6 +2,6 @@
   <path d="M5.292 5.292V18.11h3.282V8.208h12.821V5.292Zm40.781 0v2.916h12.822v9.902h3.282V5.292ZM5.292 32.16v12.82h16.103v-2.917H8.574V32.16zm53.603 0v9.903H46.073v2.916h16.104V32.16Z" fill="currentColor" paint-order="markers fill stroke"/>
   <path d="M46.353 25.4 23.652 10.848v29.104z" fill="currentColor" paint-order="markers fill stroke"/>
 
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">next contact</text>
 
 </svg>

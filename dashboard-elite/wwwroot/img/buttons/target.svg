@@ -1,4 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
   <path d="M122.996 25.002V45H64.998v45H45v10.002h19.998v45h57.998V165H133v-19.998h57.002v-45H210V90h-19.998V45H133V25.002ZM75 55.002h105V135H75ZM122.996 75v15h-15v10.002h15v15H133v-15h15V90h-15V75Z" transform="scale(.26458)" color="currentColor" overflow="visible" fill="currentColor" paint-order="markers fill stroke" stop-color="currentColor"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">???</text>
 </svg>

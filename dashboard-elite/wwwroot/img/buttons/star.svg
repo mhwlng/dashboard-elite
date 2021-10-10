@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.733 67.733">
   <path d="M34.396-7.938 29.73-17.39l-10.432-1.516 7.549-7.358-1.782-10.39 9.33 4.905 9.332-4.906-1.782 10.39 7.549 7.36-10.433 1.515z" transform="matrix(.95833 0 0 -.91667 .772 3.572)" fill="currentColor" stroke="currentColor" stroke-width="2.258" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">???</text>
 
 </svg>

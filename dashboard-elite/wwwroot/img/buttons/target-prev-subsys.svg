@@ -2,6 +2,6 @@
   <path d="M5.292 5.292V18.11h3.282V8.208h12.821V5.292Zm40.781 0v2.916h12.822v9.902h3.282V5.292ZM5.292 32.16v12.82h16.103v-2.917H8.574V32.16zm53.603 0v9.903H46.073v2.916h16.104V32.16Z" fill="currentColor" paint-order="markers fill stroke"/>
   <path d="M96.998 45v10h-7.463c-2.216 0-4 1.784-4 4v5H75.533v6.002h10.002V92H75.533v6.002h10.002v21.002H75.533v5.992h10.002V131c0 2.216 1.784 4 4 4h7.463v10.002H103V135h21.998v10.002h6V135H152v10.002h6.002V135h8.533c2.216 0 4-1.784 4-4v-5.86h10v-5.994h-10V98.145h10v-6.002h-10V70.145h10v-6.002h-10V59c0-2.216-1.784-4-4-4h-8.533V45H152v10h-21.002V45h-6v10H103V45ZM147 66v59l-46.02-29.5Z" transform="scale(.26458)" color="currentColor" overflow="visible" fill="currentColor" paint-order="markers fill stroke" stop-color="currentColor"/>
 
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">prev subs.</text>
 
 </svg>

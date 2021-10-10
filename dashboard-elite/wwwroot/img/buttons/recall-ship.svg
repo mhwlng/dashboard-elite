@@ -25,6 +25,6 @@
   <path d="M49.976-28.584 48.83-30.57h2.291z" transform="matrix(1.22756 0 0 -1.10942 -10.224 -1.863)" fill="currentColor" stroke="currentColor" stroke-width="1.852" stroke-linecap="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
   <path d="M6.591 13.173c8.144 2.33 10.781-.262 21.115 4.583" fill="none" stroke="currentColor" stroke-width=".794" stroke-linecap="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
   <path d="M51.45 23.65c6.527 1.345 5.971 1.82 10.01 2.092" fill="none" stroke="currentColor" stroke-width=".794" stroke-linecap="round" stroke-dashoffset="6" paint-order="markers fill stroke"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">rec./dis. shp</text>
 
 </svg>

@@ -9,6 +9,11 @@
 		"secondaryIcon": "profile-ship.svg",
 		"clickSound": ""
 	},
+  "onfoot": {
+    "primaryIcon": "profile-onfoot.svg",
+    "secondaryIcon": "profile-onfoot.svg",
+    "clickSound": ""
+  },
 	"srv": {
 		"primaryIcon": "profile-srv.svg",
 		"secondaryIcon": "profile-srv.svg",
@@ -19,27 +24,12 @@
 		"secondaryIcon": "profile-fighter.svg",
 		"clickSound": ""
 	},
-	"combat": {
-		"primaryIcon": "profile-combat.svg",
-		"secondaryIcon": "profile-combat.svg",
-		"clickSound": ""
-	},
-	"navigation": {
-		"primaryIcon": "profile-navigation.svg",
-		"secondaryIcon": "profile-navigation.svg",
-		"clickSound": ""
-	},
-  "misc": {
-    "primaryIcon": "profile-misc.svg",
-    "secondaryIcon": "profile-misc.svg",
-    "clickSound": ""
-  },
-
-	"onfoot": {
-		"primaryIcon": "profile-onfoot.svg",
-		"secondaryIcon": "profile-onfoot.svg",
+	"misc": {
+		"primaryIcon": "profile-misc.svg",
+		"secondaryIcon": "profile-misc.svg",
 		"clickSound": ""
 	}
+
 
 }
 

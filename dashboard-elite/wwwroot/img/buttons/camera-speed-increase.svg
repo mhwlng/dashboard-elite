@@ -12,6 +12,6 @@
   <path d="m42.334 38.365-5.292 3.732v-7.465z" fill="currentColor" paint-order="markers fill stroke"/>
   <text xml:space="preserve" style="line-height:1.25" x="42.598" y="41.804" font-weight="400" font-size="10.583" font-family="sans-serif" fill="currentColor" stroke-width=".265"><tspan x="42.598" y="41.804">+</tspan></text>
 
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">???</text>
 
 </svg>

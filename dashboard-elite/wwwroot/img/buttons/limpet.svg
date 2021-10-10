@@ -3,6 +3,6 @@
   <path d="m15.875 26.458-7.938 3.97 3.97 11.905v0" fill="none" stroke="currentColor" stroke-width="2.646" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="m51.594 26.458 7.937 3.97-3.968 11.905v0" fill="none" stroke="currentColor" stroke-width="2.646" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M34.396 31.75v11.906" fill="none" stroke="currentColor" stroke-width="2.117" stroke-linecap="round"/>
-  <text x="50%" y="93%" font-size="17" alignment="bottom" text-anchor="middle">???</text>
+  <text x="50%" y="93%" font-size="12" alignment="bottom" text-anchor="middle">???</text>
 
 </svg>

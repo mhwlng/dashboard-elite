@@ -2,75 +2,118 @@
   "buttons": [
     {
       "buttonType": "StaticButton",
+      "function": "TargetNextRouteSystem",
+      "primaryIcon": "next-system.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
       "function": "QuickCommsPanel",
-      "primaryIcon": "empty-quickcommspanel.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "EjectAllCargo",
-      "primaryIcon": "empty-ejectallcargo.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "HeadLookToggle",
-      "primaryIcon": "empty-headlooktoggle.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "MouseReset",
-      "primaryIcon": "empty-mousereset.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "OrbitLinesToggle",
-      "primaryIcon": "empty-orbitlinestoggle.svg",
+      "primaryIcon": "comms.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "SelectTargetsTarget",
-      "primaryIcon": "empty-selecttargetstarget.svg",
+      "primaryIcon": "wingman-target.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "WingNavLock",
-      "primaryIcon": "empty-wingnavlock.svg",
+      "primaryIcon": "wingman-navlock.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "TargetWingman0",
-      "primaryIcon": "empty-targetwingman0.svg",
+      "primaryIcon": "wingman1.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "TargetWingman1",
-      "primaryIcon": "empty-targetwingman1.svg",
+      "primaryIcon": "wingman2.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
       "function": "TargetWingman2",
-      "primaryIcon": "empty-targetwingman2.svg",
+      "primaryIcon": "wingman3.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
-      "function": "EngineColourToggle",
-      "primaryIcon": "empty-enginecolourtoggle.svg",
+      "function": "DisableRotationCorrectToggle",
+      "primaryIcon": "rotation-correction.svg",
       "clickSound": ""
     },
     {
       "buttonType": "StaticButton",
-      "function": "WeaponColourToggle",
-      "primaryIcon": "empty-weaponcolourtoggle.svg",
+      "function": "ChargeECM",
+      "primaryIcon": "ecm.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
+      "function": "CycleFireGroupNext",
+      "primaryIcon": "next-firegroup.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
+      "function": "CycleFireGroupPrevious",
+      "primaryIcon": "prev-firegroup.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
+      "function": "CycleNextHostileTarget",
+      "primaryIcon": "target-next-hostile.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
+      "function": "CyclePreviousHostileTarget",
+      "primaryIcon": "target-prev-hostile.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
+      "function": "CycleNextSubsystem",
+      "primaryIcon": "target-next-subsys.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
+      "function": "CyclePreviousSubsystem",
+      "primaryIcon": "target-prev-subsys.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
+      "function": "CycleNextTarget",
+      "primaryIcon": "target-next.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
+      "function": "CyclePreviousTarget",
+      "primaryIcon": "target-prev.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
+      "function": "SelectTarget",
+      "primaryIcon": "target-ahead.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "StaticButton",
+      "function": "EjectAllCargo",
+      "primaryIcon": "eject-cargo.svg",
       "clickSound": ""
     }
+
   ]
 }
