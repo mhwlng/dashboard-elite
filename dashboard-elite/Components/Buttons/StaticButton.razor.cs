@@ -245,12 +245,6 @@ namespace dashboard_elite.Components.Buttons
                 case "secondaryfire":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].SecondaryFire);
                     break;
-                case "deployheatsink":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].DeployHeatSink);
-                    break;
-                case "selecthighestthreat":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].SelectHighestThreat);
-                    break;
                 case "cyclenexttarget":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].CycleNextTarget);
                     break;
