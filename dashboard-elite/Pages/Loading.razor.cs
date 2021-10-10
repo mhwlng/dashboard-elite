@@ -23,6 +23,11 @@ namespace dashboard_elite.Pages
 
         protected override async Task OnInitializedAsync()
         {
+            if(!NavigationManager.Uri.Contains("127.0.0.1"))
+            {
+                NavigationManager.NavigateTo("/index");
+            }
+
             hubConnection = new HubConnectionBuilder()
                 .WithUrl(NavigationManager.ToAbsoluteUri("/myhub"))
                 .Build();

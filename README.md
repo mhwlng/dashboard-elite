@@ -81,7 +81,7 @@ appsettings.json contains the ExternalPort value.
 The application will listen on all IP addresses on that port number, unless the ExternalPort value is 0.
 In that case, only the internal touch screen window will be available.
 
-The external URL should be http://MyIpAddress:ExternalPort/index
+The external URL should be http://MyIpAddress:ExternalPort
 
 The application window settings can be found in appsettings.json. 
 There is also a Minimized value, that will automatically minimize the application at startup, after the initialization has finished.
