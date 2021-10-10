@@ -1,11 +1,14 @@
 ﻿using System.Diagnostics;
 using Elite;
+using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
 namespace dashboard_elite.Shared
 {
     public partial class MainLayout
     {
+        [Inject] private NavigationManager NavigationManager { get; set; }
+
         private MudTheme _currentTheme = Themes.darkTheme;
 
         bool _drawerOpen = false;

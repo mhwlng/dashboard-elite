@@ -189,11 +189,12 @@ namespace dashboard_elite
                 {
                     webBuilder.ConfigureKestrel(serverOptions =>
                     {
+                        serverOptions.Listen(IPAddress.Loopback, 0);
+
                         var externalPort = Configuration.GetValue<int>("ExternalPort");
 
                         if (externalPort > 0)
                         {
-
                             foreach (NetworkInterface item in NetworkInterface.GetAllNetworkInterfaces())
                             {
                                 if (!item.Description.Contains("virtual", StringComparison.CurrentCultureIgnoreCase) &&
@@ -209,10 +210,7 @@ namespace dashboard_elite
                                     }
                                 }
                             }
-
                         }
-
-                        serverOptions.Listen(IPAddress.Loopback, 0);
 
                     });
                     webBuilder.UseStaticWebAssets();
