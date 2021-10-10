@@ -881,22 +881,35 @@ namespace Elite
             return inputText;
         }
 
-        private static void KeyboardJobCallback(Object threadContext)
+        private class KeyboardJobCallbackInfo
         {
-            var keyInfo = (StandardBindingInfo)threadContext;
-
-            InteropMouse.JsMouseUp();
-
-            Thread.Sleep(200);
-
-            InteropMouse.JsMouseUp();
-
-            SendKeypress(keyInfo);
+            public StandardBindingInfo StandardBindingInfo { get; set; }
+            public bool FocusChange { get; set; }
         }
 
-        internal static void SendKeypressQueue(StandardBindingInfo keyInfo)
+        private static void KeyboardJobCallback(Object threadContext)
         {
-            KeyboardJob.QueueUserWorkItem(KeyboardJobCallback, keyInfo);
+            var keyInfo = (KeyboardJobCallbackInfo)threadContext;
+
+            if (keyInfo.FocusChange)
+            {
+                InteropMouse.JsMouseUp();
+
+                Thread.Sleep(200);
+
+                InteropMouse.JsMouseUp();
+            }
+
+            SendKeypress(keyInfo.StandardBindingInfo);
+        }
+
+        internal static void SendKeypressQueue(StandardBindingInfo keyInfo, bool focusChange)
+        {
+            KeyboardJob.QueueUserWorkItem(KeyboardJobCallback, new KeyboardJobCallbackInfo
+            {
+                StandardBindingInfo = keyInfo,
+                FocusChange = focusChange
+            });
 
         }
 

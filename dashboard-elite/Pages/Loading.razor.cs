@@ -23,7 +23,9 @@ namespace dashboard_elite.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            if(!NavigationManager.Uri.Contains("127.0.0.1"))
+            var focusChange = NavigationManager.Uri.Contains("127.0.0.1");
+
+            if (!focusChange)
             {
                 NavigationManager.NavigateTo("/index");
             }

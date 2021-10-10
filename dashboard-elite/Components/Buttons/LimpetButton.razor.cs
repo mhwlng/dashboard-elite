@@ -12,6 +12,8 @@ namespace dashboard_elite.Components.Buttons
 {
     public partial class LimpetButton
     {
+        [Inject] private NavigationManager NavigationManager { get; set; }
+
         [Inject] private SvgCacheService SvgCacheService { get; set; }
 
         [Parameter] public Data Data { get; set; }
@@ -84,10 +86,14 @@ namespace dashboard_elite.Components.Buttons
 
         private void ButtonClick()
         {
+            var focusChange = NavigationManager.Uri.Contains("127.0.0.1");
 
-            InteropMouse.JsMouseUp();
+            if (focusChange)
+            {
+                InteropMouse.JsMouseUp();
 
-            Thread.Sleep(100);
+                Thread.Sleep(100);
+            }
 
             if (!IsDisabled && Data.LimpetCount > 0)
             {

@@ -11,6 +11,8 @@ namespace dashboard_elite.Components.Buttons
 {
     public partial class StaticButton
     {
+        [Inject] private NavigationManager NavigationManager { get; set; }
+
         [Inject] private SvgCacheService SvgCacheService { get; set; }
 
         [Parameter] public ButtonData ButtonData { get; set; }
@@ -618,18 +620,22 @@ namespace dashboard_elite.Components.Buttons
 
         private void ButtonClick()
         {
+            var focusChange = NavigationManager.Uri.Contains("127.0.0.1");
 
-            InteropMouse.JsMouseUp();
+            if (focusChange)
+            {
+                InteropMouse.JsMouseUp();
+
+                Thread.Sleep(100);
+            }
 
             Program.PlaySound(ref _clickSound, ButtonData.ClickSound);
-
-            Thread.Sleep(100);
 
             var binding = GetStaticButtonBinding(ButtonData.Function.ToLower());
 
             if (binding?.Primary.Device == "Keyboard" || binding?.Secondary.Device == "Keyboard")
             {
-                CommandTools.SendKeypressQueue(binding);
+                CommandTools.SendKeypressQueue(binding,focusChange);
             }
         }
     }

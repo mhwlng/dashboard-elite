@@ -12,6 +12,8 @@ namespace dashboard_elite.Components.Buttons
 {
     public partial class HyperspaceButton
     {
+        [Inject] private NavigationManager NavigationManager { get; set; }
+
         [Inject] private SvgCacheService SvgCacheService { get; set; }
 
         [Parameter] public Data Data { get; set; }
@@ -135,10 +137,14 @@ namespace dashboard_elite.Components.Buttons
 
         private void ButtonClick()
         {
+            var focusChange = NavigationManager.Uri.Contains("127.0.0.1");
 
-            InteropMouse.JsMouseUp();
+            if (focusChange)
+            {
+                InteropMouse.JsMouseUp();
 
-            Thread.Sleep(100);
+                Thread.Sleep(100);
+            }
 
             if (!IsDisabled)
             {
@@ -146,13 +152,13 @@ namespace dashboard_elite.Components.Buttons
                 {
                     case "hypersupercombination"
                         : // context dependent, i.e. jump if another system is targeted, supercruise if not.
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].HyperSuperCombination);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].HyperSuperCombination, focusChange);
                         break;
                     case "supercruise": // supercruise even if another system targeted
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].Supercruise);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].Supercruise, focusChange);
                         break;
                     case "hyperspace": // jump
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].Hyperspace);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].Hyperspace, focusChange);
                         break;
                 }
 

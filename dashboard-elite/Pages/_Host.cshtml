@@ -1,6 +1,7 @@
 ﻿@page "/"
 @namespace dashboard_elite.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 @{
     Layout = null;
 }
@@ -36,6 +37,10 @@
 
     <script src="_framework/blazor.server.js"></script>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
-    <script src="js/JsInterop.js"></script>
+
+    @if (Request.Host.Host.Contains("127.0.0.1"))
+    {
+        <script src="js/JsInterop.js"></script>
+    }
 </body>
 </html>

@@ -11,6 +11,8 @@ namespace dashboard_elite.Components.Buttons
 {
     public partial class AlarmButton
     {
+        [Inject] private NavigationManager NavigationManager { get; set; }
+
         [Inject] private SvgCacheService SvgCacheService { get; set; }
 
         [Parameter] public Data Data { get; set; }
@@ -75,29 +77,33 @@ namespace dashboard_elite.Components.Buttons
 
         private void ButtonClick()
         {
+            var focusChange = NavigationManager.Uri.Contains("127.0.0.1");
 
-            InteropMouse.JsMouseUp();
+            if (focusChange)
+            {
+                InteropMouse.JsMouseUp();
+
+                Thread.Sleep(100);
+            }
 
             Program.PlaySound(ref _clickSound, ButtonData.ClickSound);
-
-            Thread.Sleep(100);
 
             switch (ButtonData.Function.ToLower())
             {
                 case "selecthighestthreat":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].SelectHighestThreat);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].SelectHighestThreat, focusChange);
                     UnderAttack = false;
                     break;
                 case "deploychaff":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FireChaffLauncher);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FireChaffLauncher, focusChange);
                     UnderAttack = false;
                     break;
 
                 case "deployheatsink":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].DeployHeatSink);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].DeployHeatSink, focusChange);
                     break;
                 case "deployshieldcell":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].UseShieldCell);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].UseShieldCell, focusChange);
                     break;
             }
         }

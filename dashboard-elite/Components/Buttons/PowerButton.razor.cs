@@ -14,6 +14,8 @@ namespace dashboard_elite.Components.Buttons
 {
     public partial class PowerButton
     {
+        [Inject] private NavigationManager NavigationManager { get; set; }
+
         [Inject] private SvgCacheService SvgCacheService { get; set; }
 
         [Parameter] public Data Data { get; set; }
@@ -276,41 +278,46 @@ namespace dashboard_elite.Components.Buttons
 
         private void ButtonClick()
         {
-            InteropMouse.JsMouseUp();
+            var focusChange = NavigationManager.Uri.Contains("127.0.0.1");
+
+            if (focusChange)
+            {
+                InteropMouse.JsMouseUp();
+
+                Thread.Sleep(100);
+            }
 
             Program.PlaySound(ref _clickSound, ButtonData.ClickSound);
-
-            Thread.Sleep(100);
 
             switch (ButtonData.Function.ToLower())
             {
                 case "sys":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].IncreaseSystemsPower_Buggy);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].IncreaseSystemsPower_Buggy, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].IncreaseSystemsPower);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].IncreaseSystemsPower, focusChange);
                     //AdjustPips(0);
                     break;
                 case "eng":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].IncreaseEnginesPower_Buggy);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].IncreaseEnginesPower_Buggy, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].IncreaseEnginesPower);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].IncreaseEnginesPower, focusChange);
 
                     //AdjustPips(1);
                     break;
                 case "wep":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].IncreaseWeaponsPower_Buggy);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].IncreaseWeaponsPower_Buggy, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].IncreaseWeaponsPower);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].IncreaseWeaponsPower, focusChange);
                     //AdjustPips(2);
                     break;
                 case "rst":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ResetPowerDistribution_Buggy);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ResetPowerDistribution_Buggy, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ResetPowerDistribution);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ResetPowerDistribution, focusChange);
 
                     //Pips[0] = 4;
                     //Pips[1] = 4;

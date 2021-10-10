@@ -11,6 +11,8 @@ namespace dashboard_elite.Components.Buttons
 {
     public partial class ToggleButton
     {
+        [Inject] private NavigationManager NavigationManager { get; set; }
+
         [Inject] private SvgCacheService SvgCacheService { get; set; }
 
         [Parameter] public Data Data { get; set; }
@@ -106,117 +108,121 @@ namespace dashboard_elite.Components.Buttons
 
         private void ButtonClick()
         {
+            var focusChange = NavigationManager.Uri.Contains("127.0.0.1");
 
-            InteropMouse.JsMouseUp();
+            if (focusChange)
+            {
+                InteropMouse.JsMouseUp();
+
+                Thread.Sleep(100);
+            }
 
             Program.PlaySound(ref _clickSound, ButtonData.ClickSound);
-
-            Thread.Sleep(100);
 
             switch (ButtonData.Function.ToLower())
             {
                 case "focuscommspanel":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].FocusCommsPanel_Buggy);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].FocusCommsPanel_Buggy, focusChange);
                     else if (Data.StatusData.OnFoot)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].FocusCommsPanel_Humanoid);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].FocusCommsPanel_Humanoid, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FocusCommsPanel);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FocusCommsPanel, focusChange);
                     break;
                 case "focusleftpanel":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].FocusLeftPanel_Buggy);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].FocusLeftPanel_Buggy, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FocusLeftPanel);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FocusLeftPanel, focusChange);
                     break;
                 case "focusradarpanel":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].FocusRadarPanel_Buggy);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].FocusRadarPanel_Buggy, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FocusRadarPanel);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FocusRadarPanel, focusChange);
                     break;
                 case "focusrightpanel":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].FocusRightPanel_Buggy);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].FocusRightPanel_Buggy, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FocusRightPanel);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FocusRightPanel, focusChange);
                     break;
 
                 case "galaxymap":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].GalaxyMapOpen_Buggy);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].GalaxyMapOpen_Buggy, focusChange);
                     else if (Data.StatusData.OnFoot)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].GalaxyMapOpen_Humanoid);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].GalaxyMapOpen_Humanoid, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].GalaxyMapOpen);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].GalaxyMapOpen, focusChange);
                     break;
                 case "systemmap":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].SystemMapOpen_Buggy);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].SystemMapOpen_Buggy, focusChange);
                     else if (Data.StatusData.OnFoot)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].SystemMapOpen_Humanoid);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].SystemMapOpen_Humanoid, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].SystemMapOpen);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].SystemMapOpen, focusChange);
                     break;
 
                 case "togglecargoscoop":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ToggleCargoScoop_Buggy);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ToggleCargoScoop_Buggy, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ToggleCargoScoop);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ToggleCargoScoop, focusChange);
                     break;
                 case "landinggeartoggle":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].LandingGearToggle);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].LandingGearToggle, focusChange);
                     break;
 
                 case "toggleflightassist":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ToggleFlightAssist);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ToggleFlightAssist, focusChange);
                     break;
 
                 case "shipspotlighttoggle":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].HeadlightsBuggyButton);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].HeadlightsBuggyButton, focusChange);
                     else if (Data.StatusData.OnFoot)
                         CommandTools.SendKeypressQueue(
-                            Program.Binding[BindingType.OnFoot].HumanoidToggleFlashlightButton);
+                            Program.Binding[BindingType.OnFoot].HumanoidToggleFlashlightButton, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ShipSpotLightToggle);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ShipSpotLightToggle, focusChange);
                     break;
 
                 case "nightvisiontoggle":
                     if (Data.StatusData.OnFoot)
                         CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot]
-                            .HumanoidToggleNightVisionButton);
+                            .HumanoidToggleNightVisionButton, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].NightVisionToggle);
+                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].NightVisionToggle, focusChange);
                     break;
 
                 case "playerhudmodetoggle":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].PlayerHUDModeToggle);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].PlayerHUDModeToggle, focusChange);
                     break;
 
                 case "deployhardpointtoggle":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].DeployHardpointToggle);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].DeployHardpointToggle, focusChange);
                     break;
 
                 case "supercruise":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].Supercruise);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].Supercruise, focusChange);
                     break;
 
                 case "togglebuttonupinput":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ToggleButtonUpInput);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ToggleButtonUpInput, focusChange);
                     break;
 
                 case "togglebuggyturretbutton":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ToggleBuggyTurretButton);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ToggleBuggyTurretButton, focusChange);
                     break;
 
                 case "toggledriveassist":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ToggleDriveAssist);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ToggleDriveAssist, focusChange);
                     break;
 
                 case "autobreakbuggybutton":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].AutoBreakBuggyButton);
+                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].AutoBreakBuggyButton, focusChange);
                     break;
             }
 
