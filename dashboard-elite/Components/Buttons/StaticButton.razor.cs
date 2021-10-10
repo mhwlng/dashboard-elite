@@ -680,9 +680,6 @@ namespace dashboard_elite.Components.Buttons
 
                 // in srv
 
-                case "toggledriveassist":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ToggleDriveAssist);
-                    break;
                 case "steerleftbutton":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].SteerLeftButton);
                     break;
@@ -747,9 +744,6 @@ namespace dashboard_elite.Components.Buttons
                 case "buggyturretyawleftbutton":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].BuggyTurretYawLeftButton);
                     break;
-                case "togglebuggyturretbutton":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ToggleBuggyTurretButton);
-                    break;
                 case "buggyturretyawrightbutton":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].BuggyTurretYawRightButton);
                     break;
@@ -761,9 +755,6 @@ namespace dashboard_elite.Components.Buttons
                     break;
                 case "togglecargoscoop_buggy":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ToggleCargoScoop_Buggy);
-                    break;
-                case "autobreakbuggybutton":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].AutoBreakBuggyButton);
                     break;
                 case "headlightsbuggybutton":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].HeadlightsBuggyButton);
