@@ -6,6 +6,8 @@ VERY UNFINISHED PRE-ALPHA RELEASE
 
 ![touch screen](https://i.imgur.com/RkHJESd.jpg)
 
+![touch screen](https://i.imgur.com/fr3zNrU.jpg)
+
 ![touch screen](https://i.imgur.com/QLA3Fgm.png)
 
 ![touch screen](https://i.imgur.com/dK75qt0.png)
