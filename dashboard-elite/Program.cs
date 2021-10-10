@@ -10,6 +10,8 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -146,7 +148,7 @@ namespace dashboard_elite
 
             }
 
-            var host = CreateHostBuilder(args).Build();
+            var host = CreateHostBuilder(args, Configuration).Build();
 
             var applicationLifetime =
                 host.Services.GetService(typeof(IHostApplicationLifetime)) as IHostApplicationLifetime;
@@ -180,14 +182,39 @@ namespace dashboard_elite
             return 0;
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        public static IHostBuilder CreateHostBuilder(string[] args, IConfigurationRoot configuration) =>
             Host.CreateDefaultBuilder(args)
                 .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    //[Special for DesktopLoveBlazorWeb]
-                    //use any available port on localhost
-                    webBuilder.ConfigureKestrel(serverOptions => { serverOptions.Listen(IPAddress.Loopback, 0); });
+                    webBuilder.ConfigureKestrel(serverOptions =>
+                    {
+                        var externalPort = Configuration.GetValue<int>("ExternalPort");
+
+                        if (externalPort > 0)
+                        {
+
+                            foreach (NetworkInterface item in NetworkInterface.GetAllNetworkInterfaces())
+                            {
+                                if (!item.Description.Contains("virtual", StringComparison.CurrentCultureIgnoreCase) &&
+                                    item.NetworkInterfaceType != NetworkInterfaceType.Loopback &&
+                                    item.OperationalStatus == OperationalStatus.Up)
+                                {
+                                    foreach (UnicastIPAddressInformation ip in item.GetIPProperties().UnicastAddresses)
+                                    {
+                                        if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                                        {
+                                            serverOptions.Listen(ip.Address, externalPort);
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+
+                        serverOptions.Listen(IPAddress.Loopback, 0);
+
+                    });
                     webBuilder.UseStaticWebAssets();
                     webBuilder.UseStartup<Startup>();
                 });
@@ -333,16 +360,26 @@ namespace dashboard_elite
 
         private static void WindowLocationChanged(object sender, Point location)
         {
-            CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Top", location.Y);
-            CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Left", location.X);
+            var currentstate = Program.mainWindow.Chromeless;
+
+            if (currentstate || !Minimized)
+            {
+                CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Top", location.Y);
+                CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Left", location.X);
+            }
 
             //Log.Information($"WindowLocationChanged Callback Fired.  Left: {location.X}  Top: {location.Y}");
         }
 
         private static void WindowSizeChanged(object sender, Size size)
         {
-            CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Height", size.Height);
-            CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Width", size.Width);
+            var currentstate = Program.mainWindow.Chromeless;
+
+            if (currentstate || !Minimized)
+            {
+                CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Height", size.Height);
+                CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Width", size.Width);
+            }
 
             //Log.Information( $"WindowSizeChanged Callback Fired.  Height: {size.Height}  Width: {size.Width}");
         }

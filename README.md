@@ -15,9 +15,15 @@ Technology used:
 - [WebView2 Runtime](https://go.microsoft.com/fwlink/p/?LinkId=2124703)
 - Blazor server
 
-The touch screen is connected via hdmi as a secondary monitor.
+The touch screen is connected via hdmi as a secondary monitor on the same PC that elite dangerous runs on.
 
-So, this will NOT work on e.g. a tablet or a separate device.
+You can also control this on a separate device in a different way:
+
+You run this application mininized and then start a web browser on another device.
+
+That browser connects to the web server that is built into this application.
+
+This won't work if the web browser runs on the SAME pc as Elite Dangerous.
 
 The game has to be set to borderless mode. Fullscreen mode WON'T work.
 
@@ -52,7 +58,7 @@ Button possibilities:
 - Automatic profile switching
 - Button press sounds
 
-The button functionality works, by changing the focus back to elite dangerous, when pressing a button on the touch screen.
+The touch screen button functionality works, by changing the focus back to elite dangerous, when pressing a button on the touch screen.
 
 This focus change mechanism is ONLY enabled, if the application runs full screen on the touch screen.
 
@@ -62,12 +68,21 @@ The easiest way to set this up, is to first drag the application to the touch sc
 
 ![touch screen](https://i.imgur.com/14qcSb1.png)
 
-This will cause the application to restart and then the application should be full screen and the window title bar should no longer be visible.
+This will cause the application to restart and then the application should be full screen (also covering the task bar) and the window title bar should no longer be visible.
 
 To make the window title bar appear again, press the maximize button again.
 
-The application window settings can be found in appsettings.json
+If the application is minimized and a browser, on a SEPARATE device, connects to the built-in web server,
+then elite dangerous will always stay in focus, when a button is pressed on the other device.
 
+appsettings.json contains the ExternalPort value.
+The application will listen on all IP addresses on that port number, unless the ExternalPort value is 0.
+In that case, only the internal touch screen window will be available.
+
+The external URL should be http://MyIpAddress:ExternalPort/index
+
+The application window settings can be found in appsettings.json. 
+There is also a setting that will automatically minimize the application at startup, after the initialization is finished.
 
 The buttons will only work with keyboard bindings. 
 So, when there is only a binding to a joystick / controller / mouse for a function, then you need to add a keyboard binding first.
