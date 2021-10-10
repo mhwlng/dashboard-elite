@@ -353,9 +353,6 @@ namespace dashboard_elite.Components.Buttons
                 case "forwardthrustbutton_landing":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ForwardThrustButton_Landing);
                     break;
-                case "galaxymapopen":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].GalaxyMapOpen);
-                    break;
                 case "hypersupercombination":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].HyperSuperCombination);
                     break;
@@ -400,9 +397,6 @@ namespace dashboard_elite.Components.Buttons
                     break;
                 case "disablerotationcorrecttoggle":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].DisableRotationCorrectToggle);
-                    break;
-                case "systemmapopen":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].SystemMapOpen);
                     break;
                 case "downthrustbutton":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].DownThrustButton);
@@ -785,9 +779,6 @@ namespace dashboard_elite.Components.Buttons
                 case "togglecargoscoop_buggy":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ToggleCargoScoop_Buggy);
                     break;
-                case "galaxymapopen_buggy":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].GalaxyMapOpen_Buggy);
-                    break;
                 case "autobreakbuggybutton":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].AutoBreakBuggyButton);
                     break;
@@ -814,9 +805,6 @@ namespace dashboard_elite.Components.Buttons
                     break;
                 case "buggyrollrightbutton":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].BuggyRollRightButton);
-                    break;
-                case "systemmapopen_buggy":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].SystemMapOpen_Buggy);
                     break;
 
                 // on foot
@@ -917,12 +905,6 @@ namespace dashboard_elite.Components.Buttons
                     break;
                 case "humanoidtoggleflashlightbutton":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].HumanoidToggleFlashlightButton);
-                    break;
-                case "galaxymapopen_humanoid":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].GalaxyMapOpen_Humanoid);
-                    break;
-                case "systemmapopen_humanoid":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].SystemMapOpen_Humanoid);
                     break;
                 case "quickcommspanel_humanoid":
                     CommandTools.SendKeypressQueue(Program.Binding[BindingType.OnFoot].QuickCommsPanel_Humanoid);

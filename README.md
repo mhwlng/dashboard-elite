@@ -360,8 +360,6 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 | HumanoidToggleNightVisionButton | Night Vision |
 | HumanoidSwitchToSuitTool | Suit Specific Tool |
 | HumanoidToggleFlashlightButton | Flashlight |
-| GalaxyMapOpen_Humanoid | Galaxy Map |
-| SystemMapOpen_Humanoid | System Map |
 | QuickCommsPanel_Humanoid | Quick Comms |
 | HumanoidConflictContextualUIButton | Conflict Zone Battle Stats |
 | HumanoidToggleShieldsButton | Shields |
