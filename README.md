@@ -133,7 +133,7 @@ Various button type can be configured, each with their own set of parameters :
 | GalaxyMap               | Galaxy Map      |
 | DeployHardpointToggle   | Hardpoints      |
 | LandingGearToggle       | Landing Gear    |
-| ShipSpotLightToggle     | Lights          |
+| ShipSpotLightToggle     | Light           |
 | NightVisionToggle       | Night Vision    |
 | ToggleButtonUpInput     | Silent Running  |
 | ToggleDriveAssist       | Srv DriveAssist |
@@ -352,9 +352,7 @@ Instead, you need to set up a fire group letter and primary or secondary fire bu
 | HumanoidSwitchToRechargeTool | Energy Link |
 | HumanoidSwitchToCompAnalyser | Profile Analyser |
 | HumanoidToggleToolModeButton | Tool Mode |
-| HumanoidToggleNightVisionButton | Night Vision |
 | HumanoidSwitchToSuitTool | Suit Specific Tool |
-| HumanoidToggleFlashlightButton | Flashlight |
 | QuickCommsPanel_Humanoid | Quick Comms |
 | HumanoidConflictContextualUIButton | Conflict Zone Battle Stats |
 | HumanoidToggleShieldsButton | Shields |

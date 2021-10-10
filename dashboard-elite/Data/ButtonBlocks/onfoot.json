@@ -38,44 +38,8 @@
     },
     {
       "buttonType": "StaticButton",
-      "function": "HumanoidSwitchWeapon",
-      "primaryIcon": "empty-humanoidswitchweapon.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "HumanoidSelectUtilityWeaponButton",
-      "primaryIcon": "empty-humanoidselectutilityweaponbutton.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "HumanoidSelectNextWeaponButton",
-      "primaryIcon": "empty-humanoidselectnextweaponbutton.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "HumanoidSelectPreviousWeaponButton",
-      "primaryIcon": "empty-humanoidselectpreviousweaponbutton.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
       "function": "HumanoidReloadButton",
       "primaryIcon": "empty-humanoidreloadbutton.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "HumanoidSelectNextGrenadeTypeButton",
-      "primaryIcon": "empty-humanoidselectnextgrenadetypebutton.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "HumanoidSelectPreviousGrenadeTypeButton",
-      "primaryIcon": "empty-humanoidselectpreviousgrenadetypebutton.svg",
       "clickSound": ""
     },
     {
@@ -116,12 +80,6 @@
     },
     {
       "buttonType": "StaticButton",
-      "function": "HumanoidToggleFlashlightButton",
-      "primaryIcon": "empty-humanoidtoggleflashlightbutton.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
       "function": "HumanoidConflictContextualUIButton",
       "primaryIcon": "empty-humanoidconflictcontextualuibutton.svg",
       "clickSound": ""
@@ -130,12 +88,6 @@
       "buttonType": "StaticButton",
       "function": "HumanoidToggleShieldsButton",
       "primaryIcon": "empty-humanoidtoggleshieldsbutton.svg",
-      "clickSound": ""
-    },
-    {
-      "buttonType": "StaticButton",
-      "function": "HumanoidToggleMissionHelpPanelButton",
-      "primaryIcon": "empty-humanoidtogglemissionhelppanelbutton.svg",
       "clickSound": ""
     },
     {
@@ -175,9 +127,17 @@
       "clickSound": ""
     },
     {
-      "buttonType": "StaticButton",
-      "function": "HumanoidToggleNightVisionButton",
+      "buttonType": "ToggleButton",
+      "function": "ShipSpotLightToggle",
+      "primaryIcon": "ship-lights.svg",
+      "secondaryIcon": "ship-lights.svg",
+      "clickSound": ""
+    },
+    {
+      "buttonType": "ToggleButton",
+      "function": "NightVisionToggle",
       "primaryIcon": "night-vision.svg",
+      "secondaryIcon": "night-vision.svg",
       "clickSound": ""
     }
 

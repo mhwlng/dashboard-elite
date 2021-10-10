@@ -19,8 +19,14 @@ namespace dashboard_elite.Components.Buttons
 
         private CachedSound _clickSound = null;
 
+        private bool StaticButtonBindingExists(string function)
+        {
+            var binding = GetStaticButtonBinding(ButtonData.Function.ToLower());
 
-        private StandardBindingInfo GetBinding(string function)
+            return binding?.Primary.Device == "Keyboard" || binding?.Secondary.Device == "Keyboard";
+        }
+
+        private StandardBindingInfo GetStaticButtonBinding(string function)
         {
             switch (function)
             {
@@ -573,12 +579,8 @@ namespace dashboard_elite.Components.Buttons
                     return Program.Binding[BindingType.OnFoot].HumanoidSwitchToCompAnalyser;
                 case "humanoidtoggletoolmodebutton":
                     return Program.Binding[BindingType.OnFoot].HumanoidToggleToolModeButton;
-                case "humanoidtogglenightvisionbutton":
-                    return Program.Binding[BindingType.OnFoot].HumanoidToggleNightVisionButton;
                 case "humanoidswitchtosuittool":
                     return Program.Binding[BindingType.OnFoot].HumanoidSwitchToSuitTool;
-                case "humanoidtoggleflashlightbutton":
-                    return Program.Binding[BindingType.OnFoot].HumanoidToggleFlashlightButton;
                 case "quickcommspanel_humanoid":
                     return Program.Binding[BindingType.OnFoot].QuickCommsPanel_Humanoid;
                 case "humanoidconflictcontextualuibutton":
@@ -623,9 +625,9 @@ namespace dashboard_elite.Components.Buttons
 
             Thread.Sleep(100);
 
-            var binding = GetBinding(ButtonData.Function.ToLower());
+            var binding = GetStaticButtonBinding(ButtonData.Function.ToLower());
 
-            if (binding != null)
+            if (binding?.Primary.Device == "Keyboard" || binding?.Secondary.Device == "Keyboard")
             {
                 CommandTools.SendKeypressQueue(binding);
             }
