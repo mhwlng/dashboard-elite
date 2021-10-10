@@ -17,9 +17,9 @@ Technology used:
 
 The touch screen is connected via hdmi as a secondary monitor on the same PC that elite dangerous runs on.
 
-You can also control this from a separate device in a different way:
+You can also control this from a separate device, in a different way:
 
-You run this application mininized on the elite dangerous PC and then start a web browser on another device.
+You can run this application mininized on the elite dangerous PC and then start a web browser on another device.
 
 That browser connects to the web server, that is built into this application.
 
