@@ -34,6 +34,8 @@ namespace dashboard_elite
         public static string ExePath;
         public static string WebRootPath;
 
+        public static bool Minimized;
+
         public static IConfigurationRoot Configuration;
 
         private static CachedSound _clickSound = null;
@@ -203,8 +205,10 @@ namespace dashboard_elite
             var left = configuration.GetValue<int>("Dimensions:left");
             var height = configuration.GetValue<int>("Dimensions:Height");
             var width = configuration.GetValue<int>("Dimensions:Width");
-            var fullScreen = configuration.GetValue<bool>("Dimensions:FullScreen"); 
+            var fullScreen = configuration.GetValue<bool>("Dimensions:FullScreen");
             var zoom = configuration.GetValue<int>("Dimensions:Zoom");
+
+            Minimized = configuration.GetValue<bool>("Dimensions:Minimized");
 
             mainWindow = new PhotinoWindow()
 

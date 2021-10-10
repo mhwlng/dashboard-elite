@@ -571,13 +571,23 @@ namespace dashboard_elite
 
             await _myHub.Clients.All.SendAsync("LoadingDone");
 
+            if (!Program.mainWindow.Chromeless  && Program.Minimized)
+            {
+                Program.mainWindow.SetMinimized(true);
+            }
+
+            stoppingToken.WaitHandle.WaitOne();
+
+            /*
+
             while (!stoppingToken.IsCancellationRequested)
             {
                 //_logger.LogInformation("Worker running at: {Time}", DateTime.Now);
 
-                await _myHub.Clients.All.SendAsync("ReceiveTestMessage", "aaa", DateTime.Now.ToLongTimeString());
+                //await _myHub.Clients.All.SendAsync("ReceiveTestMessage", "aaa", DateTime.Now.ToLongTimeString());
+
                 await Task.Delay(1000);
-            }
+            }*/
 
             StatusWatcher.StatusUpdated -= _data.HandleStatusEvents;
 
