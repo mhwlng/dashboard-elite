@@ -69,26 +69,26 @@ button:hover {
 /* smaller display : 10 x 3 buttons*/
 
 .buttonblock > .mud-icon-button-size-large.mud-button > .mud-icon-button-label > .mud-icon-size-large {
-    font-size: 5.4rem;               /* 1920x515 : 4.3rem  1920x480 : 3.7rem*/
+    font-size: 5.1rem;               
     letter-spacing: -0.001em;
 }
 
 .buttonblockwidth {
-    width: 1060px;                    /* 1920x515 : 711px   1920x480 : */
-    min-width: 1060px!important;      
+    width: 1015px;                    
+    min-width: 1015px!important;      
 }
 
 /* larger display : 8 x 4 buttons*/
 
 @media screen and (min-height: 500px) {
     .buttonblock > .mud-icon-button-size-large.mud-button > .mud-icon-button-label > .mud-icon-size-large {
-        font-size: 4.3rem; /* 1920x515 : 4.3rem  1920x480 : 3.7rem*/
+        font-size: 4.1rem; 
         letter-spacing: -0.001em;
     }
 
     .buttonblockwidth {
-        width: 711px; /* 1920x515 : 711px   1920x480 : */
-        min-width: 711px !important;
+        width: 685px; 
+        min-width: 685px !important;
     }
 }
 

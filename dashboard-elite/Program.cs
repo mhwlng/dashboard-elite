@@ -203,7 +203,7 @@ namespace dashboard_elite
             var left = configuration.GetValue<int>("Dimensions:left");
             var height = configuration.GetValue<int>("Dimensions:Height");
             var width = configuration.GetValue<int>("Dimensions:Width");
-            var fullScreen = configuration.GetValue<bool>("Dimensions:FullScreen");
+            var fullScreen = configuration.GetValue<bool>("Dimensions:FullScreen"); 
             var zoom = configuration.GetValue<int>("Dimensions:Zoom");
 
             mainWindow = new PhotinoWindow()
@@ -218,6 +218,8 @@ namespace dashboard_elite
                 .SetTop(top)
                 .SetResizable(true)
                 //.SetMaximized(fullScreen)
+                //.SetFullScreen(fullScreen)
+                //.SetTopMost(fullScreen)
                 .SetChromeless(fullScreen)
                 .SetContextMenuEnabled(!fullScreen)
                 .SetDevToolsEnabled(!fullScreen)
@@ -303,6 +305,26 @@ namespace dashboard_elite
         private static void WindowCreated(object sender, EventArgs e)
         {
             //Log.Information("WindowCreated Callback Fired.");
+
+            var currentstate = Program.mainWindow.Chromeless;
+
+            if (currentstate)
+            {
+
+                var monitor = CommandTools.MonitorFromWindow(mainWindow.WindowHandle, CommandTools.MONITOR_DEFAULTTONEAREST);
+
+                if (monitor != IntPtr.Zero)
+                {
+                    var monitorInfo = new CommandTools.NativeMonitorInfo();
+                    CommandTools.GetMonitorInfo(monitor, monitorInfo);
+
+                    mainWindow.SetLeft(monitorInfo.Monitor.Left);
+                    mainWindow.SetTop(monitorInfo.Monitor.Top);
+                    mainWindow.SetWidth(monitorInfo.Monitor.Right - monitorInfo.Monitor.Left);
+                    mainWindow.SetHeight(monitorInfo.Monitor.Bottom - monitorInfo.Monitor.Top);
+                }
+            }
+
         }
 
         private static void WindowLocationChanged(object sender, Point location)
