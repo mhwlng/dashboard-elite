@@ -27,7 +27,9 @@ That browser connects to the web server, that is built into this application.
 
 This won't work, if the web browser runs on the SAME pc as Elite Dangerous.
 
-The game has to be set to borderless mode. Fullscreen mode WON'T work.
+The game has to be set to borderless mode, to be able to use the touch screen. 
+
+Fullscreen mode won't work, unless you only use an external device via a web browser.
 
 The actual on/off state of a button comes from the game.
 
