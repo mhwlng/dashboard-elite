@@ -102,6 +102,8 @@ namespace dashboard_elite
         public static BackPackWatcher BackPackWatcher;
         public static ShipLockerWatcher ShipLockerWatcher;
 
+        public static Task JsonTask;
+        private static CancellationTokenSource _jsonTokenSource = new CancellationTokenSource();
 
         public static KeyBindingWatcher[] KeyBindingWatcher = new KeyBindingWatcher[4];
 
@@ -405,51 +407,91 @@ namespace dashboard_elite
 
         }
 
-
-        private static void RefreshJson()
+        private void RefreshJson()
         {
             lock (Program.RefreshJsonLock)
             {
-                /*
-                Station.FullStationList[Station.PoiTypes.InterStellarFactors]
-                Station.FullStationList[Station.PoiTypes.RawMaterialTraders]
-                Station.FullStationList[Station.PoiTypes.ManufacturedMaterialTraders]
-                Station.FullStationList[Station.PoiTypes.EncodedDataTraders]
-                Station.FullStationList[Station.PoiTypes.HumanTechnologyBrokers]
-                Station.FullStationList[Station.PoiTypes.GuardianTechnologyBrokers]
-                Station.FullPowerStationList[Station.PowerTypes.AislingDuval]
-                Station.FullPowerStationList[Station.PowerTypes.ArchonDelaine]
-                Station.FullPowerStationList[Station.PowerTypes.ArissaLavignyDuval]
-                Station.FullPowerStationList[Station.PowerTypes.DentonPatreus]
-                Station.FullPowerStationList[Station.PowerTypes.EdmundMahon]
-                Station.FullPowerStationList[Station.PowerTypes.FeliciaWinters]
-                Station.FullPowerStationList[Station.PowerTypes.LiYongRui]
-                Station.FullPowerStationList[Station.PowerTypes.PranavAntal]
-                Station.FullPowerStationList[Station.PowerTypes.YuriGrom]
-                Station.FullPowerStationList[Station.PowerTypes.ZacharyHudson]
-                Station.FullPowerStationList[Station.PowerTypes.ZeminaTorval]
-                Station.SystemStations =
-                Station.MarketIdStations =
+                
+                Station.FullStationList[Station.PoiTypes.InterStellarFactors] = Station.GetAllStations(@"Data\interstellarfactors.json");
+                
+                Station.FullStationList[Station.PoiTypes.RawMaterialTraders] = Station.GetAllStations(@"Data\rawmaterialtraders.json");
+                
+                Station.FullStationList[Station.PoiTypes.ManufacturedMaterialTraders] = Station.GetAllStations(@"Data\manufacturedmaterialtraders.json");
+                
+                Station.FullStationList[Station.PoiTypes.EncodedDataTraders] = Station.GetAllStations(@"Data\encodeddatatraders.json");
+                
+                Station.FullStationList[Station.PoiTypes.HumanTechnologyBrokers] = Station.GetAllStations(@"Data\humantechnologybrokers.json");
+                
+                Station.FullStationList[Station.PoiTypes.GuardianTechnologyBrokers] = Station.GetAllStations(@"Data\guardiantechnologybrokers.json");
+                
+                Station.FullPowerStationList[Station.PowerTypes.AislingDuval] = Station.GetAllStations(@"Data\aislingduval.json");
+                
+                Station.FullPowerStationList[Station.PowerTypes.ArchonDelaine] = Station.GetAllStations(@"Data\archondelaine.json");
+                
+                Station.FullPowerStationList[Station.PowerTypes.ArissaLavignyDuval] = Station.GetAllStations(@"Data\arissalavignyduval.json");
+                
+                Station.FullPowerStationList[Station.PowerTypes.DentonPatreus] = Station.GetAllStations(@"Data\dentonpatreus.json");
+                
+                Station.FullPowerStationList[Station.PowerTypes.EdmundMahon] = Station.GetAllStations(@"Data\edmundmahon.json");
+                
+                Station.FullPowerStationList[Station.PowerTypes.FeliciaWinters] = Station.GetAllStations(@"Data\feliciawinters.json");
+                
+                Station.FullPowerStationList[Station.PowerTypes.LiYongRui] = Station.GetAllStations(@"Data\liyongrui.json");
+                
+                Station.FullPowerStationList[Station.PowerTypes.PranavAntal] = Station.GetAllStations(@"Data\pranavantal.json");
+                
+                Station.FullPowerStationList[Station.PowerTypes.YuriGrom] = Station.GetAllStations(@"Data\yurigrom.json");
+                
+                Station.FullPowerStationList[Station.PowerTypes.ZacharyHudson] = Station.GetAllStations(@"Data\zacharyhudson.json");
+                
+                Station.FullPowerStationList[Station.PowerTypes.ZeminaTorval] = Station.GetAllStations(@"Data\zeminatorval.json");
 
-                //await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading Populated Systems...");
-                //PopulatedSystems.SystemList = new Dictionary<string, PopulatedSystems.PopulatedSystem>();
+                
+                Station.SystemStations = Station.GetAllStations(@"Data\fullstationlist.json").GroupBy(x => x.SystemName)
+                    .ToDictionary(x => x.Key, x => x.OrderBy(y => y.DistanceToArrival).ToList());
 
-                HotspotSystems.FullHotspotSystemsList[HotspotSystems.MaterialTypes.Painite]
-                HotspotSystems.FullHotspotSystemsList[HotspotSystems.MaterialTypes.LTD]
-                HotspotSystems.FullHotspotSystemsList[HotspotSystems.MaterialTypes.Platinum]
-                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.Painite]
-                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.LTD]
-                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.Platinum]
-                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.TritiumBuy]
-                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.TritiumSell]
+                Station.MarketIdStations = Station.GetAllStations(@"Data\fullstationlist.json").GroupBy(x => x.MarketId)
+                    .ToDictionary(x => x.Key, x => x.FirstOrDefault());
+
+                
+                CnbSystems.FullCnbSystemsList = CnbSystems.GetAllCnbSystems(@"Data\cnbsystems.json");
+
+                
+                PopulatedSystems.SystemList = PopulatedSystems.GetAllPopupulatedSystems(@"Data\populatedsystemsEDDB.json").GroupBy(x => x.Name)
+                    .ToDictionary(x => x.Key, x => x.First());
+
+                
+                HotspotSystems.FullHotspotSystemsList[HotspotSystems.MaterialTypes.Painite] = HotspotSystems.GetAllHotspotSystems(@"Data\painitesystems.json");
+
+                
+                HotspotSystems.FullHotspotSystemsList[HotspotSystems.MaterialTypes.LTD] = HotspotSystems.GetAllHotspotSystems(@"Data\ltdsystems.json");
+
+                
+                HotspotSystems.FullHotspotSystemsList[HotspotSystems.MaterialTypes.Platinum] = HotspotSystems.GetAllHotspotSystems(@"Data\platinumsystems.json");
+
+                
+                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.Painite] = MiningStations.GetAllMiningStations(@"Data\painitestations.json");
+
+                
+                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.LTD] = MiningStations.GetAllMiningStations(@"Data\ltdstations.json");
+
+                
+                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.Platinum] = MiningStations.GetAllMiningStations(@"Data\platinumstations.json");
+
+                
+                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.TritiumBuy] = MiningStations.GetAllMiningStations(@"Data\tritiumbuystations.json");
+
+                
+                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.TritiumSell] = MiningStations.GetAllMiningStations(@"Data\tritiumstations.json");
+
+                
                 var cg = CommunityGoals.GetCommunityGoals(@"Data\communitygoals.json");
+                
                 var galnet = Galnet.GetGalnet(@"Data\galnet.json");
+                
                 Galnet.GetGalnetImages(galnet);
+
                 Galnet.GalnetList = cg.Concat(galnet).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-                */
-
-                //_data.HandleJson();
-
 
             }
         }
@@ -463,6 +505,8 @@ namespace dashboard_elite
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            var jsonToken = _jsonTokenSource.Token;
+
             while (UserHandler.ConnectedIds.Count == 0)
             {
                 await Task.Delay(1000);
@@ -483,10 +527,8 @@ namespace dashboard_elite
                 //defaultFilter = @"JournalAlpha.*.log";
                 //#endif
 
-                /*
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading Engineers...");
                 Data.EngineersList = Station.GetEngineers(@"Data\engineers.json");
-				*/
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading Engineering Materials...");
                 (Engineer.EngineeringMaterials, Engineer.EngineeringMaterialsByKey) = Engineer.GetAllEngineeringMaterials(@"Data\entryData.json");
@@ -500,11 +542,10 @@ namespace dashboard_elite
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading Ingredient Types...");
                 Engineer.IngredientTypes = Engineer.GetIngredientTypes(@"Data\blueprints.json", Engineer.EngineeringMaterials);
 
-                 /*
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading POI Items...");
                 Poi.FullPoiList = Poi.GetAllPois(); //?.GroupBy(x => x.System.Trim().ToLower()).ToDictionary(x => x.Key, x => x.ToList());
-                */
 
+                await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading JSON Items...");
                 RefreshJson();
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading History...");
@@ -558,6 +599,42 @@ namespace dashboard_elite
                 ShipLockerWatcher.ShipLockerUpdated += _data.HandleShipLockerEvent;
 
                 ShipLockerWatcher.StartWatching();
+
+                JsonTask = Task.Run(async () =>
+                {
+                    Log.Information("json task started");
+
+                    while (true)
+                    {
+                        if (jsonToken.IsCancellationRequested)
+                        {
+                            jsonToken.ThrowIfCancellationRequested();
+                        }
+
+                        var importData = new ImportData.ImportData();
+
+                        Log.Information("ImportData Starting");
+
+                        _data.ImportData = true;
+
+                        await _myHub.Clients.All.SendAsync("EliteRefresh", jsonToken);
+
+                        importData.Import();
+
+                        _data.ImportData = false;
+
+                        await _myHub.Clients.All.SendAsync("EliteRefresh", jsonToken);
+
+                        Log.Information("ImportData Done");
+
+                        RefreshJson();
+
+                        _data.HandleJson();
+
+                        await Task.Delay(30 * 60 * 1000, _jsonTokenSource.Token); // repeat every 30 minutes
+                    }
+
+                }, jsonToken);
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Init Elite Api Done");
 
@@ -613,7 +690,22 @@ namespace dashboard_elite
 
             ShipLockerWatcher.StopWatching();
 
+            _jsonTokenSource.Cancel();
 
+            try
+            {
+                JsonTask?.Wait(jsonToken);
+            }
+            catch (OperationCanceledException)
+            {
+                Log.Information("json background task ended");
+            }
+            finally
+            {
+                _jsonTokenSource.Dispose();
+            }
+
+            Log.Information("Shutdown Worker");
 
         }
     }

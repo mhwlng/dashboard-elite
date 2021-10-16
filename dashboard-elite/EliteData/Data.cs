@@ -30,6 +30,47 @@ namespace dashboard_elite.EliteData
         }
 
 
+        public static Dictionary<HotspotSystems.MaterialTypes, List<HotspotSystems.HotspotSystemData>> NearbyHotspotSystemsList = new Dictionary<HotspotSystems.MaterialTypes, List<HotspotSystems.HotspotSystemData>>
+        {
+            {HotspotSystems.MaterialTypes.Painite, new List<HotspotSystems.HotspotSystemData>()},
+            {HotspotSystems.MaterialTypes.LTD, new List<HotspotSystems.HotspotSystemData>()},
+            {HotspotSystems.MaterialTypes.Platinum, new List<HotspotSystems.HotspotSystemData>()}
+        };
+
+
+        public static Dictionary<MiningStations.MaterialTypes, List<MiningStations.MiningStationData>> NearbyMiningStationsList = new Dictionary<MiningStations.MaterialTypes, List<MiningStations.MiningStationData>>
+        {
+            {MiningStations.MaterialTypes.Painite, new List<MiningStations.MiningStationData>()},
+            {MiningStations.MaterialTypes.LTD, new List<MiningStations.MiningStationData>()},
+            {MiningStations.MaterialTypes.Platinum, new List<MiningStations.MiningStationData>()},
+            {MiningStations.MaterialTypes.TritiumBuy, new List<MiningStations.MiningStationData>()},
+            {MiningStations.MaterialTypes.TritiumSell, new List<MiningStations.MiningStationData>()}
+        };
+
+        public static Dictionary<Station.PoiTypes, List<StationData>> NearbyStationList = new Dictionary<Station.PoiTypes, List<StationData>>
+        {
+            {Station.PoiTypes.InterStellarFactors, new List<StationData>()},
+            {Station.PoiTypes.RawMaterialTraders, new List<StationData>()},
+            {Station.PoiTypes.ManufacturedMaterialTraders, new List<StationData>()},
+            {Station.PoiTypes.EncodedDataTraders, new List<StationData>()},
+            {Station.PoiTypes.HumanTechnologyBrokers, new List<StationData>()},
+            {Station.PoiTypes.GuardianTechnologyBrokers, new List<StationData>()}
+        };
+
+        public static Dictionary<Station.PowerTypes, List<StationData>> NearbyPowerStationList = new Dictionary<Station.PowerTypes, List<StationData>>
+        {
+            {Station.PowerTypes.AislingDuval, new List<StationData>()},
+            {Station.PowerTypes.ArchonDelaine, new List<StationData>()},
+            {Station.PowerTypes.ArissaLavignyDuval, new List<StationData>()},
+            {Station.PowerTypes.DentonPatreus, new List<StationData>()},
+            {Station.PowerTypes.EdmundMahon, new List<StationData>()},
+            {Station.PowerTypes.FeliciaWinters, new List<StationData>()},
+            {Station.PowerTypes.LiYongRui, new List<StationData>()},
+            {Station.PowerTypes.PranavAntal, new List<StationData>()},
+            {Station.PowerTypes.YuriGrom, new List<StationData>()},
+            {Station.PowerTypes.ZacharyHudson, new List<StationData>()},
+            {Station.PowerTypes.ZeminaTorval, new List<StationData>()}
+        };
 
 
         public class EngineerData : StationData
@@ -39,16 +80,19 @@ namespace dashboard_elite.EliteData
 
         }
 
+        public static List<EngineerData> EngineersList = new List<EngineerData>();
+
+        public static List<CnbSystems.CnbSystemData> NearbyCnbSystemsList = new List<CnbSystems.CnbSystemData>();
+
+
         public string ActiveButtonBlock = "default";
         public string ActiveProfile = "default";
+
+        public bool ImportData = true;
 
         public bool UnderAttack = false;
         public DateTime LastUnderAttackEvent = DateTime.Now;
         public int LimpetCount { get; set; }
-
-        public static List<EngineerData> EngineersList = new List<EngineerData>();
-
-        //public static List<CnbSystems.CnbSystemData> NearbyCnbSystemsList = new List<CnbSystems.CnbSystemData>();
 
         public static  RingBuffer<string> EventHistory = new RingBuffer<string>(50, true);
 
@@ -174,46 +218,51 @@ namespace dashboard_elite.EliteData
         {
             lock (Program.RefreshJsonLock)
             {
-                /*
                 NearbyStationList[Station.PoiTypes.InterStellarFactors] =
+                    Station.GetNearestStations(LocationData.StarPos, Station.FullStationList[Station.PoiTypes.InterStellarFactors]);
                 NearbyStationList[Station.PoiTypes.RawMaterialTraders] =
+                    Station.GetNearestStations(LocationData.StarPos, Station.FullStationList[Station.PoiTypes.RawMaterialTraders]);
                 NearbyStationList[Station.PoiTypes.ManufacturedMaterialTraders] =
+                    Station.GetNearestStations(LocationData.StarPos, Station.FullStationList[Station.PoiTypes.ManufacturedMaterialTraders]);
                 NearbyStationList[Station.PoiTypes.EncodedDataTraders] =
+                    Station.GetNearestStations(LocationData.StarPos, Station.FullStationList[Station.PoiTypes.EncodedDataTraders]);
                 NearbyStationList[Station.PoiTypes.HumanTechnologyBrokers] =
+                    Station.GetNearestStations(LocationData.StarPos, Station.FullStationList[Station.PoiTypes.HumanTechnologyBrokers]);
                 NearbyStationList[Station.PoiTypes.GuardianTechnologyBrokers] =
+                    Station.GetNearestStations(LocationData.StarPos, Station.FullStationList[Station.PoiTypes.GuardianTechnologyBrokers]);
 
-                NearbyPowerStationList[Station.PowerTypes.AislingDuval] 
-                NearbyPowerStationList[Station.PowerTypes.ArchonDelaine]
+                NearbyPowerStationList[Station.PowerTypes.AislingDuval] = Station.GetNearestStations(LocationData.StarPos, Station.FullPowerStationList[Station.PowerTypes.AislingDuval]);
+                NearbyPowerStationList[Station.PowerTypes.ArchonDelaine] = Station.GetNearestStations(LocationData.StarPos, Station.FullPowerStationList[Station.PowerTypes.ArchonDelaine]);
                 NearbyPowerStationList[Station.PowerTypes.ArissaLavignyDuval] =
-                NearbyPowerStationList[Station.PowerTypes.DentonPatreus] 
-                NearbyPowerStationList[Station.PowerTypes.EdmundMahon] 
-                NearbyPowerStationList[Station.PowerTypes.FeliciaWinters]
-                NearbyPowerStationList[Station.PowerTypes.LiYongRui] 
-                NearbyPowerStationList[Station.PowerTypes.PranavAntal] 
-                NearbyPowerStationList[Station.PowerTypes.YuriGrom] 
-                NearbyPowerStationList[Station.PowerTypes.ZacharyHudson] 
-                NearbyPowerStationList[Station.PowerTypes.ZeminaTorval] 
+                    Station.GetNearestStations(LocationData.StarPos, Station.FullPowerStationList[Station.PowerTypes.ArissaLavignyDuval]);
+                NearbyPowerStationList[Station.PowerTypes.DentonPatreus] = Station.GetNearestStations(LocationData.StarPos, Station.FullPowerStationList[Station.PowerTypes.DentonPatreus]);
+                NearbyPowerStationList[Station.PowerTypes.EdmundMahon] = Station.GetNearestStations(LocationData.StarPos, Station.FullPowerStationList[Station.PowerTypes.EdmundMahon]);
+                NearbyPowerStationList[Station.PowerTypes.FeliciaWinters] =
+                    Station.GetNearestStations(LocationData.StarPos, Station.FullPowerStationList[Station.PowerTypes.FeliciaWinters]);
+                NearbyPowerStationList[Station.PowerTypes.LiYongRui] = Station.GetNearestStations(LocationData.StarPos, Station.FullPowerStationList[Station.PowerTypes.LiYongRui]);
+                NearbyPowerStationList[Station.PowerTypes.PranavAntal] = Station.GetNearestStations(LocationData.StarPos, Station.FullPowerStationList[Station.PowerTypes.PranavAntal]);
+                NearbyPowerStationList[Station.PowerTypes.YuriGrom] = Station.GetNearestStations(LocationData.StarPos, Station.FullPowerStationList[Station.PowerTypes.YuriGrom]);
+                NearbyPowerStationList[Station.PowerTypes.ZacharyHudson] = Station.GetNearestStations(LocationData.StarPos, Station.FullPowerStationList[Station.PowerTypes.ZacharyHudson]);
+                NearbyPowerStationList[Station.PowerTypes.ZeminaTorval] = Station.GetNearestStations(LocationData.StarPos, Station.FullPowerStationList[Station.PowerTypes.ZeminaTorval]);
 
-                NearbyCnbSystemsList 
+                NearbyCnbSystemsList = CnbSystems.GetNearestCnbSystems(LocationData.StarPos);
 
-                NearbyHotspotSystemsList[HotspotSystems.MaterialTypes.Painite] 
-                NearbyHotspotSystemsList[HotspotSystems.MaterialTypes.LTD] 
-                NearbyHotspotSystemsList[HotspotSystems.MaterialTypes.Platinum] 
+                NearbyHotspotSystemsList[HotspotSystems.MaterialTypes.Painite] = HotspotSystems.GetNearestHotspotSystems(LocationData.StarPos, HotspotSystems.FullHotspotSystemsList[HotspotSystems.MaterialTypes.Painite]);
+                NearbyHotspotSystemsList[HotspotSystems.MaterialTypes.LTD] = HotspotSystems.GetNearestHotspotSystems(LocationData.StarPos, HotspotSystems.FullHotspotSystemsList[HotspotSystems.MaterialTypes.LTD]);
+                NearbyHotspotSystemsList[HotspotSystems.MaterialTypes.Platinum] = HotspotSystems.GetNearestHotspotSystems(LocationData.StarPos, HotspotSystems.FullHotspotSystemsList[HotspotSystems.MaterialTypes.Platinum]);
 
-                NearbyMiningStationsList[MiningStations.MaterialTypes.Painite] 
-                NearbyMiningStationsList[MiningStations.MaterialTypes.LTD] 
-                NearbyMiningStationsList[MiningStations.MaterialTypes.Platinum] 
-                NearbyMiningStationsList[MiningStations.MaterialTypes.TritiumBuy] 
-                NearbyMiningStationsList[MiningStations.MaterialTypes.TritiumSell] 
+                NearbyMiningStationsList[MiningStations.MaterialTypes.Painite] = MiningStations.GetNearestMiningStations(LocationData.StarPos, MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.Painite], true);
+                NearbyMiningStationsList[MiningStations.MaterialTypes.LTD] = MiningStations.GetNearestMiningStations(LocationData.StarPos, MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.LTD], true);
+                NearbyMiningStationsList[MiningStations.MaterialTypes.Platinum] = MiningStations.GetNearestMiningStations(LocationData.StarPos, MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.Platinum], true);
+                NearbyMiningStationsList[MiningStations.MaterialTypes.TritiumBuy] = MiningStations.GetNearestMiningStations(LocationData.StarPos, MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.TritiumBuy], false);
+                NearbyMiningStationsList[MiningStations.MaterialTypes.TritiumSell] = MiningStations.GetNearestMiningStations(LocationData.StarPos, MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.TritiumSell], true);
 
-                */
-				
                 EngineersList = Station.UpdateEngineersLocation(LocationData.StarPos, EngineersList);
-				
+               
             }
         }
 		
-		public class Commander
+        public class Commander
         {
             public string Name { get; set; } = "";
             public long Credits { get; set; }

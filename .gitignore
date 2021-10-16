@@ -338,3 +338,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+
+stationsEDDB.json
+stationsEDSM.json
+populatedsystemsEDDB.json

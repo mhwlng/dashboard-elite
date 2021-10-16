@@ -9,14 +9,17 @@
     <MudAppBar Elevation="0">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="DrawerToggle" />
         <MudSpacer />
-        
-        @if (NavigationManager.Uri.Contains("127.0.0.1"))
+
+        @if (Data.ImportData)
+        {
+            <MudIconButton Icon="@SvgCacheService.ButtonIcon("loading.svg")" Color="Color.Inherit"  />
+        }
+        else if (NavigationManager.Uri.Contains("127.0.0.1"))
         {
             <MudIconButton Icon="@Icons.Material.Filled.Maximize" Color="Color.Inherit" OnClick="Maximize" />
 
             <MudIconButton Icon="@Icons.Material.Filled.Close" Color="Color.Inherit" OnClick="Close" />
         }
-
 
     </MudAppBar>
     <MudDrawer @bind-Open="_drawerOpen" Elevation="1">

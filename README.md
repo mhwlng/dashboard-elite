@@ -70,11 +70,15 @@ This focus change mechanism is ONLY enabled, if the application runs full screen
 
 The easiest way to set this up, is to first drag the application to the touch screen area, then press the maximize button:
 
-![touch screen](https://i.imgur.com/14qcSb1.png)
+![touch screen](https://i.imgur.com/gieDvxf.png)
 
 This will cause the application to restart and then the application should be full screen (also covering the task bar) and the window title bar should no longer be visible.
 
 To make the window title bar appear again, press the maximize button again.
+
+Press the Close button, to close the application.
+
+When external data is being imported, at regular intervals, these two icons are hidden and a loading animation appears.
 
 If the application is minimized and a browser, on a SEPARATE device, connects to the built-in web server,
 then elite dangerous will always stay in focus, when a button is pressed on the other device.
