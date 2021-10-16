@@ -85,6 +85,13 @@ In that case, only the internal touch screen window will be available.
 
 The external URL should be http://MyIpAddress:ExternalPort
 
+The external browser should be running full screen / kiosk mode.
+Using Edge on Android, you can select the option 'add to phone'. 
+That will add an icon to the Android home screen, which wil start the browser full screen.
+Using Chrome on Android, the option is called 'add to home screen'.
+
+It doesn't work on IOS, at the moment.
+
 The application window settings can be found in appsettings.json. 
 There is also a Minimized value, that will automatically minimize the application at startup, after the initialization has finished.
 
