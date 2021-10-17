@@ -32,7 +32,6 @@ namespace dashboard_elite.EliteData
                                 string[] configLines = File.ReadAllLines(config32Path);
                                 foreach (var item in configLines)
                                 {
-                                    //Console.WriteLine("32:  " + item);
                                     Match match = Regex.Match(item, driveRegex);
                                     if (item != string.Empty && match.Success)
                                     {
@@ -66,7 +65,6 @@ namespace dashboard_elite.EliteData
                                 var configLines = File.ReadAllLines(config64path);
                                 foreach (var item in configLines)
                                 {
-                                    //Console.WriteLine("64:  " + item);
                                     Match match = Regex.Match(item, driveRegex);
                                     if (item != string.Empty && match.Success)
                                     {

@@ -52,7 +52,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EDEngineer\EDEngineer.csproj" />
     <ProjectReference Include="..\EliteJournalReader\EliteJournalReader.csproj" />
     <ProjectReference Include="..\InputSimulatorPlus\WindowsInput\WindowsInput.csproj" />
   </ItemGroup>

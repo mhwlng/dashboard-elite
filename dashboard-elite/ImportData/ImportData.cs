@@ -8,6 +8,7 @@ using dashboard_elite.EliteData;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Serilog;
 
 // ReSharper disable StringLiteralTypo
 
@@ -292,7 +293,7 @@ namespace dashboard_elite.ImportData
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Log.Logger.Information(ex.ToString());
             }
 
             return new List<CNBSystemData>();
@@ -323,7 +324,7 @@ namespace dashboard_elite.ImportData
 
             if (!File.Exists(path))
             {
-                Console.WriteLine("looking up Compromised Nav Beacons");
+                Log.Logger.Information("looking up Compromised Nav Beacons");
 
                 var cnbSystems = GetCnbSystems("http://edtools.cc/res.json");
 
@@ -358,7 +359,7 @@ namespace dashboard_elite.ImportData
 
                 if (!File.Exists(path))
                 {
-                    Console.WriteLine("looking up " + material + " Hotspots");
+                    Log.Logger.Information("looking up " + material + " Hotspots");
 
                     using (var client = new WebClient())
                     {
@@ -370,7 +371,7 @@ namespace dashboard_elite.ImportData
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Log.Logger.Information(ex.ToString());
             }
         }
 
@@ -417,7 +418,7 @@ namespace dashboard_elite.ImportData
 
                 if (!File.Exists(path))
                 {
-                    Console.WriteLine("looking up galnet");
+                    Log.Logger.Information("looking up galnet");
 
                     using (var client = new WebClient())
                     {
@@ -459,7 +460,7 @@ namespace dashboard_elite.ImportData
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Log.Logger.Information(ex.ToString());
             }
         }
 
@@ -473,7 +474,7 @@ namespace dashboard_elite.ImportData
 
                 if (!File.Exists(path))
                 {
-                    Console.WriteLine("looking up community goals");
+                    Log.Logger.Information("looking up community goals");
 
                     using (var client = new WebClient())
                     {
@@ -490,7 +491,7 @@ namespace dashboard_elite.ImportData
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Log.Logger.Information(ex.ToString());
             }
         }
 
@@ -585,7 +586,7 @@ namespace dashboard_elite.ImportData
             {
                 path = Path.Combine(GetExePath(), path);
 
-                Console.WriteLine("looking up " + material + " Stations");
+                Log.Logger.Information("looking up " + material + " Stations");
 
                 using (var client = new WebClient())
                 {
@@ -621,7 +622,7 @@ namespace dashboard_elite.ImportData
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Log.Logger.Information(ex.ToString());
             }
         }
 
@@ -631,7 +632,7 @@ namespace dashboard_elite.ImportData
             {
                 path = Path.Combine(GetExePath(), path);
 
-                Console.WriteLine("looking up " + material + " Stations");
+                Log.Logger.Information("looking up " + material + " Stations");
 
                 using (var client = new WebClient())
                 {
@@ -668,13 +669,13 @@ namespace dashboard_elite.ImportData
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Log.Logger.Information(ex.ToString());
             }
         }
 
         public void Import()
         {
-            Console.WriteLine("ImportData started");
+            Log.Logger.Information("ImportData started");
 
             try
             {
@@ -687,22 +688,22 @@ namespace dashboard_elite.ImportData
 
                 var wasAnyUpdated = false;
 
-                Console.WriteLine("downloading station list from EDSM");
+                Log.Logger.Information("checking station list from EDSM");
 
                 //DownloadJson(@"Data\stationsEDSM.json", "https://www.edsm.net/dump/stations.json.gz", ref wasAnyUpdated);
                 JsonReaderExtensions.DownloadJson<StationEDSM>("https://www.edsm.net/dump/stations.json.gz", @"Data\stationsEDSM.json", ref wasAnyUpdated);
 
-                Console.WriteLine("downloading populated systems from EDDB");
+                Log.Logger.Information("checking populated systems from EDDB");
 
                 //DownloadJson(@"Data\populatedsystemsEDDB.json", "https://eddb.io/archive/v6/systems_populated.json", ref wasAnyUpdated);
                 JsonReaderExtensions.DownloadJson<PopulatedSystemEDDB>("https://eddb.io/archive/v6/systems_populated.json", @"Data\populatedsystemsEDDB.json", ref wasAnyUpdated);
 
-                Console.WriteLine("downloading station list from EDDB");
+                Log.Logger.Information("checking station list from EDDB");
 
                 //DownloadJson(@"Data\stationsEDDB.json", "https://eddb.io/archive/v6/stations.json", ref wasAnyUpdated);
                 JsonReaderExtensions.DownloadJson<StationEDDB>("https://eddb.io/archive/v6/stations.json", @"Data\stationsEDDB.json", ref wasAnyUpdated);
 
-                Console.WriteLine("checking station and system data");
+                Log.Logger.Information("checking station and system data");
 
                 populatedSystemsEDDBList = JsonReaderExtensions.ParseJson<PopulatedSystemEDDB>(@"Data\populatedsystemsEDDB.json").ToList();
 
@@ -736,11 +737,11 @@ namespace dashboard_elite.ImportData
                         .GroupBy(x => x.SystemName + x.Name).Select(x => x.First())
                         .ToDictionary(x => x.SystemName + x.Name);
 
-                    Console.WriteLine("looking up additional EDDB station information for all stations");
+                    Log.Logger.Information("looking up additional EDDB station information for all stations");
 
                     stationsEDSM = JsonReaderExtensions.ParseJson<StationEDSM>(@"Data\stationsEDSM.json").ToList();
 
-                    Console.WriteLine("looking up EDDB system information for all stations");
+                    Log.Logger.Information("looking up EDDB system information for all stations");
 
                     stationsEDSM.ForEach(z =>
                     {
@@ -781,7 +782,7 @@ namespace dashboard_elite.ImportData
                 {
                     //-------------------------
 
-                    Console.WriteLine("finding Engineers stations");
+                    Log.Logger.Information("finding Engineers stations");
                     var engineers = stationsEDSM
                         .Where(x =>
                             x.PopulatedSystemEDDB != null && // now missing Cloe Sedesi in an uninhabited system !!!!!!!!!
@@ -790,7 +791,7 @@ namespace dashboard_elite.ImportData
                     
                     StationSerialize(engineers, @"Data\engineers.json");
 
-                    Console.WriteLine("finding Aisling Duval stations");
+                    Log.Logger.Information("finding Aisling Duval stations");
                     var aislingDuval = stationsEDSM
                         .Where(x =>
                             x.Type != "Fleet Carrier" &&
@@ -806,7 +807,7 @@ namespace dashboard_elite.ImportData
                             x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
                     StationSerialize(aislingDuval, @"Data\aislingduval.json");
 
-                    Console.WriteLine("finding Archon Delaine stations");
+                    Log.Logger.Information("finding Archon Delaine stations");
                     var archonDelaine = stationsEDSM
                         .Where(x =>
                             x.Type != "Fleet Carrier" &&
@@ -822,7 +823,7 @@ namespace dashboard_elite.ImportData
                             x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
                     StationSerialize(archonDelaine, @"Data\archondelaine.json");
 
-                    Console.WriteLine("finding Arissa Lavigny-Duval stations");
+                    Log.Logger.Information("finding Arissa Lavigny-Duval stations");
                     var arissaLavignyDuval = stationsEDSM
                         .Where(x =>
                             x.Type != "Fleet Carrier" &&
@@ -838,7 +839,7 @@ namespace dashboard_elite.ImportData
                             x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
                     StationSerialize(arissaLavignyDuval, @"Data\arissalavignyduval.json");
 
-                    Console.WriteLine("finding Denton Patreus stations");
+                    Log.Logger.Information("finding Denton Patreus stations");
                     var dentonPatreus = stationsEDSM
                         .Where(x =>
                             x.Type != "Fleet Carrier" &&
@@ -854,7 +855,7 @@ namespace dashboard_elite.ImportData
                             x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
                     StationSerialize(dentonPatreus, @"Data\dentonpatreus.json");
 
-                    Console.WriteLine("finding Edmund Mahon stations");
+                    Log.Logger.Information("finding Edmund Mahon stations");
                     var edmundMahon = stationsEDSM
                         .Where(x =>
                             x.Type != "Fleet Carrier" &&
@@ -870,7 +871,7 @@ namespace dashboard_elite.ImportData
                             x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
                     StationSerialize(edmundMahon, @"Data\edmundmahon.json");
 
-                    Console.WriteLine("finding Felicia Winters stations");
+                    Log.Logger.Information("finding Felicia Winters stations");
                     var feliciaWinters = stationsEDSM
                         .Where(x =>
                             x.Type != "Fleet Carrier" &&
@@ -886,7 +887,7 @@ namespace dashboard_elite.ImportData
                             x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
                     StationSerialize(feliciaWinters, @"Data\feliciawinters.json");
 
-                    Console.WriteLine("finding Li Yong-Rui stations");
+                    Log.Logger.Information("finding Li Yong-Rui stations");
                     var liYongRui = stationsEDSM
                         .Where(x =>
                             x.Type != "Fleet Carrier" &&
@@ -902,7 +903,7 @@ namespace dashboard_elite.ImportData
                             x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
                     StationSerialize(liYongRui, @"Data\liyongrui.json");
 
-                    Console.WriteLine("finding Pranav Antal stations");
+                    Log.Logger.Information("finding Pranav Antal stations");
                     var pranavAntal = stationsEDSM
                         .Where(x =>
                             x.Type != "Fleet Carrier" &&
@@ -918,7 +919,7 @@ namespace dashboard_elite.ImportData
                             x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
                     StationSerialize(pranavAntal, @"Data\pranavantal.json");
 
-                    Console.WriteLine("finding Yuri Grom stations");
+                    Log.Logger.Information("finding Yuri Grom stations");
                     var yuriGrom = stationsEDSM
                         .Where(x =>
                             x.Type != "Fleet Carrier" &&
@@ -934,7 +935,7 @@ namespace dashboard_elite.ImportData
                             x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
                     StationSerialize(yuriGrom, @"Data\yurigrom.json");
 
-                    Console.WriteLine("finding Zachary Hudson stations");
+                    Log.Logger.Information("finding Zachary Hudson stations");
                     var zacharyHudson = stationsEDSM
                         .Where(x =>
                             x.Type != "Fleet Carrier" &&
@@ -950,7 +951,7 @@ namespace dashboard_elite.ImportData
                             x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
                     StationSerialize(zacharyHudson, @"Data\zacharyhudson.json");
 
-                    Console.WriteLine("finding Zemina Torval stations");
+                    Log.Logger.Information("finding Zemina Torval stations");
                     var zeminaTorval = stationsEDSM
                         .Where(x =>
                             x.Type != "Fleet Carrier" &&
@@ -968,7 +969,7 @@ namespace dashboard_elite.ImportData
 
                     //----------------
 
-                    Console.WriteLine("finding interstellar factors");
+                    Log.Logger.Information("finding interstellar factors");
 
                     var interStellarFactors = stationsEDSM
                         .Where(x =>
@@ -987,7 +988,7 @@ namespace dashboard_elite.ImportData
 
                     // see https://github.com/EDCD/FDevIDs/blob/a2655d9836fa32c4d9a8041edd8b2a4a7ed9d15b/How%20to%20determine%20MatTrader%20and%20Broker%20type
 
-                    Console.WriteLine("finding encoded data traders");
+                    Log.Logger.Information("finding encoded data traders");
 
                     //Encoded data trader
                     //Found in systems with medium-high security, a 'high tech' or 'military' economy
@@ -1012,7 +1013,7 @@ namespace dashboard_elite.ImportData
 
                     StationSerialize(encodedDataTraders, @"Data\encodeddatatraders.json");
 
-                    Console.WriteLine("finding raw material traders");
+                    Log.Logger.Information("finding raw material traders");
 
                     //Raw material trader
                     //Found in systems with medium-high security, an 'extraction' or 'refinery' economy
@@ -1037,7 +1038,7 @@ namespace dashboard_elite.ImportData
 
                     StationSerialize(rawMaterialTraders, @"Data\rawmaterialtraders.json");
 
-                    Console.WriteLine("finding manufactured material traders");
+                    Log.Logger.Information("finding manufactured material traders");
 
                     //Manufactured material trader
                     //Found in systems with medium-high security, an 'industrial' economy
@@ -1063,7 +1064,7 @@ namespace dashboard_elite.ImportData
 
                     StationSerialize(manufacturedMaterialTraders, @"Data\manufacturedmaterialtraders.json");
 
-                    Console.WriteLine("finding human technology brokers");
+                    Log.Logger.Information("finding human technology brokers");
 
                     //Human Technology Broker
                     //Found in systems with an 'Industrial' economy
@@ -1084,7 +1085,7 @@ namespace dashboard_elite.ImportData
 
                     StationSerialize(humanTechnologyBrokers, @"Data\humantechnologybrokers.json");
 
-                    Console.WriteLine("finding guardian technology brokers");
+                    Log.Logger.Information("finding guardian technology brokers");
 
                     //Guardian Technology Broker
                     //Found in systems with a 'high tech' economy
@@ -1106,7 +1107,7 @@ namespace dashboard_elite.ImportData
 
                     StationSerialize(guardianTechnologyBrokers, @"Data\guardiantechnologybrokers.json");
 
-                    Console.WriteLine("finding full station list");
+                    Log.Logger.Information("finding full station list");
 
                     //Full Station List
                     var fullStationList = stationsEDSM
@@ -1144,10 +1145,10 @@ namespace dashboard_elite.ImportData
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Log.Logger.Information(ex.ToString());
             }
 
-            Console.WriteLine("ImportData ended");
+            Log.Logger.Information("ImportData ended");
         }
     }
 }

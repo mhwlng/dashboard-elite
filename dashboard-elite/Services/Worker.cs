@@ -87,7 +87,6 @@ namespace dashboard_elite
 
     public class Worker : BackgroundService
     {
-        private readonly ILogger<Worker> _logger;
         private readonly IHubContext<MyHub> _myHub;
         private readonly Data _data;
 
@@ -496,9 +495,8 @@ namespace dashboard_elite
             }
         }
 
-        public Worker(ILogger<Worker> logger, IHubContext<MyHub> myHub, Data data) 
+        public Worker(IHubContext<MyHub> myHub, Data data) 
         {
-            _logger = logger;
             _myHub = myHub;
             _data = data;
         }
@@ -613,8 +611,6 @@ namespace dashboard_elite
 
                         var importData = new ImportData.ImportData();
 
-                        Log.Information("ImportData Starting");
-
                         _data.ImportData = true;
 
                         await _myHub.Clients.All.SendAsync("EliteRefresh", jsonToken);
@@ -624,8 +620,6 @@ namespace dashboard_elite
                         _data.ImportData = false;
 
                         await _myHub.Clients.All.SendAsync("EliteRefresh", jsonToken);
-
-                        Log.Information("ImportData Done");
 
                         RefreshJson();
 
@@ -659,8 +653,6 @@ namespace dashboard_elite
 
             while (!stoppingToken.IsCancellationRequested)
             {
-                //_logger.LogInformation("Worker running at: {Time}", DateTime.Now);
-
                 //await _myHub.Clients.All.SendAsync("ReceiveTestMessage", "aaa", DateTime.Now.ToLongTimeString());
 
                 await Task.Delay(1000);

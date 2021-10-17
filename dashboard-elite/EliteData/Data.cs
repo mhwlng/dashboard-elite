@@ -16,14 +16,12 @@ namespace dashboard_elite.EliteData
 {
     public class Data
     {
-        private readonly ILogger<Worker> _logger;
         private readonly IHubContext<MyHub> _myHub;
         private readonly ButtonCacheService _buttonCacheService;
         private readonly ProfileCacheService _profileCacheService;
 
-        public Data(ILogger<Worker> logger, IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService)
+        public Data(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService)
         {
-            _logger = logger;
             _myHub = myHub;
             _buttonCacheService = buttonCacheService;
             _profileCacheService = profileCacheService;

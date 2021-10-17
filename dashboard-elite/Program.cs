@@ -219,7 +219,6 @@ namespace dashboard_elite
 
         public static void OpenInLine(string address, IConfigurationRoot configuration)
         {
-            Console.WriteLine($"Try to view blazor application on {address}");
             string windowTitle = "Elite Dangerous Dashboard";
             var iconFile = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
                 ? "wwwroot/img/elite.ico"
