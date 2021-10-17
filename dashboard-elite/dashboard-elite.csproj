@@ -56,10 +56,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InputSimulatorPlus\WindowsInput\WindowsInput.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="EliteJournalReader\BackpackWatcher.cs">
       <SubType>Component</SubType>
     </Compile>
