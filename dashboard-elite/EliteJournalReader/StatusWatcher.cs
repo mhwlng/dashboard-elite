@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace EliteJournalReader
 {
@@ -53,7 +54,7 @@ namespace EliteJournalReader
             }
             catch (Exception ex)
             {
-                Trace.TraceError("Exception in setting path: " + ex.Message);
+                Log.Error("Exception in setting path: " + ex.Message);
             }
         }
 
@@ -85,7 +86,7 @@ namespace EliteJournalReader
 
             if (!Directory.Exists(Path))
             {
-                Trace.TraceError($"Cannot watch non-existing folder {Path}.");
+                Log.Error($"Cannot watch non-existing folder {Path}.");
                 return;
             }
 
@@ -121,8 +122,8 @@ namespace EliteJournalReader
             }
             catch (Exception e)
             {
-                Trace.TraceError($"Error while stopping Status watcher: {e.Message}");
-                Trace.TraceInformation(e.StackTrace);
+                Log.Error($"Error while stopping Status watcher: {e.Message}");
+                Log.Error(e.StackTrace);
             }
         }
 
@@ -157,7 +158,7 @@ namespace EliteJournalReader
 #if DEBUG
             catch (Exception ex)
             {
-                Trace.TraceInformation($"Error while reading from status.json: {ex.Message}\n{ex.StackTrace}");
+                Log.Error($"Error while reading from status.json: {ex.Message}\n{ex.StackTrace}");
 #else
             catch (Exception)
             {
@@ -173,8 +174,8 @@ namespace EliteJournalReader
                 UpdateStatus(fullPath, attempt + 1);
             else
             {
-                Trace.TraceWarning($"{ex.GetType().Name} while reading from status.json: {ex.Message}");
-                Trace.TraceInformation(ex.StackTrace);
+                Log.Error($"{ex.GetType().Name} while reading from status.json: {ex.Message}");
+                Log.Error(ex.StackTrace);
             }
         }
 

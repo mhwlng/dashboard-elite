@@ -13,27 +13,28 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Serilog;
 
 namespace EliteJournalReader
 {
 
     // copied from https://github.com/MagicMau/EliteJournalReader
 
-    public class ShipLockerWatcher : FileSystemWatcher
+    public class BackPackWatcher : FileSystemWatcher
     {
-        public event EventHandler<ShipLockerMaterialsEvent.ShipLockerMaterialsEventArgs> ShipLockerUpdated;
+        public event EventHandler<BackPackEvent.BackPackEventArgs> BackPackUpdated;
 
         /// <summary>
         ///     The default filter
         /// </summary>
-        private const string DefaultFilter = @"ShipLocker.json";
+        private const string DefaultFilter = @"Backpack.json";
 
         /// <summary>
         /// Token to signal that we are no longer watching
         /// </summary>
         private CancellationTokenSource _cancellationTokenSource;
 
-        public ShipLockerWatcher(string path)
+        public BackPackWatcher(string path)
         {
             Initialize(path);
         }
@@ -49,7 +50,7 @@ namespace EliteJournalReader
             }
             catch (Exception ex)
             {
-                Trace.TraceError("Exception in setting path: " + ex.Message);
+                Log.Error("Exception in setting path: " + ex.Message);
             }
         }
 
@@ -80,11 +81,11 @@ namespace EliteJournalReader
             return false;
         }
 
-        private static FileInfo FileInfo(string shipLockerPath)
+        private static FileInfo FileInfo(string backPackPath)
         {
             try
             {
-                var info = new FileInfo(shipLockerPath);
+                var info = new FileInfo(backPackPath);
                 if (info.Exists)
                 {
                     // This info can be cached so force a refresh
@@ -95,18 +96,18 @@ namespace EliteJournalReader
             catch { return null; }
         }
 
-        public ShipLockerMaterialsEvent.ShipLockerMaterialsEventArgs ReadShipLockerJson()
+        public BackPackEvent.BackPackEventArgs ReadBackPackJson()
         {
             try
             {
                 Thread.Sleep(100);
 
-                var shipLockerPath = System.IO.Path.Combine(Path, "ShipLocker.json");
+                var backPackPath = System.IO.Path.Combine(Path, "Backpack.json");
 
                 FileInfo fileInfo = null;
                 try
                 {
-                    fileInfo = FileInfo(shipLockerPath);
+                    fileInfo = FileInfo(backPackPath);
                 }
                 catch (NotSupportedException)
                 {
@@ -137,16 +138,16 @@ namespace EliteJournalReader
                             return null;
                         }
                         var obj = JObject.Parse(json);
-                        var shipLocker = obj.ToObject<ShipLockerMaterialsEvent.ShipLockerMaterialsEventArgs>();
-                        return shipLocker;
+                        var backPack = obj.ToObject<BackPackEvent.BackPackEventArgs>();
+                        return backPack;
 
                     }
                 }
             }
             catch (Exception e)
             {
-                Trace.TraceWarning($"Error reading ShipLocker.json journal file: {e.Message}");
-                Trace.TraceInformation(e.ToString());
+                Log.Error($"Error reading Backpack.json journal file: {e.Message}");
+                Log.Error(e.ToString());
             }
 
             return null;
@@ -162,7 +163,7 @@ namespace EliteJournalReader
 
             if (!Directory.Exists(Path))
             {
-                Trace.TraceError($"Cannot watch non-existing folder {Path}.");
+                Log.Error($"Cannot watch non-existing folder {Path}.");
                 return;
             }
 
@@ -170,13 +171,13 @@ namespace EliteJournalReader
 
             _cancellationTokenSource = new CancellationTokenSource();
 
-            Changed -= UpdateShipLocker;
-            Changed += UpdateShipLocker;
+            Changed -= UpdateBackPack;
+            Changed += UpdateBackPack;
 
             // start with reading any existing status
-            var statusJsonPath = System.IO.Path.Combine(Path, "ShipLocker.json");
+            var statusJsonPath = System.IO.Path.Combine(Path, "Backpack.json");
             if (File.Exists(statusJsonPath))
-                UpdateShipLocker(statusJsonPath);
+                UpdateBackPack(statusJsonPath);
 
             EnableRaisingEvents = true;
         }
@@ -187,7 +188,7 @@ namespace EliteJournalReader
             {
                 if (!EnableRaisingEvents) return;
 
-                Changed -= UpdateShipLocker;
+                Changed -= UpdateBackPack;
 
                 _cancellationTokenSource?.Cancel();
 
@@ -196,38 +197,38 @@ namespace EliteJournalReader
             }
             catch (Exception e)
             {
-                Trace.TraceError($"Error while stopping Journal watcher: {e.Message}");
-                Trace.TraceInformation(e.StackTrace);
+                Log.Error($"Error while stopping Journal watcher: {e.Message}");
+                Log.Error(e.StackTrace);
             }
         }
 
-        private void UpdateShipLocker(object sender, FileSystemEventArgs e)
+        private void UpdateBackPack(object sender, FileSystemEventArgs e)
         {
-            UpdateShipLocker(e.FullPath);
+            UpdateBackPack(e.FullPath);
         }
 
         private DateTime _lastTimestamp = DateTime.MinValue;
 
-        private void UpdateShipLocker(string fullPath)
+        private void UpdateBackPack(string fullPath)
         {
             try
             {
-                var shipLocker = ReadShipLockerJson();
+                var backPack = ReadBackPackJson();
 
-                if (shipLocker != null)
+                if (backPack != null)
                 {
                     // only fire the event if it's new data
-                    if (shipLocker.Timestamp > _lastTimestamp)
+                    if (backPack.Timestamp > _lastTimestamp)
                     {
-                        _lastTimestamp = shipLocker.Timestamp;
-                        FireShipLockerUpdatedEvent(shipLocker);
+                        _lastTimestamp = backPack.Timestamp;
+                        FireBackPackUpdatedEvent(backPack);
                     }
                 }
             }
 #if DEBUG
             catch (Exception ex)
             {
-                Trace.TraceInformation($"Error while reading from ShipLocker.json: {ex.Message}\n{ex.StackTrace}");
+                Log.Error($"Error while reading from Backpack.json: {ex.Message}\n{ex.StackTrace}");
 #else
             catch (Exception)
             {
@@ -235,7 +236,7 @@ namespace EliteJournalReader
             }
         }
 
-        private void FireShipLockerUpdatedEvent(ShipLockerMaterialsEvent.ShipLockerMaterialsEventArgs evt) => ShipLockerUpdated?.Invoke(this, evt);
+        private void FireBackPackUpdatedEvent(BackPackEvent.BackPackEventArgs evt) => BackPackUpdated?.Invoke(this, evt);
 
     }
     

@@ -69,8 +69,8 @@ namespace dashboard_elite
             }
             catch (Exception e)
             {
-                Trace.TraceError($"Error while stopping Status watcher: {e.Message}");
-                Trace.TraceInformation(e.StackTrace);
+                Log.Error($"Error while stopping Status watcher: {e.Message}");
+                Log.Error(e.StackTrace);
             }
         }
 

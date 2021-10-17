@@ -22,6 +22,10 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <Content Remove="wwwroot\img\buttons\readme.txt" />
   </ItemGroup>
@@ -52,8 +56,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EliteJournalReader\EliteJournalReader.csproj" />
     <ProjectReference Include="..\InputSimulatorPlus\WindowsInput\WindowsInput.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="EliteJournalReader\BackpackWatcher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="EliteJournalReader\CargoWatcher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="EliteJournalReader\JournalWatcher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="EliteJournalReader\NavRouteWatcher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="EliteJournalReader\ShipLockerWatcher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="EliteJournalReader\StatusWatcher.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace EliteJournalReader
 {
@@ -96,12 +97,12 @@ namespace EliteJournalReader
                     }
                     catch (Exception e)
                     {
-                        System.Diagnostics.Trace.TraceError("Error initializing JournalWatcher: " + handler.GetType().FullName);
+                        Log.Error("Error initializing JournalWatcher: " + handler.GetType().FullName);
                         var exception = e;
                         while (exception != null)
                         {
-                            System.Diagnostics.Trace.TraceError(exception.ToString());
-                            System.Diagnostics.Trace.TraceError(exception.StackTrace);
+                            Log.Error(exception.ToString());
+                            Log.Error(exception.StackTrace);
                             exception = exception.InnerException;
                         }
 
@@ -126,18 +127,18 @@ namespace EliteJournalReader
                 }
 
                 string errorMessage = sb.ToString();
-                System.Diagnostics.Trace.TraceError("Error initializing JournalWatcher, loading " + ex.Message + " - " + ex.Source);
-                System.Diagnostics.Trace.TraceError(ex.ToString());
-                System.Diagnostics.Trace.TraceError(errorMessage);
+                Log.Error("Error initializing JournalWatcher, loading " + ex.Message + " - " + ex.Source);
+                Log.Error(ex.ToString());
+                Log.Error(errorMessage);
             }
             catch (Exception e)
             {
-                System.Diagnostics.Trace.TraceError("Error initializing JournalWatcher");
+                Log.Error("Error initializing JournalWatcher");
                 var exception = e;
                 while (exception != null)
                 {
-                    System.Diagnostics.Trace.TraceError(exception.ToString());
-                    System.Diagnostics.Trace.TraceError(exception.StackTrace);
+                    Log.Error(exception.ToString());
+                    Log.Error(exception.StackTrace);
                     exception = exception.InnerException;
                 }
             }
@@ -161,7 +162,7 @@ namespace EliteJournalReader
             }
             catch (Exception ex)
             {
-                Trace.TraceError("Exception in setting path: " + ex.Message);
+                Log.Error("Exception in setting path: " + ex.Message);
             }
         }
 
@@ -209,7 +210,7 @@ namespace EliteJournalReader
             }
             catch (Exception e)
             {
-                Trace.TraceError($"Error while parsing previous data from {LatestJournalFile}: " + e.Message);
+                Log.Error($"Error while parsing previous data from {LatestJournalFile}: " + e.Message);
                 return -1;
             }
 
@@ -251,7 +252,7 @@ namespace EliteJournalReader
 
             if (!Directory.Exists(Path))
             {
-                Trace.TraceError($"Cannot watch non-existing folder {Path}.");
+                Log.Error($"Cannot watch non-existing folder {Path}.");
                 return;
             }
 
@@ -303,8 +304,8 @@ namespace EliteJournalReader
             }
             catch (Exception e)
             {
-                Trace.TraceWarning($"Error reading cargo.json journal file: {e.Message}");
-                Trace.TraceInformation(e.ToString());
+                Log.Error($"Error reading cargo.json journal file: {e.Message}");
+                Log.Error(e.ToString());
             }
 
             return null;
@@ -344,7 +345,7 @@ namespace EliteJournalReader
                     }
                     catch (Exception e)
                     {
-                        Trace.TraceError($"Error while polling for new journal: {e.Message}.");
+                        Log.Error($"Error while polling for new journal: {e.Message}.");
                     }
                 }
             });
@@ -365,8 +366,8 @@ namespace EliteJournalReader
             }
             catch (Exception e)
             {
-                Trace.TraceError($"Error while stopping Journal watcher: {e.Message}");
-                Trace.TraceInformation(e.StackTrace);
+                Log.Error($"Error while stopping Journal watcher: {e.Message}");
+                Log.Error(e.StackTrace);
             }
         }
 
@@ -378,14 +379,16 @@ namespace EliteJournalReader
             {
                 try
                 {
+                    journalThread.Join(30000);
+                    /*
                     if (!journalThread.Join(30000))
                     {
                         journalThread.Abort();
-                    }
+                    }*/
                 }
                 catch (Exception e)
                 {
-                    Trace.TraceError($"Something went wrong shutting down the previous journal reader thread: {e.Message}");
+                    Log.Error($"Something went wrong shutting down the previous journal reader thread: {e.Message}");
                 }
                 finally
                 {
@@ -430,8 +433,8 @@ namespace EliteJournalReader
                 }
                 catch (Exception e)
                 {
-                    Trace.TraceError($"Something went wrong in the journal reader thread {id}: {e.Message}");
-                    Trace.TraceInformation(e.StackTrace);
+                    Log.Error($"Something went wrong in the journal reader thread {id}: {e.Message}");
+                    Log.Error(e.StackTrace);
                     // Something went wrong, let's check log files again
                     LatestJournalFile = null;
                 }
@@ -472,7 +475,7 @@ namespace EliteJournalReader
             }
             catch (Exception e)
             {
-                Trace.TraceError($"Exception while parsing journal data: {e.Message}");
+                Log.Error($"Exception while parsing journal data: {e.Message}");
             }
             finally
             {
@@ -483,7 +486,7 @@ namespace EliteJournalReader
                 }
                 catch (Exception e)
                 {
-                    Trace.TraceError($"Exception while updating position in journal file: {e.Message}");
+                    Log.Error($"Exception while updating position in journal file: {e.Message}");
                     // might be something wrong with the file - let's start polling for a new one
                     StartPollingForNewJournal();
                 }
@@ -580,7 +583,7 @@ namespace EliteJournalReader
             }
             catch (Exception e)
             {
-                Trace.TraceError($"Exception handling journal event:\r\n\t{line}\r\n\t{e.GetType().FullName}: {e.Message}");
+                Log.Error($"Exception handling journal event:\r\n\t{line}\r\n\t{e.GetType().FullName}: {e.Message}");
                 OnError(new ErrorEventArgs(e));
             }
         }
@@ -601,7 +604,7 @@ namespace EliteJournalReader
                 return eventArgs;
             }
             else
-                Trace.TraceWarning("No event handler registered for journal event of type: " + eventType);
+                Log.Error("No event handler registered for journal event of type: " + eventType);
 
             return null;
         }

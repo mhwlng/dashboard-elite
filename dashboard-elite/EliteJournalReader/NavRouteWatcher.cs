@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Serilog;
 
 namespace EliteJournalReader
 {
@@ -49,7 +50,7 @@ namespace EliteJournalReader
             }
             catch (Exception ex)
             {
-                Trace.TraceError("Exception in setting path: " + ex.Message);
+                Log.Error("Exception in setting path: " + ex.Message);
             }
         }
 
@@ -145,8 +146,8 @@ namespace EliteJournalReader
             }
             catch (Exception e)
             {
-                Trace.TraceWarning($"Error reading NavRoute.json journal file: {e.Message}");
-                Trace.TraceInformation(e.ToString());
+                Log.Error($"Error reading NavRoute.json journal file: {e.Message}");
+                Log.Error(e.ToString());
             }
 
             return null;
@@ -162,7 +163,7 @@ namespace EliteJournalReader
 
             if (!Directory.Exists(Path))
             {
-                Trace.TraceError($"Cannot watch non-existing folder {Path}.");
+                Log.Error($"Cannot watch non-existing folder {Path}.");
                 return;
             }
 
@@ -196,8 +197,8 @@ namespace EliteJournalReader
             }
             catch (Exception e)
             {
-                Trace.TraceError($"Error while stopping Journal watcher: {e.Message}");
-                Trace.TraceInformation(e.StackTrace);
+                Log.Error($"Error while stopping Journal watcher: {e.Message}");
+                Log.Error(e.StackTrace);
             }
         }
 
@@ -227,7 +228,7 @@ namespace EliteJournalReader
 #if DEBUG
             catch (Exception ex)
             {
-                Trace.TraceInformation($"Error while reading from navroute.json: {ex.Message}\n{ex.StackTrace}");
+                Log.Error($"Error while reading from navroute.json: {ex.Message}\n{ex.StackTrace}");
 #else
             catch (Exception)
             {

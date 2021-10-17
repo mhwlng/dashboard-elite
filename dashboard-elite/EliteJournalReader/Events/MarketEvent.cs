@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Serilog;
 
 namespace EliteJournalReader.Events
 {
@@ -50,7 +51,7 @@ namespace EliteJournalReader.Events
                 }
                 catch (Exception e)
                 {
-                    System.Diagnostics.Trace.TraceError($"Error reading from {filepath}: {e.Message}");
+                    Log.Error($"Error reading from {filepath}: {e.Message}");
                     return null;
                 }
             }
