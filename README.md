@@ -410,6 +410,8 @@ https://github.com/EDCD/EDDI
 
 https://github.com/MagicMau/EliteJournalReader
 
+https://github.com/ishaaniMittal/inputsimulator
+
 https://github.com/msarilar/EDEngineer
 
 https://www.hwinfo.com/
