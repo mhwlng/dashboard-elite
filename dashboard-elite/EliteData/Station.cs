@@ -19,7 +19,7 @@ namespace dashboard_elite.EliteData
         public string SystemName { get; set; }
 
         [JsonProperty("distanceToArrival")]
-        public double? DistanceToArrival { get; set; }
+        public double DistanceToArrival { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -38,7 +38,7 @@ namespace dashboard_elite.EliteData
         public string SystemSecurity { get; set; }
 
         [JsonProperty("systempopulation")]
-        public long? SystemPopulation { get; set; }
+        public long SystemPopulation { get; set; }
 
         [JsonProperty("powerplaystate")]
         public string PowerplayState { get; set; }

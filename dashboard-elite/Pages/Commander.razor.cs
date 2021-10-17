@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.SignalR.Client;
 
 namespace dashboard_elite.Pages
 {
-    public partial class Index : IAsyncDisposable
+    public partial class Commander : IAsyncDisposable
     {
         [Inject] private Data Data { get; set; }
 
@@ -27,9 +27,6 @@ namespace dashboard_elite.Pages
 
             await hubConnection.StartAsync();
         }
-
-        /*async Task Send() =>
-            await hubConnection.SendAsync("SendTestMessage", userInput, messageInput);*/
 
         public bool IsConnected =>
             hubConnection.State == HubConnectionState.Connected;

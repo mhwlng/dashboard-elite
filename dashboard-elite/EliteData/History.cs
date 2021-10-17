@@ -147,7 +147,7 @@ namespace dashboard_elite.EliteData
         }
 
 
-        public static string GetEliteHistory(string defaultFilter)
+        public static string GetEliteHistory(string defaultFilter, Data data)
         {
             var journalDirectory = StandardDirectory;
 
@@ -224,7 +224,7 @@ namespace dashboard_elite.EliteData
                                     {
                                         var info = JsonConvert.DeserializeObject<EngineerProgressEvent.EngineerProgressEventArgs>(json);
 
-                                        Data.HandleEngineerProgressEvent(info);
+                                        data.HandleEngineerProgressEvent(info);
                                     }
                                     else if (json?.Contains("\"event\":\"SetUserShipName\",") == true)
                                     {

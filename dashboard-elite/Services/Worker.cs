@@ -526,7 +526,7 @@ namespace dashboard_elite
                 //#endif
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading Engineers...");
-                Data.EngineersList = Station.GetEngineers(@"Data\engineers.json");
+                _data.EngineersList = Station.GetEngineers(@"Data\engineers.json");
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading Engineering Materials...");
                 (Engineer.EngineeringMaterials, Engineer.EngineeringMaterialsByKey) = Engineer.GetAllEngineeringMaterials(@"Data\entryData.json");
@@ -547,7 +547,7 @@ namespace dashboard_elite
                 RefreshJson();
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading History...");
-                var path = History.GetEliteHistory(defaultFilter);
+                var path = History.GetEliteHistory(defaultFilter, _data);
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Getting Shopping List from EDEngineer...");
                 Engineer.GetCommanderName();
@@ -637,8 +637,6 @@ namespace dashboard_elite
             {
                 Log.Error( $"Elite Api: {ex}");
             }
-
-            //await _myHub.Clients.All.SendAsync("LoadingMessage", "bbb");
 
             await _myHub.Clients.All.SendAsync("LoadingDone");
 

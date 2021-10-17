@@ -1,49 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
+using dashboard_elite.EliteData;
+using dashboard_elite.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
-using PhotinoNET;
-
-
 
 namespace dashboard_elite.Pages
 {
-    public partial class Loading : IAsyncDisposable
+    public partial class Engineers : IAsyncDisposable
     {
+        [Inject] private Data Data { get; set; }
+
         [Inject] private NavigationManager NavigationManager { get; set; }
 
         private HubConnection hubConnection;
 
-        private string LoadingMessage;
 
         protected override async Task OnInitializedAsync()
         {
-            var focusChange = NavigationManager.Uri.Contains("127.0.0.1");
-
-            if (!focusChange)
-            {
-                NavigationManager.NavigateTo("/commander");
-            }
-
             hubConnection = new HubConnectionBuilder()
                 .WithUrl(NavigationManager.ToAbsoluteUri("/myhub"))
                 .Build();
+            
 
-            hubConnection.On<string>("LoadingMessage", (loadingMessage) =>
-            {
-                LoadingMessage = loadingMessage;
-                StateHasChanged();
-            });
-
-            hubConnection.On("LoadingDone", () =>
-            {
-                NavigationManager.NavigateTo("/commander");
-            });
+            hubConnection.On("EliteRefresh", StateHasChanged);
 
             await hubConnection.StartAsync();
         }
@@ -58,6 +38,8 @@ namespace dashboard_elite.Pages
                 await hubConnection.DisposeAsync();
             }
         }
+
+
 
 
 

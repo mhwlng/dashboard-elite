@@ -136,12 +136,12 @@ namespace dashboard_elite.ImportData
             return stations.Select(x => new StationData
             {
                 Name = x.Name,
-                DistanceToArrival = x.DistanceToArrival,
+                DistanceToArrival = x.DistanceToArrival ?? 0,
                 Type = x.Type,
 
                 SystemName = x.SystemName,
                 SystemSecurity = x.PopulatedSystemEDDB?.Security,
-                SystemPopulation = x.PopulatedSystemEDDB?.Population,
+                SystemPopulation = x.PopulatedSystemEDDB?.Population ?? 0,
 
                 PowerplayState = x.PopulatedSystemEDDB?.PowerState,
                 Powers = x.PopulatedSystemEDDB?.Power,

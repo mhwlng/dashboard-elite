@@ -13,6 +13,11 @@ td.divider {
 
 .data {
     color: #FFB000;
+    white-space: nowrap;
+}
+
+.nowrap {
+    white-space: nowrap;
 }
 
 .right {
@@ -46,19 +51,15 @@ button:hover {
 }
 
 .mud-simple-table table * tr > td, .mud-simple-table table * tr th {
+    font-size: 1.0rem;
+    line-height: 0.99em;
+    letter-spacing: normal;
+}
+
+.large-font .mud-simple-table table * tr > td, .mud-simple-table table * tr th {
     font-size: 1.2rem;
     line-height: 0.99em;
     letter-spacing: normal;
-    /*display: table-cell;
-        
-    padding: 16px;
-    font-size: .875rem;
-    text-align: start;
-    font-weight: 400;
-    line-height: 1.43;
-    border-bottom: 1px solid var(--mud-palette-table-lines);
-    letter-spacing: .01071em;
-    vertical-align: inherit;*/
 }
 
 .profilebar > .mud-icon-button-size-large.mud-button > .mud-icon-button-label > .mud-icon-size-large {
@@ -107,6 +108,10 @@ button:hover {
     }
 
     .mud-simple-table table * tr > td, .mud-simple-table table * tr th {
+        font-size: 1.0rem;
+    }
+
+    .large-font .mud-simple-table table * tr > td, .mud-simple-table table * tr th {
         font-size: 1.0rem;
     }
 

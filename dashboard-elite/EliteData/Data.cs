@@ -28,7 +28,7 @@ namespace dashboard_elite.EliteData
         }
 
 
-        public static Dictionary<HotspotSystems.MaterialTypes, List<HotspotSystems.HotspotSystemData>> NearbyHotspotSystemsList = new Dictionary<HotspotSystems.MaterialTypes, List<HotspotSystems.HotspotSystemData>>
+        public Dictionary<HotspotSystems.MaterialTypes, List<HotspotSystems.HotspotSystemData>> NearbyHotspotSystemsList = new Dictionary<HotspotSystems.MaterialTypes, List<HotspotSystems.HotspotSystemData>>
         {
             {HotspotSystems.MaterialTypes.Painite, new List<HotspotSystems.HotspotSystemData>()},
             {HotspotSystems.MaterialTypes.LTD, new List<HotspotSystems.HotspotSystemData>()},
@@ -36,7 +36,7 @@ namespace dashboard_elite.EliteData
         };
 
 
-        public static Dictionary<MiningStations.MaterialTypes, List<MiningStations.MiningStationData>> NearbyMiningStationsList = new Dictionary<MiningStations.MaterialTypes, List<MiningStations.MiningStationData>>
+        public Dictionary<MiningStations.MaterialTypes, List<MiningStations.MiningStationData>> NearbyMiningStationsList = new Dictionary<MiningStations.MaterialTypes, List<MiningStations.MiningStationData>>
         {
             {MiningStations.MaterialTypes.Painite, new List<MiningStations.MiningStationData>()},
             {MiningStations.MaterialTypes.LTD, new List<MiningStations.MiningStationData>()},
@@ -45,7 +45,7 @@ namespace dashboard_elite.EliteData
             {MiningStations.MaterialTypes.TritiumSell, new List<MiningStations.MiningStationData>()}
         };
 
-        public static Dictionary<Station.PoiTypes, List<StationData>> NearbyStationList = new Dictionary<Station.PoiTypes, List<StationData>>
+        public Dictionary<Station.PoiTypes, List<StationData>> NearbyStationList = new Dictionary<Station.PoiTypes, List<StationData>>
         {
             {Station.PoiTypes.InterStellarFactors, new List<StationData>()},
             {Station.PoiTypes.RawMaterialTraders, new List<StationData>()},
@@ -55,7 +55,7 @@ namespace dashboard_elite.EliteData
             {Station.PoiTypes.GuardianTechnologyBrokers, new List<StationData>()}
         };
 
-        public static Dictionary<Station.PowerTypes, List<StationData>> NearbyPowerStationList = new Dictionary<Station.PowerTypes, List<StationData>>
+        public Dictionary<Station.PowerTypes, List<StationData>> NearbyPowerStationList = new Dictionary<Station.PowerTypes, List<StationData>>
         {
             {Station.PowerTypes.AislingDuval, new List<StationData>()},
             {Station.PowerTypes.ArchonDelaine, new List<StationData>()},
@@ -78,9 +78,9 @@ namespace dashboard_elite.EliteData
 
         }
 
-        public static List<EngineerData> EngineersList = new List<EngineerData>();
+        public List<EngineerData> EngineersList = new List<EngineerData>();
 
-        public static List<CnbSystems.CnbSystemData> NearbyCnbSystemsList = new List<CnbSystems.CnbSystemData>();
+        public List<CnbSystems.CnbSystemData> NearbyCnbSystemsList = new List<CnbSystems.CnbSystemData>();
 
 
         public string ActiveButtonBlock = "default";
@@ -92,7 +92,7 @@ namespace dashboard_elite.EliteData
         public DateTime LastUnderAttackEvent = DateTime.Now;
         public int LimpetCount { get; set; }
 
-        public static  RingBuffer<string> EventHistory = new RingBuffer<string>(50, true);
+        public RingBuffer<string> EventHistory = new RingBuffer<string>(50, true);
 
         public RingBuffer<ReceiveTextEvent.ReceiveTextEventArgs> ChatHistory = new RingBuffer<ReceiveTextEvent.ReceiveTextEventArgs>(300, true);
 
@@ -687,7 +687,7 @@ namespace dashboard_elite.EliteData
 
         }
 
-        private static void UpdateEngineerProgress(string engineer, string engineerID, int? rank, string progress)
+        private void UpdateEngineerProgress(string engineer, string engineerID, int? rank, string progress)
         {
             var engineerItem = EngineersList.FirstOrDefault(x => x.Faction == engineer);
 
@@ -698,7 +698,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleEngineerProgressEvent(EngineerProgressEvent.EngineerProgressEventArgs info)
+        public void HandleEngineerProgressEvent(EngineerProgressEvent.EngineerProgressEventArgs info)
         {
             if (info?.Engineers?.Any() == true)
             {

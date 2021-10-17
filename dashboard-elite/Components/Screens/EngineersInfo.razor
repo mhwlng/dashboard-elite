@@ -1,0 +1,163 @@
+﻿@using dashboard_elite.EliteData
+@using System.Collections
+@{
+    var skipFirst = true;
+}
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+        @foreach (var engineer in Data.EngineersList)
+        {
+            @if (!skipFirst)
+            {
+            <tr>
+                <td class="divider" colspan="4" >&nbsp;</td>
+            </tr>
+            }
+            skipFirst = false;
+
+        <tr>
+            <td class="center" colspan="4" style="padding-top: 20px;"><h3>@engineer.Faction.ToUpper()</h3></td>
+        </tr>
+        <tr>
+            <td ><img  style="display:block;" width="100%" src="/img/engineers/@(engineer.Faction).jpg" /></td>
+            <td style="vertical-align: top;">
+
+                <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Elevation="0">
+                    <tbody>
+                        @if (!string.IsNullOrEmpty(engineer.Progress))
+                        {
+                        <tr>
+                            <td class="nowrap">State</td>
+                            <td class="data">
+                                @engineer.Progress
+                                @if (engineer.Rank != null)
+                                {
+                                <text> (Grade</text> @engineer.Rank<text>)</text>
+                                }
+                            </td>
+                        </tr>
+                        }
+                        else
+                        {
+                        <tr>
+                            <td class="nowrap">State</td>
+                            <td class="alarm">Locked</td>
+                        </tr>
+                        }
+
+                        @if (!string.IsNullOrEmpty(engineer.SystemName))
+                        {
+                        <tr>
+                            <td class="nowrap">In System</td>
+                            <td class="data">@engineer.SystemName</td>
+                        </tr>
+                        }
+                        @if (engineer.Distance > 0)
+                        {
+                        <tr>
+                            <td class="nowrap">Distance</td>
+                            <td class="data">@engineer.Distance.ToString("N0") Ly</td>
+                        </tr>
+                        }
+
+                        @if (engineer.Body != null && !string.IsNullOrEmpty(engineer.Body.name))
+                        {
+                        <tr>
+                            <td class="nowrap">&nbsp;&nbsp;&nbsp;Body</td>
+                            <td class="data">@engineer.Body.name</td>
+                        </tr>
+                        }
+
+                        @if (!string.IsNullOrEmpty(engineer.Name))
+                        {
+                        <tr>
+                            <td class="nowrap">&nbsp;&nbsp;&nbsp;Outpost</td>
+                            <td class="data">@engineer.Name</td>
+                        </tr>
+                        }
+                        @if (engineer.DistanceToArrival > 0)
+                        {
+                        <tr>
+                            <td class="nowrap">&nbsp;&nbsp;&nbsp;Dist. from star</td>
+                            <td class="data">@engineer.DistanceToArrival.ToString("N0") Ls</td>
+                        </tr>
+                        }
+
+                        @if (!string.IsNullOrEmpty(engineer.SystemSecurity))
+                        {
+                        <tr>
+                            <td class="nowrap">&nbsp;&nbsp;&nbsp;Security</td>
+                            <td class="data">@engineer.SystemSecurity</td>
+                        </tr>
+                        }
+                        @if (engineer.SystemPopulation > 0)
+                        {
+                        <tr>
+                            <td class="nowrap">&nbsp;&nbsp;&nbsp;Population</td>
+                            <td class="data">@engineer.SystemPopulation.ToString("N0")</td>
+                        </tr>
+                        }
+                        @if (!string.IsNullOrEmpty(engineer.Allegiance))
+                        {
+                        <tr>
+                            <td class="nowrap">&nbsp;&nbsp;&nbsp;Allegiance</td>
+                            <td class="data">@engineer.Allegiance</td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </MudSimpleTable>
+            </td>
+
+            <td style="vertical-align: top;">
+
+                <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Elevation="0">
+                    <tbody>
+
+                        @{
+                        Engineer.EngineerBlueprints.TryGetValue(
+                        engineer.Faction,
+                        out var blueprints);
+
+                        var Blueprints = blueprints?.Where(x => x.Type != "Suit" && x.Type != "Weapon");
+
+                        var SuitWeaponBlueprints = blueprints?.Where(x => x.Type is "Suit" or "Weapon");
+                        }
+
+                        @if (Blueprints != null)
+                        {
+                        <table>
+                            <tbody>
+                                @foreach (var m in Blueprints)
+                                {
+                                <tr>
+                                    <td class="data" style="width: 50px;">&nbsp;&nbsp;&nbsp;@m.GradeString</td>
+                                    <td>@m.Type</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                        }
+
+                        @if (SuitWeaponBlueprints != null)
+                        {
+                        <table>
+                            <tbody>
+                                @foreach (var m in SuitWeaponBlueprints)
+                                {
+                                <tr>
+                                    <td class="data">@m.Type</td>
+                                    <td>@m.BlueprintName</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                        }
+
+                    </tbody>
+                </MudSimpleTable>
+            </td>
+        </tr>
+        }
+    </tbody>
+</MudSimpleTable>
