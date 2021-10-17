@@ -89,6 +89,10 @@ In that case, only the internal touch screen window will be available.
 
 The external URL should be http://MyIpAddress:ExternalPort
 
+The local and external URLs are added to the log file like :
+- Listening on address: http://127.0.0.1:59765
+- Listening on address: http://192.168.2.35:5001
+
 The external browser should be running full screen / kiosk mode.
 Using Edge on Android, you can select the option 'add to phone'. 
 That will add an icon to the Android home screen, which wil start the browser full screen.
