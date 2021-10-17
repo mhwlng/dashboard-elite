@@ -27,10 +27,5 @@ namespace dashboard_elite.Hubs
             await base.OnConnectedAsync();
         }
 
-        /*public async Task SendTestMessage(string user, string message)
-        {
-            await Clients.All.SendAsync("ReceiveTestMessage", user, message);
-        }*/
-
     }
 }

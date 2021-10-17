@@ -36,8 +36,6 @@ namespace dashboard_elite
             services.AddServerSideBlazor();
             services.AddMudServices();
 
-            services.AddSingleton<WeatherForecastService>();
-
             services.AddSingleton<SvgCacheService>();
             services.AddSingleton<ButtonCacheService>();
             services.AddSingleton<ProfileCacheService>();

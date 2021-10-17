@@ -649,15 +649,6 @@ namespace dashboard_elite
 
             stoppingToken.WaitHandle.WaitOne();
 
-            /*
-
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                //await _myHub.Clients.All.SendAsync("ReceiveTestMessage", "aaa", DateTime.Now.ToLongTimeString());
-
-                await Task.Delay(1000);
-            }*/
-
             StatusWatcher.StatusUpdated -= _data.HandleStatusEvents;
 
             StatusWatcher.StopWatching();
