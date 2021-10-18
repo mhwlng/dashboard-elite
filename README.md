@@ -15,7 +15,7 @@ VERY UNFINISHED PRE-ALPHA RELEASE
 ![touch screen](https://i.imgur.com/Cm87t9B.png)
 
 Technology used:
-- [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0/runtime)  choose : download x64
+- [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0/runtime)  choose : windows \ run desktop apps \ download x64
 - [WebView2 Runtime](https://go.microsoft.com/fwlink/p/?LinkId=2124703)
 - Blazor server
 
