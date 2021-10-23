@@ -41,6 +41,7 @@ namespace dashboard_elite
             services.AddSingleton<ProfileCacheService>();
 
             services.AddSingleton<Data>();
+            services.AddSingleton<Galnet>();
 
             services.AddResponseCompression(opts =>
             {

@@ -62,6 +62,12 @@ button:hover {
     letter-spacing: normal;
 }
 
+.mud-navmenu.large-font  {
+    font-size: 1.2rem!important;
+    line-height: 0.99em!important;
+    letter-spacing: normal!important;
+}
+
 .profilebar > .mud-icon-button-size-large.mud-button > .mud-icon-button-label > .mud-icon-size-large {
     font-size: 3rem;
     letter-spacing: -0.001em;
@@ -72,6 +78,27 @@ button:hover {
     letter-spacing: -0.001em;
 }
 
+.galnetbody {
+    padding-top: 20px !important;
+}
+
+.galnetbody table * tr > td, .galnetbody table * tr th {
+    font-size: 1.2rem !important;
+    line-height: 0.99em !important;
+    letter-spacing: normal !important;
+}
+
+.galnetbody p {
+    font-size: 1.1rem !important;
+    font-weight: 300 !important;
+    /*line-height: normal !important;*/
+}
+
+.galnetbody br {
+    display: block;
+    content: "";
+    border-bottom: 10px solid transparent;
+}
 
 /* smaller display : 10 x 3 buttons*/
 

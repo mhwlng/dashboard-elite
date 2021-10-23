@@ -1,0 +1,51 @@
+﻿@page "/galnet"
+@layout PageLayout
+
+@{
+    var skipFirst = true;
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+        @if (GalnetData.GalnetList != null)
+        {
+            foreach (var m in GalnetData.GalnetList)
+            {
+                @foreach (var n in m.Value)
+                {
+                    @if (!skipFirst)
+                    {
+                        <tr>
+                            <td class="divider" >&nbsp;</td>
+                        </tr>
+                    }
+                    skipFirst = false;
+
+                    <tr>
+                        <td class="center" style="padding-top: 20px;"><h3>@n.Date</h3></td>
+                    </tr>
+
+                    <tr>
+                        <td class="center data" style="padding-top: 20px;"><h3>@n.Title</h3></td>
+                    </tr>
+                    @if (n.ImageList != null)
+                    {
+                        @foreach (var img in n.ImageList)
+                        {
+                            <tr>
+                                <td style="padding-top: 20px;"><img style="display: block; margin: auto; width: 50%" src="/img/galnet/@(img).png" /></td>
+                            </tr>
+
+                        }
+
+                    }
+                    <tr>
+                        <td class="galnetbody"><MudText Typo="Typo.body1">@((MarkupString)n.Body)</MudText></td>
+                    </tr>
+
+                }
+
+            }
+        }
+    </tbody>
+</MudSimpleTable>

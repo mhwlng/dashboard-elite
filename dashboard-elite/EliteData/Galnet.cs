@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using dashboard_elite.Hubs;
+using dashboard_elite.Services;
+using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 using Serilog;
 
@@ -53,11 +56,22 @@ namespace Elite
     }
 
 
-    public static class Galnet
+    public class Galnet
     {
-        public static Dictionary<string,List<GalnetData>>GalnetList = new Dictionary<string, List<GalnetData>>();
+        private readonly IHubContext<MyHub> _myHub;
+        private readonly ButtonCacheService _buttonCacheService;
+        private readonly ProfileCacheService _profileCacheService;
 
-        public static Dictionary<string, List<GalnetData>> GetGalnet(string path)
+        public Galnet(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService)
+        {
+            _myHub = myHub;
+            _buttonCacheService = buttonCacheService;
+            _profileCacheService = profileCacheService;
+        }
+
+        public Dictionary<string,List<GalnetData>>GalnetList = new Dictionary<string, List<GalnetData>>();
+
+        public Dictionary<string, List<GalnetData>> GetGalnet(string path)
         {
             try
             {
@@ -80,7 +94,7 @@ namespace Elite
 
         }
 
-        public static void GetGalnetImages(Dictionary<string, List<GalnetData>> GalnetList)
+        public void GetGalnetImages(Dictionary<string, List<GalnetData>> GalnetList)
         {
             try
             {

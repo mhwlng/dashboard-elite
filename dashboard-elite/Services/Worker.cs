@@ -89,6 +89,7 @@ namespace dashboard_elite
     {
         private readonly IHubContext<MyHub> _myHub;
         private readonly Data _data;
+        private readonly Galnet _galnet;
 
         public static FifoExecution KeyWatcherJob = new FifoExecution();
 
@@ -486,19 +487,20 @@ namespace dashboard_elite
                 
                 var cg = CommunityGoals.GetCommunityGoals(@"Data\communitygoals.json");
                 
-                var galnet = Galnet.GetGalnet(@"Data\galnet.json");
+                var g = _galnet.GetGalnet(@"Data\galnet.json");
                 
-                Galnet.GetGalnetImages(galnet);
+                _galnet.GetGalnetImages(g);
 
-                Galnet.GalnetList = cg.Concat(galnet).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+                _galnet.GalnetList = cg.Concat(g).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
             }
         }
 
-        public Worker(IHubContext<MyHub> myHub, Data data) 
+        public Worker(IHubContext<MyHub> myHub, Data data, Galnet galnet) 
         {
             _myHub = myHub;
             _data = data;
+            _galnet = galnet;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

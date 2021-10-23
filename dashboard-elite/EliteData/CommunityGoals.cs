@@ -96,34 +96,34 @@ namespace Elite
                             {
                                 body.Append("<table><tbody>");
                                 
-                                body.Append("<tr><td class=\"caption\">");
+                                body.Append("<tr><td class=\"nowrap\">");
                                 body.Append("System</td><td class=\"data\">");
                                 body.Append(cg.StarsystemName);
                                 body.Append("</td></tr>");
 
-                                body.Append("<tr><td class=\"caption\">");
+                                body.Append("<tr><td class=\"nowrap\">");
                                 body.Append("Station</td><td class=\"data\">");
                                 body.Append(cg.MarketName);
                                 body.Append("</td></tr>");
 
-                                body.Append("<tr><td class=\"caption\">");
+                                body.Append("<tr><td class=\"nowrap\">");
                                 body.Append("Objective</td><td class=\"data\">");
                                 body.Append(cg.Objective);
                                 body.Append("</td></tr>");
 
-                                body.Append("<tr><td class=\"caption\">");
+                                body.Append("<tr><td class=\"nowrap\">");
                                 body.Append("Commodity List</td><td class=\"data\">");
                                 body.Append(cg.TargetCommodityList);
                                 body.Append("</td></tr>");
 
-                                body.Append("<tr><td class=\"caption\">");
+                                body.Append("<tr><td class=\"nowrap\">");
                                 body.Append("Progress</td><td class=\"data\">");
                                 body.Append(
                                     (Convert.ToDouble(cg.Qty) / Convert.ToDouble(cg.TargetQty) * 100.0)
                                     .ToString("0.#") + "%");
                                 body.Append("</td></tr>");
 
-                                body.Append("<tr><td class=\"caption\">");
+                                body.Append("<tr><td class=\"nowrap\">");
                                 body.Append("Expires</td><td class=\"data\">");
                                 var expiry = DateTime.ParseExact(cg.Expiry, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
                                 var ts = expiry - DateTime.Now.ToUniversalTime();

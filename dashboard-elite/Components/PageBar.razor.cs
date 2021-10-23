@@ -27,13 +27,13 @@ namespace dashboard_elite.Components
         async Task ScrollTableToTop()
         {
             var module = await Module;
-            await module.InvokeVoidAsync("ScrollTableToTop", "EngineersTable");
+            await module.InvokeVoidAsync("ScrollTableToTop", "PageTable");
         }
 
         async Task ScrollTableToBottom()
         {
             var module = await Module;
-            await module.InvokeVoidAsync("ScrollTableToBottom", "EngineersTable");
+            await module.InvokeVoidAsync("ScrollTableToBottom", "PageTable");
         }
 
         public async ValueTask DisposeAsync()
