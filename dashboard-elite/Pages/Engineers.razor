@@ -1,43 +1,155 @@
 ﻿@page "/engineers"
-@using dashboard_elite.Components
+@layout PageLayout
 
+@{
+    var skipFirst = true;
+}
 
-<div class="d-flex flex-row" >
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="EngineersTable flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+        @foreach (var engineer in Data.EngineersList)
+        {
+        @if (!skipFirst)
+        {
+        <tr>
+            <td class="divider" colspan="4">&nbsp;</td>
+        </tr>
+        }
+        skipFirst = false;
 
-    <MudPaper Class="ml-4 mt-2 mb-0 mr-1 pa-1 flex-grow-1 d-flex flex-shrink-1 flex-basis-0" Elevation="4">
-        
+        <tr>
+            <td class="center" colspan="4" style="padding-top: 20px;"><h3>@engineer.Faction.ToUpper()</h3></td>
+        </tr>
+        <tr>
+            <td><img style="display:block;width:100%" src="/img/engineers/@(engineer.Faction).jpg" /></td>
+            <td style="vertical-align: top;">
 
-    </MudPaper>
+                <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Elevation="0">
+                    <tbody>
+                        @if (!string.IsNullOrEmpty(engineer.Progress))
+                        {
+                        <tr>
+                            <td class="nowrap">State</td>
+                            <td class="data">
+                                @engineer.Progress
+                                @if (engineer.Rank != null)
+                                {
+                                <text> (Grade</text> @engineer.Rank<text>)</text>
+                                }
+                            </td>
+                        </tr>
+                        }
+                        else
+                        {
+                        <tr>
+                            <td class="nowrap">State</td>
+                            <td class="alarm">Locked</td>
+                        </tr>
+                        }
 
-    <MudPaper Class="mr-4 mt-2 mb-0 ml-1 pa-1 d-flex buttonblockwidth profilebar" Elevation="4" >
+                        @if (!string.IsNullOrEmpty(engineer.SystemName))
+                        {
+                        <tr>
+                            <td class="nowrap">In System</td>
+                            <td class="data">@engineer.SystemName</td>
+                        </tr>
+                        }
+                        @if (engineer.Distance > 0)
+                        {
+                        <tr>
+                            <td class="nowrap">Distance</td>
+                            <td class="data">@engineer.Distance.ToString("N0") Ly</td>
+                        </tr>
+                        }
 
-        <ProfileBar @bind-ActiveButtonBlock="@Data.ActiveButtonBlock" />
+                        @if (engineer.Body != null && !string.IsNullOrEmpty(engineer.Body.name))
+                        {
+                        <tr>
+                            <td class="nowrap">Body</td>
+                            <td class="data">@engineer.Body.name</td>
+                        </tr>
+                        }
 
-    </MudPaper>
+                        @if (!string.IsNullOrEmpty(engineer.Name))
+                        {
+                        <tr>
+                            <td class="nowrap">Outpost</td>
+                            <td class="data">@engineer.Name</td>
+                        </tr>
+                        }
+                        @if (engineer.DistanceToArrival > 0)
+                        {
+                        <tr>
+                            <td class="nowrap">Dist. from star</td>
+                            <td class="data">@engineer.DistanceToArrival.ToString("N0") Ls</td>
+                        </tr>
+                        }
 
-</div>
+                        @if (!string.IsNullOrEmpty(engineer.SystemSecurity))
+                        {
+                        <tr>
+                            <td class="nowrap">Security</td>
+                            <td class="data">@engineer.SystemSecurity</td>
+                        </tr>
+                        }
+                        @if (engineer.SystemPopulation > 0)
+                        {
+                        <tr>
+                            <td class="nowrap">Population</td>
+                            <td class="data">@engineer.SystemPopulation.ToString("N0")</td>
+                        </tr>
+                        }
+                        @if (!string.IsNullOrEmpty(engineer.Allegiance))
+                        {
+                        <tr>
+                            <td class="nowrap">Allegiance</td>
+                            <td class="data">@engineer.Allegiance</td>
+                        </tr>
+                        }
 
-<div class="flex-grow-1 flex-shrink-1" Style="min-height: 0">
+                    </tbody>
+                </MudSimpleTable>
+            </td>
 
-    <div class="d-flex flex-row" style=" height:100%">
+            <td style="vertical-align: top;">
 
-        <MudPaper Class="mr-1 mt-2 ml-4 mb-4 pa-0 flex-grow-1 flex-shrink-1 flex-basis-0" Elevation="4" Style="min-height: 0; min-width:0;">
+                <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Elevation="0">
+                    <tbody>
+                        @{
+                        Engineer.EngineerBlueprints.TryGetValue(
+                        engineer.Faction,
+                        out var blueprints);
 
-            <div class="d-flex flex-column" style="height: 100%">
+                        var Blueprints = blueprints?.Where(x => x.Type != "Suit" && x.Type != "Weapon");
 
-                <EngineersInfo Data="Data" />
+                        var SuitWeaponBlueprints = blueprints?.Where(x => x.Type is "Suit" or "Weapon");
+                        }
 
-            </div>
-        </MudPaper>
+                        @if (Blueprints != null)
+                        {
+                        @foreach (var m in Blueprints)
+                        {
+                        <tr>
+                            <td class="data" style="width: 1px;">@m.GradeString</td>
+                            <td>@m.Type</td>
+                        </tr>
+                        }
+                        }
 
-        <MudPaper Class="ml-1 mt-2 mr-4 mb-4 pa-0 buttonblockwidth" Elevation="4" Style="min-height: 0; min-width:0; ">
-
-            <div class="d-flex flex-column" style="height: 100%">
-
-                <ButtonBlock Data="Data" />
-
-            </div>
-        </MudPaper>
-
-    </div>
-</div>
+                        @if (SuitWeaponBlueprints != null)
+                        {
+                        @foreach (var m in SuitWeaponBlueprints)
+                        {
+                        <tr>
+                            <td class="data" style="width: 1px;">@m.Type</td>
+                            <td>@m.BlueprintName</td>
+                        </tr>
+                        }
+                        }
+                    </tbody>
+                </MudSimpleTable>
+            </td>
+        </tr>
+        }
+    </tbody>
+</MudSimpleTable>

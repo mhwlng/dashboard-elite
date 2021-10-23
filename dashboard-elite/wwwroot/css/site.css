@@ -67,6 +67,12 @@ button:hover {
     letter-spacing: -0.001em;
 }
 
+.pagebar > .mud-icon-button-size-large.mud-button > .mud-icon-button-label > .mud-icon-size-large {
+    font-size: 3rem;
+    letter-spacing: -0.001em;
+}
+
+
 /* smaller display : 10 x 3 buttons*/
 
 .buttonblock > .mud-icon-button-size-large.mud-button > .mud-icon-button-label > .mud-icon-size-large {

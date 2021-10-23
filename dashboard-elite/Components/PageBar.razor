@@ -1,0 +1,22 @@
+﻿
+
+
+@if (PageTypeName == "Engineers")
+{
+    <MudIconButton class="ma-1"
+                   Size="Size.Large"
+                   Variant="Variant.Filled"
+                   DisableRipple="true"
+                   Icon="@Icons.Material.Filled.VerticalAlignTop"
+                   OnClick="ScrollTableToTop"
+                   Color="@Color.Dark"/>
+
+    <MudIconButton class="ma-1"
+                   Size="Size.Large"
+                   Variant="Variant.Filled"
+                   DisableRipple="true"
+                   Icon="@Icons.Material.Filled.VerticalAlignBottom"
+                   OnClick="ScrollTableToBottom"
+                   Color="@Color.Dark"/>
+
+}
