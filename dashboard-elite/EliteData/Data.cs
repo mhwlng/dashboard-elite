@@ -18,12 +18,14 @@ namespace dashboard_elite.EliteData
         private readonly IHubContext<MyHub> _myHub;
         private readonly ButtonCacheService _buttonCacheService;
         private readonly ProfileCacheService _profileCacheService;
+        private readonly Poi _poi;
 
-        public Data(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService)
+        public Data(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService, Poi poi)
         {
             _myHub = myHub;
             _buttonCacheService = buttonCacheService;
             _profileCacheService = profileCacheService;
+            _poi = poi;
         }
 
 
@@ -876,7 +878,7 @@ namespace dashboard_elite.EliteData
                     Ships.HandleShipDistance(LocationData.StarPos);
                     Module.HandleModuleDistance(LocationData.StarPos);
 
-                    Poi.NearbyPoiList = Poi.GetNearestPois(LocationData.StarPos);
+                    _poi.NearbyPoiList = _poi.GetNearestPois(LocationData.StarPos);
 
                     HandleJson();
 
@@ -1390,7 +1392,7 @@ namespace dashboard_elite.EliteData
 
                         History.AddTravelPos(LocationData.StarPos);
 
-                        Poi.NearbyPoiList = Poi.GetNearestPois(LocationData.StarPos);
+                        _poi.NearbyPoiList = _poi.GetNearestPois(LocationData.StarPos);
 
                         HandleJson();
 
@@ -1453,7 +1455,7 @@ namespace dashboard_elite.EliteData
 
                     History.AddTravelPos(LocationData.StarPos);
 
-                    Poi.NearbyPoiList = Poi.GetNearestPois(LocationData.StarPos);
+                    _poi.NearbyPoiList = _poi.GetNearestPois(LocationData.StarPos);
 
                     HandleJson();
 

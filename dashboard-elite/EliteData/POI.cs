@@ -150,10 +150,10 @@ namespace dashboard_elite.EliteData
     }
 
 
-    public static class Poi
+    public class Poi
     {
-        public static List<PoiItem> NearbyPoiList = new List<PoiItem>();
-        public static List<PoiItem> FullPoiList = null;
+        public List<PoiItem> NearbyPoiList = new List<PoiItem>();
+        public List<PoiItem> FullPoiList = null;
 
         // see https://www.reddit.com/r/EliteDangerous/comments/9mfiug/edison_a_tool_which_helps_getting_to_planet/
 
@@ -163,7 +163,7 @@ namespace dashboard_elite.EliteData
             @"https://docs.google.com/spreadsheets/d/11E05a-hLGyOQ84B9dQUu0Z53ow1Xt-uqJ-xXJmtYq5A/export?format=csv&gid=594549382";
 
 
-        public static List<PoiItem> GetAllPois()
+        public List<PoiItem> GetAllPois()
         {
             try
             {
@@ -209,7 +209,7 @@ namespace dashboard_elite.EliteData
 
         }
 
-        public static List<PoiItem> GetNearestPois(List<double> starPos)
+        public List<PoiItem> GetNearestPois(List<double> starPos)
         {
             if (FullPoiList?.Any() == true && starPos?.Count == 3)
             {
@@ -230,7 +230,7 @@ namespace dashboard_elite.EliteData
                     poiItem.Distance = Math.Sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
                 });
 
-                return FullPoiList.Where(x => x.Distance >= 0).OrderBy(x => x.Distance).Take(5).ToList();
+                return FullPoiList.Where(x => x.Distance >= 0).OrderBy(x => x.Distance).Take(10).ToList();
             }
 
             return new List<PoiItem>();

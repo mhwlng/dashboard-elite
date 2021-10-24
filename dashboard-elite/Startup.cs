@@ -41,6 +41,7 @@ namespace dashboard_elite
 
             services.AddSingleton<Data>();
             services.AddSingleton<Galnet>();
+            services.AddSingleton<Poi>();
 
             services.AddResponseCompression(opts =>
             {

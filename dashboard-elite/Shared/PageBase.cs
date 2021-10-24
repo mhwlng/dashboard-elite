@@ -14,18 +14,38 @@ namespace dashboard_elite.Shared
 
         [Inject] public Data Data { get; set; }
 
-        [Inject] public Galnet GalnetData { get; set; }
+        [Inject] public Galnet Galnet { get; set; }
+
+        [Inject] public Poi Poi { get; set; }
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
         public HubConnection hubConnection;
 
+        public PageHelper.Page PageType { get; set; }
+
+
         [CascadingParameter] private RouteData RouteData { get; set; }
+
+        protected override void OnParametersSet()
+        {
+            Enum.TryParse(RouteData.PageType.Name, true, out PageHelper.Page pageType);
+
+            PageType = pageType;
+
+            if (CurrentPage != null)
+            {
+                PageHelper.SetCurrentPage(pageType, (int)CurrentPage);
+            }
+            else
+            {
+                CurrentPage = PageHelper.GetCurrentPage(pageType);
+            }
+        }
+
 
         protected override async Task OnInitializedAsync()
         {
-            CurrentPage ??= PageHelper.GetCurrentPage(RouteData.PageType.Name);
-
             hubConnection = new HubConnectionBuilder()
                 .WithUrl(NavigationManager.ToAbsoluteUri("/myhub"))
                 .Build();

@@ -11,6 +11,11 @@ td.divider {
     border-bottom: 1px solid #FFB000 !important;
 }
 
+td.spacer {
+    font-size: 2px !important;
+    border-bottom: 1px transparent !important;
+}
+
 .data {
     color: #FFB000;
     white-space: nowrap;
@@ -56,11 +61,14 @@ button:hover {
     letter-spacing: normal;
 }
 
-.large-font .mud-simple-table table * tr > td, .mud-simple-table table * tr th {
+.large-font.mud-simple-table table * tr > td,
+.large-font .mud-simple-table table * tr > td,
+.mud-simple-table table * tr th {
     font-size: 1.2rem;
     line-height: 0.99em;
     letter-spacing: normal;
 }
+
 
 .mud-navmenu.large-font  {
     font-size: 1.2rem!important;
@@ -140,13 +148,26 @@ button:hover {
         min-width: 435px !important;
     }
 
-    .mud-simple-table table * tr > td, .mud-simple-table table * tr th {
+    .mud-simple-table table * tr > td, 
+    .mud-simple-table table * tr th {
         font-size: 1.0rem;
     }
 
-    .large-font .mud-simple-table table * tr > td, .mud-simple-table table * tr th {
+    .large-font.mud-simple-table table * tr > td,
+    .large-font .mud-simple-table table * tr > td,
+    .mud-simple-table table * tr th {
         font-size: 1.0rem;
     }
+
+
+    .galnetbody table * tr > td, .galnetbody table * tr th {
+        font-size: 1.0rem !important;
+    }
+
+    .galnetbody p {
+        font-size: 1.0rem !important;
+    }
+
 
 }
 

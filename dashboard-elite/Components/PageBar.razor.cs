@@ -55,15 +55,19 @@ namespace dashboard_elite.Components
             await module.InvokeVoidAsync("ScrollTableToBottom", "PageTable");
         }
 
-        private void PreviousPage(int currentPage)
+        async Task PreviousPage(int currentPage)
         {
+            await ScrollTableToTop();
+
             CurrentPage = PageHelper.DecrementCurrentPage(RouteData.PageType.Name, CurrentPage);
 
             NavigationManager.NavigateTo($"{RouteData.PageType.Name}/{CurrentPage}");
         }
 
-        private void NextPage(int currentPage)
+        async Task NextPage(int currentPage)
         {
+            await ScrollTableToTop();
+
             CurrentPage = PageHelper.IncrementCurrentPage(RouteData.PageType.Name, CurrentPage);
 
             NavigationManager.NavigateTo($"{RouteData.PageType.Name}/{CurrentPage}");

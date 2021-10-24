@@ -90,6 +90,7 @@ namespace dashboard_elite
         private readonly IHubContext<MyHub> _myHub;
         private readonly Data _data;
         private readonly Galnet _galnet;
+        private readonly Poi _poi;
 
         public static FifoExecution KeyWatcherJob = new FifoExecution();
 
@@ -496,11 +497,12 @@ namespace dashboard_elite
             }
         }
 
-        public Worker(IHubContext<MyHub> myHub, Data data, Galnet galnet) 
+        public Worker(IHubContext<MyHub> myHub, Data data, Galnet galnet, Poi poi) 
         {
             _myHub = myHub;
             _data = data;
             _galnet = galnet;
+            _poi = poi;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -543,7 +545,7 @@ namespace dashboard_elite
                 Engineer.IngredientTypes = Engineer.GetIngredientTypes(@"Data\blueprints.json", Engineer.EngineeringMaterials);
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading POI Items...");
-                Poi.FullPoiList = Poi.GetAllPois(); //?.GroupBy(x => x.System.Trim().ToLower()).ToDictionary(x => x.Key, x => x.ToList());
+                _poi.FullPoiList = _poi.GetAllPois(); //?.GroupBy(x => x.System.Trim().ToLower()).ToDictionary(x => x.Key, x => x.ToList());
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading JSON Items...");
                 RefreshJson();

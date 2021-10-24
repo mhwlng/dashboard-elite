@@ -8,6 +8,462 @@
 
 <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
     <tbody>
-        @CurrentPage
+        
+        @switch (CurrentPage)
+        {
+            case 0:
+            {
+                <tr>
+                    <td class="center" colspan="2" style="padding-top: 20px; padding-bottom: 20px;">
+                        <h2>Points of Interest</h2></td>
+                </tr>
+
+                foreach (var m in Poi.NearbyPoiList)
+                {
+                    if (!skipFirst)
+                    {
+                        <tr>
+                            <td class="divider" colspan="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="spacer" colspan="2">&nbsp;</td>
+                        </tr>
+
+                    }
+                    skipFirst = false;
+
+                    if (!string.IsNullOrEmpty(m.System))
+                    {
+                        <tr>
+                            <td class="nowrap">In System</td>
+                            <td class="data">@m.System</td>
+                        </tr>
+                    }
+                    if (m.Distance > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Distance</td>
+                            <td class="data">@m.Distance.ToString("N0") Ly</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.LocationName))
+                    {
+                        <tr>
+                            <td class="nowrap">POI</td>
+                            <td class="data">@m.LocationName</td>
+                        </tr>
+                    }
+
+                    if (!string.IsNullOrEmpty(m.Category))
+                    {
+                        <tr>
+                            <td class="nowrap">Category</td>
+                            <td class="data">@m.Category</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.SubCategory))
+                    {
+                        <tr>
+                            <td class="nowrap">SubCategory</td>
+                            <td class="data">@m.SubCategory</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.Notable))
+                    {
+                        <tr>
+                            <td class="nowrap">Note</td>
+                            <td class="data">@m.Notable</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.Body))
+                    {
+                        <tr>
+                            <td class="nowrap">Body</td>
+                            <td class="data">@m.Body</td>
+                        </tr>
+                    }
+                    if (m.DistanceToarrival > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Dist. from star</td>
+                            <td class="data">@m.DistanceToarrival.ToString("N0") Ls</td>
+                        </tr>
+                    }
+                    if (m.Gravity > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Gravity</td>
+                            <td class="data">@m.Gravity.ToString("N2") g</td>
+                        </tr>
+                    }
+                    if (m.Radius > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Radius</td>
+                            <td class="data">@m.Radius.ToString("N0") km</td>
+                        </tr>
+                    }
+                    if (m.Latitude != 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Latitude</td>
+                            <td class="data">@m.Latitude.ToString("N4")</td>
+                        </tr>
+                    }
+                    if (m.Longitude != 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Longitude</td>
+                            <td class="data">@m.Longitude.ToString("N4")</td>
+                        </tr>
+                    }
+                    if (m.Yttrium > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Yttrium</td>
+                            <td class="data">@(((double)m.Yttrium).ToString("N1")) %</td>
+                        </tr>
+                    }
+                    if (m.Technetium > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Technetium</td>
+                            <td class="data">@(((double)m.Technetium).ToString("N1")) %</td>
+                        </tr>
+                    }
+                    if (m.Ruthenium > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Ruthenium</td>
+                            <td class="data">@(((double)m.Ruthenium).ToString("N1")) %</td>
+                        </tr>
+                    }
+                    if (m.Selenium > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Selenium</td>
+                            <td class="data">@(((double)m.Selenium).ToString("N1")) %</td>
+                        </tr>
+                    }
+                    if (m.Tellurium > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Tellurium</td>
+                            <td class="data">@(((double)m.Tellurium).ToString("N1")) %</td>
+                        </tr>
+                    }
+                    if (m.Polonium > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Polonium</td>
+                            <td class="data">@(((double)m.Polonium).ToString("N1")) %</td>
+                        </tr>
+                    }
+                    if (m.Antimony > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Antimony</td>
+                            <td class="data">@(((double)m.Antimony).ToString("N1")) %</td>
+                        </tr>
+                    }
+                    if (m.Niobium > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Niobium</td>
+                            <td class="data">@(((double)m.Niobium).ToString("N1")) %</td>
+                        </tr>
+                    }
+                    if (m.Molybdenum > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Molybdenum</td>
+                            <td class="data">@(((double)m.Molybdenum).ToString("N1")) %</td>
+                        </tr>
+                    }
+                    if (m.Cadmium > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Cadmium</td>
+                            <td class="data">@(((double)m.Cadmium).ToString("N1")) %</td>
+                        </tr>
+                    }
+                    if (m.Tin > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Tin</td>
+                            <td class="data">@(((double)m.Tin).ToString("N1")) %</td>
+                        </tr>
+                    }
+                    if (m.Tungsten > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Tungsten</td>
+                            <td class="data">@(((double)m.Tungsten).ToString("N1")) %</td>
+                        </tr>
+                    }
+                    if (m.Mercury > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Mercury</td>
+                            <td class="data">@(((double)m.Mercury).ToString("N1")) %</td>
+                        </tr>
+                    }
+
+                }
+                break;
+            }
+            case 1:
+            {
+                <tr>
+                    <td class="center" colspan="2" style="padding-top: 20px; padding-bottom: 20px;">
+                        <h2>Compromised Nav. Beacons</h2></td>
+                </tr>
+
+                foreach (var m in Data.NearbyCnbSystemsList)
+                {
+                    if (!skipFirst)
+                    {
+                        <tr>
+                            <td class="divider" colspan="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="spacer" colspan="2">&nbsp;</td>
+                        </tr>
+
+                    }
+                    skipFirst = false;
+
+                    if (!string.IsNullOrEmpty(m.Name))
+                    {
+                        <tr>
+                            <td class="nowrap">In System</td>
+                            <td class="data">@m.Name</td>
+                        </tr>
+                    }
+                    if (m.Distance > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Distance</td>
+                            <td class="data">@m.Distance.ToString("N0") Ly</td>
+                        </tr>
+                    }
+
+                    if (!string.IsNullOrEmpty(m.SystemSecurity))
+                    {
+                        <tr>
+                            <td class="nowrap">Security</td>
+                            <td class="data">@m.SystemSecurity</td>
+                        </tr>
+                    }
+                    if (m.SystemPopulation > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Population</td>
+                            <td class="data">@(((long)m.SystemPopulation).ToString("N0"))</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.Government))
+                    {
+                        <tr>
+                            <td class="nowrap">Government</td>
+                            <td class="data">@m.Government</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.Allegiance))
+                    {
+                        <tr>
+                            <td class="nowrap">Allegiance</td>
+                            <td class="data">@m.Allegiance</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.ControllingMinorFaction))
+                    {
+                        <tr>
+                            <td class="nowrap">Faction</td>
+                            <td class="data">@m.ControllingMinorFaction</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.PrimaryEconomy))
+                    {
+                        <tr>
+                            <td class="nowrap">Economy</td>
+                            <td class="data">@m.PrimaryEconomy</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.Powers))
+                    {
+                        <tr>
+                            <td class="nowrap">Power</td>
+                            <td class="data">@m.Powers</td>
+                        </tr>
+                        if (!string.IsNullOrEmpty(m.PowerplayState))
+                        {
+                            <tr>
+                                <td class="nowrap">Power State</td>
+                                <td class="data">@m.PowerplayState</td>
+                            </tr>
+                        }
+                    }
+
+                }
+                break;
+            }
+            default:
+            {
+                <tr>
+                    <td class="center" colspan="2" style="padding-top: 20px; padding-bottom: 20px;">
+                        <h2>
+                            @switch (CurrentPage)
+                            {
+                                case 2:
+                                    <text>Interstellar Factors</text>
+                                    break;
+                                case 3:
+                                    <text>Raw Material Traders</text>
+                                    break;
+                                case 4:
+                                    <text>Manufactured Material Traders</text>
+                                    break;
+                                case 5:
+                                    <text>Encoded Data Traders</text>
+                                    break;
+                                case 6:
+                                    <text>Human Technology Brokers</text>
+                                    break;
+                                case 7:
+                                    <text>Guardian Technology Brokers</text>
+                                    break;
+                            }
+
+                        </h2>
+                    </td>
+                </tr>
+
+                foreach (var m in Data.NearbyStationList[(Station.PoiTypes)(int)(CurrentPage ?? 2)])
+                {
+                    if (!skipFirst)
+                    {
+                        <tr>
+                            <td class="divider" colspan="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="spacer" colspan="2">&nbsp;</td>
+                        </tr>
+
+                    }
+                    skipFirst = false;
+
+                    if (!string.IsNullOrEmpty(m.SystemName))
+                    {
+                        <tr>
+                            <td class="nowrap">In System</td>
+                            <td class="data">@m.SystemName</td>
+                        </tr>
+                    }
+                    if (m.Distance > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Distance</td>
+                            <td class="data">@m.Distance.ToString("N0") Ly</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.SystemState) && m.SystemState != "None")
+                    {
+                        <tr>
+                            <td class="nowrap">State</td>
+                            <td class="data">@m.SystemState</td>
+                        </tr>
+                    }
+                    if (m.Body != null && !string.IsNullOrEmpty(m.Body.name))
+                    {
+                        <tr>
+                            <td class="nowrap">Body</td>
+                            <td class="data">@m.Body.name</td>
+                        </tr>
+                    }
+
+                    if (!string.IsNullOrEmpty(m.Name))
+                    {
+                        <tr>
+                            <td class="nowrap">Station</td>
+                            <td class="data">@m.Name</td>
+                        </tr>
+                    }
+                    if (m.DistanceToArrival > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Dist. from star</td>
+                            <td class="data">@m.DistanceToArrival.ToString("N0") Ls</td>
+                        </tr>
+                    }
+
+                    if (!string.IsNullOrEmpty(m.Type))
+                    {
+                        <tr>
+                            <td class="nowrap">Type</td>
+                            <td class="data">@m.Type</td>
+                        </tr>
+                    }
+
+                    if (!string.IsNullOrEmpty(m.SystemSecurity))
+                    {
+                        <tr>
+                            <td class="nowrap">Security</td>
+                            <td class="data">@m.SystemSecurity</td>
+                        </tr>
+                    }
+                    if (m.SystemPopulation > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Population</td>
+                            <td class="data">@m.SystemPopulation.ToString("N0")</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.Government))
+                    {
+                        <tr>
+                            <td class="nowrap">Government</td>
+                            <td class="data">@m.Government</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.Allegiance))
+                    {
+                        <tr>
+                            <td class="nowrap">Allegiance</td>
+                            <td class="data">@m.Allegiance</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.Faction))
+                    {
+                        <tr>
+                            <td class="nowrap">Faction</td>
+                            <td class="data">@m.Faction</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.Economies))
+                    {
+                        <tr>
+                            <td class="nowrap">Economy</td>
+                            <td class="data">@m.Economies</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.Powers))
+                    {
+                        <tr>
+                            <td class="nowrap">Power</td>
+                            <td class="data">@m.Powers</td>
+                        </tr>
+                        <tr>
+                            <td class="nowrap">Power State</td>
+                            <td class="data">@m.PowerplayState</td>
+                        </tr>
+                    }
+
+
+                }
+                break;
+            }
+        }
+
     </tbody>
 </MudSimpleTable>

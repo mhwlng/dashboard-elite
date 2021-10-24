@@ -8,22 +8,25 @@
 
 <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
     <tbody>
-        @if (GalnetData.GalnetList != null)
+        @if (Galnet.GalnetList != null)
         {
-            foreach (var m in GalnetData.GalnetList)
+            foreach (var m in Galnet.GalnetList)
             {
                 @foreach (var n in m.Value)
                 {
                     @if (!skipFirst)
                     {
                         <tr>
-                            <td class="divider" >&nbsp;</td>
+                            <td class="divider">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="spacer">&nbsp;</td>
                         </tr>
                     }
                     skipFirst = false;
 
                     <tr>
-                        <td class="center" style="padding-top: 20px;"><h3>@n.Date</h3></td>
+                        <td class="center" style="padding-top: 10px;"><h3>@n.Date</h3></td>
                     </tr>
 
                     <tr>

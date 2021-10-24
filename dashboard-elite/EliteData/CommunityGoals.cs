@@ -130,6 +130,7 @@ namespace dashboard_elite.EliteData
                                 body.Append("</td></tr>");
 
                                 body.Append("<tr><td class=\"divider\" colspan=\"2\">&nbsp;</td></tr>");
+                                body.Append("<tr><td class=\"spacer\" colspan=\"2\">&nbsp;</td></tr>");
 
                                 body.Append("</tbody></table><br>");
 
