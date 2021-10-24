@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using Serilog;
 
 // ReSharper disable IdentifierTypo
 
-namespace Elite
+namespace dashboard_elite.EliteData
 {
     public static class TimeSpanFormattingExtensions
     {

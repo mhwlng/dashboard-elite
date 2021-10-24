@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using dashboard_elite.EliteData;
 using Newtonsoft.Json;
 using Serilog;
 
 // ReSharper disable IdentifierTypo
 
-namespace Elite
+namespace dashboard_elite.EliteData
 {
 
     public static class MiningStations

@@ -11,7 +11,7 @@ using Serilog;
 
 // ReSharper disable IdentifierTypo
 
-namespace Elite
+namespace dashboard_elite.EliteData
 {
     public class GalnetRoot
     {

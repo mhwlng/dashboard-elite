@@ -1,0 +1,13 @@
+﻿@page "/poi/{CurrentPage:int?}"
+@inherits PageBase
+@layout PageLayout
+
+@{
+    var skipFirst = true;
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+        @CurrentPage
+    </tbody>
+</MudSimpleTable>

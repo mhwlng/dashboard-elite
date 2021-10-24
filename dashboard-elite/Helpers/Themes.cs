@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MudBlazor;
+﻿using MudBlazor;
 
-namespace dashboard_elite
+namespace dashboard_elite.Helpers
 {
     public static class Themes
     {

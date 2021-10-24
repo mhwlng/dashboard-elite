@@ -102,5 +102,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\MudBlazor\Components\NavMenu\" />
+  </ItemGroup>
   
 </Project>

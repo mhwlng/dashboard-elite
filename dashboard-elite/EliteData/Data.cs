@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using dashboard_elite.Helpers.RingBuffer;
 using dashboard_elite.Hubs;
 using dashboard_elite.Services;
-using Elite;
-using Elite.RingBuffer;
 using EliteJournalReader;
 using EliteJournalReader.Events;
 using Microsoft.AspNetCore.SignalR;

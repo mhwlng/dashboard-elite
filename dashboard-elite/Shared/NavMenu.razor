@@ -1,5 +1,7 @@
-﻿<MudNavMenu class="large-font">
-    <MudNavLink Href="/commander" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Commander</MudNavLink>
-    <MudNavLink Href="/engineers" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Engineers</MudNavLink>
-    <MudNavLink Href="/galnet" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Galnet</MudNavLink>
+﻿@using dashboard_elite.Helpers
+<MudNavMenu class="large-font">
+    <MudNavLink Href="@(PageHelper.Page.Commander.ToString())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Commander</MudNavLink>
+    <MudNavLink Href="@(PageHelper.Page.Engineers.ToString())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Engineers</MudNavLink>
+    <MudNavLink Href="@(PageHelper.Page.Galnet.ToString())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Galnet</MudNavLink>
+    <MudNavLink Href="@(PageHelper.Page.Poi.ToString())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Points of Interest</MudNavLink>
 </MudNavMenu>

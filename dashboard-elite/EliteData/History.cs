@@ -5,7 +5,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using Elite;
 using EliteJournalReader.Events;
 using Newtonsoft.Json;
 using Serilog;

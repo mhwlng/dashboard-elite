@@ -376,7 +376,7 @@ namespace dashboard_elite.ImportData
         }
 
 
-        private void GalnetSerialize(List<Elite.GalnetData> galnet, string fullPath)
+        private void GalnetSerialize(List<GalnetData> galnet, string fullPath)
         {
             new FileInfo(fullPath).Directory?.Create();
 
@@ -392,7 +392,7 @@ namespace dashboard_elite.ImportData
             }
         }
 
-        private void CommunityGoalSerialize(List<Elite.CommunityGoal> cg, string fullPath)
+        private void CommunityGoalSerialize(List<CommunityGoal> cg, string fullPath)
         {
             new FileInfo(fullPath).Directory?.Create();
 
@@ -424,7 +424,7 @@ namespace dashboard_elite.ImportData
                     {
                         var data = client.DownloadString(url);
 
-                        var galnetJson = JsonConvert.DeserializeObject<Elite.GalnetRoot>(data)?.Data.Select(x => x.Attributes).ToList();
+                        var galnetJson = JsonConvert.DeserializeObject<GalnetRoot>(data)?.Data.Select(x => x.Attributes).ToList();
 
                         if (galnetJson?.Any() == true)
                         {
@@ -480,7 +480,7 @@ namespace dashboard_elite.ImportData
                     {
                         var data = client.DownloadString(url);
 
-                        var cgJson = JsonConvert.DeserializeObject<Elite.CommunityGoalsData>(data);
+                        var cgJson = JsonConvert.DeserializeObject<CommunityGoalsData>(data);
 
                         if (cgJson != null)
                         {
@@ -509,7 +509,7 @@ namespace dashboard_elite.ImportData
             public StationEDSM StationEDSM { get; set; }
         }
 
-        private List<Elite.MiningStations.MiningStationData> GetMiningStationsData(List<HotspotStationData> stations, List<StationEDSM> stationsEDSM)
+        private List<MiningStations.MiningStationData> GetMiningStationsData(List<HotspotStationData> stations, List<StationEDSM> stationsEDSM)
         {
             if (stationsEDSM != null)
             {
@@ -520,7 +520,7 @@ namespace dashboard_elite.ImportData
             }
 
             return stations.Where(x => x.StationEDSM?.AdditionalStationDataEDDB?.IsPlanetary == false)
-                .Select(x => new Elite.MiningStations.MiningStationData
+                .Select(x => new MiningStations.MiningStationData
             {
                 Name = x.Station,
                 SystemName = x.System,
@@ -556,7 +556,7 @@ namespace dashboard_elite.ImportData
                 }).ToList();
         }
 
-        private void MiningStationsSerialize(List<Elite.MiningStations.MiningStationData> stations, string fullPath)
+        private void MiningStationsSerialize(List<MiningStations.MiningStationData> stations, string fullPath)
         {
             new FileInfo(fullPath).Directory?.Create();
 

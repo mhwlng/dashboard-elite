@@ -1,4 +1,4 @@
-﻿using Elite;
+﻿using dashboard_elite.Helpers;
 using Microsoft.JSInterop;
 
 namespace dashboard_elite.JsInterop

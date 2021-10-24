@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using dashboard_elite.EliteData;
 using dashboard_elite.Hubs;
 using dashboard_elite.Services;
-using Elite;
 using Microsoft.AspNetCore.ResponseCompression;
 using MudBlazor.Services;
 using Serilog;

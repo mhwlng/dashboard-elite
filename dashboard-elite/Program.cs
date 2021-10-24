@@ -16,8 +16,9 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using dashboard_elite.Audio;
 using dashboard_elite.EliteData;
-using Elite;
+using dashboard_elite.Helpers;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using PhotinoNET;
@@ -28,6 +29,7 @@ using Serilog.Formatting;
 
 namespace dashboard_elite
 {
+
     public class Program
     {
         public static readonly object RefreshJsonLock = new object();
@@ -386,8 +388,6 @@ namespace dashboard_elite
             //Log.Information("WindowIsClosing Callback Fired.");
             return false;   //return true to block closing of the window
         }
-
-
     }
 
 }

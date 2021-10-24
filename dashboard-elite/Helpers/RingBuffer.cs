@@ -1,4 +1,8 @@
-﻿namespace Elite
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace dashboard_elite.Helpers
 {
     #region License
     /* Copyright 2015 Joe Osborne
@@ -19,10 +23,6 @@
      *  along with RingBuffer. If not, see <http://www.gnu.org/licenses/>.
      */
     #endregion
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-
     namespace RingBuffer
     {
         /// <summary>

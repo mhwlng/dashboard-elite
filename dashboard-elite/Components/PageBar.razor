@@ -1,8 +1,10 @@
-﻿
+﻿@using dashboard_elite.Helpers
 
 
-@if (PageTypeName == "Engineers" ||
-     PageTypeName == "Galnet")  
+
+@if (PageType == PageHelper.Page.Engineers ||
+    PageType == PageHelper.Page.Galnet ||
+    PageType == PageHelper.Page.Poi)
 {
     <MudIconButton class="ma-1"
                    Size="Size.Large"
@@ -10,7 +12,7 @@
                    DisableRipple="true"
                    Icon="@Icons.Material.Filled.VerticalAlignTop"
                    OnClick="ScrollTableToTop"
-                   Color="@Color.Dark"/>
+                   Color="@Color.Dark" />
 
     <MudIconButton class="ma-1"
                    Size="Size.Large"
@@ -18,6 +20,29 @@
                    DisableRipple="true"
                    Icon="@Icons.Material.Filled.VerticalAlignBottom"
                    OnClick="ScrollTableToBottom"
-                   Color="@Color.Dark"/>
+                   Color="@Color.Dark" />
+
+}
+
+@if (PageType == PageHelper.Page.Poi)
+{
+
+    <MudIconButton class="ma-1"
+                   Size="Size.Large"
+                   Variant="Variant.Filled"
+                   DisableRipple="true"
+                   Icon="@Icons.Material.Filled.ArrowLeft"
+                   OnClick="() => PreviousPage(CurrentPage)"
+                   Color="@Color.Dark" />
+
+    <MudIconButton class="ma-1"
+                   Size="Size.Large"
+                   Variant="Variant.Filled"
+                   DisableRipple="true"
+                   Icon="@Icons.Material.Filled.ArrowRight"
+                   OnClick="() => NextPage(CurrentPage)"
+                   Color="@Color.Dark" />
+
+
 
 }

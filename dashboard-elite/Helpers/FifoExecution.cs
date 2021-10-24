@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 
-namespace Elite
+namespace dashboard_elite.Helpers
 {
     //https://msdn.microsoft.com/en-us/magazine/dd419664.aspx
     /*

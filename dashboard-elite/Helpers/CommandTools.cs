@@ -8,14 +8,13 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using dashboard_elite;
 using dashboard_elite.EliteData;
 using dashboard_elite.JsInterop;
 using Serilog;
 using WindowsInput;
 using WindowsInput.Native;
 
-namespace Elite
+namespace dashboard_elite.Helpers
 {
     internal static class CommandTools
     {

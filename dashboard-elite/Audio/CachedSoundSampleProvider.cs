@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NAudio.Wave;
 
-namespace Elite
+namespace dashboard_elite.Audio
 {
     class CachedSoundSampleProvider : ISampleProvider
     {

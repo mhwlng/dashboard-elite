@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Linq;
 using EDEngineer.Models;
-using Elite;
 using EliteJournalReader;
 using EliteJournalReader.Events;
 
