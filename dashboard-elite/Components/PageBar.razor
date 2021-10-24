@@ -35,6 +35,36 @@
                    OnClick="() => PreviousPage(CurrentPage)"
                    Color="@Color.Dark" />
 
+    <div class="center flex-grow-1 pagebarcaption" >
+            @switch (CurrentPage)
+            {
+                case 0:
+                    <text>Points of Interest</text>
+                    break;
+                case 1:
+                    <text>Compromised Nav. Beacons</text>
+                    break;
+                case 2:
+                    <text>Interstellar Factors</text>
+                    break;
+                case 3:
+                    <text>Raw Material Traders</text>
+                    break;
+                case 4:
+                    <text>Manufactured Material Traders</text>
+                    break;
+                case 5:
+                    <text>Encoded Data Traders</text>
+                    break;
+                case 6:
+                    <text>Human Technology Brokers</text>
+                    break;
+                case 7:
+                    <text>Guardian Technology Brokers</text>
+                    break;
+            }
+    </div>
+
     <MudIconButton class="ma-1"
                    Size="Size.Large"
                    Variant="Variant.Filled"

@@ -106,12 +106,12 @@ namespace dashboard_elite.EliteData
                                 body.Append("</td></tr>");
 
                                 body.Append("<tr><td class=\"nowrap\">");
-                                body.Append("Objective</td><td class=\"data\">");
+                                body.Append("Objective</td><td class=\"datawrap\">");
                                 body.Append(cg.Objective);
                                 body.Append("</td></tr>");
 
                                 body.Append("<tr><td class=\"nowrap\">");
-                                body.Append("Commodity List</td><td class=\"data\">");
+                                body.Append("Commodity List</td><td class=\"datawrap\">");
                                 body.Append(cg.TargetCommodityList);
                                 body.Append("</td></tr>");
 

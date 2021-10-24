@@ -22,8 +22,8 @@
                 <td class="center" colspan="4" style="padding-top: 20px;"><h3>@engineer.Faction.ToUpper()</h3></td>
             </tr>
             <tr>
-                <td><img style="display:block;width:100%" src="/img/engineers/@(engineer.Faction).jpg" /></td>
-                <td style="vertical-align: top;">
+                <td class="engineerimage"><img class="engineerimage" src="/img/engineers/@(engineer.Faction).jpg" /></td>
+                <td style="padding-left: 0; padding-right: 0; vertical-align: top;">
 
                     <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Elevation="0">
                         <tbody>
@@ -112,7 +112,7 @@
                     </MudSimpleTable>
                 </td>
 
-                <td style="vertical-align: top;">
+                <td style="padding-left: 0; padding-right: 0; vertical-align: top; ">
 
                     <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Elevation="0">
                         <tbody>
@@ -132,7 +132,7 @@
                                 {
                                     <tr>
                                         <td class="data" style="width: 1px;">@m.GradeString</td>
-                                        <td>@m.Type</td>
+                                        <td class="wrap">@m.Type</td>
                                     </tr>
                                 }
                             }
@@ -143,7 +143,7 @@
                                 {
                                     <tr>
                                         <td class="data" style="width: 1px;">@m.Type</td>
-                                        <td>@m.BlueprintName</td>
+                                        <td class="wrap">@m.BlueprintName</td>
                                     </tr>
                                 }
                             }

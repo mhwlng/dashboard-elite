@@ -13,10 +13,6 @@
         {
             case 0:
             {
-                <tr>
-                    <td class="center" colspan="2" style="padding-top: 20px; padding-bottom: 20px;">
-                        <h2>Points of Interest</h2></td>
-                </tr>
 
                 foreach (var m in Poi.NearbyPoiList)
                 {
@@ -50,7 +46,7 @@
                     {
                         <tr>
                             <td class="nowrap">POI</td>
-                            <td class="data">@m.LocationName</td>
+                            <td class="datawrap">@m.LocationName</td>
                         </tr>
                     }
 
@@ -72,7 +68,7 @@
                     {
                         <tr>
                             <td class="nowrap">Note</td>
-                            <td class="data">@m.Notable</td>
+                            <td class="datawrap">@m.Notable</td>
                         </tr>
                     }
                     if (!string.IsNullOrEmpty(m.Body))
@@ -214,11 +210,6 @@
             }
             case 1:
             {
-                <tr>
-                    <td class="center" colspan="2" style="padding-top: 20px; padding-bottom: 20px;">
-                        <h2>Compromised Nav. Beacons</h2></td>
-                </tr>
-
                 foreach (var m in Data.NearbyCnbSystemsList)
                 {
                     if (!skipFirst)
@@ -310,35 +301,6 @@
             }
             default:
             {
-                <tr>
-                    <td class="center" colspan="2" style="padding-top: 20px; padding-bottom: 20px;">
-                        <h2>
-                            @switch (CurrentPage)
-                            {
-                                case 2:
-                                    <text>Interstellar Factors</text>
-                                    break;
-                                case 3:
-                                    <text>Raw Material Traders</text>
-                                    break;
-                                case 4:
-                                    <text>Manufactured Material Traders</text>
-                                    break;
-                                case 5:
-                                    <text>Encoded Data Traders</text>
-                                    break;
-                                case 6:
-                                    <text>Human Technology Brokers</text>
-                                    break;
-                                case 7:
-                                    <text>Guardian Technology Brokers</text>
-                                    break;
-                            }
-
-                        </h2>
-                    </td>
-                </tr>
-
                 foreach (var m in Data.NearbyStationList[(Station.PoiTypes)(int)(CurrentPage ?? 2)])
                 {
                     if (!skipFirst)

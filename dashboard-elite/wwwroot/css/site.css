@@ -16,9 +16,22 @@ td.spacer {
     border-bottom: 1px transparent !important;
 }
 
+.caption {
+    padding-right: 0!important;
+}
+
 .data {
     color: #FFB000;
     white-space: nowrap;
+}
+
+.datawrap {
+    color: #FFB000;
+    line-height: normal !important;
+}
+
+.wrap {
+    line-height: normal !important;
 }
 
 .nowrap {
@@ -64,7 +77,7 @@ button:hover {
 .large-font.mud-simple-table table * tr > td,
 .large-font .mud-simple-table table * tr > td,
 .mud-simple-table table * tr th {
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     line-height: 0.99em;
     letter-spacing: normal;
 }
@@ -72,7 +85,7 @@ button:hover {
 
 .mud-navmenu.large-font  {
     font-size: 1.2rem!important;
-    line-height: 0.99em!important;
+    /*line-height: 0.99em!important;*/
     letter-spacing: normal!important;
 }
 
@@ -91,13 +104,13 @@ button:hover {
 }
 
 .galnetbody table * tr > td, .galnetbody table * tr th {
-    font-size: 1.2rem !important;
-    line-height: 0.99em !important;
+    font-size: 1.0rem !important;
+    /*line-height: 0.99em !important; */
     letter-spacing: normal !important;
 }
 
 .galnetbody p {
-    font-size: 1.1rem !important;
+    font-size: 1.0rem !important;
     font-weight: 300 !important;
     /*line-height: normal !important;*/
 }
@@ -120,6 +133,20 @@ button:hover {
     min-width: 1015px!important;      
 }
 
+.pagebarcaption {
+    line-height: 65px;
+    font-size: 1.2rem;
+}
+
+td.engineerimage {
+    display: none!important;
+}
+
+img.engineerimage {
+    display: none;
+    width: 0;
+}
+
 /* larger display : 8 x 4 buttons*/
 
 @media screen and (min-height: 500px) {
@@ -132,8 +159,36 @@ button:hover {
         width: 685px; 
         min-width: 685px !important;
     }
-}
 
+    .large-font.mud-simple-table table * tr > td,
+    .large-font .mud-simple-table table * tr > td,
+    .mud-simple-table table * tr th {
+        font-size: 1.2rem;
+    }
+
+    .galnetbody table * tr > td, .galnetbody table * tr th {
+        font-size: 1.2rem !important;
+    }
+
+    .galnetbody p {
+        font-size: 1.1rem !important;
+    }
+
+    .pagebarcaption {
+        font-size: 2rem;
+    }
+
+    td.engineerimage {
+        display:initial!important;
+    }
+
+    img.engineerimage {
+        display: block;
+        width: 100%;
+    }
+
+
+}
 
 
 @media screen and (min-height: 600px) {
@@ -166,6 +221,19 @@ button:hover {
 
     .galnetbody p {
         font-size: 1.0rem !important;
+    }
+
+    .pagebarcaption {
+        font-size: 1rem;
+    }
+
+    td.engineerimage {
+        display: none!important;
+    }
+
+    img.engineerimage {
+        display: none;
+        width: 0;
     }
 
 
