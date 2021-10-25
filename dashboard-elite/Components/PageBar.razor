@@ -3,8 +3,9 @@
 
 
 @if (PageType == PageHelper.Page.Engineers ||
-    PageType == PageHelper.Page.Galnet ||
-    PageType == PageHelper.Page.Poi)
+   PageType == PageHelper.Page.Galnet ||
+   PageType == PageHelper.Page.Poi ||
+   PageType == PageHelper.Page.Mining)
 {
     <MudIconButton class="ma-1"
                    Size="Size.Large"
@@ -24,7 +25,8 @@
 
 }
 
-@if (PageType == PageHelper.Page.Poi)
+@if (PageType == PageHelper.Page.Poi ||
+     PageType == PageHelper.Page.Mining)
 {
 
     <MudIconButton class="ma-1"
@@ -34,8 +36,16 @@
                    Icon="@Icons.Material.Filled.ArrowLeft"
                    OnClick="() => PreviousPage(CurrentPage)"
                    Color="@Color.Dark" />
+}
 
-    <div class="center flex-grow-1 pagebarcaption" >
+@if (PageType == PageHelper.Page.Poi ||
+     PageType == PageHelper.Page.Mining)
+{
+
+<div class="center flex-grow-1 pagebarcaption">
+    @switch (PageType)
+    {
+        case PageHelper.Page.Poi:
             @switch (CurrentPage)
             {
                 case 0:
@@ -63,7 +73,44 @@
                     <text>Guardian Technology Brokers</text>
                     break;
             }
-    </div>
+            break;
+        case PageHelper.Page.Mining:
+            @switch (CurrentPage)
+            {
+                case 0:
+                    <text>Painite Hotspots</text>
+                    break;
+                case 1:
+                    <text>Painite Prices</text>
+                    break;
+                case 2:
+                    <text>LTD Hotspots</text>
+                    break;
+                case 3:
+                    <text>LTD Prices</text>
+                    break;
+                case 4:
+                    <text>Platinum Hotspots</text>
+                    break;
+                case 5:
+                    <text>Platinum Prices</text>
+                    break;
+                case 6:
+                    <text>Tritium Prices [BUY]</text>
+                    break;
+                case 7:
+                    <text>Tritium Prices [SELL]</text>
+                    break;
+            }
+            break;
+    }
+</div>
+}
+
+
+@if (PageType == PageHelper.Page.Poi ||
+     PageType == PageHelper.Page.Mining)
+{
 
     <MudIconButton class="ma-1"
                    Size="Size.Large"

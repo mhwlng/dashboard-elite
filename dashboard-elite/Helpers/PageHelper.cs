@@ -1,4 +1,5 @@
 ﻿using System;
+using dashboard_elite.EliteData;
 
 namespace dashboard_elite.Helpers
 {
@@ -9,13 +10,15 @@ namespace dashboard_elite.Helpers
             Commander,
             Engineers,
             Galnet,
-            Poi
+            Poi,
+            Mining
         }
 
         public static readonly int[] SubPages = { 0,  // commander
                                                   0,  // engineers
                                                   0,  // galnet
-                                                  8   // poi
+                                                  8,  // poi
+                                                  8   // mining
                                                   };
 
         private static readonly int[] CurrentPage = new int[100];
@@ -72,15 +75,24 @@ namespace dashboard_elite.Helpers
 
         public static int GetCurrentPage(Page pageType)
         {
-            return PageHelper.CurrentPage[(int)pageType];
+            return CurrentPage[(int)pageType];
         }
 
         public static int GetCurrentPage(string pageName)
         {
             Enum.TryParse(pageName, true, out PageHelper.Page pageType);
 
-            return PageHelper.CurrentPage[(int)pageType];
+            return CurrentPage[(int)pageType];
         }
+
+        public static string SinceText(int agodec, DateTime updatedTime)
+        {
+
+            var ts = DateTime.Now - updatedTime.AddSeconds(-agodec);
+
+            return ts.ToHumanReadableString();
+        }
+
 
     }
 }
