@@ -147,6 +147,13 @@ img.engineerimage {
     width: 0;
 }
 
+img.engineerimagetop {
+    display: block;
+    margin: auto;
+    width: 30%;
+}
+
+
 /* larger display : 8 x 4 buttons*/
 
 @media screen and (min-height: 500px) {
@@ -185,8 +192,13 @@ img.engineerimage {
     img.engineerimage {
         display: block;
         width: 100%;
+        padding-left: 16px !important;
     }
 
+    img.engineerimagetop {
+        display: none;
+        width: 0;
+    }
 
 }
 
@@ -234,6 +246,12 @@ img.engineerimage {
     img.engineerimage {
         display: none;
         width: 0;
+    }
+
+    img.engineerimagetop {
+        display: block;
+        margin: auto;
+        width: 30%;
     }
 
 
