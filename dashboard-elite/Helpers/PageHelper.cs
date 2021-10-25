@@ -11,14 +11,16 @@ namespace dashboard_elite.Helpers
             Engineers,
             Galnet,
             Poi,
-            Mining
+            Mining,
+            Powers
         }
 
         public static readonly int[] SubPages = { 0,  // commander
                                                   0,  // engineers
                                                   0,  // galnet
                                                   8,  // poi
-                                                  8   // mining
+                                                  8,  // mining
+                                                  11  // powers
                                                   };
 
         private static readonly int[] CurrentPage = new int[100];
@@ -60,18 +62,18 @@ namespace dashboard_elite.Helpers
         }
 
 
+        public static void SetCurrentPage(Page pageType, int currentPage)
+        {
+            CurrentPage[(int)pageType] = currentPage;
+        }
 
         public static void SetCurrentPage(string pageName, int currentPage)
         {
             Enum.TryParse(pageName, true, out Page pageType);
 
-            CurrentPage[(int)pageType] = currentPage;
+            SetCurrentPage(pageType, currentPage);
         }
-
-        public static void SetCurrentPage(Page pageType, int currentPage)
-        {
-            CurrentPage[(int)pageType] = currentPage;
-        }
+        
 
         public static int GetCurrentPage(Page pageType)
         {
@@ -82,7 +84,7 @@ namespace dashboard_elite.Helpers
         {
             Enum.TryParse(pageName, true, out PageHelper.Page pageType);
 
-            return CurrentPage[(int)pageType];
+            return GetCurrentPage(pageType);
         }
 
         public static string SinceText(int agodec, DateTime updatedTime)

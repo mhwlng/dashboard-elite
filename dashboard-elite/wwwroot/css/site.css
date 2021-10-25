@@ -153,6 +153,18 @@ img.engineerimagetop {
     width: 30%;
 }
 
+td.powerimage {
+/*    display: initial !important;*/
+    vertical-align: top!important;
+    width: 140px;
+}
+
+img.powerimage {
+    /*display: block;
+    width: 100%;
+    padding-left: 16px !important;*/
+}
+
 
 /* larger display : 8 x 4 buttons*/
 

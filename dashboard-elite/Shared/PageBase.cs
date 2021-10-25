@@ -33,8 +33,14 @@ namespace dashboard_elite.Shared
 
             PageType = pageType;
 
-            if (CurrentPage != null)
+            // fixes problem with optional CurrentPage parameter.
+            // get CurrentPage from route table, don't read variable directly
+            // otherwise CurrentPage will have the value from the previous url, if CurrentPage is not set in the current url
+
+            if (RouteData.RouteValues?.ContainsKey("CurrentPage") == true && !string.IsNullOrEmpty(RouteData.RouteValues["CurrentPage"]?.ToString()))
             {
+                CurrentPage = Convert.ToInt32(RouteData.RouteValues["CurrentPage"].ToString());
+
                 PageHelper.SetCurrentPage(pageType, (int)CurrentPage);
             }
             else
@@ -46,6 +52,8 @@ namespace dashboard_elite.Shared
 
         protected override async Task OnInitializedAsync()
         {
+            OnParametersSet();
+
             hubConnection = new HubConnectionBuilder()
                 .WithUrl(NavigationManager.ToAbsoluteUri("/myhub"))
                 .Build();

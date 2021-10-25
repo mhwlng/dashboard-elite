@@ -3,9 +3,10 @@
 
 
 @if (PageType == PageHelper.Page.Engineers ||
-   PageType == PageHelper.Page.Galnet ||
-   PageType == PageHelper.Page.Poi ||
-   PageType == PageHelper.Page.Mining)
+PageType == PageHelper.Page.Galnet ||
+PageType == PageHelper.Page.Poi ||
+PageType == PageHelper.Page.Mining ||
+PageType == PageHelper.Page.Powers)
 {
     <MudIconButton class="ma-1"
                    Size="Size.Large"
@@ -26,7 +27,8 @@
 }
 
 @if (PageType == PageHelper.Page.Poi ||
-     PageType == PageHelper.Page.Mining)
+PageType == PageHelper.Page.Mining ||
+PageType == PageHelper.Page.Powers)
 {
 
     <MudIconButton class="ma-1"
@@ -39,7 +41,8 @@
 }
 
 @if (PageType == PageHelper.Page.Poi ||
-     PageType == PageHelper.Page.Mining)
+PageType == PageHelper.Page.Mining ||
+PageType == PageHelper.Page.Powers)
 {
 
 <div class="center flex-grow-1 pagebarcaption">
@@ -103,13 +106,52 @@
                     break;
             }
             break;
+        case PageHelper.Page.Powers:
+            @switch (CurrentPage)
+            {
+                case 0:
+                    <text>Aisling Duval</text>
+                    break;
+                case 1:
+                    <text>Archon Delaine</text>
+                    break;
+                case 2:
+                    <text>Arissa Lavigny-Duval</text>
+                    break;
+                case 3:
+                    <text>Denton Patreus</text>
+                    break;
+                case 4:
+                    <text>Edmund Mahon</text>
+                    break;
+                case 5:
+                    <text>Felicia Winters</text>
+                    break;
+                case 6:
+                    <text>Li Yong-Rui</text>
+                    break;
+                case 7:
+                    <text>Pranav Antal</text>
+                    break;
+                case 8:
+                    <text>Yuri Grom</text>
+                    break;
+                case 9:
+                    <text>Zachary Hudson</text>
+                    break;
+                case 10:
+                    <text>Zemina Torval</text>
+                    break;
+            }
+            break;
     }
 </div>
 }
 
 
 @if (PageType == PageHelper.Page.Poi ||
-     PageType == PageHelper.Page.Mining)
+PageType == PageHelper.Page.Mining ||
+PageType == PageHelper.Page.Powers)
 {
 
     <MudIconButton class="ma-1"
