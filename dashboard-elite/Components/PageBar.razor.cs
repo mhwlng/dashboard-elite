@@ -16,6 +16,8 @@ namespace dashboard_elite.Components
 
         [Inject] private IJSRuntime MyJsRuntime { get; set; }
 
+        [Inject] public Data Data { get; set; }
+
         public PageHelper.Page PageType { get; set; }
 
         public int CurrentPage { get; set; }

@@ -154,15 +154,14 @@ img.engineerimagetop {
 }
 
 td.powerimage {
-/*    display: initial !important;*/
-    vertical-align: top!important;
-    width: 140px;
+    display: table-cell !important;
+    width: 1px;
+    vertical-align: top !important;
 }
 
 img.powerimage {
-    /*display: block;
-    width: 100%;
-    padding-left: 16px !important;*/
+    display: block;
+    width: 140px;
 }
 
 
@@ -198,13 +197,14 @@ img.powerimage {
     }
 
     td.engineerimage {
-        display:initial!important;
+        display: table-cell !important;
+        width: 1px;
+        vertical-align: top !important;
     }
 
     img.engineerimage {
         display: block;
-        width: 100%;
-        padding-left: 16px !important;
+        width: 200px;
     }
 
     img.engineerimagetop {
