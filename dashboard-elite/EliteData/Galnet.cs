@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using dashboard_elite.Hubs;
 using dashboard_elite.Services;
 using Microsoft.AspNetCore.SignalR;
@@ -116,13 +117,9 @@ namespace dashboard_elite.EliteData
                                 {
                                     try
                                     {
-                                        using (var client = new WebClient())
-                                        {
-                                            client.Headers[HttpRequestHeader.AcceptEncoding] = "gzip";
-                                            var data = client.DownloadData("https://hosting.zaonce.net/elite-dangerous/galnet/" + imageName);
+                                        var data = Task.Run(() => Program.WebClient.GetByteArrayAsync("https://hosting.zaonce.net/elite-dangerous/galnet/" + imageName)).Result;
 
-                                            File.WriteAllBytes(imgPath, data);
-                                        }
+                                        File.WriteAllBytes(imgPath, data);
                                     }
                                     catch(Exception ex)
                                     {

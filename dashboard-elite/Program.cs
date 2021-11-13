@@ -25,13 +25,16 @@ using PhotinoNET;
 using Serilog;
 using Serilog.Events;
 using Serilog.Formatting;
-
+using System.Net.Http;
 
 namespace dashboard_elite
 {
 
     public class Program
     {
+        private static HttpClientHandler httpClientHandler = new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate };
+        public static readonly HttpClient WebClient = new HttpClient(httpClientHandler);
+
         public static readonly object RefreshJsonLock = new object();
         public static readonly object RefreshSystemLock = new object();
 

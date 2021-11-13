@@ -4,6 +4,10 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 using dashboard_elite.EliteData;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
@@ -63,7 +67,7 @@ namespace dashboard_elite.ImportData
             }
         }
 
-        public static void DownloadJson<T>(string url, string path, ref bool wasUpdated)
+        public static async Task<bool> DownloadJson<T>(string url, string path, bool wasUpdated, bool gzip)
         {
             path = Path.Combine(GetExePath(), path);
 
@@ -73,52 +77,69 @@ namespace dashboard_elite.ImportData
             {
                 var serializer = new JsonSerializer();
 
-                using (var client = new WebClient())
+                using (var sw = new StreamWriter(File.Open(path, FileMode.Create)))
                 {
-                    client.Headers[HttpRequestHeader.AcceptEncoding] = "gzip";
+                    using var jsonWriter = new JsonTextWriter(sw);
 
-                    using (var sw = new StreamWriter(File.Open(path, FileMode.Create)))
+                    //Program.WebClient.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
+                    //Program.WebClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Encoding", "gzip, deflate");
+
+                    using var response = await Program.WebClient.GetAsync(url);
+                    using var stream = await response.Content.ReadAsStreamAsync();
+                    if (gzip)
                     {
-                        using (var jsonWriter = new JsonTextWriter(sw))
+                        using var decompressed = new GZipStream(stream, CompressionMode.Decompress);
+                        using var sr = new StreamReader(decompressed);
+                        using var jsonReader = new JsonTextReader(sr);
+                        while (jsonReader.Read())
                         {
-                            using (var compressedStream = new MemoryStream(client.DownloadData(url)))
+                            if (jsonReader.TokenType == JsonToken.StartArray)
                             {
-                                using (var s = new GZipStream(compressedStream, CompressionMode.Decompress))
-                                {
-                                    using (var sr = new StreamReader(s))
-                                    {
-                                        using (var jsonReader = new JsonTextReader(sr))
-                                        {
-                                            while (jsonReader.Read())
-                                            {
-                                                if (jsonReader.TokenType == JsonToken.StartArray)
-                                                {
-                                                    jsonWriter.WriteStartArray();
-                                                }
-                                                else if (jsonReader.TokenType == JsonToken.EndArray)
-                                                {
-                                                    jsonWriter.WriteEndArray();
-                                                }
-                                                else if (jsonReader.TokenType == JsonToken.StartObject)
-                                                {
-                                                    var sd = serializer.Deserialize<T>(jsonReader);
+                                jsonWriter.WriteStartArray();
+                            }
+                            else if (jsonReader.TokenType == JsonToken.EndArray)
+                            {
+                                jsonWriter.WriteEndArray();
+                            }
+                            else if (jsonReader.TokenType == JsonToken.StartObject)
+                            {
+                                var sd = serializer.Deserialize<T>(jsonReader);
 
-                                                    serializer.Serialize(jsonWriter, sd);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                                serializer.Serialize(jsonWriter, sd);
+                            }
+                        }
 
+                    }
+                    else
+                    {
+                        using var sr = new StreamReader(stream);
+                        using var jsonReader = new JsonTextReader(sr);
+                        while (jsonReader.Read())
+                        {
+                            if (jsonReader.TokenType == JsonToken.StartArray)
+                            {
+                                jsonWriter.WriteStartArray();
+                            }
+                            else if (jsonReader.TokenType == JsonToken.EndArray)
+                            {
+                                jsonWriter.WriteEndArray();
+                            }
+                            else if (jsonReader.TokenType == JsonToken.StartObject)
+                            {
+                                var sd = serializer.Deserialize<T>(jsonReader);
+
+                                serializer.Serialize(jsonWriter, sd);
                             }
                         }
                     }
-                }
 
+                }
+            
                 wasUpdated = true;
 
             }
 
+            return wasUpdated;
         }
     }
 
@@ -267,28 +288,25 @@ namespace dashboard_elite.ImportData
 
         }
 
-        private List<CNBSystemData> GetCnbSystems(string url)
+        private static async Task<List<CNBSystemData>> GetCnbSystems(string url)
         {
             try
             {
-                using (var client = new WebClient())
+                var data = await Program.WebClient.GetStringAsync(url);
+
+                var jObj = JObject.Parse(data);
+
+                var systemInfo = jObj.ToObject<Dictionary<string, CNBSystemData>>();
+
+                return systemInfo.Where(x => x.Value.CompromisedNavBeacon == "1").Select(x => new CNBSystemData
                 {
-                    var data = client.DownloadString(url);
+                    CompromisedNavBeacon = x.Value.CompromisedNavBeacon,
+                    X = x.Value.X,
+                    Y = x.Value.Y,
+                    Z = x.Value.Z,
+                    Name = x.Key
+                }).ToList();
 
-                    var jObj = JObject.Parse(data);
-
-                    var systemInfo = jObj.ToObject<Dictionary<string, CNBSystemData>>();
-
-                    return systemInfo.Where(x => x.Value.CompromisedNavBeacon == "1").Select(x => new CNBSystemData
-                    {
-                        CompromisedNavBeacon = x.Value.CompromisedNavBeacon,
-                        X = x.Value.X,
-                        Y = x.Value.Y,
-                        Z = x.Value.Z,
-                        Name = x.Key
-                    }).ToList();
-
-                }
 
             }
             catch (Exception ex)
@@ -316,7 +334,7 @@ namespace dashboard_elite.ImportData
             }
         }
 
-        private void DownloadCnbSystems(string path, Dictionary<string, PopulatedSystemEDDB> populatedSystemsEDDBbyName)
+        private async Task DownloadCnbSystems(string path, Dictionary<string, PopulatedSystemEDDB> populatedSystemsEDDBbyName)
         {
             path = Path.Combine(GetExePath(), path);
 
@@ -326,7 +344,7 @@ namespace dashboard_elite.ImportData
             {
                 Log.Logger.Information("looking up Compromised Nav Beacons");
 
-                var cnbSystems = GetCnbSystems("http://edtools.cc/res.json");
+                var cnbSystems = await GetCnbSystems("http://edtools.cc/res.json");
 
                 cnbSystems.ForEach(z =>
                 {
@@ -349,7 +367,7 @@ namespace dashboard_elite.ImportData
             }
         }
 
-        private void DownloadHotspotSystems(string path, string url, string material)
+        private async Task DownloadHotspotSystems(string path, string url, string material)
         {
             try
             {
@@ -361,12 +379,9 @@ namespace dashboard_elite.ImportData
                 {
                     Log.Logger.Information("looking up " + material + " Hotspots");
 
-                    using (var client = new WebClient())
-                    {
-                        var data = client.DownloadString(url+material);
+                    var data = await Program.WebClient.GetStringAsync(url + material);
 
-                        File.WriteAllText(path, data);
-                    }
+                    File.WriteAllText(path, data);
                 }
             }
             catch (Exception ex)
@@ -408,7 +423,7 @@ namespace dashboard_elite.ImportData
             }
         }
 
-        private void DownloadGalnet(string path, string url)
+        private async Task DownloadGalnet(string path, string url)
         {
             try
             {
@@ -420,41 +435,38 @@ namespace dashboard_elite.ImportData
                 {
                     Log.Logger.Information("looking up galnet");
 
-                    using (var client = new WebClient())
+                    var data = await Program.WebClient.GetStringAsync(url);
+
+                    var galnetJson = JsonConvert.DeserializeObject<GalnetRoot>(data)?.Data.Select(x => x.Attributes).ToList();
+
+                    if (galnetJson?.Any() == true)
                     {
-                        var data = client.DownloadString(url);
-
-                        var galnetJson = JsonConvert.DeserializeObject<GalnetRoot>(data)?.Data.Select(x => x.Attributes).ToList();
-
-                        if (galnetJson?.Any() == true)
+                        galnetJson.ForEach(x =>
                         {
-                            galnetJson.ForEach(x =>
-                            {
-                                x.ImageList = new List<string>();
+                            x.ImageList = new List<string>();
 
-                                if (!string.IsNullOrEmpty(x.Image))
+                            if (!string.IsNullOrEmpty(x.Image))
+                            {
+                                foreach (var i in x.Image.TrimStart(',').Split(',').ToList())
                                 {
-                                    foreach (var i in x.Image.TrimStart(',').Split(',').ToList())
+                                    if (!string.IsNullOrEmpty(i))
                                     {
-                                        if (!string.IsNullOrEmpty(i))
-                                        {
-                                            x.ImageList.Add(i);
-                                        }
+                                        x.ImageList.Add(i);
                                     }
                                 }
+                            }
 
-                                x.Image = null;
+                            x.Image = null;
 
-                                if (x.BodyItem != null)
-                                {
-                                    x.Body = x.BodyItem.Value.Replace("\r\n", "<br>");
+                            if (x.BodyItem != null)
+                            {
+                                x.Body = x.BodyItem.Value.Replace("\r\n", "<br>");
 
-                                    x.BodyItem = null;
-                                }
-                            });
+                                x.BodyItem = null;
+                            }
+                        });
 
-                            GalnetSerialize(galnetJson, path);                    
-                        }
+                        GalnetSerialize(galnetJson, path);                    
                     }
                 }
             }
@@ -464,7 +476,7 @@ namespace dashboard_elite.ImportData
             }
         }
 
-        private void DownloadCommunityGoals(string path, string url)
+        private async Task DownloadCommunityGoals(string path, string url)
         {
             try
             {
@@ -476,16 +488,13 @@ namespace dashboard_elite.ImportData
                 {
                     Log.Logger.Information("looking up community goals");
 
-                    using (var client = new WebClient())
+                    var data = await Program.WebClient.GetStringAsync(url);
+
+                    var cgJson = JsonConvert.DeserializeObject<CommunityGoalsData>(data);
+
+                    if (cgJson != null)
                     {
-                        var data = client.DownloadString(url);
-
-                        var cgJson = JsonConvert.DeserializeObject<CommunityGoalsData>(data);
-
-                        if (cgJson != null)
-                        {
-                            CommunityGoalSerialize(cgJson.ActiveInitiatives, path);
-                        }
+                        CommunityGoalSerialize(cgJson.ActiveInitiatives, path);
                     }
                 }
             }
@@ -580,7 +589,7 @@ namespace dashboard_elite.ImportData
             return Math.Floor(diff.TotalSeconds);
         }
 
-        private void DownloadInaraMiningStationsHtml(string path, string url, string material, List<StationEDSM> stationsEDSM)
+        private async Task DownloadInaraMiningStationsHtml(string path, string url, string material, List<StationEDSM> stationsEDSM)
         {
             try
             {
@@ -588,84 +597,34 @@ namespace dashboard_elite.ImportData
 
                 Log.Logger.Information("looking up " + material + " Stations");
 
-                using (var client = new WebClient())
-                {
-                    var data = client.DownloadString(url);
+                var data = await Program.WebClient.GetStringAsync(url);
 
-                    var doc = new HtmlDocument();
-                    doc.LoadHtml(data);
+                var doc = new HtmlDocument();
+                doc.LoadHtml(data);
 
-                    var currentTime = ConvertToUnixTimestamp(DateTime.UtcNow);
+                var currentTime = ConvertToUnixTimestamp(DateTime.UtcNow);
 
 
-                    var stationInfo = doc.DocumentNode.SelectSingleNode("//table[@class='tablesorterintab']")
-                        .Descendants("tr")
-                        .Skip(1)
-                        .Where(tr => !tr.HasClass("hideable1") /*&& !tr.HasClass("hideable2")*/ && !tr.HasClass("hideable3"))
-                        .Select(tr => tr.Elements("td").ToList())
-                        .Select(td => new HotspotStationData
-                        {
-                            Station = td[0].Descendants("span").FirstOrDefault()?.InnerText?.Replace(" | ","") ?? "?",
-                            System = td[0].Descendants("span").Skip(1).FirstOrDefault()?.InnerText ?? "?",
-                            Price = Convert.ToInt32(td[5].GetAttributeValue("data-order", "0")),
-                            Demand = Convert.ToInt32(td[4].GetAttributeValue("data-order","0")),
-                            Pad = td[1].InnerText, //tr[5],
-                            AgoSec = (int)(currentTime - Convert.ToInt64(td[7].GetAttributeValue("data-order", "0")))
-                        })
-                        .ToList();
-
-                    var stationsData = GetMiningStationsData(stationInfo, stationsEDSM);
-
-                    MiningStationsSerialize(stationsData, path);
-                        
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Logger.Information(ex.ToString());
-            }
-        }
-
-        private void DownloadEddbMiningStationsHtml(string path, string url, string material, int cid, List<StationEDSM> stationsEDSM, bool sell)
-        {
-            try
-            {
-                path = Path.Combine(GetExePath(), path);
-
-                Log.Logger.Information("looking up " + material + " Stations");
-
-                using (var client = new WebClient())
-                {
-                    var data = client.DownloadString(url + cid);
-
-                    var doc = new HtmlDocument();
-                    doc.LoadHtml(data);
-
-                    var id = "table-stations-max-sell";
-                    if (!sell)
+                var stationInfo = doc.DocumentNode.SelectSingleNode("//table[@class='tablesorterintab']")
+                    .Descendants("tr")
+                    .Skip(1)
+                    .Where(tr => !tr.HasClass("hideable1") /*&& !tr.HasClass("hideable2")*/ && !tr.HasClass("hideable3"))
+                    .Select(tr => tr.Elements("td").ToList())
+                    .Select(td => new HotspotStationData
                     {
-                        id = "table-stations-min-buy";
-                    }
+                        Station = td[0].Descendants("span").FirstOrDefault()?.InnerText?.Replace(" | ","") ?? "?",
+                        System = td[0].Descendants("span").Skip(1).FirstOrDefault()?.InnerText ?? "?",
+                        Price = Convert.ToInt32(td[5].GetAttributeValue("data-order", "0")),
+                        Demand = Convert.ToInt32(td[4].GetAttributeValue("data-order","0")),
+                        Pad = td[1].InnerText, //tr[5],
+                        AgoSec = (int)(currentTime - Convert.ToInt64(td[7].GetAttributeValue("data-order", "0")))
+                    })
+                    .ToList();
 
-                    var stationInfo = doc.DocumentNode.SelectSingleNode("//table[@id='"+id+"']")
-                        .Descendants("tr")
-                        .Where(tr => tr.Elements("td").Count() == 7)
-                        .Select(tr => tr.Elements("td").Select(td => td.InnerText.Trim()).ToList())
-                        .Select( tr => new HotspotStationData
-                        {
-                            Station = tr[0],
-                            System = tr[1],
-                            Price = Convert.ToInt32(tr[2].Replace(",","").Replace(".", "")),
-                            Demand = Convert.ToInt32(tr[4].Replace(",","").Replace(".", "")),
-                            Pad = tr[5],
-                            AgoSec = Convert.ToInt32(tr[6].Substring(2, tr[6].IndexOf("}", StringComparison.Ordinal)-2))
-                        })
-                        .ToList();
+                var stationsData = GetMiningStationsData(stationInfo, stationsEDSM);
 
-                    var stationsData = GetMiningStationsData(stationInfo, stationsEDSM);
-
-                    MiningStationsSerialize(stationsData, path);
-                }
+                MiningStationsSerialize(stationsData, path);
+                        
             }
             catch (Exception ex)
             {
@@ -673,7 +632,51 @@ namespace dashboard_elite.ImportData
             }
         }
 
-        public void Import()
+        private async Task DownloadEddbMiningStationsHtml(string path, string url, string material, int cid, List<StationEDSM> stationsEDSM, bool sell)
+        {
+            try
+            {
+                path = Path.Combine(GetExePath(), path);
+
+                Log.Logger.Information("looking up " + material + " Stations");
+
+                var data = await Program.WebClient.GetStringAsync(url + cid);
+
+                var doc = new HtmlDocument();
+                doc.LoadHtml(data);
+
+                var id = "table-stations-max-sell";
+                if (!sell)
+                {
+                    id = "table-stations-min-buy";
+                }
+
+                var stationInfo = doc.DocumentNode.SelectSingleNode("//table[@id='"+id+"']")
+                    .Descendants("tr")
+                    .Where(tr => tr.Elements("td").Count() == 7)
+                    .Select(tr => tr.Elements("td").Select(td => td.InnerText.Trim()).ToList())
+                    .Select( tr => new HotspotStationData
+                    {
+                        Station = tr[0],
+                        System = tr[1],
+                        Price = Convert.ToInt32(tr[2].Replace(",","").Replace(".", "")),
+                        Demand = Convert.ToInt32(tr[4].Replace(",","").Replace(".", "")),
+                        Pad = tr[5],
+                        AgoSec = Convert.ToInt32(tr[6].Substring(2, tr[6].IndexOf("}", StringComparison.Ordinal)-2))
+                    })
+                    .ToList();
+
+                var stationsData = GetMiningStationsData(stationInfo, stationsEDSM);
+
+                MiningStationsSerialize(stationsData, path);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Information(ex.ToString());
+            }
+        }
+
+        public async Task Import()
         {
             Log.Logger.Information("ImportData started");
 
@@ -688,20 +691,21 @@ namespace dashboard_elite.ImportData
 
                 var wasAnyUpdated = false;
 
-                Log.Logger.Information("checking station list from EDSM");
-
-                //DownloadJson(@"Data\stationsEDSM.json", "https://www.edsm.net/dump/stations.json.gz", ref wasAnyUpdated);
-                JsonReaderExtensions.DownloadJson<StationEDSM>("https://www.edsm.net/dump/stations.json.gz", @"Data\stationsEDSM.json", ref wasAnyUpdated);
-
                 Log.Logger.Information("checking populated systems from EDDB");
 
                 //DownloadJson(@"Data\populatedsystemsEDDB.json", "https://eddb.io/archive/v6/systems_populated.json", ref wasAnyUpdated);
-                JsonReaderExtensions.DownloadJson<PopulatedSystemEDDB>("https://eddb.io/archive/v6/systems_populated.json", @"Data\populatedsystemsEDDB.json", ref wasAnyUpdated);
+                wasAnyUpdated = await JsonReaderExtensions.DownloadJson<PopulatedSystemEDDB>("https://eddb.io/archive/v6/systems_populated.json", @"Data\populatedsystemsEDDB.json", wasAnyUpdated, false);
 
                 Log.Logger.Information("checking station list from EDDB");
 
                 //DownloadJson(@"Data\stationsEDDB.json", "https://eddb.io/archive/v6/stations.json", ref wasAnyUpdated);
-                JsonReaderExtensions.DownloadJson<StationEDDB>("https://eddb.io/archive/v6/stations.json", @"Data\stationsEDDB.json", ref wasAnyUpdated);
+                wasAnyUpdated = await JsonReaderExtensions.DownloadJson<StationEDDB>("https://eddb.io/archive/v6/stations.json", @"Data\stationsEDDB.json", wasAnyUpdated, false);
+
+                Log.Logger.Information("checking station list from EDSM");
+
+                //DownloadJson(@"Data\stationsEDSM.json", "https://www.edsm.net/dump/stations.json.gz", ref wasAnyUpdated);
+                wasAnyUpdated = await JsonReaderExtensions.DownloadJson<StationEDSM>("https://www.edsm.net/dump/stations.json.gz", @"Data\stationsEDSM.json", wasAnyUpdated, true);
+
 
                 Log.Logger.Information("checking station and system data");
 
@@ -712,7 +716,7 @@ namespace dashboard_elite.ImportData
                     var populatedSystemsEDDBbyName = populatedSystemsEDDBList
                         .ToDictionary(x => x.Name);
 
-                    DownloadCnbSystems(@"Data\cnbsystems.json", populatedSystemsEDDBbyName);
+                    await DownloadCnbSystems(@"Data\cnbsystems.json", populatedSystemsEDDBbyName);
                 }
 
                 if (wasAnyUpdated || NeedToUpdateFile(@"Data\painitestations.json", 15))
@@ -765,17 +769,16 @@ namespace dashboard_elite.ImportData
                         }
                     });
 
-                    DownloadInaraMiningStationsHtml(@"Data\painitestations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=84", "Painite", stationsEDSM);
-                    DownloadInaraMiningStationsHtml(@"Data\ltdstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=144", "LTD", stationsEDSM);
-                    DownloadInaraMiningStationsHtml(@"Data\platinumstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=81", "Platinum", stationsEDSM);
-                    DownloadInaraMiningStationsHtml(@"Data\tritiumstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=10269", "Tritium",stationsEDSM);
-                    DownloadInaraMiningStationsHtml(@"Data\tritiumbuystations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=buymin&refid=10269", "Tritium", stationsEDSM);
+                    await DownloadInaraMiningStationsHtml(@"Data\painitestations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=84", "Painite", stationsEDSM);
+                    await DownloadInaraMiningStationsHtml(@"Data\ltdstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=144", "LTD", stationsEDSM);
+                    await DownloadInaraMiningStationsHtml(@"Data\platinumstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=81", "Platinum", stationsEDSM);
+                    await DownloadInaraMiningStationsHtml(@"Data\tritiumstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=10269", "Tritium",stationsEDSM);
+                    await DownloadInaraMiningStationsHtml(@"Data\tritiumbuystations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=buymin&refid=10269", "Tritium", stationsEDSM);
 
-
-                    //DownloadEddbMiningStationsHtml(@"Data\painitestations.json", "https://eddb.io/commodity/", "Painite", 83, stationsEDSM, true);
-                    //DownloadEddbMiningStationsHtml(@"Data\ltdstations.json", "https://eddb.io/commodity/", "LTD", 276, stationsEDSM, true);
-                    //DownloadEddbMiningStationsHtml(@"Data\tritiumstations.json", "https://eddb.io/commodity/", "Tritium", 362, stationsEDSM, true);
-                    //DownloadEddbMiningStationsHtml(@"Data\tritiumbuystations.json", "https://eddb.io/commodity/", "Tritium", 362, stationsEDSM, false);
+                    //await DownloadEddbMiningStationsHtml(@"Data\painitestations.json", "https://eddb.io/commodity/", "Painite", 83, stationsEDSM, true);
+                    //await DownloadEddbMiningStationsHtml(@"Data\ltdstations.json", "https://eddb.io/commodity/", "LTD", 276, stationsEDSM, true);
+                    //await DownloadEddbMiningStationsHtml(@"Data\tritiumstations.json", "https://eddb.io/commodity/", "Tritium", 362, stationsEDSM, true);
+                    //await DownloadEddbMiningStationsHtml(@"Data\tritiumbuystations.json", "https://eddb.io/commodity/", "Tritium", 362, stationsEDSM, false);
                 }
 
                 if (wasAnyUpdated)
@@ -1126,9 +1129,9 @@ namespace dashboard_elite.ImportData
 
                 }
 
-                DownloadHotspotSystems(@"Data\painitesystems.json", "http://edtools.cc/miner?a=r&n=", "Painite");
-                DownloadHotspotSystems(@"Data\ltdsystems.json", "http://edtools.cc/miner?a=r&n=", "LTD");
-                DownloadHotspotSystems(@"Data\platinumsystems.json", "http://edtools.cc/miner?a=r&n=", "Platinum");
+                await DownloadHotspotSystems(@"Data\painitesystems.json", "http://edtools.cc/miner?a=r&n=", "Painite");
+                await DownloadHotspotSystems(@"Data\ltdsystems.json", "http://edtools.cc/miner?a=r&n=", "LTD");
+                await DownloadHotspotSystems(@"Data\platinumsystems.json", "http://edtools.cc/miner?a=r&n=", "Platinum");
 
                 // https://gist.github.com/corenting/b6ac5cf8f446f54856e08b6e287fe835
 
@@ -1136,11 +1139,11 @@ namespace dashboard_elite.ImportData
                 // stopped woring 29/05/2021
                 //"https://elitedangerous-website-backend-production.elitedangerous.com/api/galnet?_format=json"
 
-                DownloadGalnet(@"Data\galnet.json", "https://cms.zaonce.net/en-GB/jsonapi/node/galnet_article?&sort=-published_at&page[offset]=0&page[limit]=100");  
+                await DownloadGalnet(@"Data\galnet.json", "https://cms.zaonce.net/en-GB/jsonapi/node/galnet_article?&sort=-published_at&page[offset]=0&page[limit]=100");  
 
                 // stopped working 1 dec 2020
                 //DownloadCommunityGoals(@"Data\communitygoals.json", "https://elitedangerous-website-backend-production.elitedangerous.com/api/initiatives/list?_format=json&lang=en"); 
-                DownloadCommunityGoals(@"Data\communitygoals.json", "https://api.orerve.net/2.0/website/initiatives/list?lang=en"); 
+                await DownloadCommunityGoals(@"Data\communitygoals.json", "https://api.orerve.net/2.0/website/initiatives/list?lang=en"); 
 
             }
             catch (Exception ex)

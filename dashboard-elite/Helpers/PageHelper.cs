@@ -16,7 +16,7 @@ namespace dashboard_elite.Helpers
         }
 
         public static readonly int[] SubPages = { 0,  // commander
-                                                  33,  // engineers
+                                                  37, // engineers
                                                   0,  // galnet
                                                   8,  // poi
                                                   8,  // mining

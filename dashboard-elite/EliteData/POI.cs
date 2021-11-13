@@ -4,6 +4,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
@@ -162,16 +164,10 @@ namespace dashboard_elite.EliteData
         private const string PoiSpreadsheet =
             @"https://docs.google.com/spreadsheets/d/11E05a-hLGyOQ84B9dQUu0Z53ow1Xt-uqJ-xXJmtYq5A/export?format=csv&gid=594549382";
 
-
-        public List<PoiItem> GetAllPois()
+        public async Task<List<PoiItem>> GetAllPois()
         {
             try
             {
-                var req = (HttpWebRequest)WebRequest.Create(PoiSpreadsheet);
-                req.KeepAlive = false;
-                req.ProtocolVersion = HttpVersion.Version10;
-                var resp = (HttpWebResponse)req.GetResponse();
-
                 var configuration = new CsvConfiguration(new CultureInfo("en-US"))
                 {
                     HasHeaderRecord = true,
@@ -187,18 +183,18 @@ namespace dashboard_elite.EliteData
                     //csvread.Configuration.ShouldSkipRecord = records => string.IsNullOrEmpty(records[0]);
 
                 };
-                
-                using (var streamReader = new StreamReader(resp.GetResponseStream()))
-                {
-                    var csvRread = new CsvReader(streamReader,configuration);
 
-                    csvRread.Context.TypeConverterOptionsCache.GetOptions<DateTime>().Formats =new[] { "yyyy-MM-dd" };
+                using var response = await Program.WebClient.GetAsync(PoiSpreadsheet, HttpCompletionOption.ResponseHeadersRead);
+                using var stream = await response.Content.ReadAsStreamAsync();
+                using var streamReader = new StreamReader(stream);
 
-                    csvRread.Context.RegisterClassMap<PoiItemMap>();
+                var csvRread = new CsvReader(streamReader, configuration);
 
-                    return csvRread.GetRecords<PoiItem>().Where(x => !x.LocationName.Trim().EndsWith("[X]")).ToList();
+                csvRread.Context.TypeConverterOptionsCache.GetOptions<DateTime>().Formats = new[] { "yyyy-MM-dd" };
 
-                }
+                csvRread.Context.RegisterClassMap<PoiItemMap>();
+
+                return csvRread.GetRecords<PoiItem>().Where(x => !x.LocationName.Trim().EndsWith("[X]")).ToList();
             }
             catch (Exception ex)
             {

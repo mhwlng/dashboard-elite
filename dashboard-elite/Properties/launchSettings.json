@@ -17,7 +17,7 @@
     },
     "dashboard-elite": {
       "commandName": "Executable",
-      "executablePath": "C:\\dotnet\\projects\\dashboard-elite\\dashboard-elite\\bin\\Debug\\net5.0-windows\\dashboard-elite.exe",
+      "executablePath": "C:\\dotnet\\projects\\dashboard-elite\\dashboard-elite\\bin\\Debug\\net6.0-windows\\dashboard-elite.exe",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

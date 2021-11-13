@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using dashboard_elite.Hubs;
@@ -271,18 +273,11 @@ namespace dashboard_elite.EliteData
             }
         }
 
-
-        private static string GetJson(string url)
+        private static async Task<string> GetJson(string url)
         {
-            using (var client = new WebClient())
-            {
+            var utf8 = await Program.WebClient.GetStringAsync(url);
 
-                //client.Headers[HttpRequestHeader.AcceptEncoding] = "gzip";
-                var data = client.DownloadData(url);
-                //var decompress = Decompress(data);
-                //return System.Text.Encoding.UTF8.GetString(decompress);
-                return System.Text.Encoding.UTF8.GetString(data);
-            }
+            return utf8;
         }
 
         private static string GetExePath()
@@ -334,14 +329,14 @@ namespace dashboard_elite.EliteData
                     {
                         var systemDataToken = _systemDataTokenSource.Token;
 
-                        SystemDataTask = Task.Run(() =>
+                        SystemDataTask = Task.Run(async () =>
                         {
                             if (systemDataToken.IsCancellationRequested)
                             {
                                 systemDataToken.ThrowIfCancellationRequested();
                             }
 
-                            var json = GetJson("https://www.edsm.net/api-system-v1/bodies?systemName=" +
+                            var json = await GetJson("https://www.edsm.net/api-system-v1/bodies?systemName=" +
                                                starSystem);
                             
                             //var test = "Maia";
@@ -378,7 +373,7 @@ namespace dashboard_elite.EliteData
 
                             }
 
-							_myHub.Clients.All.SendAsync("EliteRefresh");
+							await _myHub.Clients.All.SendAsync("EliteRefresh");
 
                         }, systemDataToken);
                     }

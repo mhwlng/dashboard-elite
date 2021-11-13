@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using EDEngineer.Models;
 using EDEngineer.Utils;
 using Newtonsoft.Json;
@@ -156,15 +157,14 @@ namespace dashboard_elite.EliteData
 
         }
 
-
-        private static string GetJson(string url)
+        private static async Task<string> GetJson(string url)
         {
             try
             {
-                using (var client = new WebClient())
-                {
-                    return client.DownloadString(url);
-                }
+                var utf8 = await Program.WebClient.GetStringAsync(url);
+
+                return utf8;
+
             }
             catch
             {
@@ -174,9 +174,9 @@ namespace dashboard_elite.EliteData
             return null;
         }
 
-        public static void GetCommanderName()
+        public static async Task GetCommanderName()
         {
-            var commanderData  = GetJson("http://localhost:44405/commanders");
+            var commanderData  = await GetJson("http://localhost:44405/commanders");
 
             if (string.IsNullOrEmpty(commanderData)) return;
 
@@ -232,11 +232,11 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void GetShoppingList()
+        public static async Task GetShoppingList()
         {
             if (string.IsNullOrEmpty(CommanderName)) return;
 
-            var shoppingListData = GetJson("http://localhost:44405/" + CommanderName + "/shopping-list");
+            var shoppingListData = await GetJson("http://localhost:44405/" + CommanderName + "/shopping-list");
 
             if (string.IsNullOrEmpty(shoppingListData)) return;
 

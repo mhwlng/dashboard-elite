@@ -545,7 +545,7 @@ namespace dashboard_elite
                 Engineer.IngredientTypes = Engineer.GetIngredientTypes(@"Data\blueprints.json", Engineer.EngineeringMaterials);
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading POI Items...");
-                _poi.FullPoiList = _poi.GetAllPois(); //?.GroupBy(x => x.System.Trim().ToLower()).ToDictionary(x => x.Key, x => x.ToList());
+                _poi.FullPoiList = await _poi.GetAllPois(); //?.GroupBy(x => x.System.Trim().ToLower()).ToDictionary(x => x.Key, x => x.ToList());
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading JSON Items...");
                 RefreshJson();
@@ -554,8 +554,8 @@ namespace dashboard_elite
                 var path = History.GetEliteHistory(defaultFilter, _data);
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Getting Shopping List from EDEngineer...");
-                Engineer.GetCommanderName();
-                Engineer.GetShoppingList();
+                await Engineer.GetCommanderName();
+                await Engineer.GetShoppingList();
                 Engineer.GetBestSystems();
                 Log.Information("journal path " + path);
 
@@ -619,7 +619,7 @@ namespace dashboard_elite
 
                         await _myHub.Clients.All.SendAsync("EliteRefresh", jsonToken);
 
-                        importData.Import();
+                        await importData.Import();
 
                         _data.ImportData = false;
 
