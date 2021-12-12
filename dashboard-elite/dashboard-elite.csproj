@@ -37,11 +37,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="27.1.1" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.38" />
+    <PackageReference Include="CsvHelper" Version="27.2.1" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.39" />
     <PackageReference Include="ini-parser-netcore" Version="3.0.0" />
     <PackageReference Include="NAudio" Version="2.0.1" />
-    <PackageReference Include="Photino.NET" Version="2.0.13" />
+    <PackageReference Include="Photino.NET" Version="2.1.10" />
     <PackageReference Include="MudBlazor" Version="6.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />

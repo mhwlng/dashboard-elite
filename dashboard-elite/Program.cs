@@ -42,6 +42,7 @@ namespace dashboard_elite
         public static string WebRootPath;
 
         public static bool Minimized;
+        public static int FullScreenBorder;
 
         public static IConfigurationRoot Configuration;
 
@@ -237,6 +238,9 @@ namespace dashboard_elite
             var fullScreen = configuration.GetValue<bool>("Dimensions:FullScreen");
             var zoom = configuration.GetValue<int>("Dimensions:Zoom");
 
+            FullScreenBorder = configuration.GetValue<int>("Dimensions:FullScreenBorder");
+
+
             Minimized = configuration.GetValue<bool>("Dimensions:Minimized");
 
             mainWindow = new PhotinoWindow()
@@ -249,7 +253,7 @@ namespace dashboard_elite
                 .SetSize(new Size(width, height))
                 .SetLeft(left)
                 .SetTop(top)
-                .SetResizable(true)
+                .SetResizable(!fullScreen)
                 //.SetMaximized(fullScreen)
                 //.SetFullScreen(fullScreen)
                 //.SetTopMost(fullScreen)
@@ -339,9 +343,9 @@ namespace dashboard_elite
         {
             //Log.Information("WindowCreated Callback Fired.");
 
-            var currentstate = Program.mainWindow.Chromeless;
+            var currentState = Program.mainWindow.Chromeless;
 
-            if (currentstate)
+            if (currentState)
             {
 
                 var monitor = CommandTools.MonitorFromWindow(mainWindow.WindowHandle, CommandTools.MONITOR_DEFAULTTONEAREST);
@@ -351,10 +355,10 @@ namespace dashboard_elite
                     var monitorInfo = new CommandTools.NativeMonitorInfo();
                     CommandTools.GetMonitorInfo(monitor, monitorInfo);
 
-                    mainWindow.SetLeft(monitorInfo.Monitor.Left);
-                    mainWindow.SetTop(monitorInfo.Monitor.Top);
-                    mainWindow.SetWidth(monitorInfo.Monitor.Right - monitorInfo.Monitor.Left);
-                    mainWindow.SetHeight(monitorInfo.Monitor.Bottom - monitorInfo.Monitor.Top);
+                    mainWindow.SetLeft(monitorInfo.Monitor.Left - FullScreenBorder);
+                    mainWindow.SetTop(monitorInfo.Monitor.Top - FullScreenBorder);
+                    mainWindow.SetWidth(monitorInfo.Monitor.Right - monitorInfo.Monitor.Left + (FullScreenBorder*2));
+                    mainWindow.SetHeight(monitorInfo.Monitor.Bottom - monitorInfo.Monitor.Top + (FullScreenBorder*2));
                 }
             }
 

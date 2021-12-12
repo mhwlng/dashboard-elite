@@ -369,8 +369,13 @@ namespace dashboard_elite
                 Log.Error($"Directory doesn't exist {bindingsPath}");
             }
 
+            var startPresetPath = Path.Combine(bindingsPath, "StartPreset.4.start");
 
-            var startPresetPath = Path.Combine(bindingsPath, "StartPreset.start");
+            if (!File.Exists(startPresetPath))
+            {
+
+                startPresetPath = Path.Combine(bindingsPath, "StartPreset.start");
+            }
 
             //Log.Information( "bindings path " + bindingsPath);
 
