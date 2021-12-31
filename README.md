@@ -10,13 +10,21 @@ VERY UNFINISHED PRE-ALPHA RELEASE
 
 ![touch screen](https://i.imgur.com/QLA3Fgm.png)
 
-![touch screen](https://i.imgur.com/dK75qt0.png)
+![touch screen](https://i.imgur.com/Hh7QCIl.png)
 
-![touch screen](https://i.imgur.com/Cm87t9B.png)
+![touch screen](https://i.imgur.com/sRNTIJu.png)
 
-![touch screen](https://i.imgur.com/HPOpRL6.png)
+![touch screen](https://i.imgur.com/mN1b0RD.png)
 
-![touch screen](https://i.imgur.com/MD5X7yQ.png)
+![touch screen](https://i.imgur.com/PtijCH2.png)
+
+![touch screen](https://i.imgur.com/hYim383.png)
+
+![touch screen](https://i.imgur.com/S1yFQUn.png)
+
+![touch screen](https://i.imgur.com/6E5QHt6.png)
+
+![touch screen](https://i.imgur.com/PxWLoQ1.png)
 
 Technology used:
 - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0)  install : ASP.NET Core Runtime \ x64 and .NET Desktop Runtime \ x64
