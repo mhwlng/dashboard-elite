@@ -18,6 +18,8 @@ namespace dashboard_elite.Shared
 
         [Inject] public Poi Poi { get; set; }
 
+        [Inject] public HWInfo HWInfo { get; set; }
+
         [Inject] public NavigationManager NavigationManager { get; set; }
 
         public HubConnection hubConnection;

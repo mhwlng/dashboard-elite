@@ -49,6 +49,14 @@ Small display 1920x480 (8.8 inch, IPS panel):
 
 https://www.aliexpress.com/item/1005003014364673.html
 
+Angled mini HDM cable (use the 'UP' version) :
+
+https://www.aliexpress.com/item/1005002750546378.html
+
+Angled micro USB cable (use the 'UP' version) :
+
+https://www.aliexpress.com/item/32901092351.html
+
 (Note, that these kinds of displays come with or without a touch controller and with or without a case)
 
 When connecting these screens, the touch screen needs to be configured via : Control Panel \ Tablet PC settings \ Setup
@@ -108,6 +116,19 @@ It doesn't work on IOS, at the moment.
 
 The application window settings can be found in appsettings.json. 
 There is also a Minimized value, that will automatically minimize the application at startup, after the initialization has finished.
+
+Any data from [HWInfo](https://www.hwinfo.com) can be displayed. **This also works when Elite Dangerous is not running.**
+
+When HWInfo64 is detected, all the available sensors will be written at startup to the data\hwinfo.json file.
+
+The HWINFO.inc file must be modified, to configure what will be displayed on the screen.
+The HWINFO.inc file has the same format as used by various [rainmeter](https://www.deviantart.com/pul53dr1v3r/art/Rainformer-2-9-3-HWiNFO-Edition-Rainmeter-789616481) skins.
+
+Note that you don't need to install rainmeter or any rainmeter plugin.
+
+A configuration tool, to link sensor ids to variables in the HWINFO.inc file, can be downloaded from the hwinfo website [here](https://www.hwinfo.com/beta/HWiNFOSharedMemoryViewer.exe.7z) :
+
+![hwinfo tool](https://i.imgur.com/Px6jvw4.png)
 
 The buttons will only work with keyboard bindings. 
 So, when there is only a binding to a joystick / controller / mouse for a function, then you need to add a keyboard binding first.

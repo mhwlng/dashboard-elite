@@ -12,7 +12,8 @@ namespace dashboard_elite.Helpers
             Galnet,
             Poi,
             Mining,
-            Powers
+            Powers,
+            HWInfo
         }
 
         public static readonly int[] SubPages = { 0,  // commander

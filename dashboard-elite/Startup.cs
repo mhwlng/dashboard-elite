@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using dashboard_elite.EliteData;
+using dashboard_elite.Helpers;
 using dashboard_elite.Hubs;
 using dashboard_elite.Services;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -42,6 +43,7 @@ namespace dashboard_elite
             services.AddSingleton<Data>();
             services.AddSingleton<Galnet>();
             services.AddSingleton<Poi>();
+            services.AddSingleton<HWInfo>();
 
             services.AddResponseCompression(opts =>
             {

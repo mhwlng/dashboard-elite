@@ -91,6 +91,7 @@ namespace dashboard_elite
         private readonly Data _data;
         private readonly Galnet _galnet;
         private readonly Poi _poi;
+        private readonly HWInfo _hwinfo;
 
         public static FifoExecution KeyWatcherJob = new FifoExecution();
 
@@ -105,6 +106,10 @@ namespace dashboard_elite
 
         public static Task JsonTask;
         private static CancellationTokenSource _jsonTokenSource = new CancellationTokenSource();
+
+        public static Task HWInfoTask;
+        private static CancellationTokenSource _hwInfoTokenSource = new CancellationTokenSource();
+
 
         public static KeyBindingWatcher[] KeyBindingWatcher = new KeyBindingWatcher[4];
 
@@ -502,17 +507,19 @@ namespace dashboard_elite
             }
         }
 
-        public Worker(IHubContext<MyHub> myHub, Data data, Galnet galnet, Poi poi) 
+        public Worker(IHubContext<MyHub> myHub, Data data, Galnet galnet, Poi poi, HWInfo hwinfo) 
         {
             _myHub = myHub;
             _data = data;
             _galnet = galnet;
             _poi = poi;
+            _hwinfo = hwinfo;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var jsonToken = _jsonTokenSource.Token;
+            var hwInfoToken = _hwInfoTokenSource.Token;
 
             while (UserHandler.ConnectedIds.Count == 0)
             {
@@ -563,6 +570,15 @@ namespace dashboard_elite
                 await Engineer.GetShoppingList();
                 Engineer.GetBestSystems();
                 Log.Information("journal path " + path);
+
+                await _myHub.Clients.All.SendAsync("LoadingMessage", "Getting sensor data from HWInfo...");
+
+                _hwinfo.ReadMem("HWINFO.INC");
+
+                if (_hwinfo.SensorData.Any())
+                {
+                    _hwinfo.SaveDataToFile(@"Data\hwinfo.json");
+                }
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Starting Elite Journal Status Watcher...");
                 StatusWatcher = new StatusWatcher(path);
@@ -639,6 +655,32 @@ namespace dashboard_elite
 
                 }, jsonToken);
 
+
+                HWInfoTask = Task.Run(async () =>
+                {
+                    Log.Information("HWInfo task started");
+
+                    while (true)
+                    {
+                        if (hwInfoToken.IsCancellationRequested)
+                        {
+                            hwInfoToken.ThrowIfCancellationRequested();
+                        }
+
+                        _hwinfo.ReadMem("HWINFO.INC");
+
+                        if (_hwinfo.SensorData.Any())
+                        {
+                            await _myHub.Clients.All.SendAsync("EliteRefresh", hwInfoToken);
+                        }
+
+                        await Task.Delay(5 * 1000, _hwInfoTokenSource.Token); // repeat every 5 seconds
+                    }
+
+
+                }, hwInfoToken);
+
+
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Init Elite Api Done");
 
             }
@@ -693,6 +735,21 @@ namespace dashboard_elite
             finally
             {
                 _jsonTokenSource.Dispose();
+            }
+
+            _hwInfoTokenSource.Cancel();
+
+            try
+            {
+                HWInfoTask?.Wait(jsonToken);
+            }
+            catch (OperationCanceledException)
+            {
+                Log.Information("HWInfo background task ended");
+            }
+            finally
+            {
+                _hwInfoTokenSource.Dispose();
             }
 
             Log.Information("Shutdown Worker");

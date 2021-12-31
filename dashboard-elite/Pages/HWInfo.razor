@@ -1,0 +1,44 @@
+﻿@page "/hwinfo/{CurrentPage:int?}"
+@using dashboard_elite.Helpers
+@inherits PageBase
+@layout PageLayout
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+
+    @if (HWInfo.SensorData.Count > 0)
+    {
+        <tr>
+            <td>
+                <MudGrid Class="mb-1">
+                    @foreach (var m in HWInfo.SensorData.Values.ToList())
+                    {
+                        <MudItem xs="12">
+                            <MudPaper Elevation="0" Class="d-flex align-center justify-center mud-width-full">
+                            <strong>@m.SensorNameUser</strong>
+                            </MudPaper>
+                        </MudItem>
+                        foreach (var e in m.Elements)
+                        {
+                            <MudItem xs="4" xl="2" Class="pa-0 pr-0">
+                                <MudPaper Elevation="0" Class="d-flex align-content-center flex-wrap" height="100%">
+                                    @e.Value.LabelUser
+                                </MudPaper>
+                            </MudItem>
+                            <MudItem xs="2" xl="1" Class="pa-0 pr-3">
+                                <MudPaper Elevation="0" Class="d-flex align-content-center flex-wrap justify-end data" height="100%">
+                                    @e.Value.Value
+                                </MudPaper>
+                            </MudItem>
+                            <MudItem xs="6" xl="3" Class="pa-0 pr-2">
+                                @((MarkupString)HWInfo.SensorTrends[e.Value.ElementKey].Svg(400, 100))
+                            </MudItem>
+                        }
+                    }
+                </MudGrid>
+            </td>
+        </tr>
+
+    }
+    </tbody>
+</MudSimpleTable>
