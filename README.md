@@ -4,9 +4,9 @@ Use a wide 'bar style' touch screen as a game dashboard (like [fip-panels](https
 
 VERY UNFINISHED PRE-ALPHA RELEASE
 
-![touch screen](https://i.imgur.com/RkHJESd.jpg)
+![touch screen](https://i.imgur.com/14rxi5R.jpg)
 
-![touch screen](https://i.imgur.com/fr3zNrU.jpg)
+![touch screen](https://i.imgur.com/EjXtSoY.jpg)
 
 ![touch screen](https://i.imgur.com/QLA3Fgm.png)
 
