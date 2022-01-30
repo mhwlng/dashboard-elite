@@ -6,11 +6,9 @@
 @{
     var skipFirst = true;
 
-    var powerCount = Data.NearbyPowerStationList?.Count ?? 0;
-
     List<StationData> powerStations = null;
 
-    if (CurrentPage < powerCount)
+    if (Data.NearbyPowerStationList?.ContainsKey((Station.PowerTypes)CurrentPage) == true)
     {
         powerStations =  Data.NearbyPowerStationList[(Station.PowerTypes)CurrentPage];
     }

@@ -5,11 +5,9 @@
 @{
     var skipFirst = true;
 
-    var stationCount = Data.NearbyStationList?.Count ?? 0;
-
     List<StationData> stations = null;
 
-    if (CurrentPage < stationCount)
+    if (Data.NearbyStationList?.ContainsKey((Station.PoiTypes)CurrentPage) == true)
     {
         stations = Data.NearbyStationList[(Station.PoiTypes)CurrentPage];
     }
