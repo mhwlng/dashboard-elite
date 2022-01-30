@@ -6,7 +6,10 @@
 PageType == PageHelper.Page.Galnet ||
 PageType == PageHelper.Page.Poi ||
 PageType == PageHelper.Page.Mining ||
-PageType == PageHelper.Page.Powers)
+PageType == PageHelper.Page.Powers ||
+PageType == PageHelper.Page.CurrentShip ||
+PageType == PageHelper.Page.StoredShips ||
+PageType == PageHelper.Page.StoredModules)
 {
     <MudIconButton class="ma-1"
                    Size="Size.Large"
@@ -29,7 +32,9 @@ PageType == PageHelper.Page.Powers)
 @if (PageType == PageHelper.Page.Engineers ||
      PageType == PageHelper.Page.Poi ||
      PageType == PageHelper.Page.Mining ||
-     PageType == PageHelper.Page.Powers)
+     PageType == PageHelper.Page.Powers ||
+     PageType == PageHelper.Page.StoredShips ||
+     PageType == PageHelper.Page.StoredModules)
 {
 
     <MudIconButton class="ma-1"
@@ -142,6 +147,30 @@ PageType == PageHelper.Page.Powers)
             case PageHelper.Page.Engineers:
                 @(Data.EngineersList[CurrentPage].Faction)
                 break;
+            case PageHelper.Page.StoredShips:
+
+                var storedShips = Ships.ShipsList.Where(x => x.Stored)
+                    .OrderBy(x => x.Distance).ThenBy(x => x.ShipType).ToList();
+
+                var storedShipsCount = storedShips?.Count ?? 0;
+
+                if (CurrentPage < storedShipsCount)
+                {
+                    <text>@(storedShips[(int)CurrentPage].ShipTypeFull)</text>
+                }
+                break;
+            case PageHelper.Page.StoredModules:
+                var storedModules = Module.StoredModulesList.Values
+                    .OrderBy(x => x.Distance).ToList();
+
+                var storedModulesCount = storedModules?.Count ?? 0;
+
+                if (CurrentPage < storedModulesCount)
+                {
+                    <text>@(storedModules[(int)CurrentPage].StationName)</text>
+                }
+                break;
+
         }
     </div>
 

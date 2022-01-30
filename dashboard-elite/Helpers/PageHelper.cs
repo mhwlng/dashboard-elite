@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using dashboard_elite.EliteData;
 
 namespace dashboard_elite.Helpers
@@ -24,14 +25,28 @@ namespace dashboard_elite.Helpers
                                                   0,  // galnet
                                                   8,  // poi
                                                   8,  // mining
-                                                  11  // powers
+                                                  11, // powers
+                                                  0,  // hwinfo
+                                                  0,  // currentship
+                                                  0,  // storedships
+                                                  0   // storedmodules
                                                   };
 
         private static readonly int[] CurrentPage = new int[100];
 
-        public static int IncrementCurrentPage(string pageName, int currentPage)
+        public static int IncrementCurrentPage(string pageName, int currentPage, Ships Ships, Module Module)
         {
             Enum.TryParse(pageName, true, out Page pageType);
+
+            switch(pageType)
+            {
+                case Page.StoredShips:
+                    SubPages[(int)pageType] = Ships.ShipsList.Count(x => x.Stored);
+                    break;
+                case Page.StoredModules:
+                    SubPages[(int)pageType] = Module.StoredModulesList.Values.Count;
+                    break;
+            }
 
             if (currentPage == SubPages[(int)pageType] - 1)
             {
@@ -47,12 +62,22 @@ namespace dashboard_elite.Helpers
             return currentPage;
         }
 
-        public static int DecrementCurrentPage(string pageName, int currentPage)
+        public static int DecrementCurrentPage(string pageName, int currentPage, Ships Ships, Module Module)
         {
             Enum.TryParse(pageName, true, out Page pageType);
 
             if (currentPage == 0)
             {
+                switch (pageType)
+                {
+                    case Page.StoredShips:
+                        SubPages[(int)pageType] = Ships.ShipsList.Count(x => x.Stored);
+                        break;
+                    case Page.StoredModules:
+                        SubPages[(int)pageType] = Module.StoredModulesList.Values.Count;
+                        break;
+                }
+
                 currentPage = SubPages[(int)pageType] - 1;
             }
             else

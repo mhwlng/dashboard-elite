@@ -1,4 +1,4 @@
-﻿@page "/ship/storedships"
+﻿@page "/ship/storedships/{CurrentPage:int?}"
 @using dashboard_elite.Helpers
 @inherits PageBase
 @layout PageLayout
@@ -7,184 +7,212 @@
     var storedShips = Ships.ShipsList.Where(x => x.Stored)
         .OrderBy(x => x.Distance).ThenBy(x => x.ShipType).ToList();
 
+    var storedShipsCount = storedShips?.Count ?? 0;
+
+    Ships.ShipData storedShip = null;
+
+    if (CurrentPage < storedShipsCount)
+    {
+        storedShip = storedShips[(int)CurrentPage];
+    }
+
 }
 
-<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable flex-grow-1 flex-shrink-1" Style="min-height: 0;">
     <tbody>
-    
-        @if (storedShips.Count == 0)
-        {
-            <div class="cardcaption data">NO STORED SHIPS</div>
-        }
 
-        @foreach (var m in storedShips)
-        {
-            <table>
-                <tbody>
-                    @if (!string.IsNullOrEmpty(m.Name))
+    @if (storedShip == null || storedShipsCount == 0)
+    {
+        <tr>
+            <td class=" center" ><strong>NO STORED SHIPS</strong></td>
+        </tr>
+    }
+    else
+    {
+
+        <tr>
+            <td class="engineerimage" >
+                <img src="/img/ships/@(storedShip.ShipImage)">
+            </td>
+            <td style="padding-left: 0; padding-right: 0; vertical-align: top; width:33%;">
+                <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Elevation="0">
+                    <tbody>
+
+                    @if (!string.IsNullOrEmpty(storedShip.Name))
                     {
                         <tr>
-                            <td class="caption">Ship Name</td>
-                            <td class="data">@m.Name</td>
+                            <td class="nowrap">Ship Name</td>
+                            <td class="data">@storedShip.Name</td>
                         </tr>
                     }
-                    @if (!string.IsNullOrEmpty(m.ShipTypeFull))
+                    @if (!string.IsNullOrEmpty(storedShip.ShipTypeFull))
                     {
                         <tr>
-                            <td class="caption">Ship Type</td>
-                            <td class="data">@m.ShipTypeFull (@m.ShipID)</td>
+                            <td class="nowrap">Ship Type</td>
+                            <td class="data">@storedShip.ShipTypeFull (@storedShip.ShipID)</td>
                         </tr>
                     }
-                    @if (!string.IsNullOrEmpty(m.StarSystem))
+                    @if (!string.IsNullOrEmpty(storedShip.StarSystem))
                     {
                         <tr>
-                            <td class="caption">In System</td>
-                            <td class="data">@m.StarSystem</td>
+                            <td class="nowrap">In System</td>
+                            <td class="data">@storedShip.StarSystem</td>
                         </tr>
                     }
-                    @if (m.Distance > 0)
+                    @if (storedShip.Distance > 0)
                     {
                         <tr>
-                            <td class="caption">Distance</td>
-                            <td class="data">@m.Distance.ToString("N0") Ly</td>
+                            <td class="nowrap">Distance</td>
+                            <td class="data">@storedShip.Distance.ToString("N0") Ly</td>
                         </tr>
                     }
-                    @if (!string.IsNullOrEmpty(m.StationName))
+                    @if (!string.IsNullOrEmpty(storedShip.StationName))
                     {
                         <tr>
-                            <td class="caption">On Station</td>
-                            <td class="data">@m.StationName</td>
+                            <td class="nowrap">On Station</td>
+                            <td class="data">@storedShip.StationName</td>
                         </tr>
                     }
-                    @if (m.HullValue + m.ModulesValue > 0)
+                    @if (storedShip.HullValue + storedShip.ModulesValue > 0)
                     {
                         <tr>
-                            <td class="caption">Value</td>
-                            <td class="data">@((m.HullValue + m.ModulesValue).ToString("N0")) CR</td>
+                            <td class="nowrap">Value</td>
+                            <td class="data">@((storedShip.HullValue + storedShip.ModulesValue).ToString("N0")) CR</td>
                         </tr>
                     }
-                    @if (m.Rebuy > 0)
+                    @if (storedShip.Rebuy > 0)
                     {
                         <tr>
-                            <td class="caption">Rebuy</td>
-                            <td class="data">@m.Rebuy.ToString("N0") CR</td>
+                            <td class="nowrap">Rebuy</td>
+                            <td class="data">@storedShip.Rebuy.ToString("N0") CR</td>
                         </tr>
                     }
-                    @if (m.Hot)
+                    @if (storedShip.Hot)
                     {
                         <tr>
-                            <td class="caption">Hot</td>
+                            <td class="nowrap">Hot</td>
                             <td class="data alarm">YES</td>
                         </tr>
                     }
-                    @if (m.HullHealth > 0 && m.HullHealth < 100)
+                    @if (storedShip.HullHealth > 0 && storedShip.HullHealth < 100)
                     {
                         <tr>
-                            <td class="caption">Hull Health</td>
-                            <td class="data alarm">@m.HullHealth.ToString("N0") %</td>
+                            <td class="nowrap">Hull Health</td>
+                            <td class="data alarm">@storedShip.HullHealth.ToString("N0") %</td>
                         </tr>
                     }
-                    @if (m.FuelCapacity > 0)
+                    @if (storedShip.FuelCapacity > 0)
                     {
                         <tr>
-                            <td class="caption">Fuel Capacity</td>
-                            <td class="data">@m.FuelCapacity.ToString("N0") T</td>
+                            <td class="nowrap">Fuel Capacity</td>
+                            <td class="data">@storedShip.FuelCapacity.ToString("N0") T</td>
                         </tr>
                     }
-                    @if (m.CargoCapacity > 0)
+                    @if (storedShip.CargoCapacity > 0)
                     {
                         <tr>
-                            <td class="caption">Cargo Capacity</td>
-                            <td class="data">@m.CargoCapacity T</td>
+                            <td class="nowrap">Cargo Capacity</td>
+                            <td class="data">@storedShip.CargoCapacity T</td>
                         </tr>
                     }
                     else
                     {
                         <tr>
-                            <td class="caption">Cargo Capacity</td>
+                            <td class="nowrap">Cargo Capacity</td>
                             <td class="data">NONE</td>
                         </tr>
                     }
 
-                    @if (m.UnladenMass > 0)
+                    @if (storedShip.UnladenMass > 0)
                     {
                         <tr>
-                            <td class="caption">Unladen Mass</td>
-                            <td class="data">@m.UnladenMass.ToString("N1") T</td>
+                            <td class="nowrap">Unladen Mass</td>
+                            <td class="data">@storedShip.UnladenMass.ToString("N1") T</td>
                         </tr>
                     }
-                    @if (m.MaxJumpRange > 0)
+                    @if (storedShip.MaxJumpRange > 0)
                     {
                         <tr>
-                            <td class="caption">Max. Jump Range</td>
-                            <td class="data">@m.MaxJumpRange.ToString("N1") LY</td>
+                            <td class="nowrap">Max. Jump Range</td>
+                            <td class="data">@storedShip.MaxJumpRange.ToString("N1") LY</td>
                         </tr>
                     }
-                    @if (!string.IsNullOrEmpty(m.Bulkhead))
+                    @if (!string.IsNullOrEmpty(storedShip.Bulkhead))
                     {
                         <tr>
-                            <td class="caption">Bulkhead</td>
-                            <td class="data">@m.Bulkhead</td>
+                            <td class="nowrap">Bulkhead</td>
+                            <td class="data">@storedShip.Bulkhead</td>
                         </tr>
                     }
-                    @if (!string.IsNullOrEmpty(m.PowerPlant))
+                    @if (!string.IsNullOrEmpty(storedShip.PowerPlant))
                     {
                         <tr>
-                            <td class="caption">Powerplant</td>
-                            <td class="data">@m.PowerPlant</td>
+                            <td class="nowrap">Powerplant</td>
+                            <td class="data">@storedShip.PowerPlant</td>
                         </tr>
                     }
-                    @if (!string.IsNullOrEmpty(m.Engine))
+                    @if (!string.IsNullOrEmpty(storedShip.Engine))
                     {
                         <tr>
-                            <td class="caption">Thrusters</td>
-                            <td class="data">@m.Engine</td>
+                            <td class="nowrap">Thrusters</td>
+                            <td class="data">@storedShip.Engine</td>
                         </tr>
                     }
-                    @if (!string.IsNullOrEmpty(m.PowerDistributor))
+                    @if (!string.IsNullOrEmpty(storedShip.PowerDistributor))
                     {
                         <tr>
-                            <td class="caption">Power Distributor</td>
-                            <td class="data">@m.PowerDistributor</td>
+                            <td class="nowrap">Power Distributor</td>
+                            <td class="data">@storedShip.PowerDistributor</td>
                         </tr>
                     }
-                    @if (!string.IsNullOrEmpty(m.ShieldGenerator))
+                    @if (!string.IsNullOrEmpty(storedShip.ShieldGenerator))
                     {
                         <tr>
-                            <td class="caption">Shield Generator</td>
-                            <td class="data">@m.ShieldGenerator</td>
+                            <td class="nowrap">Shield Generator</td>
+                            <td class="data">@storedShip.ShieldGenerator</td>
                         </tr>
                     }
-                    @if (!string.IsNullOrEmpty(m.FrameShiftDrive))
+                    @if (!string.IsNullOrEmpty(storedShip.FrameShiftDrive))
                     {
                         <tr>
-                            <td class="caption">FSD</td>
-                            <td class="data">@m.FrameShiftDrive@m.GuardianFSDBooster</td>
+                            <td class="nowrap">FSD</td>
+                            <td class="data">@storedShip.FrameShiftDrive@storedShip.GuardianFSDBooster</td>
                         </tr>
                     }
-                    @if (!string.IsNullOrEmpty(m.Cabins))
+                    @if (!string.IsNullOrEmpty(storedShip.Cabins))
                     {
                         <tr>
-                            <td class="caption">Cabins</td>
-                            <td class="data">@m.Cabins</td>
+                            <td class="nowrap">Cabins</td>
+                            <td class="data">@storedShip.Cabins</td>
                         </tr>
                     }
-                    @foreach (var ml in m.ModuleList)
-                    {
-                        if (ml.Value.Any())
+
+                    </tbody>
+                </MudSimpleTable>
+            </td>
+            <td style="padding-left: 0; padding-right: 0; vertical-align: top; width:33%;">
+                <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Elevation="0">
+                    <tbody>
+                        @foreach (var ml in storedShip.ModuleList)
                         {
-                            <tr>
-                                <td class="caption">@((MarkupString)ml.Key)</td>
-                                <td class="data">@((MarkupString)Module.GetModulePlacement(ml.Key, ml.Value))</td>
-                            </tr>
+                            if (ml.Value.Any())
+                            {
+                                <tr>
+                                    <td class="nowrap">@((MarkupString)ml.Key)</td>
+                                    <td class="data">@((MarkupString)Module.GetModulePlacement(ml.Key, ml.Value))</td>
+                                </tr>
+                            }
                         }
-                    }
+                    </tbody>
+                </MudSimpleTable>
+            </td>
 
-                </tbody>
-            </table>
+        </tr>
+        <tr>
+            <td class="center" colspan="3" ><img class="engineerimagetop" src="/img/ships/@(storedShip.ShipImage)" /></td>
+        </tr>
 
-        }    
 
-
+    }
     </tbody>
 </MudSimpleTable>

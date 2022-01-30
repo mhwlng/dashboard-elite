@@ -92,7 +92,7 @@ namespace dashboard_elite.EliteData
                     return shipTypeFull?.Trim() ?? ShipType?.Trim();
                 }
             }
-            public string ShipImage => ShipTypeFull?.Trim() + ".png";
+            public string ShipImage => ShipTypeFull?.Trim() + ".svg";
 
             public string Name { get; set; } = "";
 

@@ -18,6 +18,11 @@ namespace dashboard_elite.Components
 
         [Inject] public Data Data { get; set; }
 
+        [Inject] public Ships Ships { get; set; }
+
+        [Inject] public Module Module { get; set; }
+
+
         public PageHelper.Page PageType { get; set; }
 
         public int CurrentPage { get; set; }
@@ -42,18 +47,18 @@ namespace dashboard_elite.Components
             }
         }
 
-        private Task<IJSObjectReference> _module;
-        private Task<IJSObjectReference> Module => _module ??= MyJsRuntime.InvokeAsync<IJSObjectReference>("import", "./js/util.js").AsTask();
+        private Task<IJSObjectReference> _moduleReference;
+        private Task<IJSObjectReference> ModuleReference => _moduleReference ??= MyJsRuntime.InvokeAsync<IJSObjectReference>("import", "./js/util.js").AsTask();
 
         async Task ScrollTableToTop()
         {
-            var module = await Module;
+            var module = await ModuleReference;
             await module.InvokeVoidAsync("ScrollTableToTop", "PageTable");
         }
 
         async Task ScrollTableToBottom()
         {
-            var module = await Module;
+            var module = await ModuleReference;
             await module.InvokeVoidAsync("ScrollTableToBottom", "PageTable");
         }
 
@@ -61,7 +66,7 @@ namespace dashboard_elite.Components
         {
             await ScrollTableToTop();
 
-            CurrentPage = PageHelper.DecrementCurrentPage(RouteData.PageType.Name, CurrentPage);
+            CurrentPage = PageHelper.DecrementCurrentPage(RouteData.PageType.Name, CurrentPage, Ships,Module);
 
             var uri = new Uri(NavigationManager.Uri);
 
@@ -72,7 +77,7 @@ namespace dashboard_elite.Components
         {
             await ScrollTableToTop();
 
-            CurrentPage = PageHelper.IncrementCurrentPage(RouteData.PageType.Name, CurrentPage);
+            CurrentPage = PageHelper.IncrementCurrentPage(RouteData.PageType.Name, CurrentPage, Ships, Module);
 
             var uri = new Uri(NavigationManager.Uri);
 
@@ -81,9 +86,9 @@ namespace dashboard_elite.Components
 
         public async ValueTask DisposeAsync()
         {
-            if (_module != null)
+            if (_moduleReference != null)
             {
-                var module = await _module;
+                var module = await _moduleReference;
                 await module.DisposeAsync();
             }
         }

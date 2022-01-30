@@ -1,4 +1,4 @@
-﻿@page "/ship/storedmodules"
+﻿@page "/ship/storedmodules/{CurrentPage:int?}"
 @using dashboard_elite.Helpers
 @inherits PageBase
 @layout PageLayout
@@ -6,114 +6,120 @@
 @{
     var storedModules = Module.StoredModulesList.Values
         .OrderBy(x => x.Distance).ToList();
+
+    var storedModulesCount = storedModules?.Count ?? 0;
+
+    Module.StoredModuleData storedModuleLocation = null;
+
+    if (CurrentPage < storedModulesCount)
+    {
+        storedModuleLocation = storedModules[(int)CurrentPage];
+    }
+
+
 }
 
-<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable flex-grow-1 flex-shrink-1" Style="min-height: 0;">
     <tbody>
-        
-        @if (storedModules.Count == 0)
+
+    @if (storedModuleLocation != null && storedModulesCount == 0)
+    {
+        <tr>
+            <td class=" center" ><strong>NO STORED MODULES</strong></td>
+        </tr>
+    }
+    else
+    {
+        @if (!string.IsNullOrEmpty(storedModuleLocation.StarSystem))
         {
-            <div class="cardcaption data">NO STORED MODULES</div>
+            <tr>
+                <td class="nowrap">In System</td>
+                <td class="data">@storedModuleLocation.StarSystem</td>
+            </tr>
+        }
+        @if (storedModuleLocation.Distance > 0)
+        {
+            <tr>
+                <td class="nowrap">Distance</td>
+                <td class="data">@storedModuleLocation.Distance.ToString("N0") Ly</td>
+            </tr>
+        }
+        @if (!string.IsNullOrEmpty(storedModuleLocation.StationName))
+        {
+            <tr>
+                <td class="nowrap">On Station</td>
+                <td class="data">@storedModuleLocation.StationName</td>
+            </tr>
         }
 
-        @foreach (var m in storedModules)
+        @foreach (var n in storedModuleLocation.Modules)
         {
-            <table>
-                <tbody>
-                    @if (!string.IsNullOrEmpty(m.StarSystem))
+            <tr>
+                <td class="data" colspan="2">&bull; @n.Name_Localised</td>
+            </tr>
+                @*if (n.BuyPrice > 0)
                     {
                         <tr>
-                            <td class="caption">In System</td>
-                            <td class="data">@m.StarSystem</td>
+                            <td class="nowrap">&nbsp;&nbsp;&nbsp;Price</td>
+                            <td class="data">@n.BuyPrice.ToString("N0") CR</td>
                         </tr>
-                    }
-                    @if (m.Distance > 0)
-                    {
-                        <tr>
-                            <td class="caption">Distance</td>
-                            <td class="data">@m.Distance.ToString("N0") Ly</td>
-                        </tr>
-                    }
-                    @if (!string.IsNullOrEmpty(m.StationName))
-                    {
-                        <tr>
-                            <td class="caption">On Station</td>
-                            <td class="data">@m.StationName</td>
-                        </tr>
-                    }
+                    }*@
+            if (!string.IsNullOrEmpty(n.EngineerModifications))
+            {
+                <tr>
+                    <td class="nowrap">&nbsp;&nbsp;&nbsp;Engineered</td>
+                    <td class="data">@n.EngineerModifications</td>
+                </tr>
+                if (n.Quality != 1)
+                {
+                    <tr>
+                        <td class="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Progress</td>
+                        <td class="data">@((n.Quality * 100.0).ToString("N1")) %</td>
+                    </tr>
+                }
+                <tr>
+                    <td class="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Level</td>
+                    <td class="data">@n.Level</td>
+                </tr>
+            }
+            if (!string.IsNullOrEmpty(n.ExperimentalEffect))
+            {
+                <tr>
+                    <td class="nowrap">&nbsp;&nbsp;&nbsp;Experimental</td>
+                    <td class="data">@n.ExperimentalEffect.Replace("_", " ")</td>
+                </tr>
+            }
+            if (n.InTransit)
+            {
+                <tr>
+                    <td class="nowrap">&nbsp;&nbsp;&nbsp;In Transit</td>
+                    <td class="data alarm">YES</td>
+                </tr>
+                if (n.TransferCost > 0)
+                {
+                    <tr>
+                        <td class="nowrap">&nbsp;&nbsp;&nbsp;Transfer Cost</td>
+                        <td class="data">@n.TransferCost.ToString("N0") CR</td>
+                    </tr>
+                }
+                if (n.TransferTime > 0)
+                {
+                    <tr>
+                        <td class="nowrap">&nbsp;&nbsp;&nbsp;Transfer Time</td>
+                        <td class="data">@n.TransferTime.ToString("N0") min</td>
+                    </tr>
+                }
+            }
 
-                    @foreach (var n in m.Modules)
-                    {
-                        <tr>
-                            <td class="data" colspan="2">&bull; @n.Name_Localised</td>
-                        </tr>
-                        @*if (n.BuyPrice > 0)
-                            {
-                                <tr>
-                                    <td class="caption">&nbsp;&nbsp;&nbsp;Price</td>
-                                    <td class="data">@n.BuyPrice.ToString("N0") CR</td>
-                                </tr>
-                            }*@
-                        if (!string.IsNullOrEmpty(n.EngineerModifications))
-                        {
-                            <tr>
-                                <td class="caption">&nbsp;&nbsp;&nbsp;Engineered</td>
-                                <td class="data">@n.EngineerModifications</td>
-                            </tr>
-                            if (n.Quality != 1)
-                            {
-                                <tr>
-                                    <td class="caption">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Progress</td>
-                                    <td class="data">@((n.Quality * 100.0).ToString("N1")) %</td>
-                                </tr>
-                            }
-                            <tr>
-                                <td class="caption">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Level</td>
-                                <td class="data">@n.Level</td>
-                            </tr>
-                        }
-                        if (!string.IsNullOrEmpty(n.ExperimentalEffect))
-                        {
-                            <tr>
-                                <td class="caption">&nbsp;&nbsp;&nbsp;Experimental</td>
-                                <td class="data">@n.ExperimentalEffect.Replace("_", " ")</td>
-                            </tr>
-                        }
-                        if (n.InTransit)
-                        {
-                            <tr>
-                                <td class="caption">&nbsp;&nbsp;&nbsp;In Transit</td>
-                                <td class="data alarm">YES</td>
-                            </tr>
-                            if (n.TransferCost > 0)
-                            {
-                                <tr>
-                                    <td class="caption">&nbsp;&nbsp;&nbsp;Transfer Cost</td>
-                                    <td class="data">@n.TransferCost.ToString("N0") CR</td>
-                                </tr>
-                            }
-                            if (n.TransferTime > 0)
-                            {
-                                <tr>
-                                    <td class="caption">&nbsp;&nbsp;&nbsp;Transfer Time</td>
-                                    <td class="data">@n.TransferTime.ToString("N0") min</td>
-                                </tr>
-                            }
-                        }
-
-                        if (n.Hot)
-                        {
-                            <tr>
-                                <td class="caption">&nbsp;&nbsp;&nbsp;Hot</td>
-                                <td class="data alarm">YES</td>
-                            </tr>
-                        }
-                    }
-
-                </tbody>
-            </table>
-
+            if (n.Hot)
+            {
+                <tr>
+                    <td class="nowrap">&nbsp;&nbsp;&nbsp;Hot</td>
+                    <td class="data alarm">YES</td>
+                </tr>
+            }
         }
 
+    }
     </tbody>
 </MudSimpleTable>
