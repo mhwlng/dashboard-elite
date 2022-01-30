@@ -5,6 +5,25 @@
 
 @{
     var skipFirst = true;
+
+    var hotspotSystemCount = Data.NearbyHotspotSystemsList?.Count ?? 0;
+
+    List<HotspotSystems.HotspotSystemData> hotspotSystems = null;
+
+    if (CurrentPage < hotspotSystemCount)
+    {
+        hotspotSystems = Data.NearbyHotspotSystemsList[(HotspotSystems.MaterialTypes)CurrentPage];
+    }
+
+    var miningSystemCount = Data.NearbyMiningStationsList?.Count ?? 0;
+
+    List<MiningStations.MiningStationData> miningSystems = null;
+
+    if (CurrentPage < miningSystemCount)
+    {
+        miningSystems = Data.NearbyMiningStationsList[(MiningStations.MaterialTypes)CurrentPage];
+    }
+
 }
 
 <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
@@ -16,42 +35,45 @@
             case 2:
             case 4:
             {
-                foreach (var m in Data.NearbyHotspotSystemsList[(HotspotSystems.MaterialTypes)CurrentPage])
+                @if (hotspotSystems != null)
                 {
-                    if (!skipFirst)
+                    foreach (var m in hotspotSystems)
                     {
-                        <tr>
-                            <td class="divider" colspan="2">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="spacer" colspan="2">&nbsp;</td>
-                        </tr>
+                        if (!skipFirst)
+                        {
+                            <tr>
+                                <td class="divider" colspan="2">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="spacer" colspan="2">&nbsp;</td>
+                            </tr>
+
+                        }
+                        skipFirst = false;
+
+                        if (!string.IsNullOrEmpty(m.Name))
+                        {
+                            <tr>
+                                <td class="nowrap">System</td>
+                                <td class="data">@m.Name</td>
+                            </tr>
+                        }
+                        if (m.Distance > 0)
+                        {
+                            <tr>
+                                <td class="nowrap">Distance</td>
+                                <td class="data">@m.Distance.ToString("N0") Ly</td>
+                            </tr>
+                        }
+                        if (!string.IsNullOrEmpty(m.Comment))
+                        {
+                            <tr>
+                                <td class="nowrap">Ring</td>
+                                <td class="data">@m.Comment</td>
+                            </tr>
+                        }
 
                     }
-                    skipFirst = false;
-
-                    if (!string.IsNullOrEmpty(m.Name))
-                    {
-                        <tr>
-                            <td class="nowrap">System</td>
-                            <td class="data">@m.Name</td>
-                        </tr>
-                    }
-                    if (m.Distance > 0)
-                    {
-                        <tr>
-                            <td class="nowrap">Distance</td>
-                            <td class="data">@m.Distance.ToString("N0") Ly</td>
-                        </tr>
-                    }
-                    if (!string.IsNullOrEmpty(m.Comment))
-                    {
-                        <tr>
-                            <td class="nowrap">Ring</td>
-                            <td class="data">@m.Comment</td>
-                        </tr>
-                    }
-
                 }
                 break;
             }
@@ -61,84 +83,86 @@
             case 6:
             case 7:
             {
-                foreach (var m in Data.NearbyMiningStationsList[(MiningStations.MaterialTypes)CurrentPage])
+                @if (miningSystems != null)
                 {
-                    if (!skipFirst)
+                    foreach (var m in miningSystems)
                     {
-                        <tr>
-                            <td class="divider" colspan="2">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="spacer" colspan="2">&nbsp;</td>
-                        </tr>
+                        if (!skipFirst)
+                        {
+                            <tr>
+                                <td class="divider" colspan="2">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="spacer" colspan="2">&nbsp;</td>
+                            </tr>
+
+                        }
+                        skipFirst = false;
+
+                        if (!string.IsNullOrEmpty(m.SystemName))
+                        {
+                            <tr>
+                                <td class="nowrap">System</td>
+                                <td class="data">@m.SystemName</td>
+                            </tr>
+                        }
+                        if (m.Distance > 0)
+                        {
+                            <tr>
+                                <td class="nowrap">Distance</td>
+                                <td class="data">@m.Distance.ToString("N0") Ly</td>
+                            </tr>
+                        }
+                        if (m.Body != null && !string.IsNullOrEmpty(m.Body.name))
+                        {
+                            <tr>
+                                <td class="nowrap">Body</td>
+                                <td class="data">@m.Body.name</td>
+                            </tr>
+                        }
+
+                        if (!string.IsNullOrEmpty(m.Name))
+                        {
+                            <tr>
+                                <td class="nowrap">Station</td>
+                                <td class="data">@m.Name (@m.Pad)</td>
+                            </tr>
+                        }
+                        if (m.DistanceToArrival > 0)
+                        {
+                            <tr>
+                                <td class="nowrap">Dist. from star</td>
+                                <td class="data">@(((double)m.DistanceToArrival).ToString("N0")) Ls</td>
+                            </tr>
+                        }
+
+                        if (m.Price > 0)
+                        {
+                            <tr>
+                                <td class="nowrap">Price</td>
+                                <td class="data">@m.Price.ToString("N0") CR</td>
+                            </tr>
+                        }
+                        if (m.Price > 0)
+                        {
+                            <tr>
+                                <td class="nowrap">Quantity</td>
+                                <td class="data">@m.Demand.ToString("N0")</td>
+                            </tr>
+                        }
+                        if (m.AgoSec > 0)
+                        {
+                            <tr>
+                                <td class="nowrap">Last Updated</td>
+                                <td class="data">@PageHelper.SinceText(m.AgoSec, m.UpdatedTime) ago</td>
+                            </tr>
+                        }
+
 
                     }
-                    skipFirst = false;
-
-                    if (!string.IsNullOrEmpty(m.SystemName))
-                    {
-                        <tr>
-                            <td class="nowrap">System</td>
-                            <td class="data">@m.SystemName</td>
-                        </tr>
-                    }
-                    if (m.Distance > 0)
-                    {
-                        <tr>
-                            <td class="nowrap">Distance</td>
-                            <td class="data">@m.Distance.ToString("N0") Ly</td>
-                        </tr>
-                    }
-                    if (m.Body != null && !string.IsNullOrEmpty(m.Body.name))
-                    {
-                        <tr>
-                            <td class="nowrap">Body</td>
-                            <td class="data">@m.Body.name</td>
-                        </tr>
-                    }
-
-                    if (!string.IsNullOrEmpty(m.Name))
-                    {
-                        <tr>
-                            <td class="nowrap">Station</td>
-                            <td class="data">@m.Name (@m.Pad)</td>
-                        </tr>
-                    }
-                    if (m.DistanceToArrival > 0)
-                    {
-                        <tr>
-                            <td class="nowrap">Dist. from star</td>
-                            <td class="data">@(((double)m.DistanceToArrival).ToString("N0")) Ls</td>
-                        </tr>
-                    }
-
-                    if (m.Price > 0)
-                    {
-                        <tr>
-                            <td class="nowrap">Price</td>
-                            <td class="data">@m.Price.ToString("N0") CR</td>
-                        </tr>
-                    }
-                    if (m.Price > 0)
-                    {
-                        <tr>
-                            <td class="nowrap">Quantity</td>
-                            <td class="data">@m.Demand.ToString("N0")</td>
-                        </tr>
-                    }
-                    if (m.AgoSec > 0)
-                    {
-                        <tr>
-                            <td class="nowrap">Last Updated</td>
-                            <td class="data">@PageHelper.SinceText(m.AgoSec, m.UpdatedTime) ago</td>
-                        </tr>
-                    }
-
-
                 }
                 break;
             }
         }
-
     </tbody>
 </MudSimpleTable>

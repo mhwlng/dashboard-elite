@@ -145,7 +145,13 @@ PageType == PageHelper.Page.StoredModules)
                 }
                 break;
             case PageHelper.Page.Engineers:
-                @(Data.EngineersList[CurrentPage].Faction)
+
+                var engineersCount = Data.EngineersList?.Count ?? 0;
+
+                if (CurrentPage < engineersCount)
+                {
+                    <text>@(Data.EngineersList[CurrentPage].Faction)</text>
+                }
                 break;
             case PageHelper.Page.StoredShips:
 
