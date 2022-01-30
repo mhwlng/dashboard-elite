@@ -119,6 +119,13 @@ namespace dashboard_elite.Components.Buttons
                     case "F":
                         fireGroup = 5;
                         break;
+                    case "G":
+                        fireGroup = 6;
+                        break;
+                    case "H":
+                        fireGroup = 7;
+                        break;
+
                 }
 
                 var cycle = Convert.ToInt32(fireGroup) - Data.StatusData.Firegroup;
@@ -128,7 +135,7 @@ namespace dashboard_elite.Components.Buttons
                     for (var f = 0; f < -cycle; f++)
                     {
                         CommandTools.SendKeypress(Program.Binding[BindingType.Ship].CycleFireGroupPrevious);
-                        Thread.Sleep(30);
+                        Thread.Sleep(70);
                     }
                 }
                 else if (cycle > 0)
@@ -136,7 +143,7 @@ namespace dashboard_elite.Components.Buttons
                     for (var f = 0; f < cycle; f++)
                     {
                         CommandTools.SendKeypress(Program.Binding[BindingType.Ship].CycleFireGroupNext);
-                        Thread.Sleep(30);
+                        Thread.Sleep(70);
                     }
                 }
 
@@ -152,7 +159,7 @@ namespace dashboard_elite.Components.Buttons
                 {
                     for (var f = 0; f < -cycle; f++)
                     {
-                        Thread.Sleep(30);
+                        Thread.Sleep(70);
                         CommandTools.SendKeypress(Program.Binding[BindingType.Ship].CycleFireGroupNext);
                     }
 
@@ -161,7 +168,7 @@ namespace dashboard_elite.Components.Buttons
                 {
                     for (var f = 0; f < cycle; f++)
                     {
-                        Thread.Sleep(30);
+                        Thread.Sleep(70);
                         CommandTools.SendKeypress(Program.Binding[BindingType.Ship].CycleFireGroupPrevious);
                     }
                 }

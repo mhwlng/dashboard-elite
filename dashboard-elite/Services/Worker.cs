@@ -92,6 +92,21 @@ namespace dashboard_elite
         private readonly Galnet _galnet;
         private readonly Poi _poi;
         private readonly HWInfo _hwinfo;
+        private readonly Ships _ships;
+        private readonly EliteData.Module _module;
+        private readonly History _history;
+
+        public Worker(IHubContext<MyHub> myHub, Data data, Galnet galnet, Poi poi, HWInfo hwinfo, History history, Ships ships, EliteData.Module module)
+        {
+            _myHub = myHub;
+            _data = data;
+            _galnet = galnet;
+            _poi = poi;
+            _hwinfo = hwinfo;
+            _history = history;
+            _ships = ships;
+            _module= module;
+        }
 
         public static FifoExecution KeyWatcherJob = new FifoExecution();
 
@@ -507,15 +522,6 @@ namespace dashboard_elite
             }
         }
 
-        public Worker(IHubContext<MyHub> myHub, Data data, Galnet galnet, Poi poi, HWInfo hwinfo) 
-        {
-            _myHub = myHub;
-            _data = data;
-            _galnet = galnet;
-            _poi = poi;
-            _hwinfo = hwinfo;
-        }
-
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var jsonToken = _jsonTokenSource.Token;
@@ -563,7 +569,7 @@ namespace dashboard_elite
                 RefreshJson();
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading History...");
-                var path = History.GetEliteHistory(defaultFilter, _data);
+                var path = _history.GetEliteHistory(defaultFilter, _data, _ships, _module);
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Getting Shopping List from EDEngineer...");
                 await Engineer.GetCommanderName();

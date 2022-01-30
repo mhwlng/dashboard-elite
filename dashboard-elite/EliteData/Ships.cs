@@ -1,15 +1,30 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using dashboard_elite.Hubs;
+using dashboard_elite.Services;
 using EliteJournalReader.Events;
+using Microsoft.AspNetCore.SignalR;
 using ModuleItem = EliteJournalReader.Module;
 // ReSharper disable StringLiteralTypo
 
 namespace dashboard_elite.EliteData
 {
-    public static class Ships
+    public class Ships
     {
-       
+        private readonly IHubContext<MyHub> _myHub;
+        private readonly ButtonCacheService _buttonCacheService;
+        private readonly ProfileCacheService _profileCacheService;
+        private readonly History _history;
+
+        public Ships(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService, History history)
+        {
+            _myHub = myHub;
+            _buttonCacheService = buttonCacheService;
+            _profileCacheService = profileCacheService;
+            _history = history;
+        }
+
         public static readonly Dictionary<string, string> ShipsByEliteId = new Dictionary<string, string>
         {
             {"sidewinder", "Sidewinder"},
@@ -178,9 +193,9 @@ namespace dashboard_elite.EliteData
             public double FuelPercent => FuelCapacity > 0 ? Convert.ToInt32(100.0 / FuelCapacity * CurrentFuelMain) : 0;
         }
 
-        public static List<ShipData> ShipsList = new List<ShipData>();
+        public List<ShipData> ShipsList = new List<ShipData>();
 
-        public static double GetFuelCostForNextJump(double jumpDistance, double fuelMain)
+        public double GetFuelCostForNextJump(double jumpDistance, double fuelMain)
         {
             // Thanks to https://forums.frontier.co.uk/threads/the-science-of-the-guardian-fsd-booster-2-0.436365/ for the formula
 
@@ -215,12 +230,12 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static ShipData GetCurrentShip()
+        public ShipData GetCurrentShip()
         {
             return ShipsList.FirstOrDefault(x => x.Stored == false);
         }
 
-        private static void AddShip(string shipId, string shipType, string starSystem, string stationName,
+        private void AddShip(string shipId, string shipType, string starSystem, string stationName,
             List<double> starPos, bool stored)
         {
             if (shipType == "testbuggy") return;
@@ -248,7 +263,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        private static void RemoveShip(string shipId, string shipType)
+        private void RemoveShip(string shipId, string shipType)
         {
             if (shipType == "testbuggy") return;
 
@@ -265,7 +280,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        private static void SetCurrentShip(string shipId, string shipType, string starSystem, string stationName,
+        private void SetCurrentShip(string shipId, string shipType, string starSystem, string stationName,
             List<double> starPos)
         {
             if (shipType == "testbuggy") return;
@@ -287,7 +302,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleShipDistance(List<double> starPos)
+        public void HandleShipDistance(List<double> starPos)
         {
             if (ShipsList?.Any() == true && starPos?.Count == 3)
             {
@@ -310,15 +325,15 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleShipFsdJump(string starSystem, List<double> starPos)
+        public void HandleShipFsdJump(string starSystem, List<double> starPos)
         {
-            if (!History.VisitedSystemList.ContainsKey(starSystem))
+            if (!_history.VisitedSystemList.ContainsKey(starSystem))
             {
-                History.VisitedSystemList.Add(starSystem, starPos);
+                _history.VisitedSystemList.Add(starSystem, starPos);
             }
         }
 
-        public static void HandleShipyardSell(ShipyardSellEvent.ShipyardSellEventArgs info)
+        public void HandleShipyardSell(ShipyardSellEvent.ShipyardSellEventArgs info)
         {
             if (!string.IsNullOrEmpty(info.ShipType))
             {
@@ -326,7 +341,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleShipyardBuy(ShipyardBuyEvent.ShipyardBuyEventArgs info)
+        public void HandleShipyardBuy(ShipyardBuyEvent.ShipyardBuyEventArgs info)
         {
             if (info.SellShipID != null && !string.IsNullOrEmpty(info.SellOldShip))
             {
@@ -334,7 +349,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleStoredShips(StoredShipsEvent.StoredShipsEventArgs info)
+        public void HandleStoredShips(StoredShipsEvent.StoredShipsEventArgs info)
         {
             // always empty in odyssey ????
 
@@ -349,7 +364,7 @@ namespace dashboard_elite.EliteData
 
             foreach (var s in info.ShipsHere)
             {
-                History.VisitedSystemList.TryGetValue(info.StarSystem, out var starPos);
+                _history.VisitedSystemList.TryGetValue(info.StarSystem, out var starPos);
 
                 if (starPos != null)
                 {
@@ -358,7 +373,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleShipyardSwap(ShipyardSwapEvent.ShipyardSwapEventArgs info)
+        public void HandleShipyardSwap(ShipyardSwapEvent.ShipyardSwapEventArgs info)
         {
             Station.MarketIdStations.TryGetValue(info.MarketID, out var station);
 
@@ -389,7 +404,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleShipyardNew(ShipyardNewEvent.ShipyardNewEventArgs info)
+        public void HandleShipyardNew(ShipyardNewEvent.ShipyardNewEventArgs info)
         {
             // follows ShipyardBuy, which removes the ship so GetCurrentShip returns null
 
@@ -403,9 +418,9 @@ namespace dashboard_elite.EliteData
         }
 
 
-        public static void HandleShipDocked(string starSystem, string stationName)
+        public void HandleShipDocked(string starSystem, string stationName)
         {
-            History.VisitedSystemList.TryGetValue(starSystem, out var starPos);
+            _history.VisitedSystemList.TryGetValue(starSystem, out var starPos);
 
             var ship = GetCurrentShip();
 
@@ -417,7 +432,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleShipLocation(string starSystem, string stationName, List<double> starPos)
+        public void HandleShipLocation(string starSystem, string stationName, List<double> starPos)
         {
             var ship = GetCurrentShip();
 
@@ -429,7 +444,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleHullDamage(double health)
+        public void HandleHullDamage(double health)
         {
             var ship = GetCurrentShip();
             if (ship != null)
@@ -439,7 +454,7 @@ namespace dashboard_elite.EliteData
         }
 
 
-        public static void HandleLoadGame(string shipId, string shipType, string name)
+        public void HandleLoadGame(string shipId, string shipType, string name)
         {
             var ship = GetCurrentShip();
             if (ship != null && !string.IsNullOrEmpty(shipType))
@@ -450,7 +465,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleSetUserShipName(string shipId, string name, string shipType)
+        public void HandleSetUserShipName(string shipId, string name, string shipType)
         {
             var ship = GetCurrentShip();
             if (ship != null)
@@ -462,7 +477,7 @@ namespace dashboard_elite.EliteData
         }
 
 
-        public static void HandleLoadout(LoadoutEvent.LoadoutEventArgs info)
+        public void HandleLoadout(LoadoutEvent.LoadoutEventArgs info)
         {
             var ship = GetCurrentShip();
 

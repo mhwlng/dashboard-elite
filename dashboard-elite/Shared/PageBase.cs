@@ -20,6 +20,10 @@ namespace dashboard_elite.Shared
 
         [Inject] public HWInfo HWInfo { get; set; }
 
+        [Inject] public Ships Ships { get; set; }
+
+        [Inject] public Module Module { get; set; }
+
         [Inject] public NavigationManager NavigationManager { get; set; }
 
         public HubConnection hubConnection;

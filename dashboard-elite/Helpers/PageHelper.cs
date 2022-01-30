@@ -13,7 +13,10 @@ namespace dashboard_elite.Helpers
             Poi,
             Mining,
             Powers,
-            HWInfo
+            HWInfo,
+            CurrentShip,
+            StoredShips,
+            StoredModules
         }
 
         public static readonly int[] SubPages = { 0,  // commander

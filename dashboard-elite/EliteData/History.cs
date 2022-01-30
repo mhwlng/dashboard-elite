@@ -5,15 +5,29 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using dashboard_elite.Hubs;
+using dashboard_elite.Services;
 using EliteJournalReader.Events;
+using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 using Serilog;
 //using System.Windows.Forms;
 
 namespace dashboard_elite.EliteData
 {
-    public static class History
+    public class History
     {
+        private readonly IHubContext<MyHub> _myHub;
+        private readonly ButtonCacheService _buttonCacheService;
+        private readonly ProfileCacheService _profileCacheService;
+
+        public History(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService)
+        {
+            _myHub = myHub;
+            _buttonCacheService = buttonCacheService;
+            _profileCacheService = profileCacheService;
+        }
+
         // 1478 x 1125
 
         public const double SpaceMinXL = -41715.0;
@@ -44,8 +58,8 @@ namespace dashboard_elite.EliteData
             public List<double> StarPos { get; set; }
         }
 
-        public static List<PointF> TravelHistoryPointsL = new List<PointF>();
-        public static List<PointF> TravelHistoryPointsP = new List<PointF>();
+        public List<PointF> TravelHistoryPointsL = new List<PointF>();
+        public List<PointF> TravelHistoryPointsP = new List<PointF>();
 
         public class LocationInfo
         {
@@ -71,12 +85,12 @@ namespace dashboard_elite.EliteData
             public string StarSystem { get; set; }
         }
 
-        public static Dictionary<string, List<double>> VisitedSystemList = new Dictionary<string, List<double>>();
+        public Dictionary<string, List<double>> VisitedSystemList = new Dictionary<string, List<double>>();
 
-        public static double GalaxyImageLWidth { get; set; }
-        public static double GalaxyImageLHeight { get; set; }
-        public static double GalaxyImagePWidth { get; set; }
-        public static double GalaxyImagePHeight { get; set; }
+        public double GalaxyImageLWidth { get; set; }
+        public double GalaxyImageLHeight { get; set; }
+        public double GalaxyImagePWidth { get; set; }
+        public double GalaxyImagePHeight { get; set; }
 
         private class UnsafeNativeMethods
         {
@@ -89,7 +103,7 @@ namespace dashboard_elite.EliteData
         /// <summary>
         /// The standard Directory of the Player Journal files (C:\Users\%username%\Saved Games\Frontier Developments\Elite Dangerous).
         /// </summary>
-        private static DirectoryInfo StandardDirectory
+        private DirectoryInfo StandardDirectory
         {
             get
             {
@@ -117,7 +131,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void AddTravelPos(List<double> starPos)
+        public void AddTravelPos(List<double> starPos)
         {
             if (starPos?.Count == 3)
             {
@@ -146,7 +160,7 @@ namespace dashboard_elite.EliteData
         }
 
 
-        public static string GetEliteHistory(string defaultFilter, Data data)
+        public string GetEliteHistory(string defaultFilter, Data data, Ships ships, Module module)
         {
             var journalDirectory = StandardDirectory;
 
@@ -190,7 +204,7 @@ namespace dashboard_elite.EliteData
 
                                             if (!info.Taxi)
                                             {
-                                                Ships.HandleShipFsdJump(info.StarSystem, info.StarPos.ToList());
+                                                ships.HandleShipFsdJump(info.StarSystem, info.StarPos.ToList());
                                             }
                                         }
                                     }
@@ -207,7 +221,7 @@ namespace dashboard_elite.EliteData
 
                                         if (!info.Taxi)
                                         {
-                                            Ships.HandleShipFsdJump(info.StarSystem, info.StarPos.ToList());
+                                            ships.HandleShipFsdJump(info.StarSystem, info.StarPos.ToList());
                                         }
                                     }
                                     else if (json?.Contains("\"event\":\"LoadGame\",") == true)
@@ -216,7 +230,7 @@ namespace dashboard_elite.EliteData
 
                                         if (!string.IsNullOrEmpty(info.Ship))
                                         {
-                                            Ships.HandleLoadGame(info.ShipID, info.Ship, info.ShipName);
+                                            ships.HandleLoadGame(info.ShipID, info.Ship, info.ShipName);
                                         }
                                     }
                                     else if (json?.Contains("\"event\":\"EngineerProgress\",") == true)
@@ -229,13 +243,13 @@ namespace dashboard_elite.EliteData
                                     {
                                         var info = JsonConvert.DeserializeObject<SetUserShipNameEvent.SetUserShipNameEventArgs>(json);
 
-                                        Ships.HandleSetUserShipName(info.ShipID, info.UserShipName, info.Ship);
+                                        ships.HandleSetUserShipName(info.ShipID, info.UserShipName, info.Ship);
                                     }
                                     else if (json?.Contains("\"event\":\"HullDamage\",") == true)
                                     {
                                         var info = JsonConvert.DeserializeObject<HullDamageEvent.HullDamageEventArgs>(json);
 
-                                        Ships.HandleHullDamage(info.Health);
+                                        ships.HandleHullDamage(info.Health);
                                     }
                                     else if (json?.Contains("\"event\":\"Location\",") == true)
                                     {
@@ -243,7 +257,7 @@ namespace dashboard_elite.EliteData
 
                                         if (!info.OnFoot && !info.Taxi && info.Docked)
                                         {
-                                            Ships.HandleShipLocation(info.StarSystem, info.StationName,
+                                            ships.HandleShipLocation(info.StarSystem, info.StationName,
                                                 info.StarPos);
                                         }
                                     }
@@ -253,7 +267,7 @@ namespace dashboard_elite.EliteData
 
                                         if (!info.Taxi)
                                         {
-                                            Ships.HandleShipDocked(info.StarSystem, info.StationName);
+                                            ships.HandleShipDocked(info.StarSystem, info.StationName);
                                         }
                                     }
                                     else if (json?.Contains("\"event\":\"ShipyardNew\",") == true)
@@ -262,7 +276,7 @@ namespace dashboard_elite.EliteData
                                             JsonConvert.DeserializeObject<ShipyardNewEvent.ShipyardNewEventArgs>(
                                                 json);
 
-                                        Ships.HandleShipyardNew(info);
+                                        ships.HandleShipyardNew(info);
                                     }
                                     else if (json?.Contains("\"event\":\"ShipyardBuy\",") == true)
                                     {
@@ -270,21 +284,21 @@ namespace dashboard_elite.EliteData
                                             JsonConvert.DeserializeObject<ShipyardBuyEvent.ShipyardBuyEventArgs>(
                                                 json);
 
-                                        Ships.HandleShipyardBuy(info);
+                                        ships.HandleShipyardBuy(info);
                                     }
                                     else if (json?.Contains("\"event\":\"ShipyardSell\",") == true)
                                     {
                                         var info = JsonConvert
                                             .DeserializeObject<ShipyardSellEvent.ShipyardSellEventArgs>(json);
 
-                                        Ships.HandleShipyardSell(info);
+                                        ships.HandleShipyardSell(info);
                                     }
                                     else if (json?.Contains("\"event\":\"ShipyardSwap\",") == true)
                                     {
                                         var info = JsonConvert
                                             .DeserializeObject<ShipyardSwapEvent.ShipyardSwapEventArgs>(json);
 
-                                        Ships.HandleShipyardSwap(info);
+                                        ships.HandleShipyardSwap(info);
                                     }
                                     else if (json?.Contains("\"event\":\"StoredShips\",") == true)
                                     {
@@ -292,7 +306,7 @@ namespace dashboard_elite.EliteData
                                             JsonConvert.DeserializeObject<StoredShipsEvent.StoredShipsEventArgs>(
                                                 json);
 
-                                        Ships.HandleStoredShips(info);
+                                        ships.HandleStoredShips(info);
                                     }
                                     /*else if (json?.Contains("\"event\":\"ShipyardTransfer\",") == true)
                                     {
@@ -303,22 +317,22 @@ namespace dashboard_elite.EliteData
                                         var info =
                                             JsonConvert.DeserializeObject<LoadoutEvent.LoadoutEventArgs>(json);
 
-                                        Ships.HandleLoadout(info);
-                                        Module.HandleLoadout(info);
+                                        ships.HandleLoadout(info);
+                                        module.HandleLoadout(info);
                                     }
                                     else if (json?.Contains("\"event\":\"ModuleBuy\",") == true)
                                     {
                                         var info =
                                             JsonConvert.DeserializeObject<ModuleBuyEvent.ModuleBuyEventArgs>(json);
 
-                                        Module.HandleModuleBuy(info);
+                                        module.HandleModuleBuy(info);
                                     }
                                     else if (json?.Contains("\"event\":\"ModuleSell\",") == true)
                                     {
                                         var info = JsonConvert
                                             .DeserializeObject<ModuleSellEvent.ModuleSellEventArgs>(json);
 
-                                        Module.HandleModuleSell(info);
+                                        module.HandleModuleSell(info);
                                     }
                                     else if (json?.Contains("\"event\":\"ModuleSellRemote\",") == true)
                                     {
@@ -326,49 +340,49 @@ namespace dashboard_elite.EliteData
                                             .DeserializeObject<ModuleSellRemoteEvent.ModuleSellRemoteEventArgs>(
                                                 json);
 
-                                        Module.HandleModuleSellRemote(info);
+                                        module.HandleModuleSellRemote(info);
                                     }
                                     else if (json?.Contains("\"event\":\"ModuleStore\",") == true)
                                     {
                                         var info = JsonConvert
                                             .DeserializeObject<ModuleStoreEvent.ModuleStoreEventArgs>(json);
 
-                                        Module.HandleModuleStore(info);
+                                        module.HandleModuleStore(info);
                                     }
                                     else if (json?.Contains("\"event\":\"ModuleSwap\",") == true)
                                     {
                                         var info = JsonConvert
                                             .DeserializeObject<ModuleSwapEvent.ModuleSwapEventArgs>(json);
 
-                                        Module.HandleModuleSwap(info);
+                                        module.HandleModuleSwap(info);
                                     }
                                     else if (json?.Contains("\"event\":\"ModuleRetrieve\",") == true)
                                     {
                                         var info = JsonConvert
                                             .DeserializeObject<ModuleRetrieveEvent.ModuleRetrieveEventArgs>(json);
 
-                                        Module.HandleModuleRetrieve(info);
+                                        module.HandleModuleRetrieve(info);
                                     }
                                     else if (json?.Contains("\"event\":\"MassModuleStore\",") == true)
                                     {
                                         var info = JsonConvert
                                             .DeserializeObject<MassModuleStoreEvent.MassModuleStoreEventArgs>(json);
 
-                                        Module.HandleMassModuleStore(info);
+                                        module.HandleMassModuleStore(info);
                                     }
                                     else if (json?.Contains("\"event\":\"FetchRemoteModule\",") == true)
                                     {
                                         var info = JsonConvert
                                             .DeserializeObject<FetchRemoteModuleEvent.FetchRemoteModuleEventArgs>(json);
 
-                                        Module.HandleFetchRemoteModule(info);
+                                        module.HandleFetchRemoteModule(info);
                                     }
                                     else if (json?.Contains("\"event\":\"StoredModules\",") == true)
                                     {
                                         var info = JsonConvert
                                             .DeserializeObject<StoredModulesEvent.StoredModulesEventArgs>(json);
 
-                                        Module.HandleStoredModules(info);
+                                        module.HandleStoredModules(info);
                                     }
 
                                     /*else if (json?.Contains("\"event\":\"MissionCompleted\",") == true)

@@ -44,6 +44,9 @@ namespace dashboard_elite
             services.AddSingleton<Galnet>();
             services.AddSingleton<Poi>();
             services.AddSingleton<HWInfo>();
+            services.AddSingleton<Ships>();
+            services.AddSingleton<Module>();
+            services.AddSingleton<History>();
 
             services.AddResponseCompression(opts =>
             {

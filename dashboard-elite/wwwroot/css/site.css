@@ -6,6 +6,11 @@
      border-bottom: 1px solid transparent
 }
 
+.mud-drawer-header {
+    min-height: 0!important;
+    padding: 0 !important;
+}
+
 td.divider {
     font-size: 2px !important;
     border-bottom: 1px solid #FFB000 !important;

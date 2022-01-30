@@ -1,0 +1,195 @@
+﻿@page "/ship/currentship"
+@using dashboard_elite.Helpers
+@inherits PageBase
+@layout PageLayout
+
+@{
+    var onFoot = Data.StatusData.OnFoot;
+
+    var currentShip = Ships.ShipsList.FirstOrDefault(x => x.Stored == false);
+
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+
+        <table>
+            <tbody>
+                @if (!string.IsNullOrEmpty(currentShip.Name))
+                {
+                    <tr>
+                        <td class="caption">Ship Name</td>
+                        <td class="data">@currentShip.Name</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(currentShip.ShipTypeFull))
+                {
+                    <tr>
+                        <td class="caption">Ship Type</td>
+                        <td class="data">@currentShip.ShipTypeFull</td>
+                    </tr>
+                }
+                @if (onFoot && !string.IsNullOrEmpty(currentShip.StarSystem))
+                {
+                    <tr>
+                        <td class="caption">In System</td>
+                        <td class="data">@currentShip.StarSystem</td>
+                    </tr>
+                }
+                @if (onFoot && currentShip.Distance > 0)
+                {
+                    <tr>
+                        <td class="caption">Distance</td>
+                        <td class="data">@currentShip.Distance.ToString("N0") Ly</td>
+                    </tr>
+                }
+                @if (onFoot && !string.IsNullOrEmpty(currentShip.StationName))
+                {
+                    <tr>
+                        <td class="caption">On Station</td>
+                        <td class="data">@currentShip.StationName</td>
+                    </tr>
+                }
+                @if (currentShip.HullValue + currentShip.ModulesValue > 0)
+                {
+                    <tr>
+                        <td class="caption">Value</td>
+                        <td class="data">@((currentShip.HullValue + currentShip.ModulesValue).ToString("N0")) CR</td>
+                    </tr>
+                }
+                @if (currentShip.Rebuy > 0)
+                {
+                    <tr>
+                        <td class="caption">Rebuy</td>
+                        <td class="data">@currentShip.Rebuy.ToString("N0") CR</td>
+                    </tr>
+                }
+                @if (currentShip.FuelCapacity > 0)
+                {
+                    <tr>
+                        <td class="caption">Fuel Capacity</td>
+                        <td class="data">@currentShip.FuelCapacity.ToString("N1") T</td>
+                    </tr>
+                    if (!onFoot)
+                    {
+                        <tr>
+                            <td class="caption">Fuel Level</td>
+                            <td class="data">@currentShip.FuelPercent.ToString("N1") % (@currentShip.CurrentFuelMain.ToString("N1") T)</td>
+                        </tr>
+                    }
+                }
+                @if (currentShip.HullHealth > 0 && currentShip.HullHealth < 100)
+                {
+                    <tr>
+                        <td class="caption">Hull Health</td>
+                        <td class="data alarm">@currentShip.HullHealth.ToString("N0") %</td>
+                    </tr>
+                }
+                @if (onFoot && currentShip.CargoCapacity > 0 )
+                {
+                    <tr>
+                        <td class="caption">Cargo Capacity</td>
+                        <td class="data">@currentShip.CargoCapacity T</td>
+                    </tr>
+                }
+                else if (!onFoot && currentShip.CargoCapacity > 0 && currentShip.CargoCapacity >= currentShip.CurrentCargo)
+                {
+                    <tr>
+                        <td class="caption">Cargo Capacity</td>
+                        <td class="data">@currentShip.CurrentCargo / @currentShip.CargoCapacity T</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td class="caption">Cargo Capacity</td>
+                        <td class="data">NONE</td>
+                    </tr>
+                }
+                @if (currentShip.UnladenMass > 0)
+                {
+                    <tr>
+                        <td class="caption">Mass</td>
+                        <td class="data">@((currentShip.UnladenMass + currentShip.CurrentFuelMain + currentShip.CurrentCargo).ToString("N1")) T</td>
+                    </tr>
+                }
+                @if (currentShip.MaxJumpRange > 0)
+                {
+                    <tr>
+                        <td class="caption">Max. Jump Range</td>
+                        <td class="data">@currentShip.MaxJumpRange.ToString("N1") LY</td>
+                    </tr>
+                }
+                @if (!onFoot && currentShip.CurrentJumpRange > 0)
+                {
+                    <tr>
+                        <td class="caption">Jump Range</td>
+                        <td class="data">@currentShip.CurrentJumpRange.ToString("N1") LY</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(currentShip.Bulkhead))
+                {
+                    <tr>
+                        <td class="caption">Bulkhead</td>
+                        <td class="data">@currentShip.Bulkhead</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(currentShip.PowerPlant))
+                {
+                    <tr>
+                        <td class="caption">Powerplant</td>
+                        <td class="data">@currentShip.PowerPlant</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(currentShip.Engine))
+                {
+                    <tr>
+                        <td class="caption">Thrusters</td>
+                        <td class="data">@currentShip.Engine</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(currentShip.PowerDistributor))
+                {
+                    <tr>
+                        <td class="caption">Power Distributor</td>
+                        <td class="data">@currentShip.PowerDistributor</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(currentShip.ShieldGenerator))
+                {
+                    <tr>
+                        <td class="caption">Shield Generator</td>
+                        <td class="data">@currentShip.ShieldGenerator</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(currentShip.FrameShiftDrive))
+                {
+                    <tr>
+                        <td class="caption">FSD</td>
+                        <td class="data">@currentShip.FrameShiftDrive@currentShip.GuardianFSDBooster</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(currentShip.Cabins))
+                {
+                    <tr>
+                        <td class="caption">Cabins</td>
+                        <td class="data">@currentShip.Cabins</td>
+                    </tr>
+                }
+                @foreach (var ml in currentShip.ModuleList)
+                {
+                    if (ml.Value.Any())
+                    {
+                        <tr>
+                            <td class="caption">@((MarkupString)ml.Key)</td>
+                            <td class="data">@((MarkupString)Module.GetModulePlacement(ml.Key, ml.Value))</td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>        
+    
+
+    </tbody>
+</MudSimpleTable>

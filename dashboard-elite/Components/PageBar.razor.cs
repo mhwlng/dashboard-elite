@@ -63,7 +63,9 @@ namespace dashboard_elite.Components
 
             CurrentPage = PageHelper.DecrementCurrentPage(RouteData.PageType.Name, CurrentPage);
 
-            NavigationManager.NavigateTo($"{RouteData.PageType.Name}/{CurrentPage}");
+            var uri = new Uri(NavigationManager.Uri);
+
+            NavigationManager.NavigateTo($"{uri.Segments[1]}{RouteData.PageType.Name}/{CurrentPage}");
         }
 
         async Task NextPage(int currentPage)
@@ -72,7 +74,9 @@ namespace dashboard_elite.Components
 
             CurrentPage = PageHelper.IncrementCurrentPage(RouteData.PageType.Name, CurrentPage);
 
-            NavigationManager.NavigateTo($"{RouteData.PageType.Name}/{CurrentPage}");
+            var uri = new Uri(NavigationManager.Uri);
+
+            NavigationManager.NavigateTo($"{uri.Segments[1]}{RouteData.PageType.Name}/{CurrentPage}");
         }
 
         public async ValueTask DisposeAsync()

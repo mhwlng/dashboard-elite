@@ -24,6 +24,10 @@
         {
             <LimpetButton ButtonData="button" Data="Data" />
         }
+        else if (button.ButtonType == ButtonType.FireGroupButton)
+        {
+            <FireGroupButton ButtonData="button" Data="Data" />
+        }
         else if (button.ButtonType == ButtonType.PowerButton)
         {
             <PowerButton ButtonData="button" Data="Data" @bind-Pips="@Data.StatusData.Pips" @bind-UnderAttack="@Data.UnderAttack" />

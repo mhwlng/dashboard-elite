@@ -17,6 +17,7 @@ namespace dashboard_elite.Services
         FSSButton,
         HyperspaceButton,
         LimpetButton,
+        FireGroupButton,
         PowerButton,
         StaticButton,
         RepeatingStaticButton
@@ -25,14 +26,14 @@ namespace dashboard_elite.Services
     public class ButtonData
     {
         public string Function { get; set; }
-        public ButtonType ButtonType { get; set; } // ToggleButton    // AlarmButton  // FSSButton // Hyperspace   // Limpet
-        public string PrimaryIcon { get; set; }   // off             // normal        // off       // off         // normal
-        public string SecondaryIcon { get; set; } // on              // alarm         // engaged   // engaged     // disabled
-        public string TertiaryIcon { get; set; }  //                 //               // disabled  // disabled    // 
+        public ButtonType ButtonType { get; set; } // ToggleButton    // AlarmButton  // FSSButton // Hyperspace   // Limpet     // FireGroup
+        public string PrimaryIcon { get; set; }   // off             // normal        // off       // off         // normal      // off
+        public string SecondaryIcon { get; set; } // on              // alarm         // engaged   // engaged     // disabled   // on
+        public string TertiaryIcon { get; set; }  //                 //               // disabled  // disabled    //            // disabled
         public string ClickSound { get; set; }
         public string ErrorSound { get; set; }
         public bool DontSwitchToCombatMode { get; set; } // hyperspace
-        public string Firegroup { get; set; } // limpet
+        public string Firegroup { get; set; } // limpet  firegroup
         public string Fire { get; set; } // limpet
 
     }

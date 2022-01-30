@@ -1,10 +1,19 @@
 ﻿@using dashboard_elite.Helpers
 <MudNavMenu class="large-font">
-    <MudNavLink Href="@(PageHelper.Page.Commander.ToString())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Commander</MudNavLink>
-    <MudNavLink Href="@(PageHelper.Page.Engineers.ToString())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Engineers</MudNavLink>
-    <MudNavLink Href="@(PageHelper.Page.Galnet.ToString())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Galnet</MudNavLink>
-    <MudNavLink Href="@(PageHelper.Page.Poi.ToString())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Points of Interest</MudNavLink>
-    <MudNavLink Href="@(PageHelper.Page.Mining.ToString())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Mining</MudNavLink>
-    <MudNavLink Href="@(PageHelper.Page.Powers.ToString())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Powers</MudNavLink>
-    <MudNavLink Href="@(PageHelper.Page.HWInfo.ToString())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">HWInfo</MudNavLink>
+    <MudNavGroup Title="Information" Expanded="@(NavSection == "information")">
+        <MudNavLink Href="@("information/"+PageHelper.Page.Commander)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Commander</MudNavLink>
+        <MudNavLink Href="@("information/"+PageHelper.Page.Galnet)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Galnet</MudNavLink>
+        <MudNavLink Href="@("information/"+PageHelper.Page.HWInfo)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">HWInfo</MudNavLink>
+    </MudNavGroup>
+    <MudNavGroup Title="Ship" Expanded="@(NavSection == "ship")">
+        <MudNavLink Href="@("ship/"+PageHelper.Page.CurrentShip)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Current Ship</MudNavLink>
+        <MudNavLink Href="@("ship/"+PageHelper.Page.StoredShips)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Stored Ships</MudNavLink>
+        <MudNavLink Href="@("ship/"+PageHelper.Page.StoredModules)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Stored Modules</MudNavLink>
+    </MudNavGroup>
+    <MudNavGroup Title="Locations" Expanded="@(NavSection == "locations")">
+        <MudNavLink Href="@("locations/"+PageHelper.Page.Poi)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Points of Interest</MudNavLink>
+        <MudNavLink Href="@("locations/"+PageHelper.Page.Engineers)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Engineers</MudNavLink>
+        <MudNavLink Href="@("locations/"+PageHelper.Page.Powers)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Powers</MudNavLink>
+        <MudNavLink Href="@("locations/"+PageHelper.Page.Mining)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Mining</MudNavLink>
+    </MudNavGroup>
 </MudNavMenu>

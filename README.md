@@ -138,6 +138,10 @@ A configuration tool, to link sensor ids to variables in the HWINFO.inc file, ca
 
 ![hwinfo tool](https://i.imgur.com/Px6jvw4.png)
 
+The UTF-8 checkbox must be enabled for non-unicode programs in the latest unicode-enabled version of HWINFO :
+
+![unicode hwinfo](https://i.imgur.com/d8nuMwM.png)
+
 The buttons will only work with keyboard bindings. 
 So, when there is only a binding to a joystick / controller / mouse for a function, then you need to add a keyboard binding first.
 
@@ -297,6 +301,20 @@ The button shows the current number of limpets in the cargo hold. (The same valu
 
 There is no specific keybind for any type of limpet controller.
 Instead, you need to set up a fire group letter and primary or secondary fire button.
+
+**FireGroupButton**
+
+```
+{
+	"buttonType": "FireGroupButton",
+	"firegroup": "E",
+	"primaryIcon": "firegroup.svg",
+	"secondaryIcon": "firegroup.svg",
+	"tertiaryIcon": "firegroup.svg",
+	"clickSound": "",
+	"errorSound": ""
+}
+```
 
 **FSSButton**
 

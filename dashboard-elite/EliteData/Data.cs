@@ -19,13 +19,19 @@ namespace dashboard_elite.EliteData
         private readonly ButtonCacheService _buttonCacheService;
         private readonly ProfileCacheService _profileCacheService;
         private readonly Poi _poi;
+        private readonly Ships _ships;
+        private readonly Module _module;
+        private readonly History _history;
 
-        public Data(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService, Poi poi)
+        public Data(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService, Poi poi, Ships ships, Module module, History history)
         {
             _myHub = myHub;
             _buttonCacheService = buttonCacheService;
             _profileCacheService = profileCacheService;
             _poi = poi;
+            _ships = ships;
+            _module = module;
+            _history = history;
         }
 
 
@@ -563,7 +569,7 @@ namespace dashboard_elite.EliteData
             StatusData.OnFootExterior = (evt.Flags2 & MoreStatusFlags.OnFootExterior) != 0;
             StatusData.BreathableAtmosphere = (evt.Flags2 & MoreStatusFlags.BreathableAtmosphere) != 0;
 
-            var shipData = Ships.GetCurrentShip();
+            var shipData = _ships.GetCurrentShip();
             if (shipData != null)
             {
                 shipData.CurrentFuelMain = evt.Fuel?.FuelMain ?? 0;
@@ -730,7 +736,7 @@ namespace dashboard_elite.EliteData
                 EventHistory.Put(DateTime.Now.ToLongTimeString() + " : " + evt);
             }
 
-            var shipData = Ships.GetCurrentShip();
+            var shipData = _ships.GetCurrentShip();
 
             switch (evt)
             {
@@ -755,7 +761,7 @@ namespace dashboard_elite.EliteData
 
                     if (!string.IsNullOrEmpty(loadGameInfo.Ship))
                     {
-                        Ships.HandleLoadGame(loadGameInfo.ShipID, loadGameInfo.Ship, loadGameInfo.ShipName);
+                        _ships.HandleLoadGame(loadGameInfo.ShipID, loadGameInfo.Ship, loadGameInfo.ShipName);
                     }
 
                     CommanderData.Name = loadGameInfo.Commander;
@@ -834,7 +840,7 @@ namespace dashboard_elite.EliteData
 
                     //ShipID
 
-                    Ships.HandleSetUserShipName(setUserShipNameInfo.ShipID, setUserShipNameInfo.UserShipName, setUserShipNameInfo.Ship);
+                    _ships.HandleSetUserShipName(setUserShipNameInfo.ShipID, setUserShipNameInfo.UserShipName, setUserShipNameInfo.Ship);
 
                     break;
 
@@ -845,7 +851,7 @@ namespace dashboard_elite.EliteData
 
                     if (!locationInfo.OnFoot && !locationInfo.Taxi && locationInfo.Docked)
                     {
-                        Ships.HandleShipLocation(locationInfo.StarSystem, locationInfo.StationName,
+                        _ships.HandleShipLocation(locationInfo.StarSystem, locationInfo.StationName,
                             locationInfo.StarPos.ToList());
                     }
 
@@ -875,8 +881,8 @@ namespace dashboard_elite.EliteData
 
                     LocationData.StarPos = locationInfo.StarPos.ToList();
 
-                    Ships.HandleShipDistance(LocationData.StarPos);
-                    Module.HandleModuleDistance(LocationData.StarPos);
+                    _ships.HandleShipDistance(LocationData.StarPos);
+                    _module.HandleModuleDistance(LocationData.StarPos);
 
                     _poi.NearbyPoiList = _poi.GetNearestPois(LocationData.StarPos);
 
@@ -919,8 +925,8 @@ namespace dashboard_elite.EliteData
 
                     var loadoutInfo = (LoadoutEvent.LoadoutEventArgs)e;
 
-                    Ships.HandleLoadout(loadoutInfo);
-                    Module.HandleLoadout(loadoutInfo);
+                    _ships.HandleLoadout(loadoutInfo);
+                    _module.HandleLoadout(loadoutInfo);
 
                     break;
 
@@ -1049,7 +1055,7 @@ namespace dashboard_elite.EliteData
 
                     CommanderData.Credits -= moduleBuyInfo.BuyPrice + (moduleBuyInfo.SellPrice ?? 0);
 
-                    Module.HandleModuleBuy(moduleBuyInfo);
+                    _module.HandleModuleBuy(moduleBuyInfo);
 
                     break;
 
@@ -1059,7 +1065,7 @@ namespace dashboard_elite.EliteData
 
                     CommanderData.Credits += moduleSellInfo.SellPrice;
 
-                    Module.HandleModuleSell(moduleSellInfo);
+                    _module.HandleModuleSell(moduleSellInfo);
 
                     break;
 
@@ -1069,7 +1075,7 @@ namespace dashboard_elite.EliteData
 
                     CommanderData.Credits += moduleSellRemoteInfo.SellPrice;
 
-                    Module.HandleModuleSellRemote(moduleSellRemoteInfo);
+                    _module.HandleModuleSellRemote(moduleSellRemoteInfo);
 
                     break;
 
@@ -1079,7 +1085,7 @@ namespace dashboard_elite.EliteData
 
                     //CommanderData.Credits -= moduleRetrieveInfo.Cost; ???????????????
 
-                    Module.HandleModuleRetrieve(moduleRetrieveInfo);
+                    _module.HandleModuleRetrieve(moduleRetrieveInfo);
 
                     break;
 
@@ -1089,7 +1095,7 @@ namespace dashboard_elite.EliteData
 
                     //CommanderData.Credits -= moduleStoreInfo.Cost; ???????????????
 
-                    Module.HandleModuleStore(moduleStoreInfo);
+                    _module.HandleModuleStore(moduleStoreInfo);
 
                     break;
 
@@ -1097,7 +1103,7 @@ namespace dashboard_elite.EliteData
                     //When Written: when moving a module to a different slot on the ship
                     var moduleSwapInfo = (ModuleSwapEvent.ModuleSwapEventArgs)e;
 
-                    Module.HandleModuleSwap(moduleSwapInfo);
+                    _module.HandleModuleSwap(moduleSwapInfo);
 
                     break;
 
@@ -1105,7 +1111,7 @@ namespace dashboard_elite.EliteData
                     //When written: when putting multiple modules into storage
                     var massModuleStoreInfo = (MassModuleStoreEvent.MassModuleStoreEventArgs)e;
 
-                    Module.HandleMassModuleStore(massModuleStoreInfo);
+                    _module.HandleMassModuleStore(massModuleStoreInfo);
 
                     break;
 
@@ -1116,7 +1122,7 @@ namespace dashboard_elite.EliteData
 
                     CommanderData.Credits -= fetchRemoteModuleInfo.TransferCost;
 
-                    Module.HandleFetchRemoteModule(fetchRemoteModuleInfo);
+                    _module.HandleFetchRemoteModule(fetchRemoteModuleInfo);
 
                     break;
 
@@ -1134,7 +1140,7 @@ namespace dashboard_elite.EliteData
 
                     var storedModulesInfo = (StoredModulesEvent.StoredModulesEventArgs)e;
 
-                    Module.HandleStoredModules(storedModulesInfo);
+                    _module.HandleStoredModules(storedModulesInfo);
 
                     break;
 
@@ -1154,7 +1160,7 @@ namespace dashboard_elite.EliteData
 
                     CommanderData.Credits -= shipyardBuyInfo.ShipPrice + (shipyardBuyInfo.SellPrice ?? 0);
 
-                    Ships.HandleShipyardBuy(shipyardBuyInfo);
+                    _ships.HandleShipyardBuy(shipyardBuyInfo);
 
                     break;
 
@@ -1165,7 +1171,7 @@ namespace dashboard_elite.EliteData
 
                     CommanderData.Credits += shipyardSellInfo.ShipPrice;
 
-                    Ships.HandleShipyardSell(shipyardSellInfo);
+                    _ships.HandleShipyardSell(shipyardSellInfo);
 
                     break;
 
@@ -1175,7 +1181,7 @@ namespace dashboard_elite.EliteData
 
                     CommanderData.Credits += shipyardSwapInfo.SellPrice ?? 0;
 
-                    Ships.HandleShipyardSwap(shipyardSwapInfo);
+                    _ships.HandleShipyardSwap(shipyardSwapInfo);
 
                     break;
 
@@ -1194,7 +1200,7 @@ namespace dashboard_elite.EliteData
                     //When written: after a new ship has been purchased
                     var shipyardNewInfo = (ShipyardNewEvent.ShipyardNewEventArgs)e;
 
-                    Ships.HandleShipyardNew(shipyardNewInfo);
+                    _ships.HandleShipyardNew(shipyardNewInfo);
 
                     break;
 
@@ -1204,7 +1210,7 @@ namespace dashboard_elite.EliteData
 
                     //ShipID
 
-                    Ships.HandleStoredShips(storedShipsInfo);
+                    _ships.HandleStoredShips(storedShipsInfo);
 
                     break;
 
@@ -1296,7 +1302,7 @@ namespace dashboard_elite.EliteData
 
                     if (!dockedInfo.Taxi)
                     {
-                        Ships.HandleShipDocked(dockedInfo.StarSystem, dockedInfo.StationName);
+                        _ships.HandleShipDocked(dockedInfo.StarSystem, dockedInfo.StationName);
                     }
 
                     //CockpitBreach
@@ -1376,7 +1382,7 @@ namespace dashboard_elite.EliteData
                     {
                         if (!carrierJumpInfo.Taxi)
                         {
-                            Ships.HandleShipFsdJump(carrierJumpInfo.StarSystem, carrierJumpInfo.StarPos.ToList());
+                            _ships.HandleShipFsdJump(carrierJumpInfo.StarSystem, carrierJumpInfo.StarPos.ToList());
                         }
 
                         LocationData.Body = carrierJumpInfo.Body;
@@ -1387,10 +1393,10 @@ namespace dashboard_elite.EliteData
 
                         LocationData.StarPos = carrierJumpInfo.StarPos.ToList();
 
-                        Ships.HandleShipDistance(LocationData.StarPos);
-                        Module.HandleModuleDistance(LocationData.StarPos);
+                        _ships.HandleShipDistance(LocationData.StarPos);
+                        _module.HandleModuleDistance(LocationData.StarPos);
 
-                        History.AddTravelPos(LocationData.StarPos);
+                        _history.AddTravelPos(LocationData.StarPos);
 
                         _poi.NearbyPoiList = _poi.GetNearestPois(LocationData.StarPos);
 
@@ -1428,7 +1434,7 @@ namespace dashboard_elite.EliteData
 
                     if (!fsdJumpInfo.Taxi)
                     {
-                        Ships.HandleShipFsdJump(fsdJumpInfo.StarSystem, fsdJumpInfo.StarPos.ToList());
+                        _ships.HandleShipFsdJump(fsdJumpInfo.StarSystem, fsdJumpInfo.StarPos.ToList());
                     }
 
                     //FuelUsed
@@ -1450,10 +1456,10 @@ namespace dashboard_elite.EliteData
 
                     LocationData.StarPos = fsdJumpInfo.StarPos.ToList();
 
-                    Ships.HandleShipDistance(LocationData.StarPos);
-                    Module.HandleModuleDistance(LocationData.StarPos);
+                    _ships.HandleShipDistance(LocationData.StarPos);
+                    _module.HandleModuleDistance(LocationData.StarPos);
 
-                    History.AddTravelPos(LocationData.StarPos);
+                    _history.AddTravelPos(LocationData.StarPos);
 
                     _poi.NearbyPoiList = _poi.GetNearestPois(LocationData.StarPos);
 
@@ -1564,7 +1570,7 @@ namespace dashboard_elite.EliteData
                     //When written: player was HullDamage by player or npc
                     var hullDamageInfo = (HullDamageEvent.HullDamageEventArgs) e;
 
-                    Ships.HandleHullDamage(hullDamageInfo.Health);
+                    _ships.HandleHullDamage(hullDamageInfo.Health);
                    
                     break;
 

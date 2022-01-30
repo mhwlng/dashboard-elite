@@ -27,7 +27,7 @@ namespace dashboard_elite.Pages
 
             if (!focusChange)
             {
-                NavigationManager.NavigateTo("/commander");
+                NavigationManager.NavigateTo("/information/commander");
             }
 
             hubConnection = new HubConnectionBuilder()
@@ -42,7 +42,7 @@ namespace dashboard_elite.Pages
 
             hubConnection.On("LoadingDone", () =>
             {
-                NavigationManager.NavigateTo("/commander");
+                NavigationManager.NavigateTo("/information/commander");
             });
 
             await hubConnection.StartAsync();

@@ -1,13 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using dashboard_elite.Hubs;
+using dashboard_elite.Services;
 using EliteJournalReader;
 using EliteJournalReader.Events;
+using Microsoft.AspNetCore.SignalR;
 
 namespace dashboard_elite.EliteData
 {
-    public static class Module
+    public class Module
     {
+        private readonly IHubContext<MyHub> _myHub;
+        private readonly ButtonCacheService _buttonCacheService;
+        private readonly ProfileCacheService _profileCacheService;
+        private readonly Ships _ships;
+
+        public Module(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService, Ships ships)
+        {
+            _myHub = myHub;
+            _buttonCacheService = buttonCacheService;
+            _profileCacheService = profileCacheService;
+            _ships = ships;
+        }
+
+
         public static readonly object RefreshModuleLock = new object();
 
         public class StoredModuleData
@@ -24,10 +41,10 @@ namespace dashboard_elite.EliteData
             public List<StoredModulesEvent.StoredModulesEventArgs.StoredModule> Modules { get; set; }
         }
 
-        public static Dictionary<long,StoredModuleData> StoredModulesList = new Dictionary<long,StoredModuleData>();
+        public Dictionary<long,StoredModuleData> StoredModulesList = new Dictionary<long,StoredModuleData>();
 
         // Frame Shift Drive Constants
-        private static Dictionary<string, double> BaseOptimalMass = new Dictionary<string, double>
+        private static readonly Dictionary<string, double> BaseOptimalMass = new Dictionary<string, double>
         {
             {"2E", 48.0}, {"2D", 54.0}, {"2C", 60.0}, {"2B", 75.0}, {"2A", 90.0},
             {"3E", 80.0}, {"3D", 90.0}, {"3C", 100.0}, {"3B", 125.0}, {"3A", 150.0},
@@ -37,7 +54,7 @@ namespace dashboard_elite.EliteData
             {"7E", 1440.0}, {"7D", 1620.0}, {"7C", 1800.0}, {"7B", 2250.0}, {"7A", 2700.0}
         };
 
-        private static Dictionary<string, double> BaseMaxFuelPerJump = new Dictionary<string, double>
+        private static readonly Dictionary<string, double> BaseMaxFuelPerJump = new Dictionary<string, double>
         {
             {"2E", 0.60}, {"2D", 0.60}, {"2C", 0.60}, {"2B", 0.80}, {"2A", 0.90},
             {"3E", 1.20}, {"3D", 1.20}, {"3C", 1.20}, {"3B", 1.50}, {"3A", 1.80},
@@ -48,17 +65,17 @@ namespace dashboard_elite.EliteData
         };
 
 
-        private static Dictionary<int, double> GuardianBoostFSD = new Dictionary<int, double>
+        private static readonly Dictionary<int, double> GuardianBoostFSD = new Dictionary<int, double>
         {
             {1, 4.00}, {2, 6.00}, {3, 7.75}, {4, 9.25}, {5, 10.50}
         };
 
-        private static Dictionary<string, double> RatingConstantFSD = new Dictionary<string, double>
+        private static readonly Dictionary<string, double> RatingConstantFSD = new Dictionary<string, double>
         {
             {"A", 12.0}, {"B", 10.0}, {"C", 8.0}, {"D", 10.0}, {"E", 11.0}
         };
 
-        private static Dictionary<int, double> PowerConstantFSD = new Dictionary<int, double>
+        private static readonly Dictionary<int, double> PowerConstantFSD = new Dictionary<int, double>
         {
             {2, 2.00}, {3, 2.15}, {4, 2.30}, {5, 2.45}, {6, 2.60}, {7, 2.75}, {8, 2.90}
         };
@@ -172,7 +189,7 @@ namespace dashboard_elite.EliteData
 
         };
 
-        private static int GetModuleSize(string item)
+        private int GetModuleSize(string item)
         {
             var size = item.Substring(item.IndexOf("_size", StringComparison.OrdinalIgnoreCase) + 5);
 
@@ -194,7 +211,7 @@ namespace dashboard_elite.EliteData
             return ms;
         }
 
-        private static string GetModuleClass(string item)
+        private string GetModuleClass(string item)
         {
             var cl = item.Substring(item.IndexOf("_class", StringComparison.OrdinalIgnoreCase) + 6);
 
@@ -215,7 +232,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static string GetModulePlacement(string key, IList<string> moduleList)
+        public string GetModulePlacement(string key, IList<string> moduleList)
         {
             if (moduleList == null)
                 return "";
@@ -237,7 +254,7 @@ namespace dashboard_elite.EliteData
             return "?";
         }
 
-        private static string GetModuleArmourGrade(string item)
+        private string GetModuleArmourGrade(string item)
         {
             if (item.IndexOf("_grade1", StringComparison.OrdinalIgnoreCase) >= 0)
             {
@@ -267,7 +284,7 @@ namespace dashboard_elite.EliteData
             return "?";
         }
 
-        private static int UpdateFuelCapacity(string item)
+        private int UpdateFuelCapacity(string item)
         {
             if (item?.Contains("_fueltank_") == true)
             {
@@ -280,7 +297,7 @@ namespace dashboard_elite.EliteData
             return 0;
         }
 
-        private static int UpdateCargoCapacity(string item)
+        private int UpdateCargoCapacity(string item)
         {
             if (item?.Contains("cargorack_") == true)
             {
@@ -293,7 +310,7 @@ namespace dashboard_elite.EliteData
             return 0;
         }
 
-        private static int UpdatePassengerCabinCapacity(string item, string cls)
+        private int UpdatePassengerCabinCapacity(string item, string cls)
         {
             if (item?.Contains("_passengercabin_") == true)
             {
@@ -346,7 +363,7 @@ namespace dashboard_elite.EliteData
             return 0;
         }
 
-        private static string UpdatePowerPlant(string item, string data, bool remove)
+        private string UpdatePowerPlant(string item, string data, bool remove)
         {
             if (item?.Contains("powerplant_") == true)
             {
@@ -366,7 +383,7 @@ namespace dashboard_elite.EliteData
             return data;
         }
 
-        private static string UpdatePowerDistributor(string item, string data, bool remove)
+        private string UpdatePowerDistributor(string item, string data, bool remove)
         {
             if (item?.Contains("powerdistributor_") == true)
             {
@@ -386,7 +403,7 @@ namespace dashboard_elite.EliteData
             return data;
         }
 
-        private static string UpdateShieldGenerator(string item, string data, bool remove)
+        private string UpdateShieldGenerator(string item, string data, bool remove)
         {
             if (item?.Contains("_shieldgenerator_") == true)
             {
@@ -410,7 +427,7 @@ namespace dashboard_elite.EliteData
             return data;
         }
 
-        private static string UpdateEngine(string item, string data, bool remove)
+        private string UpdateEngine(string item, string data, bool remove)
         {
             if (item?.Contains("_engine_") == true)
             {
@@ -430,7 +447,7 @@ namespace dashboard_elite.EliteData
             return data;
         }
 
-        private static string UpdateGuardianFsdBooster(string item, string data, bool remove)
+        private string UpdateGuardianFsdBooster(string item, string data, bool remove)
         {
             if (item?.Contains("_guardianfsdbooster_") == true)
             {
@@ -444,7 +461,7 @@ namespace dashboard_elite.EliteData
             return data;
         }
 
-        private static string UpdateArmour(string item, string data, bool remove)
+        private string UpdateArmour(string item, string data, bool remove)
         {
             if (item?.Contains("_armour_") == true)
             {
@@ -458,7 +475,7 @@ namespace dashboard_elite.EliteData
             return data;
         }
 
-        private static string UpdateSizeClass(string key, string item, string data, bool remove)
+        private string UpdateSizeClass(string key, string item, string data, bool remove)
         {
             if (item?.Contains(key) == true)
             {
@@ -473,7 +490,7 @@ namespace dashboard_elite.EliteData
             return data;
         }
 
-        private static void UpdateSizeClass(string key, List<string> excludeKeys, string item, Dictionary<string, List<string>> moduleList, bool remove, string moduleName)
+        private void UpdateSizeClass(string key, List<string> excludeKeys, string item, Dictionary<string, List<string>> moduleList, bool remove, string moduleName)
         {
             if (item?.Contains(key) == true)
             {
@@ -508,7 +525,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        private static void UpdateWeapons(string key, List<string> excludeKeys, string item, Dictionary<string, List<string>> moduleList, bool remove, string moduleName)
+        private void UpdateWeapons(string key, List<string> excludeKeys, string item, Dictionary<string, List<string>> moduleList, bool remove, string moduleName)
         {
             if (item?.Contains(key) == true)
             {
@@ -552,7 +569,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        private static void HandleJumpRange(Ships.ShipData ship, EliteJournalReader.Module module)
+        private void HandleJumpRange(Ships.ShipData ship, EliteJournalReader.Module module)
         {
             if (module.Item.Contains("_hyperdrive_"))
             {
@@ -610,7 +627,7 @@ namespace dashboard_elite.EliteData
 
         }
 
-        private static void HandleModules(Ships.ShipData ship, string item, bool remove)
+        private void HandleModules(Ships.ShipData ship, string item, bool remove)
         {
             if (remove)
             {
@@ -676,9 +693,9 @@ namespace dashboard_elite.EliteData
 
         }
 
-        public static void HandleModuleRetrieve(ModuleRetrieveEvent.ModuleRetrieveEventArgs info)
+        public void HandleModuleRetrieve(ModuleRetrieveEvent.ModuleRetrieveEventArgs info)
         {
-            var ship = Ships.GetCurrentShip();
+            var ship = _ships.GetCurrentShip();
 
             if (ship != null)
             {
@@ -686,9 +703,9 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleModuleBuy(ModuleBuyEvent.ModuleBuyEventArgs info)
+        public void HandleModuleBuy(ModuleBuyEvent.ModuleBuyEventArgs info)
         {
-            var ship = Ships.GetCurrentShip();
+            var ship = _ships.GetCurrentShip();
 
             if (ship != null)
             {
@@ -698,9 +715,9 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleModuleSwap(ModuleSwapEvent.ModuleSwapEventArgs info)
+        public void HandleModuleSwap(ModuleSwapEvent.ModuleSwapEventArgs info)
         {
-            var ship = Ships.GetCurrentShip();
+            var ship = _ships.GetCurrentShip();
 
             if (ship != null)
             {
@@ -710,9 +727,9 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleModuleSell(ModuleSellEvent.ModuleSellEventArgs info)
+        public void HandleModuleSell(ModuleSellEvent.ModuleSellEventArgs info)
         {
-            var ship = Ships.GetCurrentShip();
+            var ship = _ships.GetCurrentShip();
 
             if (ship != null)
             {
@@ -720,9 +737,9 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleModuleSellRemote(ModuleSellRemoteEvent.ModuleSellRemoteEventArgs info)
+        public void HandleModuleSellRemote(ModuleSellRemoteEvent.ModuleSellRemoteEventArgs info)
         {
-            var ship = Ships.GetCurrentShip();
+            var ship = _ships.GetCurrentShip();
 
             if (ship != null)
             {
@@ -730,9 +747,9 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleModuleStore(ModuleStoreEvent.ModuleStoreEventArgs info)
+        public void HandleModuleStore(ModuleStoreEvent.ModuleStoreEventArgs info)
         {
-            var ship = Ships.GetCurrentShip();
+            var ship = _ships.GetCurrentShip();
 
             if (ship != null)
             {
@@ -740,9 +757,9 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleMassModuleStore(MassModuleStoreEvent.MassModuleStoreEventArgs info)
+        public void HandleMassModuleStore(MassModuleStoreEvent.MassModuleStoreEventArgs info)
         {
-            var ship = Ships.GetCurrentShip();
+            var ship = _ships.GetCurrentShip();
 
             if (ship != null)
             {
@@ -753,12 +770,12 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleFetchRemoteModule(FetchRemoteModuleEvent.FetchRemoteModuleEventArgs info)
+        public void HandleFetchRemoteModule(FetchRemoteModuleEvent.FetchRemoteModuleEventArgs info)
         {
 
         }
 
-        public static void HandleStoredModules(StoredModulesEvent.StoredModulesEventArgs info)
+        public void HandleStoredModules(StoredModulesEvent.StoredModulesEventArgs info)
         {
             lock (RefreshModuleLock)
             {
@@ -859,7 +876,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleModuleDistance(List<double> starPos)
+        public void HandleModuleDistance(List<double> starPos)
         {
             if (StoredModulesList?.Any() == true && starPos?.Count == 3)
             {
@@ -890,9 +907,9 @@ namespace dashboard_elite.EliteData
             }
         }
         
-        public static void HandleLoadout(LoadoutEvent.LoadoutEventArgs info)
+        public void HandleLoadout(LoadoutEvent.LoadoutEventArgs info)
         {
-            var ship = Ships.GetCurrentShip();
+            var ship = _ships.GetCurrentShip();
 
             if (ship != null)
             {
