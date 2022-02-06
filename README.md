@@ -32,6 +32,12 @@ VERY UNFINISHED PRE-ALPHA RELEASE
 
 ![touch screen](https://i.imgur.com/a5KvYOZ.png)
 
+![touch screen](https://i.imgur.com/e6h84aK.png)
+
+![touch screen](https://i.imgur.com/hCx1QGx.png)
+
+![touch screen](https://i.imgur.com/AkgKtwj.png)
+
 Technology used:
 - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0)  install : ASP.NET Core Runtime \ x64 and .NET Desktop Runtime \ x64
 - [WebView2 Runtime](https://go.microsoft.com/fwlink/p/?LinkId=2124703)
