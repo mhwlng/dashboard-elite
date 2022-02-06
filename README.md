@@ -42,7 +42,7 @@ VERY UNFINISHED PRE-ALPHA RELEASE
 
 ![touch screen](https://i.imgur.com/ViadSVf.png)
 
-![touch screen](https://i.imgur.com/KiKoBJR.png)
+![touch screen](https://i.imgur.com/LfpGRMJ.png)
 
 Technology used:
 - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0)  install : ASP.NET Core Runtime \ x64 and .NET Desktop Runtime \ x64
