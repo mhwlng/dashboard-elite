@@ -1,0 +1,122 @@
+﻿@page "/ship/target"
+@inherits PageBase
+@layout PageLayout
+
+@{
+    var scanStage = Data.TargetData.ScanStage;
+
+    var ship = Data.TargetData.Ship?.Trim();
+
+    var shipImage = Data.TargetData.Ship?.Trim() + ".png";
+
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+    @if (!Data.TargetData.TargetLocked)
+    {
+        <tr>
+            <td class=" center" ><strong>NO TARGET</strong></td>
+        </tr>
+    }
+
+    <tr>
+        <td>
+
+
+            <table>
+                <tbody>
+                @if (Data.TargetData.TargetLocked)
+                {
+                    if (!string.IsNullOrEmpty(ship))
+                    {
+                        <tr>
+                            <td class="nowrap">Ship</td>
+                            <td class="data">@ship</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(Data.TargetData.LegalStatus))
+                    {
+                        <tr>
+                            <td class="nowrap">Legal Status</td>
+                            <td class="data @(Data.TargetData.LegalStatus == "Wanted" ? "alarm" : "")">@Data.TargetData.LegalStatus</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(Data.TargetData.PilotNameLocalised))
+                    {
+                        <tr>
+                            <td class="nowrap">Pilot Name</td>
+                            <td class="data">@Data.TargetData.PilotNameLocalised</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(Data.TargetData.PilotRank))
+                    {
+                        <tr>
+                            <td class="nowrap">Rank</td>
+                            <td class="data">@Data.TargetData.PilotRank</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(Data.TargetData.Faction))
+                    {
+                        <tr>
+                            <td class="nowrap">Faction</td>
+                            <td class="data">@Data.TargetData.Faction</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(Data.TargetData.Power))
+                    {
+                        <tr>
+                            <td class="nowrap">Power</td>
+                            <td class="data">@Data.TargetData.Power</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(Data.TargetData.SubsystemLocalised))
+                    {
+                        <tr>
+                            <td class="nowrap">Subsystem</td>
+                            <td class="data">@Data.TargetData.SubsystemLocalised</td>
+                        </tr>
+                    }
+                    if (Data.TargetData.Bounty > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Bounty</td>
+                            <td class="data">@Data.TargetData.Bounty</td>
+                        </tr>
+                    }
+                    if (Data.TargetData.HullHealth > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Hull Health</td>
+                            <td class="data">@Data.TargetData.HullHealth.ToString("N0") %</td>
+                        </tr>
+                    }
+                    if (Data.TargetData.ShieldHealth > 0)
+                    {
+
+                        <tr>
+                            <td class="nowrap">Shield Health</td>
+                            <td class="data">@Data.TargetData.ShieldHealth.ToString("N0") %</td>
+                        </tr>
+                    }
+                    if (Data.TargetData.SubsystemHealth > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Subsystem Health</td>
+                            <td class="data">@Data.TargetData.SubsystemHealth.ToString("N0") %</td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+
+            @if (Data.TargetData.TargetLocked && !string.IsNullOrEmpty(shipImage))
+            {
+                <div class="imgcenter"><img src="ships\@shipImage"/></div>
+            }
+
+        </td>
+    </tr>
+
+    </tbody >
+</MudSimpleTable>

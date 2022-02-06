@@ -1,0 +1,194 @@
+﻿@page "/navigation/systemmap"
+@inherits PageBase
+@layout PageLayout
+
+@{
+    var starSystem = Data.LocationData.StarSystem;
+
+    var systemData = SystemInfo.SystemData;
+    
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    if (!string.IsNullOrEmpty(starSystem))
+    {
+        SystemInfo.GetSystemData(starSystem);
+    }
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+        
+        @if (systemData.StarSystem != starSystem)
+        {
+            <tr>
+                <td class=" center" ><strong>RETRIEVING SYSTEM DATA</strong></td>
+            </tr>
+        }
+        else
+        {
+            if (systemData.Data == null)
+            {
+                <tr>
+                    <td class=" center alarm" ><strong>NO SYSTEM DATA FOUND</strong></td>
+                </tr>
+            }
+            else
+            {
+                if (systemData.Progress < 100.0)
+                {
+                    <tr>
+                        <td class=" center alarm" >Scanned @systemData.Progress.ToString("N0")% of @systemData.Data.bodyCount Bodies</td>
+                    </tr>
+                }
+
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td style="padding-bottom: 0 !important;padding-top: 0 !important;">
+
+                    <table style="border-spacing: 0px;">
+                        <tbody>
+
+                        @for (var i = 0; i < ((List<Body>)systemData.Data.bodies).Count; i++)
+                        {
+                            var m = ((List<Body>)systemData.Data.bodies)[i];
+
+                            <tr>
+                                <td style="padding-bottom: 0 !important;padding-top: 0 !important;">
+                                    <table style="border-spacing: 0px;">
+                                        <tbody>
+                                        <tr>
+                                            @((MarkupString)SystemInfo.BodyTreeElement1(i))
+                                            <td style="padding-bottom: 0 !important;padding-top: 0 !important;">
+                                                <table style="border-spacing: 0px; background-color: #303030;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="nowrap" style="width: 50px;">@m.bodyType</td>
+                                                        <td class="data">@m.name</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding-bottom: 0 !important;padding-top: 0 !important;">
+                                    <table style="border-spacing: 0px;">
+                                        <tbody>
+                                        <tr>
+                                            @((MarkupString)SystemInfo.BodyTreeElement2(i))
+                                            <td style="padding-bottom: 0 !important;padding-top: 0 !important;">
+                                                <table style="border-spacing: 0px; background-color: #202020;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="padding-bottom: 0 !important;padding-top: 0 !important;">
+                                                            <table style="border-spacing: 0px;">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td class="nowrap" colspan="2">
+                                                                        @m.subType
+                                                                        @(m.isScoopable == true ? ", Fuel Star" : "")
+                                                                        @if (m.isLandable == true)
+                                                                        {
+                                                                            if (!string.IsNullOrEmpty(m.atmosphereType) && m.atmosphereType.ToLower().Contains("thin"))
+                                                                            {
+                                                                                @((MarkupString)", <span class=\"alarm2\">&nbsp;Landable&nbsp;</span>")
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                @((MarkupString)", <span class=\"alarm\">&nbsp;Landable&nbsp;</span>")
+                                                                            }
+                                                                        }
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="nowrap">Distance</td>
+                                                                    <td class="data right">@m.distanceToArrival.ToString("N0") Ls</td>
+                                                                </tr>
+                                                                @if (m.gravity > 0)
+                                                                {
+                                                                    <tr>
+                                                                        <td class="nowrap">Gravity</td>
+                                                                        <td class="data right">@(((float)m.gravity).ToString("N1")) G</td>
+                                                                    </tr>
+                                                                }
+
+                                                                @if (!string.IsNullOrEmpty(m.volcanismType))
+                                                                {
+                                                                    <tr>
+                                                                        <td class="nowrap">Volcanism</td>
+                                                                        <td class="data right">@m.volcanismType</td>
+                                                                    </tr>
+                                                                }
+                                                                @if (!string.IsNullOrEmpty(m.atmosphereType))
+                                                                {
+                                                                    <tr>
+                                                                        <td class="nowrap">Atmosphere</td>
+                                                                        <td class="data right">@m.atmosphereType</td>
+                                                                    </tr>
+                                                                }
+                                                                @if (!string.IsNullOrEmpty(m.terraformingState))
+                                                                {
+                                                                    <tr>
+                                                                        <td class="nowrap">Terraforming</td>
+                                                                        <td class="data right">@m.terraformingState</td>
+                                                                    </tr>
+                                                                }
+
+
+                                                                @if (m.rings != null)
+                                                                {
+                                                                    for (var j = 0; j < ((List<Ring>)m.rings).Count; j++)
+                                                                    {
+                                                                        var r = ((List<Ring>)m.rings)[j];
+                                                                        <tr>
+                                                                            <td class="nowrap">Ring @(j + 1) of @(((List<Ring>)m.rings).Count) </td>
+                                                                            <td class="data right">@r.name.Replace(m.name, "").Trim() (@r.ringType)</td>
+                                                                        </tr>
+                                                                    }
+                                                                }
+
+                                                                @if (m.materials != null)
+                                                                {
+                                                                    <tr>
+                                                                        <td class="nowrap">Materials</td>
+                                                                        <td class="datawrap right">@((MarkupString)SystemInfo.MaterialsString(i))</td>
+                                                                    </tr>
+                                                                }
+
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            @((MarkupString)SystemInfo.BodyTreeElement3(i))
+                                            <td style="font-size: 3px;">&nbsp;</td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                    </td>
+                </tr>
+
+            }
+        }
+
+    </tbody >
+</MudSimpleTable>

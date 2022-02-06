@@ -47,6 +47,12 @@ namespace dashboard_elite
             services.AddSingleton<Ships>();
             services.AddSingleton<Module>();
             services.AddSingleton<History>();
+            services.AddSingleton<Material>();
+            services.AddSingleton<Cargo>();
+            services.AddSingleton<Missions>();
+            services.AddSingleton<Engineer>();
+            services.AddSingleton<Route>();
+            services.AddSingleton<SystemInfo>();
 
             services.AddResponseCompression(opts =>
             {

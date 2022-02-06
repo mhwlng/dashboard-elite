@@ -17,7 +17,19 @@ namespace dashboard_elite.Helpers
             HWInfo,
             CurrentShip,
             StoredShips,
-            StoredModules
+            StoredModules,
+            Target,
+            Navigation,
+            Route,
+            SystemMap,
+            Missions,
+            ChatLog,
+            Materials,
+            Cargo,
+            EdEngineer,
+            ShipLocker,
+            Backpack,
+            GalaxyMap
         }
 
         public static readonly int[] SubPages = { 0,  // commander
@@ -29,7 +41,19 @@ namespace dashboard_elite.Helpers
                                                   0,  // hwinfo
                                                   0,  // currentship
                                                   0,  // storedships
-                                                  0   // storedmodules
+                                                  0,  // storedmodules
+                                                  0,  // target
+                                                  0,  // navigation
+                                                  0,  // route
+                                                  0,  // systemmap
+                                                  0,  // missions
+                                                  7,  // chatlog
+                                                  3,  // materials
+                                                  0,  // cargo
+                                                  3,  // edengineer
+                                                  4,  // shiplocker
+                                                  4,  // backpack
+                                                  0   // galaxymap
                                                   };
 
         private static readonly int[] CurrentPage = new int[100];

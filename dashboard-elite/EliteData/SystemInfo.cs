@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -116,8 +117,15 @@ namespace dashboard_elite.EliteData
     }
 
 
-    public static class SystemInfo
+    public class SystemInfo
     {
+        private readonly IHubContext<MyHub> _myHub;
+
+        public SystemInfo(IHubContext<MyHub> myHub)
+        {
+            _myHub = myHub;
+        }
+        
         public static readonly Dictionary<string, string> PeriodicElements = new Dictionary<string, string>
         {
             ["Actinium"] = "Ac",
@@ -241,15 +249,15 @@ namespace dashboard_elite.EliteData
 
         };
 
-        public static Task SystemDataTask;
-        private static CancellationTokenSource _systemDataTokenSource = new CancellationTokenSource();
+        public  Task SystemDataTask;
+        private  CancellationTokenSource _systemDataTokenSource = new CancellationTokenSource();
 
-        public static SystemData SystemData = new SystemData();
+        public  SystemData SystemData = new SystemData();
 
         private static readonly object _refreshSystemInfoLock = new object();
 
 
-        private static byte[] Decompress(byte[] gzip)
+        private  byte[] Decompress(byte[] gzip)
         {
             using (var stream = new GZipStream(new MemoryStream(gzip),
                 CompressionMode.Decompress))
@@ -273,20 +281,20 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        private static async Task<string> GetJson(string url)
+        private  async Task<string> GetJson(string url)
         {
             var utf8 = await Program.WebClient.GetStringAsync(url);
 
             return utf8;
         }
 
-        private static string GetExePath()
+        private  string GetExePath()
         {
             var strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             return Path.GetDirectoryName(strExeFilePath);
         }
 
-        public static void GetSystemData(string starSystem, IHubContext<MyHub> _myHub)
+        public  void GetSystemData(string starSystem)
         {
             lock (_refreshSystemInfoLock)
             {
@@ -387,6 +395,239 @@ namespace dashboard_elite.EliteData
 
 
         }
+        
+        public string MaterialsString(int i)
+        {
+            var ms = "";
+
+            var materials = SystemData.Data.bodies[i].materials;
+
+            foreach (var m in materials)
+            {
+                PeriodicElements.TryGetValue(m.Key, out var elem);
+                if (!string.IsNullOrEmpty(elem))
+                {
+                    ms += elem;
+                }
+                else
+                {
+                    ms += m.Key;
+                }
+                ms += "&nbsp;(" + m.Value.ToString("N1") + "%) ";
+
+            }
+
+            return ms.Trim();
+
+        }
+
+        public string BodyTreeElement1(int i)
+        {
+            var parents = SystemData.Data.bodies[i].parents;
+
+            var colcount = parents?.Where(x => !x.ContainsKey("Null")).ToList().Count ?? 0;
+
+            int[] topLineHide = new int[100];
+
+            for (int k = i; k < SystemData.Data.bodies.Count; k++)
+            {
+                var rowParents = SystemData.Data.bodies[k].parents;
+                var rowColcount = rowParents?.Where(x => !x.ContainsKey("Null")).ToList().Count ?? 0;
+
+                for (int j = 0; j < rowColcount; j++)
+                {
+                    if (topLineHide[j] != 2)
+                    {
+                        if (rowColcount > 0 && j < rowColcount - 1)
+                        {
+                            topLineHide[j] = 1;
+                        }
+                        else
+                        {
+                            topLineHide[j] = 2;
+                        }
+                    }
+                }
+
+                if (rowColcount == 0)
+                    break;
+            }
+
+            var s = "";
+
+            for (int j = 0; j < colcount; j++)
+            {
+                s += "<td style=\"";
+                s += "width:10px;";
+                s += "\">&nbsp;</td>";
+
+                var leftLine = "border-left: 2px solid #ffffff;";
+
+                if (j < colcount - 1 && i == SystemData.Data.bodies.Count - 1)
+                {
+                    leftLine = "";
+                }
+
+                if (topLineHide[j] == 1)
+                {
+                    leftLine = "";
+                }
+
+                s += "<td style=\"";
+                s += "width:10px;";
+                s += leftLine;
+                s += "\">&nbsp;</td>";
+            }
+
+
+            return s;
+        }
+
+        public string BodyTreeElement2(int i)
+        {
+            var parents = SystemData.Data.bodies[i].parents;
+
+            var colcount = parents?.Where(x => !x.ContainsKey("Null")).ToList().Count ?? 0;
+            var nextColcount = colcount;
+
+            if (i < SystemData.Data.bodies.Count - 1)
+            {
+                var nextParents = SystemData.Data.bodies[i + 1].parents;
+                nextColcount = nextParents?.Where(x => !x.ContainsKey("Null")).ToList().Count ?? 0;
+            }
+
+            int[] topLineHide = new int[100];
+
+            for (int k = i + 1; k < SystemData.Data.bodies.Count; k++)
+            {
+                var rowParents = SystemData.Data.bodies[k].parents;
+                var rowColcount = rowParents?.Where(x => !x.ContainsKey("Null")).ToList().Count ?? 0;
+
+                for (int j = 0; j < rowColcount; j++)
+                {
+                    if (topLineHide[j] != 2)
+                    {
+                        if (rowColcount > 0 && j < rowColcount - 1)
+                        {
+                            topLineHide[j] = 1;
+                        }
+                        else
+                        {
+                            topLineHide[j] = 2;
+                        }
+                    }
+                }
+
+                if (rowColcount == 0)
+                    break;
+            }
+
+            var s = "";
+
+            for (int j = 0; j < colcount; j++)
+            {
+                s += "<td style=\"";
+                s += "width:10px;";
+                s += "\">&nbsp;</td>";
+
+
+                var topLine = "border-top: 2px solid #ffffff; ";
+                if (colcount > 1 && j < colcount - 1)
+                {
+                    topLine = "";
+                }
+
+                var leftLine = "border-left: 2px solid #ffffff;";
+
+                if (nextColcount == 0 || (j == colcount - 1 && nextColcount < colcount) || i == SystemData.Data.bodies.Count - 1)
+                {
+                    leftLine = "";
+                }
+
+                if (topLineHide[j] == 1)
+                {
+                    leftLine = "";
+                }
+
+
+                s += "<td style=\"";
+                s += "width:10px;";
+                s += leftLine + topLine;
+                s += "\">&nbsp;</td>";
+            }
+
+            return s;
+        }
+
+
+        public string BodyTreeElement3(int i)
+        {
+            var parents = SystemData.Data.bodies[i].parents;
+
+            var colcount = parents?.Where(x => !x.ContainsKey("Null")).ToList().Count ?? 0;
+            var nextColcount = colcount;
+
+            if (i < SystemData.Data.bodies.Count - 1)
+            {
+                var nextParents = SystemData.Data.bodies[i + 1].parents;
+                nextColcount = nextParents?.Where(x => !x.ContainsKey("Null")).ToList().Count ?? 0;
+            }
+
+            int[] topLineHide = new int[100];
+
+            for (int k = i + 1; k < SystemData.Data.bodies.Count; k++)
+            {
+                var rowParents = SystemData.Data.bodies[k].parents;
+                var rowColcount = rowParents?.Where(x => !x.ContainsKey("Null")).ToList().Count ?? 0;
+
+                for (int j = 0; j < rowColcount; j++)
+                {
+                    if (topLineHide[j] != 2)
+                    {
+                        if (rowColcount > 0 && j < rowColcount - 1)
+                        {
+                            topLineHide[j] = 1;
+                        }
+                        else
+                        {
+                            topLineHide[j] = 2;
+                        }
+                    }
+                }
+
+                if (rowColcount == 0)
+                    break;
+            }
+
+            var s = "";
+
+            for (int j = 0; j < colcount; j++)
+            {
+                s += "<td style=\"font-size: 3px; ";
+                s += "width:10px;";
+                s += "\">&nbsp;</td>";
+
+                var leftLine = "border-left: 2px solid #ffffff;";
+
+                if (nextColcount == 0 || (j == colcount - 1 && nextColcount < colcount) || i == SystemData.Data.bodies.Count - 1)
+                {
+                    leftLine = "";
+                }
+
+                if (topLineHide[j] == 1)
+                {
+                    leftLine = "";
+                }
+
+                s += "<td style=\"font-size: 3px; ";
+                s += "width:10px;";
+                s += leftLine;
+                s += "\">&nbsp;</td>";
+            }
+
+            return s;
+        }
+
 
     }
 }

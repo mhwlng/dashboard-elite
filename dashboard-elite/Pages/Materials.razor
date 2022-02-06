@@ -1,0 +1,78 @@
+﻿@page "/ship/materials/{CurrentPage:int?}"
+@inherits PageBase
+@layout PageLayout
+
+@{
+
+    var raw = Material.MaterialList.Where(x => x.Value.Category == "Raw")
+        .OrderBy(x => x.Value.Name);
+    var manufactured = Material.MaterialList
+        .Where(x => x.Value.Category == "Manufactured")
+        .OrderBy(x => x.Value.Name);
+    var encoded = Material.MaterialList
+        .Where(x => x.Value.Category == "Encoded")
+        .OrderBy(x => x.Value.Name);
+
+    var odd = true;
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+    @if (Material.MaterialList.Count == 0)
+    {
+        <tr>
+            <td class=" center" ><strong>NO MATERIALS</strong></td>
+        </tr>
+    }
+
+    <tr>
+        <td>
+
+
+            <table class="zebratable">
+                <tbody>
+
+                @if (CurrentPage == 0)
+                {
+                    foreach (var m in raw)
+                    {
+                        <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                            <td class="nowrap">@m.Value.Name</td>
+                            <td class="data right">@m.Value.Count</td>
+                            <td class="data right @(m.Value.Count == m.Value.MaximumCapacity ? "alarm" : "")">@m.Value.MaximumCapacity</td>
+                        </tr>
+                        odd = !odd;
+                    }
+                }
+                else if (CurrentPage == 1)
+                {
+                    foreach (var m in manufactured)
+                    {
+                        <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                            <td class="nowrap">@m.Value.Name</td>
+                            <td class="data right">@m.Value.Count</td>
+                            <td class="data right @(m.Value.Count == m.Value.MaximumCapacity ? "alarm" : "")">@m.Value.MaximumCapacity</td>
+                        </tr>
+                        odd = !odd;
+                    }
+                }
+                else if (CurrentPage == 2)
+                {
+                    foreach (var m in encoded)
+                    {
+                        <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                            <td class="nowrap">@m.Value.Name</td>
+                            <td class="data right">@m.Value.Count</td>
+                            <td class="data right @(m.Value.Count == m.Value.MaximumCapacity ? "alarm" : "")">@m.Value.MaximumCapacity</td>
+                        </tr>
+                        odd = !odd;
+                    }
+                }
+                </tbody>
+            </table>
+
+        </td>
+    </tr>
+
+    </tbody >
+</MudSimpleTable>

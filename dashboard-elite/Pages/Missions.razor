@@ -1,0 +1,180 @@
+﻿@page "/information/missions"
+@inherits PageBase
+@layout PageLayout
+
+@{
+
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+    @if (Missions.MissionList.Count == 0)
+    {
+        <tr>
+            <td class=" center" ><strong>NO MISSIONS</strong></td>
+        </tr>
+    }
+
+    <tr>
+        <td>
+
+
+            <table>
+                <tbody>
+                @foreach (var m in Missions.MissionList)
+                {
+                    if (!string.IsNullOrEmpty(m.Name))
+                    {
+                        <tr>
+                            <td class="nowrap">Mission</td>
+                            <td class="data">@m.Name</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.System))
+                    {
+                        <tr>
+                            <td class="nowrap">System</td>
+                            <td class="data">@m.System</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(m.Station))
+                    {
+                        <tr>
+                            <td class="nowrap">Station</td>
+                            <td class="data">@m.Station</td>
+                        </tr>
+                    }
+
+                    if (m.Reward > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Reward</td>
+                            <td class="data">@m.Reward.ToString("N0") CR</td>
+                        </tr>
+                    }
+                    if (m.Expires != null)
+                    {
+                        <tr>
+                            <td class="nowrap">Expires</td>
+                            <td class="data">@(((DateTime)m.Expires - DateTime.Now.ToUniversalTime()).TotalHours.ToString("N1")) hours</td>
+                        </tr>
+                    }
+
+                    if (!string.IsNullOrEmpty(m.Faction))
+                    {
+                        <tr>
+                            <td class="nowrap">Faction</td>
+                            <td class="data">@m.Faction</td>
+                        </tr>
+                    }
+
+                    if (m.Passengers > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Passengers</td>
+                            <td class="data">@((m.Passengers ?? 0).ToString("N0"))</td>
+                        </tr>
+
+                        if (!string.IsNullOrEmpty(m.PassengerType))
+                        {
+                            <tr>
+                                <td class="nowrap">Type</td>
+                                <td class="data">@m.PassengerType</td>
+                            </tr>
+                        }
+
+                        <tr>
+                            <td class="nowrap">VIP</td>
+                            <td class="data">@m.PassengerViPs</td>
+                        </tr>
+
+                        <tr>
+                            <td class="nowrap">Wanted</td>
+                            <td class="data  @((m.PassengerWanted ?? false) ? "alarm" : "")">@m.PassengerWanted</td>
+                        </tr>
+
+                    }
+                    else if (m.KillCount > 0)
+                    {
+                        if (!string.IsNullOrEmpty(m.Target))
+                        {
+                            <tr>
+                                <td class="nowrap">Target</td>
+                                <td class="data">@m.Target</td>
+                            </tr>
+                        }
+
+                        <tr>
+                            <td class="nowrap">Kill Count</td>
+                            <td class="data">@((m.KillCount ?? 0).ToString("N0"))</td>
+                        </tr>
+
+                        if (!string.IsNullOrEmpty(m.TargetType))
+                        {
+                            <tr>
+                                <td class="nowrap">Target Type</td>
+                                <td class="data">@m.TargetType</td>
+                            </tr>
+                        }
+
+                        if (!string.IsNullOrEmpty(m.TargetFaction))
+                        {
+                            <tr>
+                                <td class="nowrap">Target Faction</td>
+                                <td class="data">@m.TargetFaction</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(m.CommodityLocalised))
+                        {
+                            <tr>
+                                <td class="nowrap">Commodity</td>
+                                <td class="data">@m.CommodityLocalised</td>
+                            </tr>
+                        }
+
+                        if (m.Count > 0)
+                        {
+                            <tr>
+                                <td class="nowrap">Count</td>
+                                <td class="data">@((m.Count ?? 0).ToString("N0"))</td>
+                            </tr>
+                        }
+
+                        if (!string.IsNullOrEmpty(m.Donation))
+                        {
+                            <tr>
+                                <td class="nowrap">Donation</td>
+                                <td class="data">@m.Donation</td>
+                            </tr>
+                        }
+
+                        if (m.Donated > 0)
+                        {
+                            <tr>
+                                <td class="nowrap">Donated</td>
+                                <td class="data">@((m.Donated ?? 0).ToString("N0"))</td>
+                            </tr>
+                        }
+                    }
+
+                    if (!((List<EliteData.Missions.Mission>)Missions.MissionList).Last().Equals((EliteData.Missions.Mission)m))
+                    {
+                        <tr>
+                            <td class="divider" colspan="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="spacer" colspan="2">&nbsp;</td>
+                        </tr>
+                    }
+
+                }
+                </tbody>
+            </table>
+        </td>
+    </tr>
+
+    </tbody >
+</MudSimpleTable>

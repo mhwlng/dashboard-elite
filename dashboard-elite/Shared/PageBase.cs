@@ -24,6 +24,18 @@ namespace dashboard_elite.Shared
 
         [Inject] public Module Module { get; set; }
 
+        [Inject] public Cargo Cargo { get; set; }
+
+        [Inject] public Missions Missions { get; set; }
+
+        [Inject] public Material Material { get; set; }
+        
+        [Inject] public Engineer Engineer { get; set; }
+        
+        [Inject] public Route Route { get; set; }
+        
+        [Inject] public SystemInfo SystemInfo { get; set; }
+
         [Inject] public NavigationManager NavigationManager { get; set; }
 
         public HubConnection hubConnection;

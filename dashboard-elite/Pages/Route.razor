@@ -1,0 +1,186 @@
+﻿@page "/navigation/route"
+@using System.Windows.Forms
+@inherits PageBase
+@layout PageLayout
+
+@{
+    var currentShip = Ships.ShipsList.FirstOrDefault(x => x.Stored == false);
+
+    var routeList = new List<RouteItem>();
+
+    var onFoot = Data.StatusData.OnFoot;
+
+    if (!onFoot &&
+        Data.LocationData.StarSystem != Data.LocationData.FsdTargetName &&
+        Data.LocationData.RemainingJumpsInRoute > 0 && Route.RouteList.Count >=
+        Data.LocationData.RemainingJumpsInRoute)
+    {
+        routeList = Route.RouteList
+            .Skip(Route.RouteList.Count -
+                  Data.LocationData.RemainingJumpsInRoute)
+            .ToList();
+    }
+
+    var fuelMainTot = currentShip?.CurrentFuelMain ?? 0;
+
+    if (!onFoot && fuelMainTot > 0)
+    {
+        foreach (var r in routeList)
+        {
+            r.FuelWarning = null;
+        }
+
+        for (var index = 0; index < routeList.Count; index++)
+        {
+            var r = routeList[index];
+
+            if (fuelMainTot > 0)
+            {
+                r.FuelCost = Ships.GetFuelCostForNextJump(r.Distance, fuelMainTot);
+            }
+
+            if (index > 0 && (fuelMainTot <= 0 || r.FuelCost > fuelMainTot))
+            {
+                for (var index2 = index - 1; index2 >= 0; index2--)
+                {
+                    var r2 = routeList[index2];
+
+                    if (!string.IsNullOrEmpty(r2.IsFuelStar))
+                    {
+                        r2.FuelWarning = "Last chance to scoop fuel";
+                        break;
+                    }
+                }
+
+                break;
+            }
+
+            if (fuelMainTot > 0)
+            {
+                fuelMainTot -= r.FuelCost;
+            }
+        }
+    }
+    
+    var routeListCount = routeList.Count;
+    var routeListDistance = routeList.Sum(x => x.Distance);
+    var routeDestination = routeList.LastOrDefault()?.StarSystem ?? "";
+
+    var jumpCount = 1;
+
+    var fuelMain = currentShip?.CurrentFuelMain ?? 0;
+
+
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+    @if (routeListCount == 0)
+    {
+        <tr>
+            <td class=" center" colspan="2"><strong>NO ROUTE SET</strong></td>
+        </tr>
+    }
+    else if (routeListCount == 1)
+    {
+        <tr>
+            <td class=" center" colspan="2">1 jump (@routeListDistance.ToString("N0") Ly) left to @routeDestination</td>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <td class=" center" colspan="2">@routeListCount jumps (@routeListDistance.ToString("N0") Ly) left to @routeDestination</td>
+        </tr>
+    }
+
+    @foreach (var m in routeList)
+    {
+        <tr>
+            <td style="vertical-align: top;">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="nowrap" style="width:50%">Jump #@jumpCount</td>
+                            <td class="data">@m.StarSystem</td>
+                        </tr>
+                        @if (m.Distance > 0)
+                        {
+                        <tr>
+                            <td class="nowrap">Distance</td>
+                            <td class="data">@m.Distance.ToString("N0") Ly</td>
+                        </tr>
+                        }
+                        @if (m.FuelCost > 0 && fuelMain > 0 && fuelMain > m.FuelCost)
+                        {
+                        <tr>
+                            <td class="nowrap">Fuel Cost</td>
+                            <td class="data">@m.FuelCost.ToString("N1") T (remaining @((fuelMain - m.FuelCost).ToString("N1")) T)</td>
+                        </tr>
+                        }
+                        @if (!string.IsNullOrEmpty(m.FuelWarning))
+                        {
+                        <tr>
+                            <td class="nowrap">Warning</td>
+                            <td class="data alarm">@m.FuelWarning</td>
+                        </tr>
+                        }
+                        @if (!string.IsNullOrEmpty(m.StarClass))
+                        {
+                        <tr>
+                            <td class="nowrap">Star Class</td>
+                            <td class="data">@m.StarClass @m.IsFuelStar</td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </td>
+            <td style="vertical-align: top;">
+                @if (m.StationsInSystem != null)
+                {
+                    <table>
+                        <tbody>
+                        @foreach (var n in m.StationsInSystem)
+                        {
+                            <tr>
+                                <td class="nowrap" style="width:50%">Station</td>
+                                <td class="data">@n.Name</td>
+                            </tr>
+                            if (!string.IsNullOrEmpty(n.Type))
+                            {
+                                <tr>
+                                    <td class="nowrap">&nbsp;&nbsp;&nbsp;Type</td>
+                                    <td class="data">@n.Type</td>
+                                </tr>
+                            }
+                            if (n.DistanceToArrival > 0)
+                            {
+                                <tr>
+                                    <td class="nowrap">&nbsp;&nbsp;&nbsp;Dist. from star</td>
+                                    <td class="data">@n.DistanceToArrival.ToString("N1") Ls</td>
+                                </tr>
+                            }
+                        }
+                        </tbody>
+                    </table>
+                }
+            </td>
+        </tr>
+
+        if (!((List<RouteItem>)routeList).Last().Equals((RouteItem)m))
+        {
+            <tr>
+                <td class="divider" colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="spacer" colspan="2">&nbsp;</td>
+            </tr>
+        }
+
+        jumpCount++;
+        fuelMain -= m.FuelCost;
+    }
+
+    </tbody >
+</MudSimpleTable>

@@ -1,0 +1,445 @@
+﻿@page "/suit/backpack/{CurrentPage:int?}"
+@inherits PageBase
+@layout PageLayout
+
+@{
+    var backPackItems = Material.BackPackList.Where(x =>
+        x.Value.Category == "Item" &&
+        (string.IsNullOrEmpty(x.Value.MissionID) || x.Value.MissionID == "0"))
+        .Select(x => x.Value).OrderBy(x => x.Name).ToList();
+
+    var missionBackPackItems = Material.BackPackList
+        .Where(x => x.Value.Category == "Item" && (!string.IsNullOrEmpty(x.Value.MissionID) && x.Value.MissionID != "0"))
+        .Select(x => new Material.MaterialItem
+        {
+            Count = x.Value.Count,
+            Name = x.Value.Name,
+            MissionID = x.Value.MissionID,
+            MissionName = Missions.GetMissionName(x.Value.MissionID),
+            System = Missions.GetMissionSystem(x.Value.MissionID),
+            Station = Missions.GetMissionStation(x.Value.MissionID)
+        })
+        .OrderBy(x => x.Name)
+        .GroupBy(x => x.MissionName)
+        .Select(grp => grp.ToList())
+        .ToList();
+
+    var backPackComponents = Material.BackPackList.Where(x =>
+        x.Value.Category == "Component" &&
+        (string.IsNullOrEmpty(x.Value.MissionID) || x.Value.MissionID == "0"))
+        .Select(x => x.Value).OrderBy(x => x.Name).ToList();
+
+    var backPackComponentsTech = backPackComponents
+        .Where(x => x.Group == "Tech").ToList();
+    var backPackComponentsCircuits = backPackComponents
+        .Where(x => x.Group == "Circuits").ToList();
+    var backPackComponentsChemicals = backPackComponents
+        .Where(x => x.Group == "Chemicals").ToList();
+
+    var missionBackPackComponents = Material.BackPackList
+        .Where(x => x.Value.Category == "Component" && (!string.IsNullOrEmpty(x.Value.MissionID) && x.Value.MissionID != "0"))
+        .Select(x => new Material.MaterialItem
+        {
+            Count = x.Value.Count,
+            Name = x.Value.Name,
+            MissionID = x.Value.MissionID,
+            MissionName = Missions.GetMissionName(x.Value.MissionID),
+            System = Missions.GetMissionSystem(x.Value.MissionID),
+            Station = Missions.GetMissionStation(x.Value.MissionID)
+        })
+        .OrderBy(x => x.Name)
+        .GroupBy(x => x.MissionName)
+        .Select(grp => grp.ToList())
+        .ToList();
+
+    var backPackConsumables = Material.BackPackList.Where(x =>
+        x.Value.Category == "Consumable" &&
+        (string.IsNullOrEmpty(x.Value.MissionID) || x.Value.MissionID == "0"))
+        .Select(x => x.Value).OrderBy(x => x.Name).ToList();
+
+    var missionBackPackConsumables = Material.BackPackList
+        .Where(x => x.Value.Category == "Consumable" && (!string.IsNullOrEmpty(x.Value.MissionID) && x.Value.MissionID != "0"))
+        .Select(x => new Material.MaterialItem
+        {
+            Count = x.Value.Count,
+            Name = x.Value.Name,
+            MissionID = x.Value.MissionID,
+            MissionName = Missions.GetMissionName(x.Value.MissionID),
+            System = Missions.GetMissionSystem(x.Value.MissionID),
+            Station = Missions.GetMissionStation(x.Value.MissionID)
+        })
+        .OrderBy(x => x.Name)
+        .GroupBy(x => x.MissionName)
+        .Select(grp => grp.ToList())
+        .ToList();
+
+    var backPackData = Material.BackPackList.Where(x =>
+        x.Value.Category == "Data" &&
+        (string.IsNullOrEmpty(x.Value.MissionID) || x.Value.MissionID == "0"))
+        .Select(x => x.Value).OrderBy(x => x.Name).ToList();
+
+    var missionBackPackData = Material.BackPackList
+        .Where(x => x.Value.Category == "Data" && (!string.IsNullOrEmpty(x.Value.MissionID) && x.Value.MissionID != "0"))
+        .Select(x => new Material.MaterialItem
+        {
+            Count = x.Value.Count,
+            Name = x.Value.Name,
+            MissionID = x.Value.MissionID,
+            MissionName = Missions.GetMissionName(x.Value.MissionID),
+            System = Missions.GetMissionSystem(x.Value.MissionID),
+            Station = Missions.GetMissionStation(x.Value.MissionID)
+        })
+        .OrderBy(x => x.Name)
+        .GroupBy(x => x.MissionName)
+        .Select(grp => grp.ToList())
+        .ToList();
+
+    var odd = true;
+    var displayDivider = false;
+
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+<tbody>
+@if (Material.BackPackList.Count == 0)
+{
+    <tr>
+        <td class=" center" ><strong>BACKPACK EMPTY</strong></td>
+    </tr>
+}
+
+    <tr>
+        <td>
+
+
+@if (CurrentPage == 0 && backPackItems.Count > 0)
+{
+    displayDivider = true;
+
+    <table class="zebratable">
+        <tbody>
+        @foreach (var m in backPackItems)
+        {
+            <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                <td class="data">@m.BluePrintType</td>
+                <td class="nowrap">@m.Name</td>
+                <td class="data right">@m.Count</td>
+            </tr>
+            odd = !odd;
+        }
+        </tbody>
+    </table>
+
+}
+else if (CurrentPage == 1)
+{
+    if (backPackComponentsCircuits.Count > 0)
+    {
+        <table>
+            <tbody>
+            <tr>
+                <td class="nowrap center">CIRCUITS</td>
+            </tr>
+            </tbody>
+        </table>
+
+        displayDivider = true;
+        odd = true;
+
+        <table class="zebratable">
+            <tbody>
+            @foreach (var m in backPackComponentsCircuits)
+            {
+                <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                    <td class="data">@m.BluePrintType</td>
+                    <td class="nowrap">@m.Name</td>
+                    <td class="data right">@m.Count</td>
+                </tr>
+                odd = !odd;
+            }
+            </tbody>
+        </table>
+
+    }
+
+    if (backPackComponentsChemicals.Count > 0)
+    {
+        <table>
+            <tbody>
+
+            @if (displayDivider)
+            {
+                <tr>
+                    <td class="divider">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="spacer">&nbsp;</td>
+                </tr>
+            }
+            <tr>
+                <td class="nowrap">CHEMICALS</td>
+            </tr>
+            </tbody>
+        </table>
+
+        displayDivider = true;
+        odd = true;
+
+        <table class="zebratable">
+            <tbody>
+
+            @foreach (var m in backPackComponentsChemicals)
+            {
+                <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                    <td class="data">@m.BluePrintType</td>
+                    <td class="nowrap">@m.Name</td>
+                    <td class="data right">@m.Count</td>
+                </tr>
+                odd = !odd;
+            }
+            </tbody>
+        </table>
+
+    }
+
+    if (backPackComponentsTech.Count > 0)
+    {
+        <table>
+            <tbody>
+            @if (displayDivider)
+            {
+                <tr>
+                    <td class="divider">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="spacer">&nbsp;</td>
+                </tr>
+            }
+            <tr>
+                <td class="nowrap">TECH</td>
+            </tr>
+            </tbody>
+        </table>
+
+        displayDivider = true;
+        odd = true;
+
+        <table class="zebratable">
+            <tbody>
+            @foreach (var m in backPackComponentsTech)
+            {
+                <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                    <td class="data">@m.BluePrintType</td>
+                    <td class="nowrap">@m.Name</td>
+                    <td class="data right">@m.Count</td>
+                </tr>
+                odd = !odd;
+            }
+            </tbody>
+        </table>
+
+    }
+
+}
+else if (CurrentPage == 2 && backPackConsumables.Count > 0)
+{
+    displayDivider = true;
+
+    <table class="zebratable">
+        <tbody>
+        @foreach (var m in backPackConsumables)
+        {
+            <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                <td class="nowrap">@m.Name</td>
+                <td class="data right">@m.Count</td>
+            </tr>
+            odd = !odd;
+        }
+        </tbody>
+    </table>
+
+}
+else if (CurrentPage == 3 && backPackData.Count > 0)
+{
+    displayDivider = true;
+
+    <table class="zebratable">
+        <tbody>
+        @foreach (var m in backPackData)
+        {
+            <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                <td class="data">@m.BluePrintType</td>
+                <td class="nowrap">@m.Name</td>
+                <td class="data right">@m.Count</td>
+            </tr>
+            odd = !odd;
+        }
+        </tbody>
+    </table>
+
+}
+
+@if ((CurrentPage == 0 && missionBackPackItems.Count > 0) ||
+     (CurrentPage == 1 && missionBackPackComponents.Count > 0) ||
+     (CurrentPage == 2 && missionBackPackConsumables.Count > 0) ||
+     (CurrentPage == 3 && missionBackPackData.Count > 0))
+{
+    odd = true;
+
+    <table>
+        <tbody>
+
+        @if (displayDivider)
+        {
+            <tr>
+                <td class="divider">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="spacer">&nbsp;</td>
+            </tr>
+        }
+        <tr>
+            <td class="nowrap">MISSION RELATED</td>
+        </tr>
+        </tbody>
+    </table>
+
+    if (CurrentPage == 0 && missionBackPackItems.Count > 0)
+    {
+        foreach (var mg in missionBackPackItems)
+        {
+            Material.MaterialItem mm = ((List<Material.MaterialItem>)mg).FirstOrDefault();
+
+            <div>@mm.MissionName
+                @if (!string.IsNullOrEmpty(mm.System))
+                {
+                    <text>to</text>
+                    @mm.System
+                }
+                @if (!string.IsNullOrEmpty(mm.Station))
+                {
+                    <text>,</text>
+                    @mm.Station
+                }
+            </div>
+
+            <table class="zebratable">
+                <tbody>
+                @foreach (var m in mg)
+                {
+                    <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                        <td class="nowrap">&nbsp;&nbsp;&nbsp;@m.Name</td>
+                        <td class="data right">@m.Count</td>
+                    </tr>
+                    odd = !odd;
+                }
+                </tbody>
+            </table>
+        }
+    }
+    else if (CurrentPage == 1 && missionBackPackComponents.Count > 0)
+    {
+        foreach (var mg in missionBackPackComponents)
+        {
+            Material.MaterialItem mm = ((List<Material.MaterialItem>)mg).FirstOrDefault();
+
+            <div>@mm.MissionName
+                @if (!string.IsNullOrEmpty(mm.System))
+                {
+                    <text>to</text>
+                    @mm.System
+                }
+                @if (!string.IsNullOrEmpty(mm.Station))
+                {
+                    <text>,</text>
+                    @mm.Station
+                }
+            </div>
+
+            <table class="zebratable">
+                <tbody>
+                @foreach (var m in mg)
+                {
+                    <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                        <td class="nowrap">&nbsp;&nbsp;&nbsp;@m.Name</td>
+                        <td class="data right">@m.Count</td>
+                    </tr>
+                    odd = !odd;
+                }
+                </tbody>
+            </table>
+        }
+
+    }
+    else if (CurrentPage == 2 && missionBackPackConsumables.Count > 0)
+    {
+        foreach (var mg in missionBackPackConsumables)
+        {
+            Material.MaterialItem mm = ((List<Material.MaterialItem>)mg).FirstOrDefault();
+
+            <div>@mm.MissionName
+                @if (!string.IsNullOrEmpty(mm.System))
+                {
+                    <text>to</text>
+                    @mm.System
+                }
+                @if (!string.IsNullOrEmpty(mm.Station))
+                {
+                    <text>,</text>
+                    @mm.Station
+                }
+            </div>
+
+            <table class="zebratable">
+                <tbody>
+                @foreach (var m in mg)
+                {
+                    <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                        <td class="nowrap">&nbsp;&nbsp;&nbsp;@m.Name</td>
+                        <td class="data right">@m.Count</td>
+                    </tr>
+                    odd = !odd;
+                }
+                </tbody>
+            </table>
+        }
+    }
+    else if (CurrentPage == 3 && missionBackPackData.Count > 0)
+    {
+        foreach (var mg in missionBackPackData)
+        {
+            Material.MaterialItem mm = ((List<Material.MaterialItem>)mg).FirstOrDefault();
+
+            <div>@mm.MissionName
+                @if (!string.IsNullOrEmpty(mm.System))
+                {
+                    <text>to</text>
+                    @mm.System
+                }
+                @if (!string.IsNullOrEmpty(mm.Station))
+                {
+                    <text>,</text>
+                    @mm.Station
+                }
+            </div>
+
+            <table class="zebratable">
+                <tbody>
+                @foreach (var m in mg)
+                {
+                    <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                        <td class="nowrap">&nbsp;&nbsp;&nbsp;@m.Name</td>
+                        <td class="data right">@m.Count</td>
+                    </tr>
+                    odd = !odd;
+                }
+                </tbody>
+            </table>
+        }
+    }
+}
+</td>
+</tr>
+
+</tbody >
+</MudSimpleTable>

@@ -4,7 +4,7 @@ using EliteJournalReader.Events;
 
 namespace dashboard_elite.EliteData
 {
-    public static class Cargo
+    public class Cargo
     {
         public class CargoItem
         {
@@ -24,9 +24,9 @@ namespace dashboard_elite.EliteData
         public static readonly object RefreshCargoLock = new object();
 
 
-        public static Dictionary<string, CargoItem> CargoList = new Dictionary<string, CargoItem>();
+        public Dictionary<string, CargoItem> CargoList = new Dictionary<string, CargoItem>();
         
-        public static void HandleCargoEvent(CargoEvent.CargoEventArgs info)
+        public void HandleCargoEvent(CargoEvent.CargoEventArgs info)
         {
             lock (RefreshCargoLock)
             {
@@ -51,12 +51,12 @@ namespace dashboard_elite.EliteData
 
         }
         
-        public static void HandleDiedEvent(DiedEvent.DiedEventArgs info)
+        public void HandleDiedEvent(DiedEvent.DiedEventArgs info)
         {
             CargoList = new Dictionary<string, CargoItem>();
         }
 
-        public static void HandleEngineerContributionEvent(EngineerContributionEvent.EngineerContributionEventArgs info)
+        public void HandleEngineerContributionEvent(EngineerContributionEvent.EngineerContributionEventArgs info)
         {
             // gets handled in Cargo event
 
@@ -64,7 +64,7 @@ namespace dashboard_elite.EliteData
             //{ "timestamp":"2019-12-28T09:37:31Z", "event":"Cargo", "Vessel":"Ship", "Count":100 }
         }
 
-        public static void HandleEjectCargoEvent(EjectCargoEvent.EjectCargoEventArgs info)
+        public void HandleEjectCargoEvent(EjectCargoEvent.EjectCargoEventArgs info)
         {
             // gets handled in Cargo event
 
@@ -72,7 +72,7 @@ namespace dashboard_elite.EliteData
             //{ "timestamp":"2020-01-25T09:45:42Z", "event":"Cargo", "Vessel":"Ship", "Count":0 }
         }
 
-        public static void HandleCollectCargoEvent(CollectCargoEvent.CollectCargoEventArgs info)
+        public void HandleCollectCargoEvent(CollectCargoEvent.CollectCargoEventArgs info)
         {
             // gets handled in Cargo event
 
@@ -80,32 +80,32 @@ namespace dashboard_elite.EliteData
             //{ "timestamp":"2019-07-07T08:29:47Z", "event":"Cargo", "Vessel":"Ship", "Count":128 }
         }
 
-        public static void HandleMarketBuyEvent(MarketBuyEvent.MarketBuyEventArgs info)
+        public void HandleMarketBuyEvent(MarketBuyEvent.MarketBuyEventArgs info)
         {
             // gets handled in Cargo event
         }
 
-        public static void HandleMiningRefinedEvent(MiningRefinedEvent.MiningRefinedEventArgs info)
+        public void HandleMiningRefinedEvent(MiningRefinedEvent.MiningRefinedEventArgs info)
         {
             // gets handled in Cargo event
         }
 
-        public static void HandleMarketSellEvent(MarketSellEvent.MarketSellEventArgs info)
+        public void HandleMarketSellEvent(MarketSellEvent.MarketSellEventArgs info)
         {
             // gets handled in Cargo event
         }
 
-        public static void HandleCargoDepotEvent(CargoDepotEvent.CargoDepotEventArgs info)
+        public void HandleCargoDepotEvent(CargoDepotEvent.CargoDepotEventArgs info)
         {
             // gets handled in Cargo event
         }
 
-        public static void HandleMissionsEvent(MissionsEvent.MissionsEventArgs info)
+        public void HandleMissionsEvent(MissionsEvent.MissionsEventArgs info)
         {
             // gets handled in Cargo event
         }
 
-        public static void HandleMissionAcceptedEvent(MissionAcceptedEvent.MissionAcceptedEventArgs info)
+        public void HandleMissionAcceptedEvent(MissionAcceptedEvent.MissionAcceptedEventArgs info)
         {
             // gets handled in Cargo event
 
@@ -114,7 +114,7 @@ namespace dashboard_elite.EliteData
             //{ "timestamp":"2019-12-27T08:59:50Z", "event":"Cargo", "Vessel":"Ship", "Count":56 }
         }
 
-        public static void HandleMissionCompletedEvent(MissionCompletedEvent.MissionCompletedEventArgs info)
+        public void HandleMissionCompletedEvent(MissionCompletedEvent.MissionCompletedEventArgs info)
         {
             // gets handled in Cargo event
 
@@ -123,21 +123,21 @@ namespace dashboard_elite.EliteData
             //{ "timestamp":"2019-12-27T09:07:52Z", "event":"MissionCompleted", "Faction":"Alioth Independents", "Name":"Mission_Delivery_Boom_name", "MissionID":533221880, "Commodity":"$Biowaste_Name;", "Commodity_Localised":"Biowaste", "Count":56, "TargetFaction":"Sons of Icarus", "DestinationSystem":"He Bo", "DestinationStation":"Krylov Ring", "Reward":254796, "MaterialsReward":[ { "Name":"MechanicalComponents", "Name_Localised":"Mechanical Components", "Category":"$MICRORESOURCE_CATEGORY_Manufactured;", "Category_Localised":"Manufactured", "Count":3 } ], "FactionEffects":[ { "Faction":"Sons of Icarus", "Effects":[ { "Effect":"$MISSIONUTIL_Interaction_Summary_Outbreak_up;", "Effect_Localised":"Without medical support, $#MinorFaction; may soon be forced to declare a state of outbreak in the $#System; system.", "Trend":"UpBad" } ], "Influence":[ { "SystemAddress":332023202996, "Trend":"UpGood", "Influence":"+" } ], "ReputationTrend":"UpGood", "Reputation":"++" }, { "Faction":"Alioth Independents", "Effects":[ { "Effect":"$MISSIONUTIL_Interaction_Summary_Outbreak_down;", "Effect_Localised":"With fewer reported cases of illness, $#MinorFaction; hope they have prevented a full outbreak in the $#System; system.", "Trend":"DownGood" } ], "Influence":[ { "SystemAddress":1109989017963, "Trend":"UpGood", "Influence":"++" } ], "ReputationTrend":"UpGood", "Reputation":"++" } ] }
         }
 
-        public static void HandleMissionAbandonedEvent(MissionAbandonedEvent.MissionAbandonedEventArgs info)
+        public void HandleMissionAbandonedEvent(MissionAbandonedEvent.MissionAbandonedEventArgs info)
         {
             // TODO ???????????
 
             //{ "timestamp":"2018-11-04T08:27:58Z", "event":"MissionAbandoned", "Name":"Mission_Delivery_Boom_name", "MissionID":430798877 }
         }
 
-        public static void HandleMissionFailedEvent(MissionFailedEvent.MissionFailedEventArgs info)
+        public void HandleMissionFailedEvent(MissionFailedEvent.MissionFailedEventArgs info)
         {
             // TODO ???????????
 
         }
 
         /*
-        public static void HandleMissionExpiredEvent(MissionExpiredEvent.MissionExpiredEventArgs info)
+        public void HandleMissionExpiredEvent(MissionExpiredEvent.MissionExpiredEventArgs info)
         {
          
         }*/

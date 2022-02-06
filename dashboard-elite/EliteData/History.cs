@@ -20,12 +20,14 @@ namespace dashboard_elite.EliteData
         private readonly IHubContext<MyHub> _myHub;
         private readonly ButtonCacheService _buttonCacheService;
         private readonly ProfileCacheService _profileCacheService;
+        private readonly Material _material;
 
-        public History(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService)
+        public History(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService, Material material)
         {
             _myHub = myHub;
             _buttonCacheService = buttonCacheService;
             _profileCacheService = profileCacheService;
+            _material = material;
         }
 
         // 1478 x 1125
@@ -402,7 +404,7 @@ namespace dashboard_elite.EliteData
 
                                             // { "timestamp":"2018-08-11T15:29:20Z", "event":"MaterialCollected", "Category":"Encoded", "Name":"shielddensityreports", "Name_Localised":"Untypical Shield Scans ", "Count":3 }
 
-                                            Material.AddHistory(name, lastJumpedSystem, info.Count);
+                                            _material.AddHistory(name, lastJumpedSystem, info.Count);
                                         }
                                     }
                                     else if (json?.Contains("\"event\":\"ApproachSettlement\",") == true)
@@ -425,7 +427,7 @@ namespace dashboard_elite.EliteData
 
                                             // { "timestamp":"2021-06-11T16:24:21Z", "event":"CollectItems", "Name":"syntheticpathogen", "Name_Localised":"Synthetic Pathogen", "Type":"Item", "OwnerID":0, "Count":1, "Stolen":false }
 
-                                            Material.AddHistory(name, lastJumpedSettlement, info.Count);
+                                            _material.AddHistory(name, lastJumpedSettlement, info.Count);
                                         }
                                     }
 

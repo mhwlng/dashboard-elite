@@ -6,7 +6,7 @@ using EliteJournalReader.Events;
 
 namespace dashboard_elite.EliteData
 {
-    public static class Missions
+    public class Missions
     {
         public class Mission
         {
@@ -42,9 +42,9 @@ namespace dashboard_elite.EliteData
 
         }
 
-        public static List<Mission> MissionList = new List<Mission>();
+        public List<Mission> MissionList = new List<Mission>();
 
-        public static string GetMissionName(string missionID)
+        public string GetMissionName(string missionID)
         {
             var missionName = string.Empty;
             if (!string.IsNullOrEmpty(missionID) && missionID != "0")
@@ -60,7 +60,7 @@ namespace dashboard_elite.EliteData
             return missionName;
         }
 
-        public static string GetMissionSystem(string missionID)
+        public string GetMissionSystem(string missionID)
         {
             var missionSystem = string.Empty;
             if (!string.IsNullOrEmpty(missionID) && missionID != "0")
@@ -71,7 +71,7 @@ namespace dashboard_elite.EliteData
             return missionSystem;
         }
 
-        public static string GetMissionStation(string missionID)
+        public string GetMissionStation(string missionID)
         {
             var missionStation = string.Empty;
             if (!string.IsNullOrEmpty(missionID) && missionID != "0")
@@ -82,7 +82,7 @@ namespace dashboard_elite.EliteData
             return missionStation;
         }
 
-        public static void HandleMissionsEvent(MissionsEvent.MissionsEventArgs info)
+        public void HandleMissionsEvent(MissionsEvent.MissionsEventArgs info)
         {
             if (info.Active?.Length > 0)
             {
@@ -95,12 +95,12 @@ namespace dashboard_elite.EliteData
                 }).ToList();
             }
         }
-        public static void HandleMissionAbandonedEvent(MissionAbandonedEvent.MissionAbandonedEventArgs info)
+        public void HandleMissionAbandonedEvent(MissionAbandonedEvent.MissionAbandonedEventArgs info)
         {
             MissionList.RemoveAll(x => x.MissionID == info.MissionID);
         }
 
-        public static void HandleMissionAcceptedEvent(MissionAcceptedEvent.MissionAcceptedEventArgs info)
+        public void HandleMissionAcceptedEvent(MissionAcceptedEvent.MissionAcceptedEventArgs info)
         {
             MissionList.RemoveAll(x => x.MissionID == info.MissionID);
 
@@ -137,12 +137,12 @@ namespace dashboard_elite.EliteData
             });
         }
 
-        public static void HandleMissionCompletedEvent(MissionCompletedEvent.MissionCompletedEventArgs info)
+        public void HandleMissionCompletedEvent(MissionCompletedEvent.MissionCompletedEventArgs info)
         {
             MissionList.RemoveAll(x => x.MissionID == info.MissionID);
         }
 
-        public static void HandleMissionFailedEvent(MissionFailedEvent.MissionFailedEventArgs info)
+        public void HandleMissionFailedEvent(MissionFailedEvent.MissionFailedEventArgs info)
         {
             MissionList.RemoveAll(x => x.MissionID == info.MissionID);
         }

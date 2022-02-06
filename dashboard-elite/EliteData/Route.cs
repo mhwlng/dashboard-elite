@@ -28,14 +28,14 @@ namespace dashboard_elite.EliteData
         public  List<StationData> StationsInSystem { get; set; } 
     }
 
-    public static class Route
+    public class Route
     {
         public static readonly object RefreshRouteLock = new object();
 
 
-        public static List<RouteItem> RouteList = new List<RouteItem>();
+        public List<RouteItem> RouteList = new List<RouteItem>();
 
-        public static void HandleRouteEvent(NavRouteEvent.NavRouteEventArgs info)
+        public void HandleRouteEvent(NavRouteEvent.NavRouteEventArgs info)
         {
             lock (RefreshRouteLock)
             {

@@ -22,8 +22,12 @@ namespace dashboard_elite.EliteData
         private readonly Ships _ships;
         private readonly Module _module;
         private readonly History _history;
+        private readonly Cargo _cargo;
+        private readonly Missions _missions;
+        private readonly Material _material;
+        private readonly Route _route;
 
-        public Data(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService, Poi poi, Ships ships, Module module, History history)
+        public Data(IHubContext<MyHub> myHub, ButtonCacheService buttonCacheService, ProfileCacheService profileCacheService, Poi poi, Ships ships, Module module, History history, Cargo cargo, Missions missions, Material material, Route route)
         {
             _myHub = myHub;
             _buttonCacheService = buttonCacheService;
@@ -32,6 +36,10 @@ namespace dashboard_elite.EliteData
             _ships = ships;
             _module = module;
             _history = history;
+            _cargo = cargo;
+            _missions = missions;
+            _material = material;
+            _route = route;
         }
 
 
@@ -615,12 +623,12 @@ namespace dashboard_elite.EliteData
                 }
             }
 
-#if DEBUG
-            CommanderData.Name = DateTime.Now.ToString();
-            LocationData.RemainingJumpsInRoute = DateTime.Now.Second;
-            LimpetCount = DateTime.Now.Second;
-            //UnderAttack = true;
-#endif
+//#if DEBUG
+//            CommanderData.Name = DateTime.Now.ToString();
+//            LocationData.RemainingJumpsInRoute = DateTime.Now.Second;
+//            LimpetCount = DateTime.Now.Second;
+//            //UnderAttack = true;
+//#endif
 
             _myHub.Clients.All.SendAsync("EliteRefresh");
 
@@ -662,21 +670,21 @@ namespace dashboard_elite.EliteData
         {
             if (e?.Components == null) return;
 
-            Material.HandleBackPackEvent(e);
+            _material.HandleBackPackEvent(e);
         }
 
         public void HandleShipLockerEvent(object sender, ShipLockerMaterialsEvent.ShipLockerMaterialsEventArgs e)
         {
             if (e?.Components == null) return;
 
-            Material.HandleShipLockerMaterialsEvent(e);
+            _material.HandleShipLockerMaterialsEvent(e);
         }
 
         public void HandleNavRouteEvent(object sender, NavRouteEvent.NavRouteEventArgs e)
         {
             if (e?.Route == null) return;
 
-            Route.HandleRouteEvent(e);
+            _route.HandleRouteEvent(e);
         }
 
         public void HandleCargoEvent(object sender, CargoEvent.CargoEventArgs e)
@@ -690,7 +698,7 @@ namespace dashboard_elite.EliteData
             }
 
 
-            Cargo.HandleCargoEvent(e);
+            _cargo.HandleCargoEvent(e);
 
         }
 
@@ -914,9 +922,9 @@ namespace dashboard_elite.EliteData
                     //When written: at startup
                     var missionsInfo = (MissionsEvent.MissionsEventArgs)e;
 
-                    Missions.HandleMissionsEvent(missionsInfo);
+                    _missions.HandleMissionsEvent(missionsInfo);
 
-                    Cargo.HandleMissionsEvent(missionsInfo);
+                    _cargo.HandleMissionsEvent(missionsInfo);
 
                     break;
 
@@ -1017,7 +1025,7 @@ namespace dashboard_elite.EliteData
 
                     CommanderData.Credits += marketSellInfo.TotalSale;
 
-                    Cargo.HandleMarketSellEvent(marketSellInfo);
+                    _cargo.HandleMarketSellEvent(marketSellInfo);
 
                     break;
 
@@ -1027,7 +1035,7 @@ namespace dashboard_elite.EliteData
 
                     CommanderData.Credits -= marketBuyInfo.TotalCost;
 
-                    Cargo.HandleMarketBuyEvent(marketBuyInfo);
+                    _cargo.HandleMarketBuyEvent(marketBuyInfo);
 
                     break;
 
@@ -1605,9 +1613,9 @@ namespace dashboard_elite.EliteData
                     //When Written: when starting a mission 
                     var missionAcceptedInfo = (MissionAcceptedEvent.MissionAcceptedEventArgs) e;
 
-                    Missions.HandleMissionAcceptedEvent(missionAcceptedInfo);
+                    _missions.HandleMissionAcceptedEvent(missionAcceptedInfo);
 
-                    Cargo.HandleMissionAcceptedEvent(missionAcceptedInfo);
+                    _cargo.HandleMissionAcceptedEvent(missionAcceptedInfo);
 
                     break;
 
@@ -1616,9 +1624,9 @@ namespace dashboard_elite.EliteData
 
                     var missionAbandonedInfo = (MissionAbandonedEvent.MissionAbandonedEventArgs) e;
 
-                    Missions.HandleMissionAbandonedEvent(missionAbandonedInfo);
+                    _missions.HandleMissionAbandonedEvent(missionAbandonedInfo);
 
-                    Cargo.HandleMissionAbandonedEvent(missionAbandonedInfo);
+                    _cargo.HandleMissionAbandonedEvent(missionAbandonedInfo);
 
                     break;
                 case "MissionFailed":
@@ -1626,9 +1634,9 @@ namespace dashboard_elite.EliteData
 
                     var missionFailedInfo = (MissionFailedEvent.MissionFailedEventArgs) e;
 
-                    Missions.HandleMissionFailedEvent(missionFailedInfo);
+                    _missions.HandleMissionFailedEvent(missionFailedInfo);
 
-                    Cargo.HandleMissionFailedEvent(missionFailedInfo);
+                    _cargo.HandleMissionFailedEvent(missionFailedInfo);
 
                     break;
 
@@ -1639,11 +1647,11 @@ namespace dashboard_elite.EliteData
 
                     CommanderData.Credits += missionCompletedInfo.Reward;
 
-                    Missions.HandleMissionCompletedEvent(missionCompletedInfo);
+                    _missions.HandleMissionCompletedEvent(missionCompletedInfo);
 
-                    Material.HandleMissionCompletedEvent(missionCompletedInfo);
+                    _material.HandleMissionCompletedEvent(missionCompletedInfo);
 
-                    Cargo.HandleMissionCompletedEvent(missionCompletedInfo);
+                    _cargo.HandleMissionCompletedEvent(missionCompletedInfo);
 
                     break;
 
@@ -1732,14 +1740,14 @@ namespace dashboard_elite.EliteData
 
                     var materialsInfo = (MaterialsEvent.MaterialsEventArgs)e;
 
-                    Material.HandleMaterialsEvent(materialsInfo);
+                    _material.HandleMaterialsEvent(materialsInfo);
 
                     break;
                 case "MaterialCollected":
 
                     var materialCollectedInfo = (MaterialCollectedEvent.MaterialCollectedEventArgs)e;
 
-                    Material.HandleMaterialCollectedEvent(materialCollectedInfo);
+                    _material.HandleMaterialCollectedEvent(materialCollectedInfo);
 
                     if (!string.IsNullOrEmpty(LocationData.StarSystem))
                     {
@@ -1747,7 +1755,7 @@ namespace dashboard_elite.EliteData
 
                         //TODO could possibly count some materials again, that were already added via GetEliteHistory() 
 
-                        Material.AddHistory(name, LocationData.StarSystem, materialCollectedInfo.Count);
+                        _material.AddHistory(name, LocationData.StarSystem, materialCollectedInfo.Count);
                     }
 
                     break;
@@ -1755,28 +1763,28 @@ namespace dashboard_elite.EliteData
 
                     var materialDiscardedInfo = (MaterialDiscardedEvent.MaterialDiscardedEventArgs)e;
 
-                    Material.HandleMaterialDiscardedEvent(materialDiscardedInfo);
+                    _material.HandleMaterialDiscardedEvent(materialDiscardedInfo);
 
                     break;
                 case "ScientificResearch":
 
                     var scientificResearchInfo = (ScientificResearchEvent.ScientificResearchEventArgs)e;
 
-                    Material.HandleScientificResearchEvent(scientificResearchInfo);
+                    _material.HandleScientificResearchEvent(scientificResearchInfo);
 
                     break;
                 case "MaterialTrade":
 
                     var materialTradeInfo = (MaterialTradeEvent.MaterialTradeEventArgs)e;
 
-                    Material.HandleMaterialTradedEvent(materialTradeInfo);
+                    _material.HandleMaterialTradedEvent(materialTradeInfo);
 
                     break;
                 case "Synthesis":
 
                     var synthesisInfo = (SynthesisEvent.SynthesisEventArgs)e;
 
-                    Material.HandleSynthesisedEvent(synthesisInfo);
+                    _material.HandleSynthesisedEvent(synthesisInfo);
 
                     break;
 
@@ -1792,23 +1800,23 @@ namespace dashboard_elite.EliteData
 
                     var engineerCraftInfo = (EngineerCraftEvent.EngineerCraftEventArgs)e;
 
-                    Material.HandleEngineerCraftEvent(engineerCraftInfo);
+                    _material.HandleEngineerCraftEvent(engineerCraftInfo);
 
                     break;
                 case "TechnologyBroker":
 
                     var technologyBrokerInfo = (TechnologyBrokerEvent.TechnologyBrokerEventArgs)e;
 
-                    Material.HandleTechnologyBrokerEvent(technologyBrokerInfo);
+                    _material.HandleTechnologyBrokerEvent(technologyBrokerInfo);
 
                     break;
                 case "EngineerContribution":
 
                     var engineerContributionInfo = (EngineerContributionEvent.EngineerContributionEventArgs)e;
 
-                    Material.HandleEngineerContributionEvent(engineerContributionInfo);
+                    _material.HandleEngineerContributionEvent(engineerContributionInfo);
 
-                    Cargo.HandleEngineerContributionEvent(engineerContributionInfo);
+                    _cargo.HandleEngineerContributionEvent(engineerContributionInfo);
 
                     break;
 
@@ -1816,7 +1824,7 @@ namespace dashboard_elite.EliteData
 
                     var cargoInfo = (CargoEvent.CargoEventArgs)e;
 
-                    //Cargo.HandleCargoEvent(cargoInfo);
+                    //_cargo.HandleCargoEvent(cargoInfo);
 
                     break;
 
@@ -1824,7 +1832,7 @@ namespace dashboard_elite.EliteData
 
                     var collectCargoInfo = (CollectCargoEvent.CollectCargoEventArgs)e;
 
-                    Cargo.HandleCollectCargoEvent(collectCargoInfo);
+                    _cargo.HandleCollectCargoEvent(collectCargoInfo);
 
                     break;
 
@@ -1832,7 +1840,7 @@ namespace dashboard_elite.EliteData
 
                     var ejectCargoInfo = (EjectCargoEvent.EjectCargoEventArgs)e;
 
-                    Cargo.HandleEjectCargoEvent(ejectCargoInfo);
+                    _cargo.HandleEjectCargoEvent(ejectCargoInfo);
 
                     break;
 
@@ -1841,7 +1849,7 @@ namespace dashboard_elite.EliteData
 
                     var miningRefinedInfo = (MiningRefinedEvent.MiningRefinedEventArgs)e;
 
-                    Cargo.HandleMiningRefinedEvent(miningRefinedInfo);
+                    _cargo.HandleMiningRefinedEvent(miningRefinedInfo);
 
                     break;
 
@@ -1849,7 +1857,7 @@ namespace dashboard_elite.EliteData
 
                     var cargoDepotInfo = (CargoDepotEvent.CargoDepotEventArgs)e;
 
-                    Cargo.HandleCargoDepotEvent(cargoDepotInfo);
+                    _cargo.HandleCargoDepotEvent(cargoDepotInfo);
 
                     break;
 
@@ -1857,7 +1865,7 @@ namespace dashboard_elite.EliteData
 
                     var diedInfo = (DiedEvent.DiedEventArgs)e;
 
-                    Cargo.HandleDiedEvent(diedInfo);
+                    _cargo.HandleDiedEvent(diedInfo);
 
                     break;
 
@@ -1983,7 +1991,7 @@ namespace dashboard_elite.EliteData
 
                     var transferMicroResourcesInfo = (TransferMicroResourcesEvent.TransferMicroResourcesEventArgs)e;
 
-                    Material.HandleTransferMicroResourcesEvent(transferMicroResourcesInfo);
+                    _material.HandleTransferMicroResourcesEvent(transferMicroResourcesInfo);
 
                     break;
 
@@ -1998,7 +2006,7 @@ namespace dashboard_elite.EliteData
                     {
                         var name = (collectItemsInfo.Name_Localised ?? CultureInfo.CurrentCulture.TextInfo.ToTitleCase(collectItemsInfo.Name.ToLower())).Trim();
 
-                        Material.AddHistory(name, LocationData.Body + "@" + LocationData.Settlement, collectItemsInfo.Count);
+                        _material.AddHistory(name, LocationData.Body + "@" + LocationData.Settlement, collectItemsInfo.Count);
                     }
 
 
@@ -2103,7 +2111,7 @@ namespace dashboard_elite.EliteData
 
                     // force empty Backpack, because backpack.json is not cleared
 
-                    Material.BackPackList = new Dictionary<string, Material.MaterialItem>();
+                    _material.BackPackList = new Dictionary<string, Material.MaterialItem>();
 
                     break;
                 case "Disembark":

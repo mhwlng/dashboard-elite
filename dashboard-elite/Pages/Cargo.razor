@@ -1,0 +1,184 @@
+﻿@page "/ship/cargo"
+@inherits PageBase
+@layout PageLayout
+
+@{
+    var cargo = Cargo.CargoList
+        .Where(x => x.Value.Count > 0 && (string.IsNullOrEmpty(x.Value.MissionID) || x.Value.MissionID == "0"))
+        .Select(x => x.Value).OrderBy(x => x.Name).ToList();
+
+    var missionCargo = Cargo.CargoList
+        .Where(x => x.Value.Count > 0 && !string.IsNullOrEmpty(x.Value.MissionID) && x.Value.MissionID != "0")
+        .Select(x => new dashboard_elite.EliteData.Cargo.CargoItem
+        {
+            Count = x.Value.Count,
+            Name = x.Value.Name,
+            MissionID = x.Value.MissionID,
+            MissionName = Missions.GetMissionName(x.Value.MissionID),
+            System = Missions.GetMissionSystem(x.Value.MissionID),
+            Station = Missions.GetMissionStation(x.Value.MissionID)
+        })
+        .OrderBy(x => x.Name)
+        .GroupBy(x => x.MissionName)
+        .Select(grp => grp.ToList())
+        .ToList();
+
+    var stolenCargo = Cargo.CargoList.Where(x => x.Value.Stolen > 0)
+        .Select(x => x.Value)
+        .OrderBy(x => x.Name).ToList();
+
+    var currentShip = Ships.ShipsList.FirstOrDefault(x => x.Stored == false);
+    
+    var odd = true;
+    var displayDivider = false;
+
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+    @if (missionCargo.Count == 0 && stolenCargo.Count == 0 && cargo.Count == 0)
+    {
+        <tr>
+            <td class=" center" ><strong>CARGO HOLD EMPTY</strong></td>
+        </tr>
+    }
+
+    <tr>
+        <td>
+
+
+            @if (cargo.Count > 0 || (currentShip != null && currentShip.CargoCapacity > 0))
+            {
+                displayDivider = true;
+
+                <table class="zebratable">
+                    <tbody>
+                    @if (currentShip != null && currentShip.CargoCapacity > 0 && currentShip.CargoCapacity >= currentShip.CurrentCargo)
+                    {
+                        <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                            <td class="nowrap">Cargo Capacity</td>
+                            <td class="data right">@currentShip.CurrentCargo / @currentShip.CargoCapacity</td>
+                        </tr>
+                        if (cargo.Count > 0)
+                        {
+                            <tr>
+                                <td class="divider" colspan="2">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="spacer" colspan="2">&nbsp;</td>
+                            </tr>
+
+                        }
+                    }
+
+                    @foreach (var m in cargo)
+                    {
+                        <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                            <td class="nowrap">@m.Name</td>
+                            <td class="data right">@m.Count</td>
+                        </tr>
+                        odd = !odd;
+                    }
+                    </tbody>
+                </table>
+            }
+
+            @if (missionCargo.Count > 0)
+            {
+                odd = true;
+
+                <table>
+                    <tbody>
+
+                    @if (displayDivider)
+                    {
+                        <tr>
+                            <td class="divider">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="spacer">&nbsp;</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td class="nowrap center">MISSION RELATED</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                displayDivider = true;
+
+                foreach (var mg in missionCargo)
+                {
+                    EliteData.Cargo.CargoItem mm = ((List<EliteData.Cargo.CargoItem>)mg).FirstOrDefault();
+
+                    <div>@mm.MissionName
+                        @if (!string.IsNullOrEmpty(mm.System))
+                        {
+                            <text>to</text>
+                            @mm.System
+                        }
+                        @if (!string.IsNullOrEmpty(mm.Station))
+                        {
+                            <text>,</text>
+                            @mm.Station
+                        }
+                    </div>
+
+                    <table class="zebratable">
+                        <tbody>
+                        @foreach (var m in mg)
+                        {
+                            <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                                <td class="nowrap">&nbsp;&nbsp;&nbsp;@m.Name</td>
+                                <td class="data right">@m.Count</td>
+                            </tr>
+                            odd = !odd;
+                        }
+                        </tbody>
+                    </table>
+                }
+
+            }
+
+
+            @if (stolenCargo.Count > 0)
+            {
+                odd = true;
+
+                <table>
+                    <tbody>
+
+                    @if (displayDivider)
+                    {
+                        <tr>
+                            <td class="divider">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="spacer">&nbsp;</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td class="nowrap center">STOLEN</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <table class="zebratable">
+                    <tbody>
+                    @foreach (var m in stolenCargo)
+                    {
+                        <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                            <td class="nowrap">@m.Name</td>
+                            <td class="data right">@m.Stolen</td>
+                        </tr>
+                        odd = !odd;
+                    }
+                    </tbody>
+                </table>
+            }
+
+        </td>
+    </tr>
+
+    </tbody >
+</MudSimpleTable>

@@ -7,8 +7,14 @@ using EliteJournalReader.Events;
 
 namespace dashboard_elite.EliteData
 {
-    public static class Material
+    public class Material
     {
+        private readonly Engineer _engineer;
+
+        public Material(Engineer engineer)
+        {
+            _engineer = engineer;
+        }
 
         public class MaterialItem
         {
@@ -35,15 +41,15 @@ namespace dashboard_elite.EliteData
             public int Count { get; set; }
         }
 
-        public static Dictionary<string, MaterialItem> ShipLockerList = new Dictionary<string, MaterialItem>();
+        public Dictionary<string, MaterialItem> ShipLockerList = new Dictionary<string, MaterialItem>();
 
-        public static Dictionary<string, MaterialItem> BackPackList = new Dictionary<string, MaterialItem>();
+        public Dictionary<string, MaterialItem> BackPackList = new Dictionary<string, MaterialItem>();
 
-        public static Dictionary<string, MaterialItem> MaterialList = new Dictionary<string, MaterialItem>();
+        public Dictionary<string, MaterialItem> MaterialList = new Dictionary<string, MaterialItem>();
 
-        public static Dictionary<string, Dictionary<string,MaterialHistoryItem>> MaterialHistoryList = new Dictionary<string, Dictionary<string,MaterialHistoryItem>>();
+        public Dictionary<string, Dictionary<string,MaterialHistoryItem>> MaterialHistoryList = new Dictionary<string, Dictionary<string,MaterialHistoryItem>>();
 
-        public static void AddHistory(string name, string system, int count)
+        public void AddHistory(string name, string system, int count)
         {
             MaterialHistoryList.TryGetValue(name, out var materialData);
             if (materialData == null)
@@ -78,14 +84,14 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        private static EntryData GetMaterialInfo(string name)
+        private EntryData GetMaterialInfo(string name)
         {
-            Engineer.EngineeringMaterialsByKey.TryGetValue(name, out var entry);
+            _engineer.EngineeringMaterialsByKey.TryGetValue(name, out var entry);
 
             return entry;
         }
 
-        private static int GetMaximumCapacity(EntryData entry)
+        private int GetMaximumCapacity(EntryData entry)
         {
             var maximumCapacity = 0;
 
@@ -97,7 +103,7 @@ namespace dashboard_elite.EliteData
             return maximumCapacity;
         }
 
-        private static string GetGroup(EntryData entry)
+        private string GetGroup(EntryData entry)
         {
             var group = string.Empty;
 
@@ -109,13 +115,13 @@ namespace dashboard_elite.EliteData
             return group;
         }
 
-        private static string GetBluePrintType(EntryData entry)
+        private string GetBluePrintType(EntryData entry)
         {
             var type = string.Empty;
 
             if (entry != null)
             {
-                Engineer.IngredientTypes.TryGetValue(entry.Name, out var material);
+                _engineer.IngredientTypes.TryGetValue(entry.Name, out var material);
 
                 if (material != null)
                 {
@@ -133,7 +139,7 @@ namespace dashboard_elite.EliteData
             return type;
         }
 
-        public static void HandleMaterialsEvent(MaterialsEvent.MaterialsEventArgs info)
+        public void HandleMaterialsEvent(MaterialsEvent.MaterialsEventArgs info)
         {
             MaterialList = new Dictionary<string, MaterialItem>();
 
@@ -193,7 +199,7 @@ namespace dashboard_elite.EliteData
 
         }
 
-        public static void HandleMaterialCollectedEvent(MaterialCollectedEvent.MaterialCollectedEventArgs info)
+        public void HandleMaterialCollectedEvent(MaterialCollectedEvent.MaterialCollectedEventArgs info)
         {
             var idxName = info.Name.ToLower();
 
@@ -216,7 +222,7 @@ namespace dashboard_elite.EliteData
 
         }
 
-        public static void HandleMaterialDiscardedEvent(MaterialDiscardedEvent.MaterialDiscardedEventArgs info)
+        public void HandleMaterialDiscardedEvent(MaterialDiscardedEvent.MaterialDiscardedEventArgs info)
         {
             var idxName = info.Name.ToLower();
 
@@ -226,7 +232,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleScientificResearchEvent(ScientificResearchEvent.ScientificResearchEventArgs info)
+        public void HandleScientificResearchEvent(ScientificResearchEvent.ScientificResearchEventArgs info)
         {
             var idxName = info.Name.ToLower();
 
@@ -236,7 +242,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleMaterialTradedEvent(MaterialTradeEvent.MaterialTradeEventArgs info)
+        public void HandleMaterialTradedEvent(MaterialTradeEvent.MaterialTradeEventArgs info)
         {
             var idxPaidName = info.Paid.Material.ToLower();
 
@@ -265,7 +271,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleSynthesisedEvent(SynthesisEvent.SynthesisEventArgs info)
+        public void HandleSynthesisedEvent(SynthesisEvent.SynthesisEventArgs info)
         {
             if (info.Materials?.Any() == true)
             {
@@ -281,7 +287,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleEngineerCraftEvent(EngineerCraftEvent.EngineerCraftEventArgs info)
+        public void HandleEngineerCraftEvent(EngineerCraftEvent.EngineerCraftEventArgs info)
         {
 
             if (info.Ingredients?.Any() == true)
@@ -298,7 +304,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleTechnologyBrokerEvent(TechnologyBrokerEvent.TechnologyBrokerEventArgs info)
+        public void HandleTechnologyBrokerEvent(TechnologyBrokerEvent.TechnologyBrokerEventArgs info)
         {
             if (info.Materials?.Any() == true)
             {
@@ -314,7 +320,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleEngineerContributionEvent(EngineerContributionEvent.EngineerContributionEventArgs info)
+        public void HandleEngineerContributionEvent(EngineerContributionEvent.EngineerContributionEventArgs info)
         {
 
             if (info.Type == "Materials" && info.Material != null)
@@ -336,7 +342,7 @@ namespace dashboard_elite.EliteData
         //"FactionEffects":[ { "Faction":"Future of Arro Naga", "Effects":[  ], "Influence":[ { "SystemAddress":3932277478106, "Trend":"UpGood", "Influence":"+" } ], "ReputationTrend":"UpGood", "Reputation":"+" } ] }
 
 
-        public static void HandleMissionCompletedEvent(MissionCompletedEvent.MissionCompletedEventArgs info)
+        public void HandleMissionCompletedEvent(MissionCompletedEvent.MissionCompletedEventArgs info)
         {
             if (!string.IsNullOrEmpty(info.Commodity_Localised) && ShipLockerList.Any(x => x.Value?.Name == info.Commodity_Localised))
             {
@@ -406,7 +412,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleBackPackEvent(BackPackEvent.BackPackEventArgs info)
+        public void HandleBackPackEvent(BackPackEvent.BackPackEventArgs info)
         {
             BackPackList = new Dictionary<string, MaterialItem>();
 
@@ -528,7 +534,7 @@ namespace dashboard_elite.EliteData
 
         }
 
-        public static void HandleShipLockerMaterialsEvent(ShipLockerMaterialsEvent.ShipLockerMaterialsEventArgs info)
+        public void HandleShipLockerMaterialsEvent(ShipLockerMaterialsEvent.ShipLockerMaterialsEventArgs info)
         {
             ShipLockerList = new Dictionary<string, MaterialItem>();
 
@@ -654,7 +660,7 @@ namespace dashboard_elite.EliteData
         //{ "Name":"energycell", "Name_Localised":"Energy Cell", "Category":"Consumable", "LockerOldCount":2, "LockerNewCount":0, "Direction":"ToBackpack" }, { "Name":"amm_grenade_emp", "Name_Localised":"Shield Disruptor", "Category":"Consumable", "LockerOldCount":1, "LockerNewCount":0, "Direction":"ToBackpack" },
         //{ "Name":"amm_grenade_frag", "Name_Localised":"Frag Grenade", "Category":"Consumable", "LockerOldCount":1, "LockerNewCount":0, "Direction":"ToBackpack" }, { "Name":"amm_grenade_shield", "Name_Localised":"Shield Projector", "Category":"Consumable", "LockerOldCount":1, "LockerNewCount":0, "Direction":"ToBackpack" }
         //] }
-        public static void HandleTransferMicroResourcesEvent(TransferMicroResourcesEvent.TransferMicroResourcesEventArgs info)
+        public void HandleTransferMicroResourcesEvent(TransferMicroResourcesEvent.TransferMicroResourcesEventArgs info)
         {
             foreach (var e in info.Transfers)
             {
@@ -729,7 +735,7 @@ namespace dashboard_elite.EliteData
                         
         //"BuyMicroResources", "Name":"healthpack", "Name_Localised":"Medkit", "Category":"Consumable", "Count":1, "Price":1000, "MarketID":3221524992 }
 
-        public static void HandleBuyMicroResourcesEvent(BuyMicroResourcesEvent.BuyMicroResourcesEventArgs info)
+        public void HandleBuyMicroResourcesEvent(BuyMicroResourcesEvent.BuyMicroResourcesEventArgs info)
         {
             var idxName = info.Name.ToLower();
 
@@ -752,7 +758,7 @@ namespace dashboard_elite.EliteData
 
         }
 
-        public static void HandleSellMicroResourcesEvent(SellMicroResourcesEvent.SellMicroResourcesEventArgs info)
+        public void HandleSellMicroResourcesEvent(SellMicroResourcesEvent.SellMicroResourcesEventArgs info)
         {
             foreach (var e in info.MicroResources)
             {
@@ -770,7 +776,7 @@ namespace dashboard_elite.EliteData
             }
         }
         
-        public static void HandleTradeMicroResourcesEvent(TradeMicroResourcesEvent.TradeMicroResourcesEventArgs info)
+        public void HandleTradeMicroResourcesEvent(TradeMicroResourcesEvent.TradeMicroResourcesEventArgs info)
         {
             foreach (var e in info.Offered)
             {
@@ -815,7 +821,7 @@ namespace dashboard_elite.EliteData
          */
 
         /* already handled in backpack.json
-        public static void HandleBackPackChangeEvent(BackPackChangeEvent.BackPackChangeEventArgs info)
+        public void HandleBackPackChangeEvent(BackPackChangeEvent.BackPackChangeEventArgs info)
         {
             if (info.Added?.Any() == true)
             {
@@ -859,7 +865,7 @@ namespace dashboard_elite.EliteData
 
         } 
 
-        public static void HandleDropItemsEvent(DropItemsEvent.DropItemsEventArgs info)
+        public void HandleDropItemsEvent(DropItemsEvent.DropItemsEventArgs info)
         {
             var idxName = info.Name.ToLower();
 
@@ -875,7 +881,7 @@ namespace dashboard_elite.EliteData
 
         }
 
-        public static void HandleCollectItemsEvent(CollectItemsEvent.CollectItemsEventArgs info)
+        public void HandleCollectItemsEvent(CollectItemsEvent.CollectItemsEventArgs info)
         {
             var idxName = info.Name.ToLower();
 
@@ -891,7 +897,7 @@ namespace dashboard_elite.EliteData
             }
         }
 
-        public static void HandleUseConsumableEvent(UseConsumableEvent.UseConsumableEventArgs info)
+        public void HandleUseConsumableEvent(UseConsumableEvent.UseConsumableEventArgs info)
         {
             var idxName = info.Name.ToLower();
 
@@ -906,6 +912,33 @@ namespace dashboard_elite.EliteData
             }
 
         } */
+
+
+        public void RefreshMaterialList()
+        {
+            if (_engineer.IngredientShoppingList?.Any() == true && MaterialList?.Any() == true)
+            {
+                foreach (var i in _engineer.IngredientShoppingList)
+                {
+                    var materialData = MaterialList.FirstOrDefault(x => x.Value.Name == i.Name).Value;
+
+                    i.Inventory = materialData?.Count ?? 0;
+                }
+            }
+
+            if (_engineer.IngredientShoppingList?.Any() == true && ShipLockerList?.Any() == true)
+            {
+                foreach (var i in _engineer.IngredientShoppingList)
+                {
+                    var materialData = ShipLockerList.FirstOrDefault(x => x.Value.Name == i.Name).Value;
+
+                    if (materialData != null)
+                    {
+                        i.Inventory = materialData.Count;
+                    }
+                }
+            }
+        }
 
 
 

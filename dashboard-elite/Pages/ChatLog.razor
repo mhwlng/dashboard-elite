@@ -1,0 +1,72 @@
+﻿@page "/information/chatlog/{CurrentPage:int?}"
+@using EliteJournalReader
+@inherits PageBase
+@layout PageLayout
+
+@{
+    TextChannel channel = TextChannel.Unknown;
+    switch (CurrentPage)
+    {
+        case 0:
+            channel = TextChannel.StarSystem;
+            break;
+        case 1:
+            channel = TextChannel.Local;
+            break;
+        case 2:
+            channel = TextChannel.Friend;
+            break;
+        case 3:
+            channel = TextChannel.Player;
+            break;
+        case 4:
+            channel = TextChannel.Wing;
+            break;
+        case 5:
+            channel = TextChannel.Squadron;
+            break;
+        case 6:
+            channel = TextChannel.VoiceChat;
+            break;
+    }
+
+    var hist = Data.ChatHistory.Where(x => x.Channel == channel).Take(20).ToList();
+
+
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+    
+    @if (hist.Count == 0)
+    {
+        <tr>
+            <td class=" center" ><strong>CHAT LOG EMPTY</strong></td>
+        </tr>
+    }
+
+    <tr>
+        <td>
+
+
+            <table class="zebratable">
+                @foreach (var m in hist)
+                {
+                    <tr>
+                        <td class="chattitle">
+                            @(m.From_Localised ?? m.From)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="chatmessage">
+                            @(m.Message_Localised ?? m.Message)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </td>
+    </tr>
+
+    </tbody >
+</MudSimpleTable>

@@ -9,7 +9,14 @@ PageType == PageHelper.Page.Mining ||
 PageType == PageHelper.Page.Powers ||
 PageType == PageHelper.Page.CurrentShip ||
 PageType == PageHelper.Page.StoredShips ||
-PageType == PageHelper.Page.StoredModules)
+PageType == PageHelper.Page.StoredModules ||
+PageType == PageHelper.Page.ChatLog ||
+PageType == PageHelper.Page.Materials ||
+PageType == PageHelper.Page.EdEngineer ||
+PageType == PageHelper.Page.ShipLocker ||
+PageType == PageHelper.Page.Backpack ||
+PageType == PageHelper.Page.Route ||
+PageType == PageHelper.Page.SystemMap)
 {
     <MudIconButton class="ma-1"
                    Size="Size.Large"
@@ -34,7 +41,12 @@ PageType == PageHelper.Page.StoredModules)
      PageType == PageHelper.Page.Mining ||
      PageType == PageHelper.Page.Powers ||
      PageType == PageHelper.Page.StoredShips ||
-     PageType == PageHelper.Page.StoredModules)
+     PageType == PageHelper.Page.StoredModules ||
+     PageType == PageHelper.Page.ChatLog ||
+     PageType == PageHelper.Page.Materials ||
+     PageType == PageHelper.Page.EdEngineer ||
+     PageType == PageHelper.Page.ShipLocker ||
+     PageType == PageHelper.Page.Backpack)
 {
 
     <MudIconButton class="ma-1"
@@ -176,7 +188,94 @@ PageType == PageHelper.Page.StoredModules)
                     <text>@(storedModules[(int)CurrentPage].StationName)</text>
                 }
                 break;
-
+            case PageHelper.Page.ChatLog:
+                @switch (CurrentPage)
+                {
+                    case 0:
+                        <text>Star System</text>
+                        break;
+                    case 1:
+                        <text>Local</text>
+                        break;
+                    case 2:
+                        <text>Friend</text>
+                        break;
+                    case 3:
+                        <text>Player</text>
+                        break;
+                    case 4:
+                        <text>Wing</text>
+                        break;
+                    case 5:
+                        <text>Squadron</text>
+                        break;
+                    case 6:
+                        <text>Voice</text>
+                        break;
+                }
+                break;
+            case PageHelper.Page.Materials:
+                @switch (CurrentPage)
+                {
+                    case 0:
+                        <text>Raw Materials</text>
+                        break;
+                    case 1:
+                        <text>Manufactured Materials</text>
+                        break;
+                    case 2:
+                        <text>Encoded Materials</text>
+                        break;
+                }
+                break;
+            case PageHelper.Page.EdEngineer:
+                @switch (CurrentPage)
+                {
+                    case 0:
+                        <text>Blueprint Shopping List</text>
+                        break;
+                    case 1:
+                        <text>Materials Shopping List</text>
+                        break;
+                    case 2:
+                        <text>Missing Materials Information</text>
+                        break;
+                }
+                break;
+            case PageHelper.Page.ShipLocker:
+                @switch (CurrentPage)
+                {
+                    case 0:
+                        <text>Items</text>
+                        break;
+                    case 1:
+                        <text>Components</text>
+                        break;
+                    case 2:
+                        <text>Consumables</text>
+                        break;
+                    case 3:
+                        <text>Data</text>
+                        break;
+                }
+                break;
+            case PageHelper.Page.Backpack:
+                @switch (CurrentPage)
+                {
+                    case 0:
+                        <text>Items</text>
+                        break;
+                    case 1:
+                        <text>Components</text>
+                        break;
+                    case 2:
+                        <text>Consumables</text>
+                        break;
+                    case 3:
+                        <text>Data</text>
+                        break;
+                }
+                break;
         }
     </div>
 

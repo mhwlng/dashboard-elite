@@ -1,0 +1,447 @@
+﻿@page "/suit/shiplocker/{CurrentPage:int?}"
+@inherits PageBase
+@layout PageLayout
+
+@{
+
+
+    var shipLockerItems = Material.ShipLockerList.Where(x =>
+        x.Value.Category == "Item" &&
+        (string.IsNullOrEmpty(x.Value.MissionID) || x.Value.MissionID == "0"))
+        .Select(x => x.Value).OrderBy(x => x.Name).ToList();
+
+    var missionShipLockerItems = Material.ShipLockerList
+        .Where(x => x.Value.Category == "Item" && (!string.IsNullOrEmpty(x.Value.MissionID) && x.Value.MissionID != "0"))
+        .Select(x => new Material.MaterialItem
+        {
+            Count = x.Value.Count,
+            Name = x.Value.Name,
+            MissionID = x.Value.MissionID,
+            MissionName = Missions.GetMissionName(x.Value.MissionID),
+            System = Missions.GetMissionSystem(x.Value.MissionID),
+            Station = Missions.GetMissionStation(x.Value.MissionID)
+        })
+        .OrderBy(x => x.Name)
+        .GroupBy(x => x.MissionName)
+        .Select(grp => grp.ToList())
+        .ToList();
+
+    var shipLockerComponents = Material.ShipLockerList.Where(x =>
+        x.Value.Category == "Component" &&
+        (string.IsNullOrEmpty(x.Value.MissionID) || x.Value.MissionID == "0"))
+        .Select(x => x.Value).OrderBy(x => x.Name).ToList();
+
+    var shipLockerComponentsTech = shipLockerComponents
+        .Where(x => x.Group == "Tech").ToList();
+    var shipLockerComponentsCircuits = shipLockerComponents
+        .Where(x => x.Group == "Circuits").ToList();
+    var shipLockerComponentsChemicals = shipLockerComponents
+        .Where(x => x.Group == "Chemicals").ToList();
+
+    var missionShipLockerComponents = Material.ShipLockerList
+        .Where(x => x.Value.Category == "Component" && (!string.IsNullOrEmpty(x.Value.MissionID) && x.Value.MissionID != "0"))
+        .Select(x => new Material.MaterialItem
+        {
+            Count = x.Value.Count,
+            Name = x.Value.Name,
+            MissionID = x.Value.MissionID,
+            MissionName = Missions.GetMissionName(x.Value.MissionID),
+            System = Missions.GetMissionSystem(x.Value.MissionID),
+            Station = Missions.GetMissionStation(x.Value.MissionID)
+        })
+        .OrderBy(x => x.Name)
+        .GroupBy(x => x.MissionName)
+        .Select(grp => grp.ToList())
+        .ToList();
+
+    var shipLockerConsumables = Material.ShipLockerList.Where(x =>
+        x.Value.Category == "Consumable" &&
+        (string.IsNullOrEmpty(x.Value.MissionID) || x.Value.MissionID == "0"))
+        .Select(x => x.Value).OrderBy(x => x.Name).ToList();
+
+    var missionShipLockerConsumables = Material.ShipLockerList
+        .Where(x => x.Value.Category == "Consumable" && (!string.IsNullOrEmpty(x.Value.MissionID) && x.Value.MissionID != "0"))
+        .Select(x => new Material.MaterialItem
+        {
+            Count = x.Value.Count,
+            Name = x.Value.Name,
+            MissionID = x.Value.MissionID,
+            MissionName = Missions.GetMissionName(x.Value.MissionID),
+            System = Missions.GetMissionSystem(x.Value.MissionID),
+            Station = Missions.GetMissionStation(x.Value.MissionID)
+        })
+        .OrderBy(x => x.Name)
+        .GroupBy(x => x.MissionName)
+        .Select(grp => grp.ToList())
+        .ToList();
+
+    var shipLockerData = Material.ShipLockerList.Where(x =>
+        x.Value.Category == "Data" &&
+        (string.IsNullOrEmpty(x.Value.MissionID) || x.Value.MissionID == "0"))
+        .Select(x => x.Value).OrderBy(x => x.Name).ToList();
+
+    var missionShipLockerData = Material.ShipLockerList
+        .Where(x => x.Value.Category == "Data" && (!string.IsNullOrEmpty(x.Value.MissionID) && x.Value.MissionID != "0"))
+        .Select(x => new Material.MaterialItem
+        {
+            Count = x.Value.Count,
+            Name = x.Value.Name,
+            MissionID = x.Value.MissionID,
+            MissionName = Missions.GetMissionName(x.Value.MissionID),
+            System = Missions.GetMissionSystem(x.Value.MissionID),
+            Station = Missions.GetMissionStation(x.Value.MissionID)
+        })
+        .OrderBy(x => x.Name)
+        .GroupBy(x => x.MissionName)
+        .Select(grp => grp.ToList())
+        .ToList();
+
+    var odd = true;
+    var displayDivider = false;
+
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+<tbody>
+@if (Material.ShipLockerList.Count == 0)
+{
+    <tr>
+        <td class=" center" ><strong>SHIP LOCKER EMPTY</strong></td>
+    </tr>
+}
+
+<tr>
+<td>
+
+
+@if (CurrentPage == 0 && shipLockerItems.Count > 0)
+{
+    displayDivider = true;
+
+    <table class="zebratable">
+        <tbody>
+        @foreach (var m in shipLockerItems)
+        {
+            <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                <td class="data">@m.BluePrintType</td>
+                <td class="nowrap">@m.Name</td>
+                <td class="data right">@m.Count</td>
+            </tr>
+            odd = !odd;
+        }
+        </tbody>
+    </table>
+
+}
+else if (CurrentPage == 1)
+{
+    if (shipLockerComponentsCircuits.Count > 0)
+    {
+        <table>
+            <tbody>
+            <tr>
+                <td class="nowrap center">CIRCUITS</td>
+            </tr>
+            </tbody>
+        </table>
+
+        displayDivider = true;
+        odd = true;
+
+        <table class="zebratable">
+            <tbody>
+            @foreach (var m in shipLockerComponentsCircuits)
+            {
+                <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                    <td class="data">@m.BluePrintType</td>
+                    <td class="nowrap">@m.Name</td>
+                    <td class="data right">@m.Count</td>
+                </tr>
+                odd = !odd;
+            }
+            </tbody>
+        </table>
+
+    }
+
+    if (shipLockerComponentsChemicals.Count > 0)
+    {
+        <table>
+            <tbody>
+
+            @if (displayDivider)
+            {
+                <tr>
+                    <td class="divider">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="spacer">&nbsp;</td>
+                </tr>
+            }
+            <tr>
+                <td class="nowrap center">CHEMICALS</td>
+            </tr>
+            </tbody>
+        </table>
+
+        displayDivider = true;
+        odd = true;
+
+        <table class="zebratable">
+            <tbody>
+
+            @foreach (var m in shipLockerComponentsChemicals)
+            {
+                <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                    <td class="data">@m.BluePrintType</td>
+                    <td class="nowrap">@m.Name</td>
+                    <td class="data right">@m.Count</td>
+                </tr>
+                odd = !odd;
+            }
+            </tbody>
+        </table>
+
+    }
+
+    if (shipLockerComponentsTech.Count > 0)
+    {
+        <table>
+            <tbody>
+            @if (displayDivider)
+            {
+                <tr>
+                    <td class="divider">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="spacer">&nbsp;</td>
+                </tr>
+            }
+            <tr>
+                <td class="nowrap center">TECH</td>
+            </tr>
+            </tbody>
+        </table>
+
+        displayDivider = true;
+        odd = true;
+
+        <table class="zebratable">
+            <tbody>
+            @foreach (var m in shipLockerComponentsTech)
+            {
+                <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                    <td class="data">@m.BluePrintType</td>
+                    <td class="nowrap">@m.Name</td>
+                    <td class="data right">@m.Count</td>
+                </tr>
+                odd = !odd;
+            }
+            </tbody>
+        </table>
+
+    }
+
+}
+else if (CurrentPage == 2 && shipLockerConsumables.Count > 0)
+{
+    displayDivider = true;
+
+    <table class="zebratable">
+        <tbody>
+        @foreach (var m in shipLockerConsumables)
+        {
+            <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                <td class="nowrap">@m.Name</td>
+                <td class="data right">@m.Count</td>
+            </tr>
+            odd = !odd;
+        }
+        </tbody>
+    </table>
+
+}
+else if (CurrentPage == 3 && shipLockerData.Count > 0)
+{
+    displayDivider = true;
+
+    <table class="zebratable">
+        <tbody>
+        @foreach (var m in shipLockerData)
+        {
+            <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                <td class="data">@m.BluePrintType</td>
+                <td class="nowrap">@m.Name</td>
+                <td class="data right">@m.Count</td>
+            </tr>
+            odd = !odd;
+        }
+        </tbody>
+    </table>
+
+}
+
+@if ((CurrentPage == 0 && missionShipLockerItems.Count > 0) ||
+     (CurrentPage == 1 && missionShipLockerComponents.Count > 0) ||
+     (CurrentPage == 2 && missionShipLockerConsumables.Count > 0) ||
+     (CurrentPage == 3 && missionShipLockerData.Count > 0))
+{
+    odd = true;
+
+    <table>
+        <tbody>
+
+        @if (displayDivider)
+        {
+            <tr>
+                <td class="divider">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="spacer">&nbsp;</td>
+            </tr>
+        }
+        <tr>
+            <td class="nowrap center">MISSION RELATED</td>
+        </tr>
+        </tbody>
+    </table>
+
+    if (CurrentPage == 0 && missionShipLockerItems.Count > 0)
+    {
+        foreach (var mg in missionShipLockerItems)
+        {
+            Material.MaterialItem mm = ((List<Material.MaterialItem>)mg).FirstOrDefault();
+
+            <div>@mm.MissionName
+                @if (!string.IsNullOrEmpty(mm.System))
+                {
+                    <text>to</text>
+                    @mm.System
+                }
+                @if (!string.IsNullOrEmpty(mm.Station))
+                {
+                    <text>,</text>
+                    @mm.Station
+                }
+            </div>
+
+            <table class="zebratable">
+                <tbody>
+                @foreach (var m in mg)
+                {
+                    <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                        <td class="nowrap">&nbsp;&nbsp;&nbsp;@m.Name</td>
+                        <td class="data right">@m.Count</td>
+                    </tr>
+                    odd = !odd;
+                }
+                </tbody>
+            </table>
+        }
+    }
+    else if (CurrentPage == 1 && missionShipLockerComponents.Count > 0)
+    {
+        foreach (var mg in missionShipLockerComponents)
+        {
+            Material.MaterialItem mm = ((List<Material.MaterialItem>)mg).FirstOrDefault();
+
+            <div>@mm.MissionName
+                @if (!string.IsNullOrEmpty(mm.System))
+                {
+                    <text>to</text>
+                    @mm.System
+                }
+                @if (!string.IsNullOrEmpty(mm.Station))
+                {
+                    <text>,</text>
+                    @mm.Station
+                }
+            </div>
+
+            <table class="zebratable">
+                <tbody>
+                @foreach (var m in mg)
+                {
+                    <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                        <td class="nowrap">&nbsp;&nbsp;&nbsp;@m.Name</td>
+                        <td class="data right">@m.Count</td>
+                    </tr>
+                    odd = !odd;
+                }
+                </tbody>
+            </table>
+        }
+
+    }
+    else if (CurrentPage == 2 && missionShipLockerConsumables.Count > 0)
+    {
+        foreach (var mg in missionShipLockerConsumables)
+        {
+            Material.MaterialItem mm = ((List<Material.MaterialItem>)mg).FirstOrDefault();
+
+            <div>@mm.MissionName
+                @if (!string.IsNullOrEmpty(mm.System))
+                {
+                    <text>to</text>
+                    @mm.System
+                }
+                @if (!string.IsNullOrEmpty(mm.Station))
+                {
+                    <text>,</text>
+                    @mm.Station
+                }
+            </div>
+
+            <table class="zebratable">
+                <tbody>
+                @foreach (var m in mg)
+                {
+                    <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                        <td class="nowrap">&nbsp;&nbsp;&nbsp;@m.Name</td>
+                        <td class="data right">@m.Count</td>
+                    </tr>
+                    odd = !odd;
+                }
+                </tbody>
+            </table>
+        }
+    }
+    else if (CurrentPage == 3 && missionShipLockerData.Count > 0)
+    {
+        foreach (var mg in missionShipLockerData)
+        {
+            Material.MaterialItem mm = ((List<Material.MaterialItem>)mg).FirstOrDefault();
+
+            <div>@mm.MissionName
+                @if (!string.IsNullOrEmpty(mm.System))
+                {
+                    <text>to</text>
+                    @mm.System
+                }
+                @if (!string.IsNullOrEmpty(mm.Station))
+                {
+                    <text>,</text>
+                    @mm.Station
+                }
+            </div>
+
+            <table class="zebratable">
+                <tbody>
+                @foreach (var m in mg)
+                {
+                    <tr class="@(odd ? "zebraodd" : "zebraeven")">
+                        <td class="nowrap">&nbsp;&nbsp;&nbsp;@m.Name</td>
+                        <td class="data right">@m.Count</td>
+                    </tr>
+                    odd = !odd;
+                }
+                </tbody>
+            </table>
+        }
+    }
+}
+</td>
+</tr>
+
+</tbody >
+</MudSimpleTable>

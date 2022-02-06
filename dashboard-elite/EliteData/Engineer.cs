@@ -11,25 +11,26 @@ using Serilog; //using System.Windows.Forms;
 
 namespace dashboard_elite.EliteData
 {
-    public static class Engineer
+    public class Engineer
     {
-        public static Dictionary<(string, string, int?), Blueprint> Blueprints;
 
-        public static Dictionary<string, List<Blueprint>> EngineerBlueprints;
+        public Dictionary<(string, string, int?), Blueprint> Blueprints;
 
-        public static Dictionary<string, List<string>> IngredientTypes;
+        public Dictionary<string, List<Blueprint>> EngineerBlueprints;
 
-        public static Dictionary<string,EntryData> EngineeringMaterials;
+        public Dictionary<string, List<string>> IngredientTypes;
 
-        public static Dictionary<string, EntryData> EngineeringMaterialsByKey;
+        public Dictionary<string,EntryData> EngineeringMaterials;
 
-        public static string CommanderName;
+        public Dictionary<string, EntryData> EngineeringMaterialsByKey;
 
-        public static List<BlueprintShoppingListItem> BlueprintShoppingList = new List<BlueprintShoppingListItem>();
+        public string CommanderName;
 
-        public static List<IngredientShoppingListItem> IngredientShoppingList = new List<IngredientShoppingListItem>();
+        public List<BlueprintShoppingListItem> BlueprintShoppingList = new List<BlueprintShoppingListItem>();
 
-        public static (Dictionary<string,EntryData>,Dictionary<string, EntryData>) GetAllEngineeringMaterials(string path)
+        public List<IngredientShoppingListItem> IngredientShoppingList = new List<IngredientShoppingListItem>();
+
+        public (Dictionary<string,EntryData>,Dictionary<string, EntryData>) GetAllEngineeringMaterials(string path)
         {
             try
             {
@@ -51,7 +52,7 @@ namespace dashboard_elite.EliteData
             return (new Dictionary<string, EntryData>(), new Dictionary<string, EntryData>());
         }
 
-        public static Dictionary<(string, string, int?), Blueprint> GetAllBlueprints(string path, Dictionary<string, EntryData> engineeringMaterials)
+        public Dictionary<(string, string, int?), Blueprint> GetAllBlueprints(string path, Dictionary<string, EntryData> engineeringMaterials)
         {
             try
             {
@@ -76,7 +77,7 @@ namespace dashboard_elite.EliteData
 
         }
 
-        public static Dictionary<string, List<Blueprint>> GetEngineerBlueprints(string path, Dictionary<string, EntryData> engineeringMaterials)
+        public Dictionary<string, List<Blueprint>> GetEngineerBlueprints(string path, Dictionary<string, EntryData> engineeringMaterials)
         {
             try
             {
@@ -129,7 +130,7 @@ namespace dashboard_elite.EliteData
 
         }
 
-        public static Dictionary<string, List<string>> GetIngredientTypes(string path, Dictionary<string, EntryData> engineeringMaterials)
+        public Dictionary<string, List<string>> GetIngredientTypes(string path, Dictionary<string, EntryData> engineeringMaterials)
         {
             try
             {
@@ -157,7 +158,7 @@ namespace dashboard_elite.EliteData
 
         }
 
-        private static async Task<string> GetJson(string url)
+        private  async Task<string> GetJson(string url)
         {
             try
             {
@@ -174,7 +175,7 @@ namespace dashboard_elite.EliteData
             return null;
         }
 
-        public static async Task GetCommanderName()
+        public async Task GetCommanderName()
         {
             var commanderData  = await GetJson("http://localhost:44405/commanders");
 
@@ -184,55 +185,7 @@ namespace dashboard_elite.EliteData
                 .FirstOrDefault();
         }
 
-        public static void RefreshMaterialList()
-        {
-            if (IngredientShoppingList?.Any() == true && Material.MaterialList?.Any() == true)
-            {
-                foreach (var i in IngredientShoppingList)
-                {
-                    var materialData = Material.MaterialList.FirstOrDefault(x => x.Value.Name == i.Name).Value;
-
-                    i.Inventory = materialData?.Count ?? 0;
-                }
-            }
-
-            if (IngredientShoppingList?.Any() == true && Material.ShipLockerList?.Any() == true)
-            {
-                foreach (var i in IngredientShoppingList)
-                {
-                    var materialData = Material.ShipLockerList.FirstOrDefault(x => x.Value.Name == i.Name).Value;
-
-                    if (materialData != null)
-                    {
-                        i.Inventory = materialData.Count;
-                    }
-                }
-            }
-        }
-
-        public static void GetBestSystems()
-        {
-            if (string.IsNullOrEmpty(CommanderName)) return;
-
-            if (IngredientShoppingList?.Any() == true)
-            {
-                foreach (var i in IngredientShoppingList)
-                {
-                    Material.MaterialHistoryList.TryGetValue(i.EntryData.Name, out var materialHistoryData);
-
-                    if (materialHistoryData != null)
-                    {
-                        i.BestSystems = materialHistoryData.Values
-                            .OrderByDescending(x => x.Count)
-                            .Select(x => x.System + " [" + x.Count + "]")
-                            .Take(5)
-                            .ToList();
-                    }
-                }
-            }
-        }
-
-        public static async Task GetShoppingList()
+        public async Task GetShoppingList()
         {
             if (string.IsNullOrEmpty(CommanderName)) return;
 

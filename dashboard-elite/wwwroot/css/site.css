@@ -56,6 +56,11 @@ td.spacer {
     color: white;
 }
 
+.alarm2 {
+    background-color: yellow;
+    color: black;
+}
+
 .mud-button {
     text-transform: none !important;
 }
@@ -169,6 +174,9 @@ img.powerimage {
     width: 140px;
 }
 
+.systemmaptable > td {
+    padding: 0 !important;
+}
 
 /* larger display : 8 x 4 buttons*/
 

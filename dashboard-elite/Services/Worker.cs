@@ -19,6 +19,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Core;
+using Material = dashboard_elite.EliteData.Material;
 
 namespace dashboard_elite
 {
@@ -95,8 +96,10 @@ namespace dashboard_elite
         private readonly Ships _ships;
         private readonly EliteData.Module _module;
         private readonly History _history;
+        private readonly Engineer _engineer;
+        private readonly Material _material;
 
-        public Worker(IHubContext<MyHub> myHub, Data data, Galnet galnet, Poi poi, HWInfo hwinfo, History history, Ships ships, EliteData.Module module)
+        public Worker(IHubContext<MyHub> myHub, Data data, Galnet galnet, Poi poi, HWInfo hwinfo, History history, Ships ships, EliteData.Module module, Engineer engineer, Material material)
         {
             _myHub = myHub;
             _data = data;
@@ -106,6 +109,8 @@ namespace dashboard_elite
             _history = history;
             _ships = ships;
             _module= module;
+            _engineer = engineer;
+            _material = material;
         }
 
         public static FifoExecution KeyWatcherJob = new FifoExecution();
@@ -522,6 +527,28 @@ namespace dashboard_elite
             }
         }
 
+        private void GetBestSystems()
+        {
+            if (string.IsNullOrEmpty(_engineer.CommanderName)) return;
+
+            if (_engineer.IngredientShoppingList?.Any() == true)
+            {
+                foreach (var i in _engineer.IngredientShoppingList)
+                {
+                    _material.MaterialHistoryList.TryGetValue(i.EntryData.Name, out var materialHistoryData);
+
+                    if (materialHistoryData != null)
+                    {
+                        i.BestSystems = materialHistoryData.Values
+                            .OrderByDescending(x => x.Count)
+                            .Select(x => x.System + " [" + x.Count + "]")
+                            .Take(5)
+                            .ToList();
+                    }
+                }
+            }
+        }
+
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var jsonToken = _jsonTokenSource.Token;
@@ -551,16 +578,16 @@ namespace dashboard_elite
                 _data.EngineersList = Station.GetEngineers(@"Data\engineers.json");
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading Engineering Materials...");
-                (Engineer.EngineeringMaterials, Engineer.EngineeringMaterialsByKey) = Engineer.GetAllEngineeringMaterials(@"Data\entryData.json");
+                (_engineer.EngineeringMaterials, _engineer.EngineeringMaterialsByKey) = _engineer.GetAllEngineeringMaterials(@"Data\entryData.json");
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading Blueprints...");
-                Engineer.Blueprints = Engineer.GetAllBlueprints(@"Data\blueprints.json", Engineer.EngineeringMaterials);
+                _engineer.Blueprints = _engineer.GetAllBlueprints(@"Data\blueprints.json", _engineer.EngineeringMaterials);
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading Engineer Blueprints...");
-                Engineer.EngineerBlueprints = Engineer.GetEngineerBlueprints(@"Data\blueprints.json", Engineer.EngineeringMaterials);
+                _engineer.EngineerBlueprints = _engineer.GetEngineerBlueprints(@"Data\blueprints.json", _engineer.EngineeringMaterials);
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading Ingredient Types...");
-                Engineer.IngredientTypes = Engineer.GetIngredientTypes(@"Data\blueprints.json", Engineer.EngineeringMaterials);
+                _engineer.IngredientTypes = _engineer.GetIngredientTypes(@"Data\blueprints.json", _engineer.EngineeringMaterials);
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading POI Items...");
                 _poi.FullPoiList = await _poi.GetAllPois(); //?.GroupBy(x => x.System.Trim().ToLower()).ToDictionary(x => x.Key, x => x.ToList());
@@ -572,9 +599,9 @@ namespace dashboard_elite
                 var path = _history.GetEliteHistory(defaultFilter, _data, _ships, _module);
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Getting Shopping List from EDEngineer...");
-                await Engineer.GetCommanderName();
-                await Engineer.GetShoppingList();
-                Engineer.GetBestSystems();
+                await _engineer.GetCommanderName();
+                await _engineer.GetShoppingList();
+                GetBestSystems();
                 Log.Information("journal path " + path);
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Getting sensor data from HWInfo...");

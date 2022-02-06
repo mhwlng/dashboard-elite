@@ -1,0 +1,376 @@
+﻿@page "/navigation/navigation"
+@inherits PageBase
+@layout PageLayout
+
+@{
+    var currentShip = Ships.ShipsList.FirstOrDefault(x => x.Stored == false);
+
+    var routeList = new List<RouteItem>();
+
+    var onFoot = Data.StatusData.OnFoot;
+
+    if (!onFoot &&
+        Data.LocationData.StarSystem != Data.LocationData.FsdTargetName &&
+        Data.LocationData.RemainingJumpsInRoute > 0 && Route.RouteList.Count >=
+        Data.LocationData.RemainingJumpsInRoute)
+    {
+        routeList = Route.RouteList
+            .Skip(Route.RouteList.Count -
+                  Data.LocationData.RemainingJumpsInRoute)
+            .ToList();
+    }
+
+    var fuelMain = currentShip?.CurrentFuelMain ?? 0;
+
+    if (!onFoot && fuelMain > 0)
+    {
+        foreach (var r in routeList)
+        {
+            r.FuelWarning = null;
+        }
+
+        for (var index = 0; index < routeList.Count; index++)
+        {
+            var r = routeList[index];
+
+            if (fuelMain > 0)
+            {
+                r.FuelCost = Ships.GetFuelCostForNextJump(r.Distance, fuelMain);
+            }
+
+            if (index > 0 && (fuelMain <= 0 || r.FuelCost > fuelMain))
+            {
+                for (var index2 = index - 1; index2 >= 0; index2--)
+                {
+                    var r2 = routeList[index2];
+
+                    if (!string.IsNullOrEmpty(r2.IsFuelStar))
+                    {
+                        r2.FuelWarning = "Last chance to scoop fuel";
+                        break;
+                    }
+                }
+
+                break;
+            }
+
+            if (fuelMain > 0)
+            {
+                fuelMain -= r.FuelCost;
+            }
+        }
+    }
+
+    var jumpDistance = 0.0;
+    var fuelCost = 0.0;
+    var fuelWarning = "";
+
+    if (!onFoot && routeList.Count >= 1)
+    {
+        var nextJump = routeList[0];
+        if (nextJump.StarSystem == Data.LocationData.FsdTargetName)
+        {
+            jumpDistance = nextJump.Distance;
+            fuelCost = nextJump.FuelCost;
+            fuelWarning = nextJump.FuelWarning;
+        }
+    }
+
+    var routeListDistance = routeList.Sum(x => x.Distance);
+    var routeDestination = routeList.LastOrDefault()?.StarSystem ?? "";
+
+    var body = !string.IsNullOrEmpty(Data.LocationData.BodyType) &&
+               !string.IsNullOrEmpty(Data.LocationData.Body)
+        ? Data.LocationData.Body
+        : null;
+
+    var station = Data.LocationData.BodyType == "Station" &&
+                  !string.IsNullOrEmpty(Data.LocationData.Body)
+        ? Data.LocationData.Body
+        : Data.LocationData.Station;
+
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+<tbody>
+
+<tr>
+
+    <td style="padding-left: 0; padding-right: 0; vertical-align: top;" width="50%">
+        <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Elevation="0">
+            <tbody>
+        
+            @if (routeList.Count > 0)
+            {
+                if (routeList.Count == 1)
+                {
+                    <tr>
+                        <td class="" colspan="2">1 jump (@routeListDistance.ToString("N0") Ly) left to @routeDestination</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td class="" colspan="2">@routeList.Count jumps (@routeListDistance.ToString("N0") Ly) left to @routeDestination</td>
+                    </tr>
+                }
+
+                @if (Data.LocationData.StarSystem != Data.LocationData.FsdTargetName && Data.LocationData.RemainingJumpsInRoute > 0)
+                {
+                    if (!string.IsNullOrEmpty(Data.LocationData.FsdTargetName))
+                    {
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                    }
+                    if (jumpDistance > 0)
+                    {
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                    }
+                    if (fuelCost > 0 && currentShip?.CurrentFuelMain > 0 && currentShip?.CurrentFuelMain > fuelCost)
+                    {
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(fuelWarning))
+                    {
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                    }
+
+                    if (!string.IsNullOrEmpty(Data.LocationData.StarClass))
+                    {
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                    }
+
+                }
+            }
+                <tr>
+                    <td class="nowrap">In System</td>
+                    <td class="data">@Data.LocationData.StarSystem</td>
+                </tr>
+
+                @if (!string.IsNullOrEmpty(Data.LocationData.SystemSecurity))
+                {
+                    <tr>
+                        <td class="nowrap">Security</td>
+                        <td class="data">@Data.LocationData.SystemSecurity</td>
+                    </tr>
+                }
+                @if (Data.LocationData.Population > 0)
+                {
+                    <tr>
+                        <td class="nowrap">Population</td>
+                        <td class="data">@((Data.LocationData.Population ?? 0).ToString("N0"))</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(Data.LocationData.SystemState) && Data.LocationData.SystemState != "None")
+                {
+                    <tr>
+                        <td class="nowrap">State</td>
+                        <td class="data">@Data.LocationData.SystemState</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(Data.LocationData.SystemGovernment))
+                {
+                    <tr>
+                        <td class="nowrap">Government</td>
+                        <td class="data">@Data.LocationData.SystemGovernment</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(Data.LocationData.SystemAllegiance))
+                {
+                    <tr>
+                        <td class="nowrap">Allegiance</td>
+                        <td class="data">@Data.LocationData.SystemAllegiance</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(Data.LocationData.SystemFaction))
+                {
+                    <tr>
+                        <td class="nowrap">Faction</td>
+                        <td class="data">@Data.LocationData.SystemFaction</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(Data.LocationData.SystemEconomy))
+                {
+                    <tr>
+                        <td class="nowrap">Economy</td>
+                        <td class="data">@Data.LocationData.SystemEconomy</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(Data.LocationData.Powers))
+                {
+                    <tr>
+                        <td class="nowrap">Power</td>
+                        <td class="data">@Data.LocationData.Powers</td>
+                    </tr>
+                    if (!string.IsNullOrEmpty(Data.LocationData.PowerplayState))
+                    {
+                        <tr>
+                            <td class="nowrap">Pwr. State</td>
+                            <td class="data">@Data.LocationData.PowerplayState</td>
+                        </tr>
+                    }
+                }
+            
+
+            </tbody >
+        </MudSimpleTable>
+    </td>
+    <td style="padding-left: 0; padding-right: 0; vertical-align: top;">
+        <MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Elevation="0">
+            <tbody>
+                
+            @if (Data.LocationData.StarSystem != Data.LocationData.FsdTargetName && Data.LocationData.RemainingJumpsInRoute > 0)
+            {
+                if (!string.IsNullOrEmpty(Data.LocationData.FsdTargetName))
+                {
+                    <tr>
+                        <td class="nowrap">Next Jump</td>
+                        <td class="data">@Data.LocationData.FsdTargetName</td>
+                    </tr>
+                }
+                if (jumpDistance > 0)
+                {
+                    <tr>
+                        <td class="nowrap">Distance</td>
+                        <td class="data">@jumpDistance.ToString("N0") Ly</td>
+                    </tr>
+                }
+                if (fuelCost > 0 && currentShip?.CurrentFuelMain > 0 && currentShip?.CurrentFuelMain > fuelCost)
+                {
+                    <tr>
+                        <td class="nowrap">Fuel Cost</td>
+                        <td class="data">@fuelCost.ToString("N1") T (remaining @(((currentShip?.CurrentFuelMain ?? 0) - fuelCost).ToString("N1")) T)</td>
+                    </tr>
+                }
+                if (!string.IsNullOrEmpty(fuelWarning))
+                {
+                    <tr>
+                        <td class="nowrap">Warning</td>
+                        <td class="data alarm">@fuelWarning</td>
+                    </tr>
+                }
+
+                if (!string.IsNullOrEmpty(Data.LocationData.StarClass))
+                {
+                    <tr>
+                        <td class="nowrap">Star Class</td>
+                        <td class="data">@Data.LocationData.StarClass @Data.LocationData.IsFuelStar</td>
+                    </tr>
+                }
+
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+
+
+            }
+
+            @if (!Data.LocationData.HideBody)
+                {
+                    if (Data.LocationData.BodyType == "Station")
+                    {
+                        <tr>
+                            <td class="nowrap">Station</td>
+                            <td class="data">@station</td>
+                        </tr>
+                    }
+                    else if (!string.IsNullOrEmpty(Data.LocationData.BodyType) && !string.IsNullOrEmpty(body) && body != Data.LocationData.FsdTargetName && body != Data.LocationData.StarSystem)
+                    {
+                        <tr>
+                            <td class="nowrap">Body</td>
+                            <td class="data">@body</td>
+                        </tr>
+                        if (!string.IsNullOrEmpty(Data.LocationData.BodyType))
+                        {
+                            <tr>
+                                <td class="nowrap">Type</td>
+                                <td class="data">@Data.LocationData.BodyType</td>
+                            </tr>
+                        }
+                        if (!string.IsNullOrEmpty(Data.LocationData.Settlement))
+                        {
+                            <tr>
+                                <td class="nowrap">Settlement</td>
+                                <td class="data">@Data.LocationData.Settlement</td>
+                            </tr>
+                        }
+
+                    }
+                }
+
+                @if (Data.StatusData.Docked)
+                {
+                    if (!string.IsNullOrEmpty(Data.DockData.Type))
+                    {
+                        <tr>
+                            <td class="nowrap">Type</td>
+                            <td class="data">@Data.DockData.Type</td>
+                        </tr>
+                    }
+                    if (Data.DockData.DistFromStarLs > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Dist. from star</td>
+                            <td class="data">@((Data.DockData.DistFromStarLs ?? 0).ToString("N1")) Ls</td>
+                        </tr>
+                    }
+
+                    if (!string.IsNullOrEmpty(Data.DockData.Government))
+                    {
+                        <tr>
+                            <td class="nowrap">Government</td>
+                            <td class="data">@Data.DockData.Government</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(Data.DockData.Allegiance))
+                    {
+                        <tr>
+                            <td class="nowrap">Allegiance</td>
+                            <td class="data">@Data.DockData.Allegiance</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(Data.DockData.Faction))
+                    {
+                        <tr>
+                            <td class="nowrap">Faction</td>
+                            <td class="data">@Data.DockData.Faction</td>
+                        </tr>
+                    }
+                    if (!string.IsNullOrEmpty(Data.DockData.Economy))
+                    {
+                        <tr>
+                            <td class="nowrap">Economy</td>
+                            <td class="data">@Data.DockData.Economy</td>
+                        </tr>
+                    }
+
+                }
+                else
+                {
+                    if (Data.DockData.LandingPad > 0)
+                    {
+                        <tr>
+                            <td class="nowrap">Landing Pad</td>
+                            <td class="data">@Data.DockData.LandingPad</td>
+                        </tr>
+                    }
+                }
+            
+
+            </tbody >
+        </MudSimpleTable>
+    </td>
+</tr>
+
+
+</tbody >
+</MudSimpleTable>
