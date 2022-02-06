@@ -121,7 +121,7 @@
         @foreach (var m in backPackItems)
         {
             <tr class="@(odd ? "zebraodd" : "zebraeven")">
-                <td class="data">@m.BluePrintType</td>
+                <td class="data" style="width: 1px;">@m.BluePrintType</td>
                 <td class="nowrap">@m.Name</td>
                 <td class="data right">@m.Count</td>
             </tr>
@@ -138,7 +138,7 @@ else if (CurrentPage == 1)
         <table>
             <tbody>
             <tr>
-                <td class="nowrap center">CIRCUITS</td>
+                <td class="nowrap center"><strong>CIRCUITS</strong></td>
             </tr>
             </tbody>
         </table>
@@ -151,7 +151,7 @@ else if (CurrentPage == 1)
             @foreach (var m in backPackComponentsCircuits)
             {
                 <tr class="@(odd ? "zebraodd" : "zebraeven")">
-                    <td class="data">@m.BluePrintType</td>
+                    <td class="data" style="width: 1px;">@m.BluePrintType</td>
                     <td class="nowrap">@m.Name</td>
                     <td class="data right">@m.Count</td>
                 </tr>
@@ -177,7 +177,7 @@ else if (CurrentPage == 1)
                 </tr>
             }
             <tr>
-                <td class="nowrap">CHEMICALS</td>
+                <td class="nowrap center"><strong>CHEMICALS</strong></td>
             </tr>
             </tbody>
         </table>
@@ -191,7 +191,7 @@ else if (CurrentPage == 1)
             @foreach (var m in backPackComponentsChemicals)
             {
                 <tr class="@(odd ? "zebraodd" : "zebraeven")">
-                    <td class="data">@m.BluePrintType</td>
+                    <td class="data" style="width: 1px;">@m.BluePrintType</td>
                     <td class="nowrap">@m.Name</td>
                     <td class="data right">@m.Count</td>
                 </tr>
@@ -216,7 +216,7 @@ else if (CurrentPage == 1)
                 </tr>
             }
             <tr>
-                <td class="nowrap">TECH</td>
+                <td class="nowrap center"><strong>TECH</strong></td>
             </tr>
             </tbody>
         </table>
@@ -229,7 +229,7 @@ else if (CurrentPage == 1)
             @foreach (var m in backPackComponentsTech)
             {
                 <tr class="@(odd ? "zebraodd" : "zebraeven")">
-                    <td class="data">@m.BluePrintType</td>
+                    <td class="data" style="width: 1px;">@m.BluePrintType</td>
                     <td class="nowrap">@m.Name</td>
                     <td class="data right">@m.Count</td>
                 </tr>
@@ -268,7 +268,7 @@ else if (CurrentPage == 3 && backPackData.Count > 0)
         @foreach (var m in backPackData)
         {
             <tr class="@(odd ? "zebraodd" : "zebraeven")">
-                <td class="data">@m.BluePrintType</td>
+                <td class="data" style="width: 1px;">@m.BluePrintType</td>
                 <td class="nowrap">@m.Name</td>
                 <td class="data right">@m.Count</td>
             </tr>
@@ -299,7 +299,7 @@ else if (CurrentPage == 3 && backPackData.Count > 0)
             </tr>
         }
         <tr>
-            <td class="nowrap">MISSION RELATED</td>
+            <td class="nowrap center"><strong>MISSION RELATED</strong></td>
         </tr>
         </tbody>
     </table>

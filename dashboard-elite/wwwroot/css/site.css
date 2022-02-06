@@ -52,12 +52,12 @@ td.spacer {
 }
 
 .alarm {
-    background-color: red;
+    background-color: red!important;
     color: white;
 }
 
 .alarm2 {
-    background-color: yellow;
+    background-color: yellow!important;
     color: black;
 }
 
@@ -174,9 +174,31 @@ img.powerimage {
     width: 140px;
 }
 
-.systemmaptable > td {
-    padding: 0 !important;
+table.zebratable {
+/*    border-spacing: 0;*/
 }
+
+
+tr.zebraodd td {
+    /*padding-right: 5px;
+    padding-left: 5px;*/
+}
+
+tr.zebraeven td {
+    background-color: #282828;
+    /*padding-right: 5px;
+    padding-left: 5px;*/
+}
+
+.chattitle {
+    color: #FFB000;
+    padding-top: 5px;
+}
+
+.chatmessage {
+    padding-left: 40px!important;
+}
+
 
 /* larger display : 8 x 4 buttons*/
 

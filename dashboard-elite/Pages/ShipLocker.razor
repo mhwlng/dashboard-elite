@@ -3,8 +3,6 @@
 @layout PageLayout
 
 @{
-
-
     var shipLockerItems = Material.ShipLockerList.Where(x =>
         x.Value.Category == "Item" &&
         (string.IsNullOrEmpty(x.Value.MissionID) || x.Value.MissionID == "0"))
@@ -110,8 +108,8 @@
     </tr>
 }
 
-<tr>
-<td>
+    <tr>
+        <td>
 
 
 @if (CurrentPage == 0 && shipLockerItems.Count > 0)
@@ -123,7 +121,7 @@
         @foreach (var m in shipLockerItems)
         {
             <tr class="@(odd ? "zebraodd" : "zebraeven")">
-                <td class="data">@m.BluePrintType</td>
+                <td class="data" style="width: 1px;">@m.BluePrintType</td>
                 <td class="nowrap">@m.Name</td>
                 <td class="data right">@m.Count</td>
             </tr>
@@ -140,7 +138,7 @@ else if (CurrentPage == 1)
         <table>
             <tbody>
             <tr>
-                <td class="nowrap center">CIRCUITS</td>
+                <td class="nowrap center"><strong>CIRCUITS</strong></td>
             </tr>
             </tbody>
         </table>
@@ -153,7 +151,7 @@ else if (CurrentPage == 1)
             @foreach (var m in shipLockerComponentsCircuits)
             {
                 <tr class="@(odd ? "zebraodd" : "zebraeven")">
-                    <td class="data">@m.BluePrintType</td>
+                    <td class="data" style="width: 1px;">@m.BluePrintType</td>
                     <td class="nowrap">@m.Name</td>
                     <td class="data right">@m.Count</td>
                 </tr>
@@ -179,7 +177,7 @@ else if (CurrentPage == 1)
                 </tr>
             }
             <tr>
-                <td class="nowrap center">CHEMICALS</td>
+                <td class="nowrap center"><strong>CHEMICALS</strong></td>
             </tr>
             </tbody>
         </table>
@@ -193,7 +191,7 @@ else if (CurrentPage == 1)
             @foreach (var m in shipLockerComponentsChemicals)
             {
                 <tr class="@(odd ? "zebraodd" : "zebraeven")">
-                    <td class="data">@m.BluePrintType</td>
+                    <td class="data" style="width: 1px;">@m.BluePrintType</td>
                     <td class="nowrap">@m.Name</td>
                     <td class="data right">@m.Count</td>
                 </tr>
@@ -218,7 +216,7 @@ else if (CurrentPage == 1)
                 </tr>
             }
             <tr>
-                <td class="nowrap center">TECH</td>
+                <td class="nowrap center"><strong>TECH</strong></td>
             </tr>
             </tbody>
         </table>
@@ -231,7 +229,7 @@ else if (CurrentPage == 1)
             @foreach (var m in shipLockerComponentsTech)
             {
                 <tr class="@(odd ? "zebraodd" : "zebraeven")">
-                    <td class="data">@m.BluePrintType</td>
+                    <td class="data" style="width: 1px;">@m.BluePrintType</td>
                     <td class="nowrap">@m.Name</td>
                     <td class="data right">@m.Count</td>
                 </tr>
@@ -270,7 +268,7 @@ else if (CurrentPage == 3 && shipLockerData.Count > 0)
         @foreach (var m in shipLockerData)
         {
             <tr class="@(odd ? "zebraodd" : "zebraeven")">
-                <td class="data">@m.BluePrintType</td>
+                <td class="data" style="width: 1px;">@m.BluePrintType</td>
                 <td class="nowrap">@m.Name</td>
                 <td class="data right">@m.Count</td>
             </tr>
@@ -301,7 +299,7 @@ else if (CurrentPage == 3 && shipLockerData.Count > 0)
             </tr>
         }
         <tr>
-            <td class="nowrap center">MISSION RELATED</td>
+            <td class="nowrap center"><strong>MISSION RELATED</strong></td>
         </tr>
         </tbody>
     </table>
