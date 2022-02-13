@@ -151,6 +151,12 @@ It doesn't work on IOS, at the moment.
 The application window settings can be found in appsettings.json. 
 There is also a Minimized value, that will automatically minimize the application at startup, after the initialization has finished.
 
+The 'ED Engineer' menu option is integrated with the material shopping list of the [EDEngineer](https://github.com/msarilar/EDEngineer) application.
+
+The local api must be active in EDEngineer and listening on port 44405
+
+**This is optional, EDEngineer doesn't have to be installed or running.**
+
 Any data from [HWInfo](https://www.hwinfo.com) can be displayed. **This also works when Elite Dangerous is not running.**
 
 When HWInfo64 is detected, all the available sensors will be written at startup to the data\hwinfo.json file.
