@@ -527,27 +527,6 @@ namespace dashboard_elite
             }
         }
 
-        private void GetBestSystems()
-        {
-            if (string.IsNullOrEmpty(_engineer.CommanderName)) return;
-
-            if (_engineer.IngredientShoppingList?.Any() == true)
-            {
-                foreach (var i in _engineer.IngredientShoppingList)
-                {
-                    _material.MaterialHistoryList.TryGetValue(i.EntryData.Name, out var materialHistoryData);
-
-                    if (materialHistoryData != null)
-                    {
-                        i.BestSystems = materialHistoryData.Values
-                            .OrderByDescending(x => x.Count)
-                            .Select(x => x.System + " [" + x.Count + "]")
-                            .Take(5)
-                            .ToList();
-                    }
-                }
-            }
-        }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -600,8 +579,7 @@ namespace dashboard_elite
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Getting Shopping List from EDEngineer...");
                 await _engineer.GetCommanderName();
-                await _engineer.GetShoppingList();
-                GetBestSystems();
+                _engineer.GetShoppingList();
                 Log.Information("journal path " + path);
 
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Getting sensor data from HWInfo...");

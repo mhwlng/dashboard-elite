@@ -13,13 +13,13 @@
         <MudNavLink Href="@("information/" + PageHelper.Page.HWInfo)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">HWInfo</MudNavLink>
     </MudNavGroup>
     <MudNavGroup Title="Ship" Expanded="@(NavSection == "ship")">
-        @* <MudNavLink Href="@("ship/" + PageHelper.Page.Target)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Target</MudNavLink> *@
+        <MudNavLink Href="@("ship/" + PageHelper.Page.Target)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Target</MudNavLink>
         <MudNavLink Href="@("ship/" + PageHelper.Page.CurrentShip)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Current Ship</MudNavLink>
         <MudNavLink Href="@("ship/" + PageHelper.Page.StoredShips)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Stored Ships</MudNavLink>
         <MudNavLink Href="@("ship/" + PageHelper.Page.StoredModules)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Stored Modules</MudNavLink>
         <MudNavLink Href="@("ship/" + PageHelper.Page.Materials)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Materials</MudNavLink>
         @* <MudNavLink Href="@("ship/" + PageHelper.Page.Cargo)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Cargo</MudNavLink> *@
-        @* <MudNavLink Href="@("ship/" + PageHelper.Page.EdEngineer)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">ED Engineer</MudNavLink> *@
+        <MudNavLink Href="@("ship/" + PageHelper.Page.EdEngineer)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home" Disabled="@string.IsNullOrEmpty(Engineer.CommanderName)">ED Engineer</MudNavLink>
     </MudNavGroup>
     <MudNavGroup Title="Suit" Expanded="@(NavSection == "suit")">
         <MudNavLink Href="@("suit/" + PageHelper.Page.ShipLocker)" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Ship Locker</MudNavLink>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using EDEngineer.Models;
 using EDEngineer.Utils;
@@ -13,7 +14,10 @@ namespace dashboard_elite.EliteData
 {
     public class Engineer
     {
+        public Task ShoppingListTask;
 
+        private CancellationTokenSource _shoppingListTokenSource = new CancellationTokenSource();
+        
         public Dictionary<(string, string, int?), Blueprint> Blueprints;
 
         public Dictionary<string, List<Blueprint>> EngineerBlueprints;
@@ -185,45 +189,59 @@ namespace dashboard_elite.EliteData
                 .FirstOrDefault();
         }
 
-        public async Task GetShoppingList()
+        public void GetShoppingList()
         {
             if (string.IsNullOrEmpty(CommanderName)) return;
 
-            var shoppingListData = await GetJson("http://localhost:44405/" + CommanderName + "/shopping-list");
+            var systemDataToken = _shoppingListTokenSource.Token;
 
-            if (string.IsNullOrEmpty(shoppingListData)) return;
-
-            var bluePrintList =
-                JsonConvert.DeserializeObject<List<BlueprintShoppingListItem>>(shoppingListData);
-
-            foreach (var item in bluePrintList)
+            ShoppingListTask = Task.Run(async () =>
             {
-                Blueprints.TryGetValue(
-                    (item.Blueprint.BlueprintName, item.Blueprint.Type, item.Blueprint.Grade),
-                    out var bluePrintData);
-
-                item.BluePrintData = bluePrintData;
-            }
-
-            BlueprintShoppingList = bluePrintList;
-
-            IngredientShoppingList = bluePrintList.Select(
-                    x => new
-                    {
-                        x.Blueprint.BlueprintName, x.Blueprint.Type, x.Blueprint.Grade,
-                        Ingredients = x.BluePrintData.Ingredients.Select(y => new
-                            BlueprintIngredient(y.EntryData, y.Size * x.Count))
-                    })
-
-                .SelectMany(x => x.Ingredients)
-                .GroupBy(x => x.EntryData.Name)
-                .Select(x => new IngredientShoppingListItem
+                if (systemDataToken.IsCancellationRequested)
                 {
-                    Name = x.Key,
-                    RequiredCount = x.Sum(y => y.Size),
-                    EntryData = x.First().EntryData
+                    systemDataToken.ThrowIfCancellationRequested();
+                }
 
-                }).ToList();
+                var shoppingListData = await GetJson("http://localhost:44405/" + CommanderName + "/shopping-list");
+
+                if (string.IsNullOrEmpty(shoppingListData)) return;
+
+                var bluePrintList =
+                    JsonConvert.DeserializeObject<List<BlueprintShoppingListItem>>(shoppingListData);
+
+                foreach (var item in bluePrintList)
+                {
+                    Blueprints.TryGetValue(
+                        (item.Blueprint.BlueprintName, item.Blueprint.Type, item.Blueprint.Grade),
+                        out var bluePrintData);
+
+                    item.BluePrintData = bluePrintData;
+                }
+
+                BlueprintShoppingList = bluePrintList;
+
+                IngredientShoppingList = bluePrintList.Select(
+                        x => new
+                        {
+                            x.Blueprint.BlueprintName,
+                            x.Blueprint.Type,
+                            x.Blueprint.Grade,
+                            Ingredients = x.BluePrintData.Ingredients.Select(y => new
+                                BlueprintIngredient(y.EntryData, y.Size * x.Count))
+                        })
+
+                    .SelectMany(x => x.Ingredients)
+                    .GroupBy(x => x.EntryData.Name)
+                    .Select(x => new IngredientShoppingListItem
+                    {
+                        Name = x.Key,
+                        RequiredCount = x.Sum(y => y.Size),
+                        EntryData = x.First().EntryData
+
+                    }).ToList();
+
+            }, systemDataToken);
+
         }
 
     }

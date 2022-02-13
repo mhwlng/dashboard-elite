@@ -5,7 +5,27 @@
 
 @{
     Material.RefreshMaterialList();
+    
+    if (!string.IsNullOrEmpty(Engineer.CommanderName))
+    {
+        if (Engineer.IngredientShoppingList?.Any() == true)
+        {
+            foreach (var i in Engineer.IngredientShoppingList)
+            {
+                Material.MaterialHistoryList.TryGetValue(i.EntryData.Name, out var materialHistoryData);
 
+                if (materialHistoryData != null)
+                {
+                    i.BestSystems = materialHistoryData.Values
+                        .OrderByDescending(x => x.Count)
+                        .Select(x => x.System + " [" + x.Count + "]")
+                        .Take(5)
+                        .ToList();
+                }
+            }
+        }
+    }
+    
     var circuits = Engineer.IngredientShoppingList?
         .Where(x => x.EntryData.Kind == Kind.OdysseyIngredient &&
                     x.EntryData.Group == Group.Circuits)
@@ -127,11 +147,11 @@
     {
         if (blueprintShoppingList.Count > 0)
         {
-            <ul>
+            <ul style="line-height: 1.5em;">
                 @foreach (var m in blueprintShoppingList)
                 {
                     <li>
-                        @m.Blueprint.Type - @m.Blueprint.BlueprintName<br /><span class="data">@(m.Blueprint.Grade > 0 ? "Grade " + m.Blueprint.Grade.ToString() + ", " : "") @m.Count Roll@(m.Count > 1 ? "s" : "")</span>
+                        &bull; @m.Blueprint.Type - @m.Blueprint.BlueprintName<br /><span class="data">&nbsp;&nbsp;&nbsp;@(m.Blueprint.Grade > 0 ? "Grade " + m.Blueprint.Grade.ToString() + ", " : "") @m.Count Roll@(m.Count > 1 ? "s" : "")</span>
                     </li>
                 }
             </ul>
@@ -146,7 +166,7 @@
             <table>
                 <tbody>
                     <tr>
-                        <td class="nowrap center">Raw Materials</td>
+                        <td class="nowrap center"><strong>Raw Materials</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -159,8 +179,8 @@
                     {
                         <tr class="@(odd ? "zebraodd" : "zebraeven")">
                             <td class="nowrap">@m.Name</td>
-                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.Inventory</td>
-                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.RequiredCount</td>
+                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.Inventory</td>
+                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.RequiredCount</td>
                         </tr>
                         odd = !odd;
                     }
@@ -183,7 +203,7 @@
                         </tr>
                     }
                     <tr>
-                        <td class="nowrap center">Manufactured Materials</td>
+                        <td class="nowrap center"><strong>Manufactured Materials</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -196,8 +216,8 @@
                     {
                         <tr class="@(odd ? "zebraodd" : "zebraeven")">
                             <td class="nowrap">@m.Name</td>
-                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.Inventory</td>
-                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.RequiredCount</td>
+                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.Inventory</td>
+                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.RequiredCount</td>
                         </tr>
                         odd = !odd;
                     }
@@ -220,7 +240,7 @@
                         </tr>
                     }
                     <tr>
-                        <td class="nowrap center">Encoded Materials</td>
+                        <td class="nowrap center"><strong>Encoded Materials</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -233,8 +253,8 @@
                     {
                         <tr class="@(odd ? "zebraodd" : "zebraeven")">
                             <td class="nowrap">@m.Name</td>
-                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.Inventory</td>
-                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.RequiredCount</td>
+                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.Inventory</td>
+                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.RequiredCount</td>
                         </tr>
                         odd = !odd;
                     }
@@ -257,7 +277,7 @@
                         </tr>
                     }
                     <tr>
-                        <td class="nowrap center">Commodities</td>
+                        <td class="nowrap center"><strong>Commodities</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -270,8 +290,8 @@
                     {
                         <tr class="@(odd ? "zebraodd" : "zebraeven")">
                             <td class="nowrap">@m.Name</td>
-                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.Inventory</td>
-                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.RequiredCount</td>
+                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.Inventory</td>
+                            <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.RequiredCount</td>
                         </tr>
                         odd = !odd;
                     }
@@ -294,7 +314,7 @@
                     </tr>
                 }
                 <tr>
-                    <td class="nowrap center">Circuits</td>
+                    <td class="nowrap center"><strong>Circuits</strong></td>
                 </tr>
                 </tbody>
             </table>
@@ -307,8 +327,8 @@
                 {
                     <tr class="@(odd ? "zebraodd" : "zebraeven")">
                         <td class="nowrap">@m.Name</td>
-                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.Inventory</td>
-                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.RequiredCount</td>
+                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.Inventory</td>
+                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.RequiredCount</td>
                     </tr>
                     odd = !odd;
                 }
@@ -331,7 +351,7 @@
                     </tr>
                 }
                 <tr>
-                    <td class="nowrap center">Chemicals</td>
+                    <td class="nowrap center"><strong>Chemicals</strong></td>
                 </tr>
                 </tbody>
             </table>
@@ -344,8 +364,8 @@
                 {
                     <tr class="@(odd ? "zebraodd" : "zebraeven")">
                         <td class="nowrap">@m.Name</td>
-                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.Inventory</td>
-                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.RequiredCount</td>
+                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.Inventory</td>
+                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.RequiredCount</td>
                     </tr>
                     odd = !odd;
                 }
@@ -368,7 +388,7 @@
                     </tr>
                 }
                 <tr>
-                    <td class="nowrap center">Tech</td>
+                    <td class="nowrap center"><strong>Tech</strong></td>
                 </tr>
                 </tbody>
             </table>
@@ -381,8 +401,8 @@
                 {
                     <tr class="@(odd ? "zebraodd" : "zebraeven")">
                         <td class="nowrap">@m.Name</td>
-                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.Inventory</td>
-                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.RequiredCount</td>
+                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.Inventory</td>
+                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.RequiredCount</td>
                     </tr>
                     odd = !odd;
                 }
@@ -405,7 +425,7 @@
                     </tr>
                 }
                 <tr>
-                    <td class="nowrap center">Data</td>
+                    <td class="nowrap center"><strong>Data</strong></td>
                 </tr>
                 </tbody>
             </table>
@@ -418,8 +438,8 @@
                 {
                     <tr class="@(odd ? "zebraodd" : "zebraeven")">
                         <td class="nowrap">@m.Name</td>
-                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.Inventory</td>
-                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.RequiredCount</td>
+                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.Inventory</td>
+                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.RequiredCount</td>
                     </tr>
                     odd = !odd;
                 }
@@ -442,7 +462,7 @@
                     </tr>
                 }
                 <tr>
-                    <td class="nowrap center">Items</td>
+                    <td class="nowrap center"><strong>Items</strong></td>
                 </tr>
                 </tbody>
             </table>
@@ -455,8 +475,8 @@
                 {
                     <tr class="@(odd ? "zebraodd" : "zebraeven")">
                         <td class="nowrap">@m.Name</td>
-                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.Inventory</td>
-                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")">@m.RequiredCount</td>
+                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.Inventory</td>
+                        <td class="data right @(m.RequiredCount > m.Inventory ? "alarm" : "")" style="width: 1px;">@m.RequiredCount</td>
                     </tr>
                     odd = !odd;
                 }
@@ -471,7 +491,7 @@
             <table>
                 <tbody>
                     <tr>
-                        <td class="nowrap center">Raw Materials</td>
+                        <td class="nowrap center"><strong>Raw Materials</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -484,21 +504,19 @@
                     {
                         <tr>
                             <td class="nowrap">@m.Name</td>
-                            <td class="data right">@m.Inventory</td>
-                            <td class="data right">@m.RequiredCount</td>
+                            <td class="data right" style="width: 1px;">@m.Inventory</td>
+                            <td class="data right" style="width: 1px;">@m.RequiredCount</td>
                         </tr>
-
-                        foreach (var n in m.EntryData.OriginDetails)
+                        if (m.EntryData.OriginDetails.Count > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.OriginDetails)</td>
                             </tr>
                         }
-
-                        foreach (var n in m.BestSystems)
+                        if (m.BestSystems.Count > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ",m.BestSystems)</td>
                             </tr>
                         }
                     }
@@ -519,7 +537,7 @@
                         </tr>
                     }
                     <tr>
-                        <td class="nowrap center">Manufactured Materials</td>
+                        <td class="nowrap center"><strong>Manufactured Materials</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -532,21 +550,19 @@
                     {
                         <tr>
                             <td class="nowrap">@m.Name</td>
-                            <td class="data right">@m.Inventory</td>
-                            <td class="data right">@m.RequiredCount</td>
+                            <td class="data right" style="width: 1px;">@m.Inventory</td>
+                            <td class="data right" style="width: 1px;">@m.RequiredCount</td>
                         </tr>
-
-                        foreach (var n in m.EntryData.OriginDetails)
+                        if (m.EntryData.OriginDetails.Count > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.OriginDetails)</td>
                             </tr>
                         }
-
-                        foreach (var n in m.BestSystems)
+                        if (m.BestSystems.Count > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ",m.BestSystems)</td>
                             </tr>
                         }
                     }
@@ -567,7 +583,7 @@
                         </tr>
                     }
                     <tr>
-                        <td class="nowrap center">Encoded Materials</td>
+                        <td class="nowrap center"><strong>Encoded Materials</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -580,21 +596,19 @@
                     {
                         <tr>
                             <td class="nowrap">@m.Name</td>
-                            <td class="data right">@m.Inventory</td>
-                            <td class="data right">@m.RequiredCount</td>
+                            <td class="data right" style="width: 1px;">@m.Inventory</td>
+                            <td class="data right" style="width: 1px;">@m.RequiredCount</td>
                         </tr>
-
-                        foreach (var n in m.EntryData.OriginDetails)
+                        if (m.EntryData.OriginDetails.Count > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.OriginDetails)</td>
                             </tr>
                         }
-
-                        foreach (var n in m.BestSystems)
+                        if (m.BestSystems.Count > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ",m.BestSystems)</td>
                             </tr>
                         }
                     }
@@ -615,7 +629,7 @@
                         </tr>
                     }
                     <tr>
-                        <td class="nowrap center">Commodities</td>
+                        <td class="nowrap center"><strong>Commodities</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -628,21 +642,19 @@
                     {
                         <tr>
                             <td class="nowrap">@m.Name</td>
-                            <td class="data right">@m.Inventory</td>
-                            <td class="data right">@m.RequiredCount</td>
+                            <td class="data right" style="width: 1px;">@m.Inventory</td>
+                            <td class="data right" style="width: 1px;">@m.RequiredCount</td>
                         </tr>
-
-                        foreach (var n in m.EntryData.OriginDetails)
+                        if (m.EntryData.OriginDetails.Count > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.OriginDetails)</td>
                             </tr>
                         }
-
-                        foreach (var n in m.BestSystems)
+                        if (m.BestSystems.Count > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ",m.BestSystems)</td>
                             </tr>
                         }
                     }
@@ -664,7 +676,7 @@
                     </tr>
                 }
                 <tr>
-                    <td class="nowrap center">Circuits</td>
+                    <td class="nowrap center"><strong>Circuits</strong></td>
                 </tr>
                 </tbody>
             </table>
@@ -677,45 +689,41 @@
                     {
                         <tr>
                             <td class="nowrap">@m.Name</td>
-                            <td class="data right">@m.Inventory</td>
-                            <td class="data right">@m.RequiredCount</td>
+                            <td class="data right" style="width: 1px;">@m.Inventory</td>
+                            <td class="data right" style="width: 1px;">@m.RequiredCount</td>
                         </tr>
-
-                        foreach (var n in m.EntryData.OriginDetails)
+                        if (m.EntryData.OriginDetails.Count > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.OriginDetails)</td>
                             </tr>
                         }
                         if (m.EntryData.SettlementType.Length > 0)
                         {
-                            foreach (var n in m.EntryData.SettlementType)
-                            {
-                                <tr>
-                                    <td class="data indent" colspan="3">&bull; @n</td>
-                                </tr>
-                            }
+                            <tr>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.SettlementType)</td>
+                            </tr>
                         }
                         if (m.EntryData.BuildingType.Length > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @string.Join(",", m.EntryData.BuildingType)</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.BuildingType)</td>
                             </tr>
                         }
                         if (m.EntryData.ContainerType.Length > 0)
                         {
-                            foreach (var n in m.EntryData.ContainerType)
+                            <tr>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.ContainerType)</td>
+                            </tr>
+                        }
+                        if (m.BestSystems.Count > 0)
+                        {
+                            foreach (var n in m.BestSystems)
                             {
                                 <tr>
-                                    <td class="data indent" colspan="3">&bull; @n</td>
+                                    <td class="data indent" colspan="3">&bull; @((MarkupString)n.Replace("@", " : "))</td>
                                 </tr>
                             }
-                        }
-                        foreach (var n in m.BestSystems)
-                        {
-                            <tr>
-                                <td class="data indent" colspan="3">&bull; @((MarkupString)n.Replace("@", "<br/>&nbsp;&nbsp;&nbsp;&nbsp;"))</td>
-                            </tr>
                         }
                     }
                 </tbody>
@@ -735,7 +743,7 @@
                     </tr>
                 }
                 <tr>
-                    <td class="nowrap center">Chemicals</td>
+                    <td class="nowrap center"><strong>Chemicals</strong></td>
                 </tr>
                 </tbody>
             </table>
@@ -748,45 +756,41 @@
                     {
                         <tr>
                             <td class="nowrap">@m.Name</td>
-                            <td class="data right">@m.Inventory</td>
-                            <td class="data right">@m.RequiredCount</td>
+                            <td class="data right" style="width: 1px;">@m.Inventory</td>
+                            <td class="data right" style="width: 1px;">@m.RequiredCount</td>
                         </tr>
-
-                        foreach (var n in m.EntryData.OriginDetails)
+                        if (m.EntryData.OriginDetails.Count > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.OriginDetails)</td>
                             </tr>
                         }
                         if (m.EntryData.SettlementType.Length > 0)
                         {
-                            foreach (var n in m.EntryData.SettlementType)
-                            {
-                                <tr>
-                                    <td class="data indent" colspan="3">&bull; @n</td>
-                                </tr>
-                            }
+                            <tr>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.SettlementType)</td>
+                            </tr>
                         }
                         if (m.EntryData.BuildingType.Length > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @string.Join(",", m.EntryData.BuildingType)</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.BuildingType)</td>
                             </tr>
                         }
                         if (m.EntryData.ContainerType.Length > 0)
                         {
-                            foreach (var n in m.EntryData.ContainerType)
+                            <tr>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.ContainerType)</td>
+                            </tr>
+                        }
+                        if (m.BestSystems.Count > 0)
+                        {
+                            foreach (var n in m.BestSystems)
                             {
                                 <tr>
-                                    <td class="data indent" colspan="3">&bull; @n</td>
+                                    <td class="data indent" colspan="3">&bull; @((MarkupString)n.Replace("@", " : "))</td>
                                 </tr>
                             }
-                        }
-                        foreach (var n in m.BestSystems)
-                        {
-                            <tr>
-                                <td class="data indent" colspan="3">&bull; @((MarkupString)n.Replace("@", "<br/>&nbsp;&nbsp;&nbsp;&nbsp;"))</td>
-                            </tr>
                         }
                     }
                 </tbody>
@@ -806,7 +810,7 @@
                     </tr>
                 }
                 <tr>
-                    <td class="nowrap center">Tech</td>
+                    <td class="nowrap center"><strong>Tech</strong></td>
                 </tr>
                 </tbody>
             </table>
@@ -819,45 +823,41 @@
                     {
                         <tr>
                             <td class="nowrap">@m.Name</td>
-                            <td class="data right">@m.Inventory</td>
-                            <td class="data right">@m.RequiredCount</td>
+                            <td class="data right" style="width: 1px;">@m.Inventory</td>
+                            <td class="data right" style="width: 1px;">@m.RequiredCount</td>
                         </tr>
-
-                        foreach (var n in m.EntryData.OriginDetails)
+                        if (m.EntryData.OriginDetails.Count > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.OriginDetails)</td>
                             </tr>
                         }
                         if (m.EntryData.SettlementType.Length > 0)
                         {
-                            foreach (var n in m.EntryData.SettlementType)
-                            {
-                                <tr>
-                                    <td class="data indent" colspan="3">&bull; @n</td>
-                                </tr>
-                            }
+                            <tr>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.SettlementType)</td>
+                            </tr>
                         }
                         if (m.EntryData.BuildingType.Length > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @string.Join(",", m.EntryData.BuildingType)</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.BuildingType)</td>
                             </tr>
                         }
                         if (m.EntryData.ContainerType.Length > 0)
                         {
-                            foreach (var n in m.EntryData.ContainerType)
+                            <tr>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.ContainerType)</td>
+                            </tr>
+                        }
+                        if (m.BestSystems.Count > 0)
+                        {
+                            foreach (var n in m.BestSystems)
                             {
                                 <tr>
-                                    <td class="data indent" colspan="3">&bull; @n</td>
+                                    <td class="data indent" colspan="3">&bull; @((MarkupString)n.Replace("@", " : "))</td>
                                 </tr>
                             }
-                        }
-                        foreach (var n in m.BestSystems)
-                        {
-                            <tr>
-                                <td class="data indent" colspan="3">&bull; @((MarkupString)n.Replace("@", "<br/>&nbsp;&nbsp;&nbsp;&nbsp;"))</td>
-                            </tr>
                         }
                     }
                 </tbody>
@@ -877,7 +877,7 @@
                     </tr>
                 }
                 <tr>
-                    <td class="nowrap center">Data</td>
+                    <td class="nowrap center"><strong>Data</strong></td>
                 </tr>
                 </tbody>
             </table>
@@ -890,45 +890,41 @@
                 {
                     <tr>
                         <td class="nowrap">@m.Name</td>
-                        <td class="data right">@m.Inventory</td>
-                        <td class="data right">@m.RequiredCount</td>
+                        <td class="data right" style="width: 1px;">@m.Inventory</td>
+                        <td class="data right" style="width: 1px;">@m.RequiredCount</td>
                     </tr>
-
-                    foreach (var n in m.EntryData.OriginDetails)
+                    if (m.EntryData.OriginDetails.Count > 0)
                     {
                         <tr>
-                            <td class="data indent" colspan="3">&bull; @n</td>
+                            <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.OriginDetails)</td>
                         </tr>
                     }
                     if (m.EntryData.SettlementType.Length > 0)
                     {
-                        foreach (var n in m.EntryData.SettlementType)
-                        {
-                            <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
-                            </tr>
-                        }
+                        <tr>
+                            <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.SettlementType)</td>
+                        </tr>
                     }
                     if (m.EntryData.BuildingType.Length > 0)
                     {
                         <tr>
-                            <td class="data indent" colspan="3">&bull; @string.Join(",", m.EntryData.BuildingType)</td>
+                            <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.BuildingType)</td>
                         </tr>
                     }
                     if (m.EntryData.ContainerType.Length > 0)
                     {
-                        foreach (var n in m.EntryData.ContainerType)
+                        <tr>
+                            <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.ContainerType)</td>
+                        </tr>
+                    }
+                    if (m.BestSystems.Count > 0)
+                    {
+                        foreach (var n in m.BestSystems)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @((MarkupString)n.Replace("@", " : "))</td>
                             </tr>
                         }
-                    }
-                    foreach (var n in m.BestSystems)
-                    {
-                        <tr>
-                            <td class="data indent" colspan="3">&bull; @((MarkupString)n.Replace("@", "<br/>&nbsp;&nbsp;&nbsp;&nbsp;"))</td>
-                        </tr>
                     }
                 }
                 </tbody>
@@ -948,7 +944,7 @@
                     </tr>
                 }
                 <tr>
-                    <td class="nowrap center">Items</td>
+                    <td class="nowrap center"><strong>Items</strong></td>
                 </tr>
                 </tbody>
             </table>
@@ -961,45 +957,41 @@
                     {
                         <tr>
                             <td class="nowrap">@m.Name</td>
-                            <td class="data right">@m.Inventory</td>
-                            <td class="data right">@m.RequiredCount</td>
+                            <td class="data right" style="width: 1px;">@m.Inventory</td>
+                            <td class="data right" style="width: 1px;">@m.RequiredCount</td>
                         </tr>
-
-                        foreach (var n in m.EntryData.OriginDetails)
+                        if (m.EntryData.OriginDetails.Count > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @n</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.OriginDetails)</td>
                             </tr>
                         }
                         if (m.EntryData.SettlementType.Length > 0)
                         {
-                            foreach (var n in m.EntryData.SettlementType)
-                            {
-                                <tr>
-                                    <td class="data indent" colspan="3">&bull; @n</td>
-                                </tr>
-                            }
+                            <tr>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.SettlementType)</td>
+                            </tr>
                         }
                         if (m.EntryData.BuildingType.Length > 0)
                         {
                             <tr>
-                                <td class="data indent" colspan="3">&bull; @string.Join(",", m.EntryData.BuildingType)</td>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.BuildingType)</td>
                             </tr>
                         }
                         if (m.EntryData.ContainerType.Length > 0)
                         {
-                            foreach (var n in m.EntryData.ContainerType)
+                            <tr>
+                                <td class="data indent" colspan="3">&bull; @string.Join(", ", m.EntryData.ContainerType)</td>
+                            </tr>
+                        }
+                        if (m.BestSystems.Count > 0)
+                        {
+                            foreach (var n in m.BestSystems)
                             {
                                 <tr>
-                                    <td class="data indent" colspan="3">&bull; @n</td>
+                                    <td class="data indent" colspan="3">&bull; @((MarkupString)n.Replace("@", " : "))</td>
                                 </tr>
                             }
-                        }
-                        foreach (var n in m.BestSystems)
-                        {
-                            <tr>
-                                <td class="data indent" colspan="3">&bull; @((MarkupString)n.Replace("@", "<br/>&nbsp;&nbsp;&nbsp;&nbsp;"))</td>
-                            </tr>
                         }
                     }
                 </tbody>

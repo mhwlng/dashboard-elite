@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Security.Policy;
+using dashboard_elite.EliteData;
 using Microsoft.AspNetCore.Components;
 
 namespace dashboard_elite.Shared
@@ -13,12 +15,18 @@ namespace dashboard_elite.Shared
 
         [Inject] private NavigationManager NavigationManager { get; set; }
 
+        [Inject] public Engineer Engineer { get; set; }
+
         protected override void OnParametersSet()
         {
             var uri = new Uri(NavigationManager.Uri);
 
             NavSection = uri.Segments[1].Replace("/", "");
 
+            if (!string.IsNullOrEmpty(Engineer.CommanderName) && uri.AbsolutePath.ToLower().Contains("edengineer"))
+            {
+                Engineer.GetShoppingList();
+            }
         }
 
     }
