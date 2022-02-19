@@ -2,7 +2,7 @@
 Use a wide 'bar style' touch screen as a game dashboard (like [fip-panels](https://github.com/mhwlng/fip-elite)) and button box (like [streamdeck](https://github.com/mhwlng/streamdeck-elite)) for Elite Dangerous :
 
 
-VERY UNFINISHED PRE-ALPHA RELEASE
+BETA RELEASE
 
 ![touch screen](https://i.imgur.com/14rxi5R.jpg)
 
@@ -51,6 +51,8 @@ VERY UNFINISHED PRE-ALPHA RELEASE
 ![touch screen](https://i.imgur.com/8zNE8IS.png)
 
 ![touch screen](https://i.imgur.com/8nUgiD9.png)
+
+![touch screen](https://i.imgur.com/1LV8CUK.png)
 
 Technology used:
 - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0)  install : ASP.NET Core Runtime \ x64 and .NET Desktop Runtime \ x64
