@@ -11,7 +11,7 @@
         
     </MudPaper>
 
-    <MudPaper Class="mr-4 mt-2 mb-0 ml-1 pa-1 d-flex buttonblockwidth profilebar" Elevation="4" Style="@((HideInformation ? "width: 100%!important;" : "")+(HideKeyboard ? "display: none!important" : ""))" >
+    <MudPaper Class="mr-4 mt-2 mb-0 ml-1 pa-1 d-flex buttonblockwidth profilebar" Elevation="4" Style="@((HideInformation ? "margin-left:16px!important;width: 100%!important;" : "")+(HideKeyboard ? "display: none!important" : ""))" >
 
         <ProfileBar @bind-ActiveButtonBlock="@Data.ActiveButtonBlock" />
 
@@ -32,7 +32,7 @@
             </div>
         </MudPaper>
 
-        <MudPaper Class="ml-1 mt-2 mr-4 mb-4 pa-0 buttonblockwidth" Elevation="4" Style="@((HideInformation ? "width: 100%!important;" : "")+(HideKeyboard ? "min-height: 0; min-width:0;display: none!important" : "min-height: 0; min-width:0;"))" >
+        <MudPaper Class="ml-1 mt-2 mr-4 mb-4 pa-0 buttonblockwidth" Elevation="4" Style="@((HideInformation ? "margin-left:16px!important;width: 100%!important;" : "")+(HideKeyboard ? "min-height: 0; min-width:0;display: none!important" : "min-height: 0; min-width:0;"))" >
 
             <div class="d-flex flex-column" style="height: 100%">
 
