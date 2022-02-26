@@ -5,13 +5,13 @@
 
 <div class="d-flex flex-row">
 
-    <MudPaper Class="ml-4 mt-2 mb-0 mr-1 pa-1 flex-grow-1 d-flex flex-shrink-1 flex-basis-0 pagebar" Elevation="4">
+    <MudPaper Class="ml-4 mt-2 mb-0 mr-1 pa-1 flex-grow-1 d-flex flex-shrink-1 flex-basis-0 pagebar" Elevation="4" Style="@(Data.HideKeyboard ? "margin-right:16px!important;min-height:74px;" : "")">
         
         <PageBar />
-
+        
     </MudPaper>
 
-    <MudPaper Class="mr-4 mt-2 mb-0 ml-1 pa-1 d-flex buttonblockwidth profilebar" Elevation="4">
+    <MudPaper Class="mr-4 mt-2 mb-0 ml-1 pa-1 d-flex buttonblockwidth profilebar" Elevation="4" Style="@(Data.HideKeyboard ? "display: none!important" : "" )" >
 
         <ProfileBar @bind-ActiveButtonBlock="@Data.ActiveButtonBlock" />
 
@@ -23,7 +23,7 @@
 
     <div class="d-flex flex-row" style=" height:100%">
 
-        <MudPaper Class="mr-1 mt-2 ml-4 mb-4 pa-0 flex-grow-1 flex-shrink-1 flex-basis-0" Elevation="4" Style="min-height: 0; min-width:0;">
+        <MudPaper Class="mr-1 mt-2 ml-4 mb-4 pa-0 flex-grow-1 flex-shrink-1 flex-basis-0" Elevation="4" Style="@(Data.HideKeyboard ? "min-height: 0; min-width:0;margin-right:16px!important" : "min-height: 0; min-width:0;")">
 
             <div class="d-flex flex-column" style="height: 100%">
 
@@ -32,7 +32,7 @@
             </div>
         </MudPaper>
 
-        <MudPaper Class="ml-1 mt-2 mr-4 mb-4 pa-0 buttonblockwidth" Elevation="4" Style="min-height: 0; min-width:0; ">
+        <MudPaper Class="ml-1 mt-2 mr-4 mb-4 pa-0 buttonblockwidth" Elevation="4" Style="@(Data.HideKeyboard ? "min-height: 0; min-width:0;display: none!important" : "min-height: 0; min-width:0;")" >
 
             <div class="d-flex flex-column" style="height: 100%">
 

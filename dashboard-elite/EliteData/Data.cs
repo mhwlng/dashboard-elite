@@ -107,6 +107,8 @@ namespace dashboard_elite.EliteData
         public DateTime LastUnderAttackEvent = DateTime.Now;
         public int LimpetCount { get; set; }
 
+        public bool HideKeyboard { get; set; }
+
         public RingBuffer<string> EventHistory = new RingBuffer<string>(50, true);
 
         public RingBuffer<ReceiveTextEvent.ReceiveTextEventArgs> ChatHistory = new RingBuffer<ReceiveTextEvent.ReceiveTextEventArgs>(300, true);

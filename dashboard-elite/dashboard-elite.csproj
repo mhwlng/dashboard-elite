@@ -7,12 +7,12 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>dashboard_elite.Program</StartupObject>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
-    <Version>0.0.9.6</Version>
+    <Version>0.0.9.7</Version>
     <Copyright>Copyright ©  2022</Copyright>
     <Company />
     <Authors />
-    <AssemblyVersion>0.0.9.6</AssemblyVersion>
-    <FileVersion>0.0.9.6</FileVersion>
+    <AssemblyVersion>0.0.9.7</AssemblyVersion>
+    <FileVersion>0.0.9.7</FileVersion>
 
   </PropertyGroup>
 
@@ -47,7 +47,7 @@
     <PackageReference Include="INIFileParserDotNetCore" Version="2.5.2" />
     <PackageReference Include="NAudio" Version="2.0.1" />
     <PackageReference Include="Photino.NET" Version="2.1.11" />
-    <PackageReference Include="MudBlazor" Version="6.0.6" />
+    <PackageReference Include="MudBlazor" Version="6.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.2" />
     <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.3.0" />
