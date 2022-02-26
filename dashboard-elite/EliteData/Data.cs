@@ -108,6 +108,7 @@ namespace dashboard_elite.EliteData
         public int LimpetCount { get; set; }
 
         public bool HideKeyboard { get; set; }
+        public bool HideInformation { get; set; }
 
         public RingBuffer<string> EventHistory = new RingBuffer<string>(50, true);
 
