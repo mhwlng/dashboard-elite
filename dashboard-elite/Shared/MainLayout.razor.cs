@@ -23,6 +23,9 @@ namespace dashboard_elite.Shared
 
         bool _drawerOpen = false;
 
+        public bool HideKeyboard { get; set; } = true;
+        public bool HideInformation { get; set; } = true;
+
         private HubConnection hubConnection;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -30,8 +33,8 @@ namespace dashboard_elite.Shared
             await base.OnAfterRenderAsync(firstRender);
             if (firstRender)
             {
-                Data.HideKeyboard = (await ProtectedLocalStorage.GetAsync<bool>("HideKeyboard")).Value;
-                Data.HideInformation = (await ProtectedLocalStorage.GetAsync<bool>("HideInformation")).Value;
+                HideKeyboard = (await ProtectedLocalStorage.GetAsync<bool>("HideKeyboard")).Value;
+                HideInformation = (await ProtectedLocalStorage.GetAsync<bool>("HideInformation")).Value;
                 StateHasChanged();
             }
         }
@@ -83,16 +86,23 @@ namespace dashboard_elite.Shared
 
         async void KeyboardToggle()
         {
-            Data.HideKeyboard = !Data.HideKeyboard;
+            HideKeyboard = !HideKeyboard;
 
-            await ProtectedLocalStorage.SetAsync("HideKeyboard", Data.HideKeyboard);
+            await ProtectedLocalStorage.SetAsync("HideKeyboard", HideKeyboard);
+
+            NavigationManager.NavigateTo("/information/commander", forceLoad: true);
+
         }
 
         async void InformationToggle()
         {
-            Data.HideInformation = !Data.HideInformation;
+            HideInformation = !HideInformation;
 
-            await ProtectedLocalStorage.SetAsync("HideInformation", Data.HideInformation);
+            await ProtectedLocalStorage.SetAsync("HideInformation", HideInformation);
+
+            NavigationManager.NavigateTo("/information/commander", forceLoad:true);
+
+
         }
 
     }
