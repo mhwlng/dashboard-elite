@@ -21,11 +21,14 @@ namespace dashboard_elite.Shared
         {
             var uri = new Uri(NavigationManager.Uri);
 
-            NavSection = uri.Segments[1].Replace("/", "");
-
-            if (!string.IsNullOrEmpty(Engineer.CommanderName) && uri.AbsolutePath.ToLower().Contains("edengineer"))
+            if (uri.Segments.Length > 1)
             {
-                Engineer.GetShoppingList();
+                NavSection = uri.Segments[1].Replace("/", "");
+
+                if (!string.IsNullOrEmpty(Engineer.CommanderName) && uri.AbsolutePath.ToLower().Contains("edengineer"))
+                {
+                    Engineer.GetShoppingList();
+                }
             }
         }
 

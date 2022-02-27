@@ -150,6 +150,9 @@ Using Chrome on Android, the option is called 'add to home screen'.
 
 It doesn't work on IOS, at the moment.
 
+When system names are underlined, clicking them will put the name on the clipboard. (So that the name can then be pasted in the galaxy map search box.)
+When using this feature on an external browser, then the system name is put on the clipboard of the elite dangerous PC, not the external device.
+
 The application window settings can be found in appsettings.json. 
 There is also a Minimized value, that will automatically minimize the application at startup, after the initialization has finished.
 

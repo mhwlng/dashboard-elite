@@ -55,7 +55,7 @@
                     {
                         <tr>
                             <td class="nowrap">In System</td>
-                            <td class="data">@engineer.SystemName</td>
+                            <td class="data"><NavLink class="system-link" @onclick="() => Clipboard(engineer.SystemName)" >@engineer.SystemName</NavLink></td>
                         </tr>
                     }
                     @if (engineer.Distance > 0)

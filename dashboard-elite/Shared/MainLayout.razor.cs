@@ -33,8 +33,9 @@ namespace dashboard_elite.Shared
             await base.OnAfterRenderAsync(firstRender);
             if (firstRender)
             {
-                HideKeyboard = (await ProtectedLocalStorage.GetAsync<bool>("HideKeyboard")).Value;
                 HideInformation = (await ProtectedLocalStorage.GetAsync<bool>("HideInformation")).Value;
+
+                HideKeyboard = (await ProtectedLocalStorage.GetAsync<bool>("HideKeyboard")).Value;
                 StateHasChanged();
             }
         }

@@ -40,7 +40,7 @@
                     {
                         <tr>
                             <td class="nowrap">In System</td>
-                            <td class="data">@m.System</td>
+                            <td class="data"><NavLink class="system-link" @onclick="() => Clipboard(m.System)" >@m.System</NavLink></td>
                         </tr>
                     }
                     if (m.Distance > 0)
@@ -236,7 +236,7 @@
                     {
                         <tr>
                             <td class="nowrap">In System</td>
-                            <td class="data">@m.Name</td>
+                            <td class="data"><NavLink class="system-link" @onclick="() => Clipboard(m.Name)" >@m.Name</NavLink></td>
                         </tr>
                     }
                     if (m.Distance > 0)
@@ -334,7 +334,7 @@
                         {
                             <tr>
                                 <td class="nowrap">In System</td>
-                                <td class="data">@m.SystemName</td>
+                                <td class="data"><NavLink class="system-link" @onclick="() => Clipboard(m.SystemName)" >@m.SystemName</NavLink></td>
                             </tr>
                         }
                         if (m.Distance > 0)

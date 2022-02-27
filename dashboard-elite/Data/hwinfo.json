@@ -11,10 +11,10 @@
         "LabelOrig": "Virtual Memory Committed",
         "LabelUser": "Virtual Memory Committed",
         "Unit": "MB",
-        "Value": "22.931 MB",
-        "ValueMin": "8.220 MB",
-        "ValueMax": "22.931 MB",
-        "ValueAvg": "15.925 MB"
+        "Value": "26.815 MB",
+        "ValueMin": "8.947 MB",
+        "ValueMax": "40.047 MB",
+        "ValueAvg": "26.193 MB"
       },
       "4026532609-0-134217729": {
         "SensorType": 8,
@@ -22,10 +22,10 @@
         "LabelOrig": "Virtual Memory Available",
         "LabelUser": "Virtual Memory Available",
         "Unit": "MB",
-        "Value": "14.614 MB",
-        "ValueMin": "14.614 MB",
-        "ValueMax": "29.325 MB",
-        "ValueAvg": "21.620 MB"
+        "Value": "11.498 MB",
+        "ValueMin": "3.832 MB",
+        "ValueMax": "29.365 MB",
+        "ValueAvg": "12.186 MB"
       },
       "4026532609-0-134217730": {
         "SensorType": 8,
@@ -33,10 +33,10 @@
         "LabelOrig": "Virtual Memory Load",
         "LabelUser": "Virtual Memory Load",
         "Unit": "%",
-        "Value": "61,0 %",
-        "ValueMin": "21,8 %",
-        "ValueMax": "61,0 %",
-        "ValueAvg": "42,4 %"
+        "Value": "69,9 %",
+        "ValueMin": "23,3 %",
+        "ValueMax": "89,9 %",
+        "ValueAvg": "68,2 %"
       },
       "4026532609-0-134217731": {
         "SensorType": 8,
@@ -44,10 +44,10 @@
         "LabelOrig": "Physical Memory Used",
         "LabelUser": "Physical Memory Used",
         "Unit": "MB",
-        "Value": "15.590 MB",
-        "ValueMin": "5.808 MB",
-        "ValueMax": "15.590 MB",
-        "ValueAvg": "11.236 MB"
+        "Value": "14.665 MB",
+        "ValueMin": "5.827 MB",
+        "ValueMax": "20.963 MB",
+        "ValueAvg": "14.992 MB"
       },
       "4026532609-0-134217732": {
         "SensorType": 8,
@@ -55,10 +55,10 @@
         "LabelOrig": "Physical Memory Available",
         "LabelUser": "Physical Memory Available",
         "Unit": "MB",
-        "Value": "17.090 MB",
-        "ValueMin": "17.090 MB",
-        "ValueMax": "26.873 MB",
-        "ValueAvg": "21.445 MB"
+        "Value": "18.015 MB",
+        "ValueMin": "11.718 MB",
+        "ValueMax": "26.854 MB",
+        "ValueAvg": "17.689 MB"
       },
       "4026532609-0-134217733": {
         "SensorType": 8,
@@ -66,10 +66,10 @@
         "LabelOrig": "Physical Memory Load",
         "LabelUser": "Physical Memory Load",
         "Unit": "%",
-        "Value": "47,7 %",
-        "ValueMin": "17,7 %",
-        "ValueMax": "47,7 %",
-        "ValueAvg": "34,3 %"
+        "Value": "44,8 %",
+        "ValueMin": "17,8 %",
+        "ValueMax": "64,1 %",
+        "ValueAvg": "45,8 %"
       },
       "4026532609-0-134217734": {
         "SensorType": 8,
@@ -77,10 +77,10 @@
         "LabelOrig": "Page File Usage",
         "LabelUser": "Page File Usage",
         "Unit": "%",
-        "Value": "0,0 %",
+        "Value": "6,4 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "0,0 %",
-        "ValueAvg": "0,0 %"
+        "ValueMax": "6,5 %",
+        "ValueAvg": "3,8 %"
       }
     }
   },
@@ -97,9 +97,9 @@
         "LabelUser": "Core 0 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,969 V",
+        "ValueMin": "0,963 V",
         "ValueMax": "1,419 V",
-        "ValueAvg": "1,399 V"
+        "ValueAvg": "1,372 V"
       },
       "4026532608-0-33554433": {
         "SensorType": 2,
@@ -108,9 +108,9 @@
         "LabelUser": "Core 1 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,969 V",
-        "ValueMax": "1,419 V",
-        "ValueAvg": "1,399 V"
+        "ValueMin": "0,963 V",
+        "ValueMax": "1,425 V",
+        "ValueAvg": "1,372 V"
       },
       "4026532608-0-33554434": {
         "SensorType": 2,
@@ -119,9 +119,9 @@
         "LabelUser": "Core 2 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,969 V",
-        "ValueMax": "1,419 V",
-        "ValueAvg": "1,399 V"
+        "ValueMin": "0,963 V",
+        "ValueMax": "1,425 V",
+        "ValueAvg": "1,372 V"
       },
       "4026532608-0-33554435": {
         "SensorType": 2,
@@ -130,9 +130,9 @@
         "LabelUser": "Core 3 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,969 V",
-        "ValueMax": "1,419 V",
-        "ValueAvg": "1,399 V"
+        "ValueMin": "0,963 V",
+        "ValueMax": "1,425 V",
+        "ValueAvg": "1,372 V"
       },
       "4026532608-0-33554436": {
         "SensorType": 2,
@@ -141,9 +141,9 @@
         "LabelUser": "Core 4 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,975 V",
-        "ValueMax": "1,419 V",
-        "ValueAvg": "1,398 V"
+        "ValueMin": "0,963 V",
+        "ValueMax": "1,425 V",
+        "ValueAvg": "1,372 V"
       },
       "4026532608-0-33554437": {
         "SensorType": 2,
@@ -152,9 +152,9 @@
         "LabelUser": "Core 5 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,975 V",
-        "ValueMax": "1,419 V",
-        "ValueAvg": "1,398 V"
+        "ValueMin": "0,963 V",
+        "ValueMax": "1,425 V",
+        "ValueAvg": "1,372 V"
       },
       "4026532608-0-33554438": {
         "SensorType": 2,
@@ -163,9 +163,9 @@
         "LabelUser": "Core 6 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,975 V",
-        "ValueMax": "1,419 V",
-        "ValueAvg": "1,398 V"
+        "ValueMin": "0,963 V",
+        "ValueMax": "1,425 V",
+        "ValueAvg": "1,372 V"
       },
       "4026532608-0-33554439": {
         "SensorType": 2,
@@ -175,8 +175,8 @@
         "Unit": "V",
         "Value": "1,394 V",
         "ValueMin": "0,975 V",
-        "ValueMax": "1,419 V",
-        "ValueAvg": "1,398 V"
+        "ValueMax": "1,425 V",
+        "ValueAvg": "1,372 V"
       },
       "4026532608-0-33554440": {
         "SensorType": 2,
@@ -186,8 +186,8 @@
         "Unit": "V",
         "Value": "1,394 V",
         "ValueMin": "0,975 V",
-        "ValueMax": "1,419 V",
-        "ValueAvg": "1,397 V"
+        "ValueMax": "1,425 V",
+        "ValueAvg": "1,372 V"
       },
       "4026532608-0-33554441": {
         "SensorType": 2,
@@ -196,9 +196,9 @@
         "LabelUser": "Core 9 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,975 V",
-        "ValueMax": "1,419 V",
-        "ValueAvg": "1,396 V"
+        "ValueMin": "1,050 V",
+        "ValueMax": "1,425 V",
+        "ValueAvg": "1,372 V"
       },
       "4026532608-0-33554442": {
         "SensorType": 2,
@@ -207,9 +207,9 @@
         "LabelUser": "Core 10 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,975 V",
+        "ValueMin": "1,050 V",
         "ValueMax": "1,419 V",
-        "ValueAvg": "1,395 V"
+        "ValueAvg": "1,373 V"
       },
       "4026532608-0-33554443": {
         "SensorType": 2,
@@ -218,9 +218,9 @@
         "LabelUser": "Core 11 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,975 V",
+        "ValueMin": "1,050 V",
         "ValueMax": "1,419 V",
-        "ValueAvg": "1,395 V"
+        "ValueAvg": "1,373 V"
       },
       "4026532608-0-33554444": {
         "SensorType": 2,
@@ -229,9 +229,9 @@
         "LabelUser": "Core 12 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,975 V",
+        "ValueMin": "1,050 V",
         "ValueMax": "1,419 V",
-        "ValueAvg": "1,395 V"
+        "ValueAvg": "1,373 V"
       },
       "4026532608-0-33554445": {
         "SensorType": 2,
@@ -240,9 +240,9 @@
         "LabelUser": "Core 13 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,975 V",
+        "ValueMin": "1,050 V",
         "ValueMax": "1,419 V",
-        "ValueAvg": "1,395 V"
+        "ValueAvg": "1,374 V"
       },
       "4026532608-0-33554446": {
         "SensorType": 2,
@@ -251,9 +251,9 @@
         "LabelUser": "Core 14 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "0,975 V",
+        "ValueMin": "1,050 V",
         "ValueMax": "1,419 V",
-        "ValueAvg": "1,395 V"
+        "ValueAvg": "1,375 V"
       },
       "4026532608-0-33554447": {
         "SensorType": 2,
@@ -262,9 +262,9 @@
         "LabelUser": "Core 15 VID",
         "Unit": "V",
         "Value": "1,394 V",
-        "ValueMin": "1,056 V",
+        "ValueMin": "1,050 V",
         "ValueMax": "1,419 V",
-        "ValueAvg": "1,395 V"
+        "ValueAvg": "1,375 V"
       },
       "4026532608-0-100663296": {
         "SensorType": 6,
@@ -272,10 +272,10 @@
         "LabelOrig": "Core 0 Clock (perf #2/3)",
         "LabelUser": "Core 0 Clock (perf #2/3)",
         "Unit": "MHz",
-        "Value": "4.651,5 MHz",
-        "ValueMin": "3.543,1 MHz",
-        "ValueMax": "4.725,7 MHz",
-        "ValueAvg": "3.827,2 MHz"
+        "Value": "3.704,8 MHz",
+        "ValueMin": "3.566,2 MHz",
+        "ValueMax": "4.730,1 MHz",
+        "ValueAvg": "4.161,1 MHz"
       },
       "4026532608-0-100663297": {
         "SensorType": 6,
@@ -283,10 +283,10 @@
         "LabelOrig": "Core 1 Clock (perf #5/6)",
         "LabelUser": "Core 1 Clock (perf #5/6)",
         "Unit": "MHz",
-        "Value": "4.651,5 MHz",
-        "ValueMin": "3.543,1 MHz",
-        "ValueMax": "4.701,0 MHz",
-        "ValueAvg": "3.834,1 MHz"
+        "Value": "3.704,8 MHz",
+        "ValueMin": "3.566,2 MHz",
+        "ValueMax": "4.730,1 MHz",
+        "ValueAvg": "3.974,8 MHz"
       },
       "4026532608-0-100663298": {
         "SensorType": 6,
@@ -294,10 +294,10 @@
         "LabelOrig": "Core 2 Clock (perf #1/1)",
         "LabelUser": "Core 2 Clock (perf #1/1)",
         "Unit": "MHz",
-        "Value": "4.651,5 MHz",
-        "ValueMin": "3.562,9 MHz",
-        "ValueMax": "4.874,2 MHz",
-        "ValueAvg": "4.639,4 MHz"
+        "Value": "4.631,0 MHz",
+        "ValueMin": "3.566,2 MHz",
+        "ValueMax": "4.804,4 MHz",
+        "ValueAvg": "4.554,1 MHz"
       },
       "4026532608-0-100663299": {
         "SensorType": 6,
@@ -305,10 +305,10 @@
         "LabelOrig": "Core 3 Clock (perf #1/2)",
         "LabelUser": "Core 3 Clock (perf #1/2)",
         "Unit": "MHz",
-        "Value": "4.651,5 MHz",
-        "ValueMin": "3.543,1 MHz",
-        "ValueMax": "4.775,2 MHz",
-        "ValueAvg": "4.640,3 MHz"
+        "Value": "4.631,0 MHz",
+        "ValueMin": "3.566,2 MHz",
+        "ValueMax": "4.779,6 MHz",
+        "ValueAvg": "4.557,9 MHz"
       },
       "4026532608-0-100663300": {
         "SensorType": 6,
@@ -316,10 +316,10 @@
         "LabelOrig": "Core 4 Clock (perf #4/5)",
         "LabelUser": "Core 4 Clock (perf #4/5)",
         "Unit": "MHz",
-        "Value": "3.721,2 MHz",
-        "ValueMin": "2.850,3 MHz",
-        "ValueMax": "4.725,7 MHz",
-        "ValueAvg": "3.855,6 MHz"
+        "Value": "4.631,0 MHz",
+        "ValueMin": "2.852,9 MHz",
+        "ValueMax": "4.730,1 MHz",
+        "ValueAvg": "4.064,9 MHz"
       },
       "4026532608-0-100663301": {
         "SensorType": 6,
@@ -327,10 +327,10 @@
         "LabelOrig": "Core 5 Clock (perf #6/7)",
         "LabelUser": "Core 5 Clock (perf #6/7)",
         "Unit": "MHz",
-        "Value": "3.622,2 MHz",
-        "ValueMin": "2.850,3 MHz",
-        "ValueMax": "4.701,0 MHz",
-        "ValueAvg": "3.826,5 MHz"
+        "Value": "3.704,8 MHz",
+        "ValueMin": "2.852,9 MHz",
+        "ValueMax": "4.730,1 MHz",
+        "ValueAvg": "3.997,7 MHz"
       },
       "4026532608-0-100663302": {
         "SensorType": 6,
@@ -338,10 +338,10 @@
         "LabelOrig": "Core 6 Clock (perf #3/4)",
         "LabelUser": "Core 6 Clock (perf #3/4)",
         "Unit": "MHz",
-        "Value": "4.527,8 MHz",
-        "ValueMin": "2.850,3 MHz",
-        "ValueMax": "4.701,0 MHz",
-        "ValueAvg": "3.915,0 MHz"
+        "Value": "4.631,0 MHz",
+        "ValueMin": "3.566,2 MHz",
+        "ValueMax": "4.730,1 MHz",
+        "ValueAvg": "4.212,2 MHz"
       },
       "4026532608-0-100663303": {
         "SensorType": 6,
@@ -349,10 +349,10 @@
         "LabelOrig": "Core 7 Clock (perf #7/8)",
         "LabelUser": "Core 7 Clock (perf #7/8)",
         "Unit": "MHz",
-        "Value": "4.527,8 MHz",
-        "ValueMin": "2.850,3 MHz",
-        "ValueMax": "4.651,5 MHz",
-        "ValueAvg": "3.818,4 MHz"
+        "Value": "3.704,8 MHz",
+        "ValueMin": "2.852,9 MHz",
+        "ValueMax": "4.680,6 MHz",
+        "ValueAvg": "3.978,8 MHz"
       },
       "4026532608-0-100663304": {
         "SensorType": 6,
@@ -360,10 +360,10 @@
         "LabelOrig": "Core 8 Clock (perf #8/9)",
         "LabelUser": "Core 8 Clock (perf #8/9)",
         "Unit": "MHz",
-        "Value": "4.527,8 MHz",
-        "ValueMin": "2.850,3 MHz",
-        "ValueMax": "4.552,5 MHz",
-        "ValueAvg": "3.594,4 MHz"
+        "Value": "3.566,2 MHz",
+        "ValueMin": "2.852,9 MHz",
+        "ValueMax": "4.556,8 MHz",
+        "ValueAvg": "3.803,5 MHz"
       },
       "4026532608-0-100663305": {
         "SensorType": 6,
@@ -371,10 +371,10 @@
         "LabelOrig": "Core 9 Clock (perf #14/16)",
         "LabelUser": "Core 9 Clock (perf #14/16)",
         "Unit": "MHz",
-        "Value": "3.622,2 MHz",
-        "ValueMin": "2.850,3 MHz",
-        "ValueMax": "4.577,3 MHz",
-        "ValueAvg": "3.579,2 MHz"
+        "Value": "3.566,2 MHz",
+        "ValueMin": "2.852,9 MHz",
+        "ValueMax": "4.581,5 MHz",
+        "ValueAvg": "3.664,0 MHz"
       },
       "4026532608-0-100663306": {
         "SensorType": 6,
@@ -382,10 +382,10 @@
         "LabelOrig": "Core 10 Clock (perf #11/12)",
         "LabelUser": "Core 10 Clock (perf #11/12)",
         "Unit": "MHz",
-        "Value": "3.622,2 MHz",
-        "ValueMin": "2.850,3 MHz",
-        "ValueMax": "4.527,8 MHz",
-        "ValueAvg": "3.584,8 MHz"
+        "Value": "3.566,2 MHz",
+        "ValueMin": "2.852,9 MHz",
+        "ValueMax": "4.532,0 MHz",
+        "ValueAvg": "3.703,9 MHz"
       },
       "4026532608-0-100663307": {
         "SensorType": 6,
@@ -393,10 +393,10 @@
         "LabelOrig": "Core 11 Clock (perf #15/15)",
         "LabelUser": "Core 11 Clock (perf #15/15)",
         "Unit": "MHz",
-        "Value": "3.622,2 MHz",
-        "ValueMin": "2.850,3 MHz",
-        "ValueMax": "4.577,3 MHz",
-        "ValueAvg": "3.585,1 MHz"
+        "Value": "3.566,2 MHz",
+        "ValueMin": "2.852,9 MHz",
+        "ValueMax": "4.581,5 MHz",
+        "ValueAvg": "3.648,0 MHz"
       },
       "4026532608-0-100663308": {
         "SensorType": 6,
@@ -404,10 +404,10 @@
         "LabelOrig": "Core 12 Clock (perf #12/13)",
         "LabelUser": "Core 12 Clock (perf #12/13)",
         "Unit": "MHz",
-        "Value": "3.622,2 MHz",
-        "ValueMin": "2.850,3 MHz",
-        "ValueMax": "4.527,8 MHz",
-        "ValueAvg": "3.582,6 MHz"
+        "Value": "3.566,2 MHz",
+        "ValueMin": "2.852,9 MHz",
+        "ValueMax": "4.532,0 MHz",
+        "ValueAvg": "3.682,2 MHz"
       },
       "4026532608-0-100663309": {
         "SensorType": 6,
@@ -415,10 +415,10 @@
         "LabelOrig": "Core 13 Clock (perf #13/14)",
         "LabelUser": "Core 13 Clock (perf #13/14)",
         "Unit": "MHz",
-        "Value": "3.622,2 MHz",
-        "ValueMin": "2.850,3 MHz",
-        "ValueMax": "4.577,3 MHz",
-        "ValueAvg": "3.583,6 MHz"
+        "Value": "3.566,2 MHz",
+        "ValueMin": "2.852,9 MHz",
+        "ValueMax": "4.581,5 MHz",
+        "ValueAvg": "3.660,0 MHz"
       },
       "4026532608-0-100663310": {
         "SensorType": 6,
@@ -426,10 +426,10 @@
         "LabelOrig": "Core 14 Clock (perf #9/10)",
         "LabelUser": "Core 14 Clock (perf #9/10)",
         "Unit": "MHz",
-        "Value": "3.622,2 MHz",
-        "ValueMin": "2.850,3 MHz",
-        "ValueMax": "4.552,5 MHz",
-        "ValueAvg": "3.589,8 MHz"
+        "Value": "3.566,2 MHz",
+        "ValueMin": "2.852,9 MHz",
+        "ValueMax": "4.556,8 MHz",
+        "ValueAvg": "3.758,8 MHz"
       },
       "4026532608-0-100663311": {
         "SensorType": 6,
@@ -437,10 +437,10 @@
         "LabelOrig": "Core 15 Clock (perf #10/11)",
         "LabelUser": "Core 15 Clock (perf #10/11)",
         "Unit": "MHz",
-        "Value": "3.622,2 MHz",
-        "ValueMin": "2.850,3 MHz",
-        "ValueMax": "4.602,0 MHz",
-        "ValueAvg": "3.584,3 MHz"
+        "Value": "3.566,2 MHz",
+        "ValueMin": "2.852,9 MHz",
+        "ValueMax": "4.606,3 MHz",
+        "ValueAvg": "3.721,3 MHz"
       },
       "4026532608-0-100663312": {
         "SensorType": 6,
@@ -448,10 +448,10 @@
         "LabelOrig": "Bus Clock",
         "LabelUser": "Bus Clock",
         "Unit": "MHz",
-        "Value": "99,0 MHz",
-        "ValueMin": "99,0 MHz",
-        "ValueMax": "99,0 MHz",
-        "ValueAvg": "99,0 MHz"
+        "Value": "99,1 MHz",
+        "ValueMin": "99,1 MHz",
+        "ValueMax": "99,1 MHz",
+        "ValueAvg": "99,1 MHz"
       },
       "4026532608-0-100663322": {
         "SensorType": 6,
@@ -459,10 +459,10 @@
         "LabelOrig": "Core 0 T0 Effective Clock",
         "LabelUser": "Core 0 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "1.173,1 MHz",
-        "ValueMin": "195,7 MHz",
-        "ValueMax": "4.558,2 MHz",
-        "ValueAvg": "452,8 MHz"
+        "Value": "633,4 MHz",
+        "ValueMin": "213,1 MHz",
+        "ValueMax": "4.535,6 MHz",
+        "ValueAvg": "1.802,0 MHz"
       },
       "4026532608-0-100663323": {
         "SensorType": 6,
@@ -470,10 +470,10 @@
         "LabelOrig": "Core 0 T1 Effective Clock",
         "LabelUser": "Core 0 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "483,1 MHz",
-        "ValueMin": "29,6 MHz",
-        "ValueMax": "3.284,2 MHz",
-        "ValueAvg": "201,8 MHz"
+        "Value": "317,4 MHz",
+        "ValueMin": "47,7 MHz",
+        "ValueMax": "3.440,2 MHz",
+        "ValueAvg": "891,4 MHz"
       },
       "4026532608-0-100663324": {
         "SensorType": 6,
@@ -481,10 +481,10 @@
         "LabelOrig": "Core 1 T0 Effective Clock",
         "LabelUser": "Core 1 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "157,3 MHz",
-        "ValueMin": "6,0 MHz",
-        "ValueMax": "2.231,7 MHz",
-        "ValueAvg": "34,8 MHz"
+        "Value": "56,4 MHz",
+        "ValueMin": "9,4 MHz",
+        "ValueMax": "2.812,7 MHz",
+        "ValueAvg": "321,2 MHz"
       },
       "4026532608-0-100663325": {
         "SensorType": 6,
@@ -492,10 +492,10 @@
         "LabelOrig": "Core 1 T1 Effective Clock",
         "LabelUser": "Core 1 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "308,2 MHz",
-        "ValueMin": "10,3 MHz",
-        "ValueMax": "2.491,5 MHz",
-        "ValueAvg": "69,1 MHz"
+        "Value": "185,4 MHz",
+        "ValueMin": "70,5 MHz",
+        "ValueMax": "3.157,6 MHz",
+        "ValueAvg": "451,6 MHz"
       },
       "4026532608-0-100663326": {
         "SensorType": 6,
@@ -503,10 +503,10 @@
         "LabelOrig": "Core 2 T0 Effective Clock",
         "LabelUser": "Core 2 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "869,8 MHz",
-        "ValueMin": "7,8 MHz",
-        "ValueMax": "4.715,4 MHz",
-        "ValueAvg": "1.905,8 MHz"
+        "Value": "867,2 MHz",
+        "ValueMin": "58,0 MHz",
+        "ValueMax": "4.637,8 MHz",
+        "ValueAvg": "2.038,1 MHz"
       },
       "4026532608-0-100663327": {
         "SensorType": 6,
@@ -514,10 +514,10 @@
         "LabelOrig": "Core 2 T1 Effective Clock",
         "LabelUser": "Core 2 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "3.332,2 MHz",
-        "ValueMin": "7,0 MHz",
-        "ValueMax": "4.711,1 MHz",
-        "ValueAvg": "1.724,5 MHz"
+        "Value": "1.844,8 MHz",
+        "ValueMin": "31,0 MHz",
+        "ValueMax": "4.642,6 MHz",
+        "ValueAvg": "1.846,5 MHz"
       },
       "4026532608-0-100663328": {
         "SensorType": 6,
@@ -525,10 +525,10 @@
         "LabelOrig": "Core 3 T0 Effective Clock",
         "LabelUser": "Core 3 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "2.619,6 MHz",
-        "ValueMin": "14,2 MHz",
-        "ValueMax": "4.659,2 MHz",
-        "ValueAvg": "1.788,0 MHz"
+        "Value": "4.027,5 MHz",
+        "ValueMin": "36,1 MHz",
+        "ValueMax": "4.636,9 MHz",
+        "ValueAvg": "2.012,3 MHz"
       },
       "4026532608-0-100663329": {
         "SensorType": 6,
@@ -536,10 +536,10 @@
         "LabelOrig": "Core 3 T1 Effective Clock",
         "LabelUser": "Core 3 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "724,6 MHz",
-        "ValueMin": "10,7 MHz",
-        "ValueMax": "4.679,5 MHz",
-        "ValueAvg": "1.592,4 MHz"
+        "Value": "348,2 MHz",
+        "ValueMin": "35,8 MHz",
+        "ValueMax": "4.660,5 MHz",
+        "ValueAvg": "1.837,5 MHz"
       },
       "4026532608-0-100663330": {
         "SensorType": 6,
@@ -547,10 +547,10 @@
         "LabelOrig": "Core 4 T0 Effective Clock",
         "LabelUser": "Core 4 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "232,7 MHz",
-        "ValueMin": "11,9 MHz",
-        "ValueMax": "2.664,0 MHz",
-        "ValueAvg": "54,3 MHz"
+        "Value": "97,4 MHz",
+        "ValueMin": "19,8 MHz",
+        "ValueMax": "3.058,3 MHz",
+        "ValueAvg": "442,6 MHz"
       },
       "4026532608-0-100663331": {
         "SensorType": 6,
@@ -558,10 +558,10 @@
         "LabelOrig": "Core 4 T1 Effective Clock",
         "LabelUser": "Core 4 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "144,5 MHz",
-        "ValueMin": "14,6 MHz",
-        "ValueMax": "2.639,2 MHz",
-        "ValueAvg": "52,4 MHz"
+        "Value": "81,1 MHz",
+        "ValueMin": "16,6 MHz",
+        "ValueMax": "3.156,0 MHz",
+        "ValueAvg": "411,4 MHz"
       },
       "4026532608-0-100663332": {
         "SensorType": 6,
@@ -569,10 +569,10 @@
         "LabelOrig": "Core 5 T0 Effective Clock",
         "LabelUser": "Core 5 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "106,3 MHz",
-        "ValueMin": "3,6 MHz",
-        "ValueMax": "2.048,9 MHz",
-        "ValueAvg": "21,8 MHz"
+        "Value": "32,5 MHz",
+        "ValueMin": "6,4 MHz",
+        "ValueMax": "2.998,6 MHz",
+        "ValueAvg": "244,5 MHz"
       },
       "4026532608-0-100663333": {
         "SensorType": 6,
@@ -580,10 +580,10 @@
         "LabelOrig": "Core 5 T1 Effective Clock",
         "LabelUser": "Core 5 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "58,4 MHz",
-        "ValueMin": "6,9 MHz",
-        "ValueMax": "2.000,2 MHz",
-        "ValueAvg": "29,2 MHz"
+        "Value": "38,2 MHz",
+        "ValueMin": "5,4 MHz",
+        "ValueMax": "2.841,1 MHz",
+        "ValueAvg": "257,8 MHz"
       },
       "4026532608-0-100663334": {
         "SensorType": 6,
@@ -591,10 +591,10 @@
         "LabelOrig": "Core 6 T0 Effective Clock",
         "LabelUser": "Core 6 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "381,2 MHz",
-        "ValueMin": "26,6 MHz",
-        "ValueMax": "3.230,1 MHz",
-        "ValueAvg": "101,7 MHz"
+        "Value": "168,4 MHz",
+        "ValueMin": "51,9 MHz",
+        "ValueMax": "3.143,7 MHz",
+        "ValueAvg": "612,5 MHz"
       },
       "4026532608-0-100663335": {
         "SensorType": 6,
@@ -602,10 +602,10 @@
         "LabelOrig": "Core 6 T1 Effective Clock",
         "LabelUser": "Core 6 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "239,4 MHz",
+        "Value": "150,5 MHz",
         "ValueMin": "25,1 MHz",
-        "ValueMax": "2.700,2 MHz",
-        "ValueAvg": "89,9 MHz"
+        "ValueMax": "3.227,0 MHz",
+        "ValueAvg": "583,2 MHz"
       },
       "4026532608-0-100663336": {
         "SensorType": 6,
@@ -613,10 +613,10 @@
         "LabelOrig": "Core 7 T0 Effective Clock",
         "LabelUser": "Core 7 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "73,3 MHz",
-        "ValueMin": "3,0 MHz",
-        "ValueMax": "1.856,4 MHz",
-        "ValueAvg": "16,5 MHz"
+        "Value": "22,3 MHz",
+        "ValueMin": "4,3 MHz",
+        "ValueMax": "2.792,3 MHz",
+        "ValueAvg": "190,9 MHz"
       },
       "4026532608-0-100663337": {
         "SensorType": 6,
@@ -624,10 +624,10 @@
         "LabelOrig": "Core 7 T1 Effective Clock",
         "LabelUser": "Core 7 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "38,3 MHz",
-        "ValueMin": "3,1 MHz",
-        "ValueMax": "1.906,5 MHz",
-        "ValueAvg": "21,7 MHz"
+        "Value": "31,1 MHz",
+        "ValueMin": "3,2 MHz",
+        "ValueMax": "2.681,9 MHz",
+        "ValueAvg": "214,0 MHz"
       },
       "4026532608-0-100663338": {
         "SensorType": 6,
@@ -635,10 +635,10 @@
         "LabelOrig": "Core 8 T0 Effective Clock",
         "LabelUser": "Core 8 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "58,8 MHz",
-        "ValueMin": "3,2 MHz",
-        "ValueMax": "1.810,7 MHz",
-        "ValueAvg": "15,4 MHz"
+        "Value": "19,6 MHz",
+        "ValueMin": "4,8 MHz",
+        "ValueMax": "2.491,4 MHz",
+        "ValueAvg": "168,9 MHz"
       },
       "4026532608-0-100663339": {
         "SensorType": 6,
@@ -646,10 +646,10 @@
         "LabelOrig": "Core 8 T1 Effective Clock",
         "LabelUser": "Core 8 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "33,4 MHz",
-        "ValueMin": "4,3 MHz",
-        "ValueMax": "1.772,1 MHz",
-        "ValueAvg": "19,9 MHz"
+        "Value": "25,0 MHz",
+        "ValueMin": "3,5 MHz",
+        "ValueMax": "2.536,6 MHz",
+        "ValueAvg": "178,0 MHz"
       },
       "4026532608-0-100663340": {
         "SensorType": 6,
@@ -657,10 +657,10 @@
         "LabelOrig": "Core 9 T0 Effective Clock",
         "LabelUser": "Core 9 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "15,7 MHz",
-        "ValueMin": "2,1 MHz",
-        "ValueMax": "1.541,6 MHz",
-        "ValueAvg": "7,7 MHz"
+        "Value": "12,8 MHz",
+        "ValueMin": "3,1 MHz",
+        "ValueMax": "1.593,6 MHz",
+        "ValueAvg": "74,7 MHz"
       },
       "4026532608-0-100663341": {
         "SensorType": 6,
@@ -668,10 +668,10 @@
         "LabelOrig": "Core 9 T1 Effective Clock",
         "LabelUser": "Core 9 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "20,9 MHz",
-        "ValueMin": "4,8 MHz",
-        "ValueMax": "1.554,6 MHz",
-        "ValueAvg": "16,6 MHz"
+        "Value": "19,1 MHz",
+        "ValueMin": "3,3 MHz",
+        "ValueMax": "1.528,7 MHz",
+        "ValueAvg": "97,2 MHz"
       },
       "4026532608-0-100663342": {
         "SensorType": 6,
@@ -679,10 +679,10 @@
         "LabelOrig": "Core 10 T0 Effective Clock",
         "LabelUser": "Core 10 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "20,3 MHz",
-        "ValueMin": "2,8 MHz",
-        "ValueMax": "1.614,7 MHz",
-        "ValueAvg": "8,9 MHz"
+        "Value": "15,0 MHz",
+        "ValueMin": "4,1 MHz",
+        "ValueMax": "1.789,3 MHz",
+        "ValueAvg": "92,0 MHz"
       },
       "4026532608-0-100663343": {
         "SensorType": 6,
@@ -690,10 +690,10 @@
         "LabelOrig": "Core 10 T1 Effective Clock",
         "LabelUser": "Core 10 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "23,5 MHz",
-        "ValueMin": "5,3 MHz",
-        "ValueMax": "1.611,4 MHz",
-        "ValueAvg": "17,5 MHz"
+        "Value": "18,5 MHz",
+        "ValueMin": "3,0 MHz",
+        "ValueMax": "1.750,1 MHz",
+        "ValueAvg": "122,9 MHz"
       },
       "4026532608-0-100663344": {
         "SensorType": 6,
@@ -701,10 +701,10 @@
         "LabelOrig": "Core 11 T0 Effective Clock",
         "LabelUser": "Core 11 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "13,6 MHz",
-        "ValueMin": "1,7 MHz",
-        "ValueMax": "4.249,6 MHz",
-        "ValueAvg": "11,6 MHz"
+        "Value": "12,3 MHz",
+        "ValueMin": "3,1 MHz",
+        "ValueMax": "4.435,1 MHz",
+        "ValueAvg": "65,1 MHz"
       },
       "4026532608-0-100663345": {
         "SensorType": 6,
@@ -712,10 +712,10 @@
         "LabelOrig": "Core 11 T1 Effective Clock",
         "LabelUser": "Core 11 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "18,9 MHz",
-        "ValueMin": "5,1 MHz",
-        "ValueMax": "4.314,5 MHz",
-        "ValueAvg": "19,1 MHz"
+        "Value": "9,3 MHz",
+        "ValueMin": "1,7 MHz",
+        "ValueMax": "3.698,3 MHz",
+        "ValueAvg": "77,4 MHz"
       },
       "4026532608-0-100663346": {
         "SensorType": 6,
@@ -723,10 +723,10 @@
         "LabelOrig": "Core 12 T0 Effective Clock",
         "LabelUser": "Core 12 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "17,9 MHz",
-        "ValueMin": "2,8 MHz",
-        "ValueMax": "1.558,3 MHz",
-        "ValueAvg": "8,2 MHz"
+        "Value": "11,4 MHz",
+        "ValueMin": "4,4 MHz",
+        "ValueMax": "1.673,7 MHz",
+        "ValueAvg": "76,7 MHz"
       },
       "4026532608-0-100663347": {
         "SensorType": 6,
@@ -734,10 +734,10 @@
         "LabelOrig": "Core 12 T1 Effective Clock",
         "LabelUser": "Core 12 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "23,9 MHz",
-        "ValueMin": "5,4 MHz",
-        "ValueMax": "1.578,8 MHz",
-        "ValueAvg": "17,7 MHz"
+        "Value": "11,7 MHz",
+        "ValueMin": "2,8 MHz",
+        "ValueMax": "1.607,4 MHz",
+        "ValueAvg": "83,4 MHz"
       },
       "4026532608-0-100663348": {
         "SensorType": 6,
@@ -745,10 +745,10 @@
         "LabelOrig": "Core 13 T0 Effective Clock",
         "LabelUser": "Core 13 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "14,4 MHz",
-        "ValueMin": "2,7 MHz",
-        "ValueMax": "1.584,5 MHz",
-        "ValueAvg": "7,8 MHz"
+        "Value": "10,9 MHz",
+        "ValueMin": "4,3 MHz",
+        "ValueMax": "1.630,5 MHz",
+        "ValueAvg": "62,3 MHz"
       },
       "4026532608-0-100663349": {
         "SensorType": 6,
@@ -756,10 +756,10 @@
         "LabelOrig": "Core 13 T1 Effective Clock",
         "LabelUser": "Core 13 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "20,2 MHz",
-        "ValueMin": "5,4 MHz",
-        "ValueMax": "1.528,7 MHz",
-        "ValueAvg": "17,4 MHz"
+        "Value": "10,8 MHz",
+        "ValueMin": "2,8 MHz",
+        "ValueMax": "1.584,8 MHz",
+        "ValueAvg": "69,6 MHz"
       },
       "4026532608-0-100663350": {
         "SensorType": 6,
@@ -767,10 +767,10 @@
         "LabelOrig": "Core 14 T0 Effective Clock",
         "LabelUser": "Core 14 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "36,4 MHz",
-        "ValueMin": "3,1 MHz",
-        "ValueMax": "1.710,5 MHz",
-        "ValueAvg": "12,8 MHz"
+        "Value": "20,4 MHz",
+        "ValueMin": "5,1 MHz",
+        "ValueMax": "2.407,8 MHz",
+        "ValueAvg": "138,7 MHz"
       },
       "4026532608-0-100663351": {
         "SensorType": 6,
@@ -778,10 +778,10 @@
         "LabelOrig": "Core 14 T1 Effective Clock",
         "LabelUser": "Core 14 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "27,0 MHz",
-        "ValueMin": "3,9 MHz",
-        "ValueMax": "1.664,4 MHz",
-        "ValueAvg": "17,7 MHz"
+        "Value": "15,9 MHz",
+        "ValueMin": "3,0 MHz",
+        "ValueMax": "2.205,7 MHz",
+        "ValueAvg": "126,9 MHz"
       },
       "4026532608-0-100663352": {
         "SensorType": 6,
@@ -789,10 +789,10 @@
         "LabelOrig": "Core 15 T0 Effective Clock",
         "LabelUser": "Core 15 T0 Effective Clock",
         "Unit": "MHz",
-        "Value": "25,0 MHz",
-        "ValueMin": "2,9 MHz",
-        "ValueMax": "1.638,6 MHz",
-        "ValueAvg": "11,7 MHz"
+        "Value": "15,9 MHz",
+        "ValueMin": "4,5 MHz",
+        "ValueMax": "2.133,0 MHz",
+        "ValueAvg": "106,9 MHz"
       },
       "4026532608-0-100663353": {
         "SensorType": 6,
@@ -800,10 +800,10 @@
         "LabelOrig": "Core 15 T1 Effective Clock",
         "LabelUser": "Core 15 T1 Effective Clock",
         "Unit": "MHz",
-        "Value": "22,7 MHz",
-        "ValueMin": "4,1 MHz",
-        "ValueMax": "1.628,7 MHz",
-        "ValueAvg": "14,9 MHz"
+        "Value": "11,8 MHz",
+        "ValueMin": "2,9 MHz",
+        "ValueMax": "1.969,1 MHz",
+        "ValueAvg": "100,4 MHz"
       },
       "4026532608-0-100663354": {
         "SensorType": 6,
@@ -811,10 +811,10 @@
         "LabelOrig": "Average Effective Clock",
         "LabelUser": "Average Effective Clock",
         "Unit": "MHz",
-        "Value": "354,2 MHz",
-        "ValueMin": "122,7 MHz",
-        "ValueMax": "2.153,0 MHz",
-        "ValueAvg": "261,9 MHz"
+        "Value": "285,7 MHz",
+        "ValueMin": "164,1 MHz",
+        "ValueMax": "2.445,9 MHz",
+        "ValueAvg": "493,7 MHz"
       },
       "4026532608-0-117440512": {
         "SensorType": 7,
@@ -822,10 +822,10 @@
         "LabelOrig": "Core 0 T0 Usage",
         "LabelUser": "Core 0 T0 Usage",
         "Unit": "%",
-        "Value": "8,3 %",
+        "Value": "3,8 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "71,9 %",
-        "ValueAvg": "2,5 %"
+        "ValueMax": "78,6 %",
+        "ValueAvg": "13,7 %"
       },
       "4026532608-0-117440513": {
         "SensorType": 7,
@@ -833,10 +833,10 @@
         "LabelOrig": "Core 0 T1 Usage",
         "LabelUser": "Core 0 T1 Usage",
         "Unit": "%",
-        "Value": "6,1 %",
+        "Value": "2,2 %",
         "ValueMin": "0,0 %",
         "ValueMax": "70,9 %",
-        "ValueAvg": "1,6 %"
+        "ValueAvg": "11,8 %"
       },
       "4026532608-0-117440514": {
         "SensorType": 7,
@@ -844,10 +844,10 @@
         "LabelOrig": "Core 1 T0 Usage",
         "LabelUser": "Core 1 T0 Usage",
         "Unit": "%",
-        "Value": "2,2 %",
+        "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "46,2 %",
-        "ValueAvg": "0,4 %"
+        "ValueMax": "56,4 %",
+        "ValueAvg": "4,4 %"
       },
       "4026532608-0-117440515": {
         "SensorType": 7,
@@ -855,10 +855,10 @@
         "LabelOrig": "Core 1 T1 Usage",
         "LabelUser": "Core 1 T1 Usage",
         "Unit": "%",
-        "Value": "3,0 %",
+        "Value": "1,5 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "48,8 %",
-        "ValueAvg": "1,0 %"
+        "ValueMax": "66,9 %",
+        "ValueAvg": "6,9 %"
       },
       "4026532608-0-117440516": {
         "SensorType": 7,
@@ -866,10 +866,10 @@
         "LabelOrig": "Core 2 T0 Usage",
         "LabelUser": "Core 2 T0 Usage",
         "Unit": "%",
-        "Value": "7,6 %",
+        "Value": "2,2 %",
         "ValueMin": "0,0 %",
         "ValueMax": "100,0 %",
-        "ValueAvg": "32,4 %"
+        "ValueAvg": "37,9 %"
       },
       "4026532608-0-117440517": {
         "SensorType": 7,
@@ -877,10 +877,10 @@
         "LabelOrig": "Core 2 T1 Usage",
         "LabelUser": "Core 2 T1 Usage",
         "Unit": "%",
-        "Value": "67,1 %",
+        "Value": "20,6 %",
         "ValueMin": "0,0 %",
         "ValueMax": "100,0 %",
-        "ValueAvg": "28,8 %"
+        "ValueAvg": "34,2 %"
       },
       "4026532608-0-117440518": {
         "SensorType": 7,
@@ -888,10 +888,10 @@
         "LabelOrig": "Core 3 T0 Usage",
         "LabelUser": "Core 3 T0 Usage",
         "Unit": "%",
-        "Value": "40,4 %",
+        "Value": "83,9 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "99,2 %",
-        "ValueAvg": "28,3 %"
+        "ValueMax": "100,0 %",
+        "ValueAvg": "37,0 %"
       },
       "4026532608-0-117440519": {
         "SensorType": 7,
@@ -899,10 +899,10 @@
         "LabelOrig": "Core 3 T1 Usage",
         "LabelUser": "Core 3 T1 Usage",
         "Unit": "%",
-        "Value": "8,3 %",
+        "Value": "4,5 %",
         "ValueMin": "0,0 %",
         "ValueMax": "100,0 %",
-        "ValueAvg": "23,6 %"
+        "ValueAvg": "33,7 %"
       },
       "4026532608-0-117440520": {
         "SensorType": 7,
@@ -910,10 +910,10 @@
         "LabelOrig": "Core 4 T0 Usage",
         "LabelUser": "Core 4 T0 Usage",
         "Unit": "%",
-        "Value": "3,0 %",
+        "Value": "1,5 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "56,7 %",
-        "ValueAvg": "0,6 %"
+        "ValueMax": "68,3 %",
+        "ValueAvg": "6,0 %"
       },
       "4026532608-0-117440521": {
         "SensorType": 7,
@@ -921,10 +921,10 @@
         "LabelOrig": "Core 4 T1 Usage",
         "LabelUser": "Core 4 T1 Usage",
         "Unit": "%",
-        "Value": "3,8 %",
+        "Value": "0,7 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "52,5 %",
-        "ValueAvg": "0,5 %"
+        "ValueMax": "69,0 %",
+        "ValueAvg": "5,3 %"
       },
       "4026532608-0-117440522": {
         "SensorType": 7,
@@ -932,10 +932,10 @@
         "LabelOrig": "Core 5 T0 Usage",
         "LabelUser": "Core 5 T0 Usage",
         "Unit": "%",
-        "Value": "1,5 %",
+        "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "45,1 %",
-        "ValueAvg": "0,3 %"
+        "ValueMax": "65,4 %",
+        "ValueAvg": "3,2 %"
       },
       "4026532608-0-117440523": {
         "SensorType": 7,
@@ -945,8 +945,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "42,9 %",
-        "ValueAvg": "0,3 %"
+        "ValueMax": "53,9 %",
+        "ValueAvg": "3,3 %"
       },
       "4026532608-0-117440524": {
         "SensorType": 7,
@@ -954,10 +954,10 @@
         "LabelOrig": "Core 6 T0 Usage",
         "LabelUser": "Core 6 T0 Usage",
         "Unit": "%",
-        "Value": "6,1 %",
+        "Value": "1,5 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "64,4 %",
-        "ValueAvg": "1,1 %"
+        "ValueMax": "64,7 %",
+        "ValueAvg": "8,4 %"
       },
       "4026532608-0-117440525": {
         "SensorType": 7,
@@ -965,10 +965,10 @@
         "LabelOrig": "Core 6 T1 Usage",
         "LabelUser": "Core 6 T1 Usage",
         "Unit": "%",
-        "Value": "2,2 %",
+        "Value": "1,5 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "56,2 %",
-        "ValueAvg": "0,9 %"
+        "ValueMax": "71,9 %",
+        "ValueAvg": "7,7 %"
       },
       "4026532608-0-117440526": {
         "SensorType": 7,
@@ -976,10 +976,10 @@
         "LabelOrig": "Core 7 T0 Usage",
         "LabelUser": "Core 7 T0 Usage",
         "Unit": "%",
-        "Value": "1,5 %",
+        "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "38,5 %",
-        "ValueAvg": "0,2 %"
+        "ValueMax": "52,5 %",
+        "ValueAvg": "2,4 %"
       },
       "4026532608-0-117440527": {
         "SensorType": 7,
@@ -989,8 +989,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "44,4 %",
-        "ValueAvg": "0,2 %"
+        "ValueMax": "57,5 %",
+        "ValueAvg": "2,7 %"
       },
       "4026532608-0-117440528": {
         "SensorType": 7,
@@ -998,10 +998,10 @@
         "LabelOrig": "Core 8 T0 Usage",
         "LabelUser": "Core 8 T0 Usage",
         "Unit": "%",
-        "Value": "1,5 %",
+        "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "42,9 %",
-        "ValueAvg": "0,2 %"
+        "ValueMax": "46,7 %",
+        "ValueAvg": "2,2 %"
       },
       "4026532608-0-117440529": {
         "SensorType": 7,
@@ -1011,8 +1011,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "37,7 %",
-        "ValueAvg": "0,2 %"
+        "ValueMax": "59,7 %",
+        "ValueAvg": "2,2 %"
       },
       "4026532608-0-117440530": {
         "SensorType": 7,
@@ -1022,8 +1022,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "32,5 %",
-        "ValueAvg": "0,1 %"
+        "ValueMax": "25,1 %",
+        "ValueAvg": "0,8 %"
       },
       "4026532608-0-117440531": {
         "SensorType": 7,
@@ -1033,8 +1033,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "35,5 %",
-        "ValueAvg": "0,1 %"
+        "ValueMax": "30,5 %",
+        "ValueAvg": "1,2 %"
       },
       "4026532608-0-117440532": {
         "SensorType": 7,
@@ -1044,8 +1044,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "35,5 %",
-        "ValueAvg": "0,1 %"
+        "ValueMax": "31,6 %",
+        "ValueAvg": "1,1 %"
       },
       "4026532608-0-117440533": {
         "SensorType": 7,
@@ -1053,10 +1053,10 @@
         "LabelOrig": "Core 10 T1 Usage",
         "LabelUser": "Core 10 T1 Usage",
         "Unit": "%",
-        "Value": "0,7 %",
+        "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "35,8 %",
-        "ValueAvg": "0,1 %"
+        "ValueMax": "33,0 %",
+        "ValueAvg": "1,5 %"
       },
       "4026532608-0-117440534": {
         "SensorType": 7,
@@ -1066,8 +1066,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "94,6 %",
-        "ValueAvg": "0,2 %"
+        "ValueMax": "98,6 %",
+        "ValueAvg": "0,8 %"
       },
       "4026532608-0-117440535": {
         "SensorType": 7,
@@ -1077,8 +1077,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "94,6 %",
-        "ValueAvg": "0,2 %"
+        "ValueMax": "81,0 %",
+        "ValueAvg": "1,0 %"
       },
       "4026532608-0-117440536": {
         "SensorType": 7,
@@ -1088,8 +1088,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "35,0 %",
-        "ValueAvg": "0,1 %"
+        "ValueMax": "28,0 %",
+        "ValueAvg": "0,8 %"
       },
       "4026532608-0-117440537": {
         "SensorType": 7,
@@ -1099,8 +1099,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "34,8 %",
-        "ValueAvg": "0,1 %"
+        "ValueMax": "34,5 %",
+        "ValueAvg": "0,9 %"
       },
       "4026532608-0-117440538": {
         "SensorType": 7,
@@ -1110,8 +1110,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "34,3 %",
-        "ValueAvg": "0,1 %"
+        "ValueMax": "24,4 %",
+        "ValueAvg": "0,6 %"
       },
       "4026532608-0-117440539": {
         "SensorType": 7,
@@ -1121,8 +1121,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "34,8 %",
-        "ValueAvg": "0,1 %"
+        "ValueMax": "24,4 %",
+        "ValueAvg": "0,7 %"
       },
       "4026532608-0-117440540": {
         "SensorType": 7,
@@ -1132,8 +1132,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "38,0 %",
-        "ValueAvg": "0,1 %"
+        "ValueMax": "48,2 %",
+        "ValueAvg": "1,6 %"
       },
       "4026532608-0-117440541": {
         "SensorType": 7,
@@ -1143,8 +1143,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "37,3 %",
-        "ValueAvg": "0,1 %"
+        "ValueMax": "41,0 %",
+        "ValueAvg": "1,4 %"
       },
       "4026532608-0-117440542": {
         "SensorType": 7,
@@ -1154,8 +1154,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "35,8 %",
-        "ValueAvg": "0,1 %"
+        "ValueMax": "35,9 %",
+        "ValueAvg": "1,2 %"
       },
       "4026532608-0-117440543": {
         "SensorType": 7,
@@ -1165,8 +1165,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "37,3 %",
-        "ValueAvg": "0,1 %"
+        "ValueMax": "40,2 %",
+        "ValueAvg": "1,0 %"
       },
       "4026532608-0-117440544": {
         "SensorType": 7,
@@ -1174,10 +1174,10 @@
         "LabelOrig": "Max CPU/Thread Usage",
         "LabelUser": "Max CPU/Thread Usage",
         "Unit": "%",
-        "Value": "67,1 %",
-        "ValueMin": "16,6 %",
+        "Value": "83,9 %",
+        "ValueMin": "26,7 %",
         "ValueMax": "100,0 %",
-        "ValueAvg": "59,8 %"
+        "ValueAvg": "63,8 %"
       },
       "4026532608-0-117440545": {
         "SensorType": 7,
@@ -1185,10 +1185,10 @@
         "LabelOrig": "Total CPU Usage",
         "LabelUser": "Total CPU Usage",
         "Unit": "%",
-        "Value": "5,1 %",
-        "ValueMin": "1,7 %",
-        "ValueMax": "45,6 %",
-        "ValueAvg": "3,9 %"
+        "Value": "3,9 %",
+        "ValueMin": "2,9 %",
+        "ValueMax": "49,2 %",
+        "ValueAvg": "7,4 %"
       },
       "4026532608-0-117440547": {
         "SensorType": 7,
@@ -1196,10 +1196,10 @@
         "LabelOrig": "Core 0 T0 Utility",
         "LabelUser": "Core 0 T0 Utility",
         "Unit": "%",
-        "Value": "16,6 %",
-        "ValueMin": "1,8 %",
-        "ValueMax": "103,3 %",
-        "ValueAvg": "5,8 %"
+        "Value": "8,0 %",
+        "ValueMin": "2,9 %",
+        "ValueMax": "109,4 %",
+        "ValueAvg": "25,0 %"
       },
       "4026532608-0-117440548": {
         "SensorType": 7,
@@ -1207,10 +1207,10 @@
         "LabelOrig": "Core 0 T1 Utility",
         "LabelUser": "Core 0 T1 Utility",
         "Unit": "%",
-        "Value": "12,1 %",
-        "ValueMin": "0,7 %",
-        "ValueMax": "95,9 %",
-        "ValueAvg": "4,4 %"
+        "Value": "7,4 %",
+        "ValueMin": "1,2 %",
+        "ValueMax": "100,3 %",
+        "ValueAvg": "22,4 %"
       },
       "4026532608-0-117440549": {
         "SensorType": 7,
@@ -1218,10 +1218,10 @@
         "LabelOrig": "Core 1 T0 Utility",
         "LabelUser": "Core 1 T0 Utility",
         "Unit": "%",
-        "Value": "4,0 %",
-        "ValueMin": "0,1 %",
-        "ValueMax": "64,5 %",
-        "ValueAvg": "0,9 %"
+        "Value": "1,4 %",
+        "ValueMin": "0,2 %",
+        "ValueMax": "81,7 %",
+        "ValueAvg": "8,1 %"
       },
       "4026532608-0-117440550": {
         "SensorType": 7,
@@ -1229,10 +1229,10 @@
         "LabelOrig": "Core 1 T1 Utility",
         "LabelUser": "Core 1 T1 Utility",
         "Unit": "%",
-        "Value": "8,4 %",
-        "ValueMin": "0,2 %",
-        "ValueMax": "71,9 %",
-        "ValueAvg": "1,8 %"
+        "Value": "4,6 %",
+        "ValueMin": "1,4 %",
+        "ValueMax": "92,2 %",
+        "ValueAvg": "11,7 %"
       },
       "4026532608-0-117440551": {
         "SensorType": 7,
@@ -1240,10 +1240,10 @@
         "LabelOrig": "Core 2 T0 Utility",
         "LabelUser": "Core 2 T0 Utility",
         "Unit": "%",
-        "Value": "20,7 %",
-        "ValueMin": "0,2 %",
-        "ValueMax": "137,9 %",
-        "ValueAvg": "50,5 %"
+        "Value": "17,5 %",
+        "ValueMin": "1,5 %",
+        "ValueMax": "135,9 %",
+        "ValueAvg": "56,7 %"
       },
       "4026532608-0-117440552": {
         "SensorType": 7,
@@ -1251,10 +1251,10 @@
         "LabelOrig": "Core 2 T1 Utility",
         "LabelUser": "Core 2 T1 Utility",
         "Unit": "%",
-        "Value": "96,5 %",
-        "ValueMin": "0,1 %",
-        "ValueMax": "137,9 %",
-        "ValueAvg": "45,3 %"
+        "Value": "43,8 %",
+        "ValueMin": "0,8 %",
+        "ValueMax": "136,0 %",
+        "ValueAvg": "51,3 %"
       },
       "4026532608-0-117440553": {
         "SensorType": 7,
@@ -1262,10 +1262,10 @@
         "LabelOrig": "Core 3 T0 Utility",
         "LabelUser": "Core 3 T0 Utility",
         "Unit": "%",
-        "Value": "68,5 %",
-        "ValueMin": "0,4 %",
-        "ValueMax": "136,6 %",
-        "ValueAvg": "46,0 %"
+        "Value": "116,5 %",
+        "ValueMin": "1,0 %",
+        "ValueMax": "136,0 %",
+        "ValueAvg": "55,8 %"
       },
       "4026532608-0-117440554": {
         "SensorType": 7,
@@ -1273,10 +1273,10 @@
         "LabelOrig": "Core 3 T1 Utility",
         "LabelUser": "Core 3 T1 Utility",
         "Unit": "%",
-        "Value": "17,1 %",
-        "ValueMin": "0,3 %",
-        "ValueMax": "137,2 %",
-        "ValueAvg": "39,9 %"
+        "Value": "9,0 %",
+        "ValueMin": "1,0 %",
+        "ValueMax": "136,6 %",
+        "ValueAvg": "50,8 %"
       },
       "4026532608-0-117440555": {
         "SensorType": 7,
@@ -1284,10 +1284,10 @@
         "LabelOrig": "Core 4 T0 Utility",
         "LabelUser": "Core 4 T0 Utility",
         "Unit": "%",
-        "Value": "5,9 %",
-        "ValueMin": "0,3 %",
-        "ValueMax": "79,4 %",
-        "ValueAvg": "1,3 %"
+        "Value": "2,4 %",
+        "ValueMin": "0,4 %",
+        "ValueMax": "88,6 %",
+        "ValueAvg": "11,3 %"
       },
       "4026532608-0-117440556": {
         "SensorType": 7,
@@ -1295,10 +1295,10 @@
         "LabelOrig": "Core 4 T1 Utility",
         "LabelUser": "Core 4 T1 Utility",
         "Unit": "%",
-        "Value": "3,5 %",
-        "ValueMin": "0,3 %",
-        "ValueMax": "76,0 %",
-        "ValueAvg": "1,3 %"
+        "Value": "2,1 %",
+        "ValueMin": "0,4 %",
+        "ValueMax": "92,2 %",
+        "ValueAvg": "10,4 %"
       },
       "4026532608-0-117440557": {
         "SensorType": 7,
@@ -1306,10 +1306,10 @@
         "LabelOrig": "Core 5 T0 Utility",
         "LabelUser": "Core 5 T0 Utility",
         "Unit": "%",
-        "Value": "2,6 %",
+        "Value": "0,7 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "58,8 %",
-        "ValueAvg": "0,5 %"
+        "ValueMax": "85,2 %",
+        "ValueAvg": "6,0 %"
       },
       "4026532608-0-117440558": {
         "SensorType": 7,
@@ -1317,10 +1317,10 @@
         "LabelOrig": "Core 5 T1 Utility",
         "LabelUser": "Core 5 T1 Utility",
         "Unit": "%",
-        "Value": "1,3 %",
-        "ValueMin": "0,2 %",
-        "ValueMax": "57,7 %",
-        "ValueAvg": "0,7 %"
+        "Value": "1,1 %",
+        "ValueMin": "0,1 %",
+        "ValueMax": "83,1 %",
+        "ValueAvg": "6,4 %"
       },
       "4026532608-0-117440559": {
         "SensorType": 7,
@@ -1328,10 +1328,10 @@
         "LabelOrig": "Core 6 T0 Utility",
         "LabelUser": "Core 6 T0 Utility",
         "Unit": "%",
-        "Value": "9,4 %",
-        "ValueMin": "0,6 %",
-        "ValueMax": "94,4 %",
-        "ValueAvg": "2,5 %"
+        "Value": "4,1 %",
+        "ValueMin": "1,2 %",
+        "ValueMax": "91,8 %",
+        "ValueAvg": "15,7 %"
       },
       "4026532608-0-117440560": {
         "SensorType": 7,
@@ -1339,10 +1339,10 @@
         "LabelOrig": "Core 6 T1 Utility",
         "LabelUser": "Core 6 T1 Utility",
         "Unit": "%",
-        "Value": "6,0 %",
+        "Value": "3,8 %",
         "ValueMin": "0,6 %",
-        "ValueMax": "77,7 %",
-        "ValueAvg": "2,2 %"
+        "ValueMax": "92,3 %",
+        "ValueAvg": "14,9 %"
       },
       "4026532608-0-117440561": {
         "SensorType": 7,
@@ -1350,10 +1350,10 @@
         "LabelOrig": "Core 7 T0 Utility",
         "LabelUser": "Core 7 T0 Utility",
         "Unit": "%",
-        "Value": "1,7 %",
+        "Value": "0,5 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "53,9 %",
-        "ValueAvg": "0,4 %"
+        "ValueMax": "78,4 %",
+        "ValueAvg": "4,6 %"
       },
       "4026532608-0-117440562": {
         "SensorType": 7,
@@ -1361,10 +1361,10 @@
         "LabelOrig": "Core 7 T1 Utility",
         "LabelUser": "Core 7 T1 Utility",
         "Unit": "%",
-        "Value": "0,8 %",
+        "Value": "0,9 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "55,1 %",
-        "ValueAvg": "0,6 %"
+        "ValueMax": "77,5 %",
+        "ValueAvg": "5,3 %"
       },
       "4026532608-0-117440563": {
         "SensorType": 7,
@@ -1372,10 +1372,10 @@
         "LabelOrig": "Core 8 T0 Utility",
         "LabelUser": "Core 8 T0 Utility",
         "Unit": "%",
-        "Value": "1,4 %",
+        "Value": "0,4 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "52,9 %",
-        "ValueAvg": "0,4 %"
+        "ValueMax": "69,6 %",
+        "ValueAvg": "4,1 %"
       },
       "4026532608-0-117440564": {
         "SensorType": 7,
@@ -1383,10 +1383,10 @@
         "LabelOrig": "Core 8 T1 Utility",
         "LabelUser": "Core 8 T1 Utility",
         "Unit": "%",
-        "Value": "0,7 %",
+        "Value": "0,8 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "51,3 %",
-        "ValueAvg": "0,5 %"
+        "ValueMax": "72,1 %",
+        "ValueAvg": "4,4 %"
       },
       "4026532608-0-117440565": {
         "SensorType": 7,
@@ -1394,10 +1394,10 @@
         "LabelOrig": "Core 9 T0 Utility",
         "LabelUser": "Core 9 T0 Utility",
         "Unit": "%",
-        "Value": "0,2 %",
-        "ValueMin": "0,0 %",
-        "ValueMax": "45,3 %",
-        "ValueAvg": "0,2 %"
+        "Value": "0,3 %",
+        "ValueMin": "0,1 %",
+        "ValueMax": "36,4 %",
+        "ValueAvg": "1,6 %"
       },
       "4026532608-0-117440566": {
         "SensorType": 7,
@@ -1405,10 +1405,10 @@
         "LabelOrig": "Core 9 T1 Utility",
         "LabelUser": "Core 9 T1 Utility",
         "Unit": "%",
-        "Value": "0,4 %",
+        "Value": "0,6 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "45,7 %",
-        "ValueAvg": "0,4 %"
+        "ValueMax": "39,3 %",
+        "ValueAvg": "2,4 %"
       },
       "4026532608-0-117440567": {
         "SensorType": 7,
@@ -1416,10 +1416,10 @@
         "LabelOrig": "Core 10 T0 Utility",
         "LabelUser": "Core 10 T0 Utility",
         "Unit": "%",
-        "Value": "0,4 %",
+        "Value": "0,3 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "47,4 %",
-        "ValueAvg": "0,2 %"
+        "ValueMax": "48,2 %",
+        "ValueAvg": "2,1 %"
       },
       "4026532608-0-117440568": {
         "SensorType": 7,
@@ -1427,10 +1427,10 @@
         "LabelOrig": "Core 10 T1 Utility",
         "LabelUser": "Core 10 T1 Utility",
         "Unit": "%",
-        "Value": "0,4 %",
+        "Value": "0,6 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "47,2 %",
-        "ValueAvg": "0,4 %"
+        "ValueMax": "48,7 %",
+        "ValueAvg": "3,0 %"
       },
       "4026532608-0-117440569": {
         "SensorType": 7,
@@ -1439,9 +1439,9 @@
         "LabelUser": "Core 11 T0 Utility",
         "Unit": "%",
         "Value": "0,2 %",
-        "ValueMin": "0,0 %",
-        "ValueMax": "124,4 %",
-        "ValueAvg": "0,3 %"
+        "ValueMin": "0,1 %",
+        "ValueMax": "129,9 %",
+        "ValueAvg": "1,4 %"
       },
       "4026532608-0-117440570": {
         "SensorType": 7,
@@ -1450,9 +1450,9 @@
         "LabelUser": "Core 11 T1 Utility",
         "Unit": "%",
         "Value": "0,3 %",
-        "ValueMin": "0,1 %",
-        "ValueMax": "125,8 %",
-        "ValueAvg": "0,5 %"
+        "ValueMin": "0,0 %",
+        "ValueMax": "108,6 %",
+        "ValueAvg": "1,8 %"
       },
       "4026532608-0-117440571": {
         "SensorType": 7,
@@ -1460,10 +1460,10 @@
         "LabelOrig": "Core 12 T0 Utility",
         "LabelUser": "Core 12 T0 Utility",
         "Unit": "%",
-        "Value": "0,3 %",
+        "Value": "0,2 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "46,2 %",
-        "ValueAvg": "0,2 %"
+        "ValueMax": "41,1 %",
+        "ValueAvg": "1,6 %"
       },
       "4026532608-0-117440572": {
         "SensorType": 7,
@@ -1471,10 +1471,10 @@
         "LabelOrig": "Core 12 T1 Utility",
         "LabelUser": "Core 12 T1 Utility",
         "Unit": "%",
-        "Value": "0,4 %",
+        "Value": "0,3 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "46,8 %",
-        "ValueAvg": "0,4 %"
+        "ValueMax": "44,4 %",
+        "ValueAvg": "1,8 %"
       },
       "4026532608-0-117440573": {
         "SensorType": 7,
@@ -1484,8 +1484,8 @@
         "Unit": "%",
         "Value": "0,2 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "47,0 %",
-        "ValueAvg": "0,2 %"
+        "ValueMax": "36,1 %",
+        "ValueAvg": "1,3 %"
       },
       "4026532608-0-117440574": {
         "SensorType": 7,
@@ -1493,10 +1493,10 @@
         "LabelOrig": "Core 13 T1 Utility",
         "LabelUser": "Core 13 T1 Utility",
         "Unit": "%",
-        "Value": "0,3 %",
+        "Value": "0,2 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "45,4 %",
-        "ValueAvg": "0,4 %"
+        "ValueMax": "35,8 %",
+        "ValueAvg": "1,5 %"
       },
       "4026532608-0-117440575": {
         "SensorType": 7,
@@ -1504,10 +1504,10 @@
         "LabelOrig": "Core 14 T0 Utility",
         "LabelUser": "Core 14 T0 Utility",
         "Unit": "%",
-        "Value": "0,8 %",
+        "Value": "0,5 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "50,5 %",
-        "ValueAvg": "0,3 %"
+        "ValueMax": "66,0 %",
+        "ValueAvg": "3,3 %"
       },
       "4026532608-0-117440576": {
         "SensorType": 7,
@@ -1515,10 +1515,10 @@
         "LabelOrig": "Core 14 T1 Utility",
         "LabelUser": "Core 14 T1 Utility",
         "Unit": "%",
-        "Value": "0,5 %",
+        "Value": "0,3 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "49,0 %",
-        "ValueAvg": "0,4 %"
+        "ValueMax": "62,7 %",
+        "ValueAvg": "2,9 %"
       },
       "4026532608-0-117440577": {
         "SensorType": 7,
@@ -1526,10 +1526,10 @@
         "LabelOrig": "Core 15 T0 Utility",
         "LabelUser": "Core 15 T0 Utility",
         "Unit": "%",
-        "Value": "0,5 %",
+        "Value": "0,4 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "48,4 %",
-        "ValueAvg": "0,3 %"
+        "ValueMax": "57,6 %",
+        "ValueAvg": "2,4 %"
       },
       "4026532608-0-117440578": {
         "SensorType": 7,
@@ -1537,10 +1537,10 @@
         "LabelOrig": "Core 15 T1 Utility",
         "LabelUser": "Core 15 T1 Utility",
         "Unit": "%",
-        "Value": "0,4 %",
+        "Value": "0,2 %",
         "ValueMin": "0,1 %",
-        "ValueMax": "48,1 %",
-        "ValueAvg": "0,4 %"
+        "ValueMax": "55,4 %",
+        "ValueAvg": "2,2 %"
       },
       "4026532608-0-117440579": {
         "SensorType": 7,
@@ -1548,10 +1548,10 @@
         "LabelOrig": "Total CPU Utility",
         "LabelUser": "Total CPU Utility",
         "Unit": "%",
-        "Value": "8,8 %",
-        "ValueMin": "3,3 %",
-        "ValueMax": "61,7 %",
-        "ValueAvg": "6,5 %"
+        "Value": "7,2 %",
+        "ValueMin": "4,6 %",
+        "ValueMax": "68,5 %",
+        "ValueAvg": "12,3 %"
       },
       "4026532608-0-134217728": {
         "SensorType": 8,
@@ -1559,10 +1559,10 @@
         "LabelOrig": "Core 0 Ratio",
         "LabelUser": "Core 0 Ratio",
         "Unit": "x",
-        "Value": "47,0 x",
-        "ValueMin": "35,8 x",
+        "Value": "37,4 x",
+        "ValueMin": "36,0 x",
         "ValueMax": "47,8 x",
-        "ValueAvg": "38,7 x"
+        "ValueAvg": "42,0 x"
       },
       "4026532608-0-134217729": {
         "SensorType": 8,
@@ -1570,10 +1570,10 @@
         "LabelOrig": "Core 1 Ratio",
         "LabelUser": "Core 1 Ratio",
         "Unit": "x",
-        "Value": "47,0 x",
-        "ValueMin": "35,8 x",
-        "ValueMax": "47,5 x",
-        "ValueAvg": "38,7 x"
+        "Value": "37,4 x",
+        "ValueMin": "36,0 x",
+        "ValueMax": "47,8 x",
+        "ValueAvg": "40,1 x"
       },
       "4026532608-0-134217730": {
         "SensorType": 8,
@@ -1581,10 +1581,10 @@
         "LabelOrig": "Core 2 Ratio",
         "LabelUser": "Core 2 Ratio",
         "Unit": "x",
-        "Value": "47,0 x",
+        "Value": "46,8 x",
         "ValueMin": "36,0 x",
-        "ValueMax": "49,2 x",
-        "ValueAvg": "46,9 x"
+        "ValueMax": "48,5 x",
+        "ValueAvg": "46,0 x"
       },
       "4026532608-0-134217731": {
         "SensorType": 8,
@@ -1592,10 +1592,10 @@
         "LabelOrig": "Core 3 Ratio",
         "LabelUser": "Core 3 Ratio",
         "Unit": "x",
-        "Value": "47,0 x",
-        "ValueMin": "35,8 x",
+        "Value": "46,8 x",
+        "ValueMin": "36,0 x",
         "ValueMax": "48,2 x",
-        "ValueAvg": "46,9 x"
+        "ValueAvg": "46,0 x"
       },
       "4026532608-0-134217732": {
         "SensorType": 8,
@@ -1603,10 +1603,10 @@
         "LabelOrig": "Core 4 Ratio",
         "LabelUser": "Core 4 Ratio",
         "Unit": "x",
-        "Value": "37,6 x",
+        "Value": "46,8 x",
         "ValueMin": "28,8 x",
         "ValueMax": "47,8 x",
-        "ValueAvg": "39,0 x"
+        "ValueAvg": "41,0 x"
       },
       "4026532608-0-134217733": {
         "SensorType": 8,
@@ -1614,10 +1614,10 @@
         "LabelOrig": "Core 5 Ratio",
         "LabelUser": "Core 5 Ratio",
         "Unit": "x",
-        "Value": "36,6 x",
+        "Value": "37,4 x",
         "ValueMin": "28,8 x",
-        "ValueMax": "47,5 x",
-        "ValueAvg": "38,7 x"
+        "ValueMax": "47,8 x",
+        "ValueAvg": "40,4 x"
       },
       "4026532608-0-134217734": {
         "SensorType": 8,
@@ -1625,10 +1625,10 @@
         "LabelOrig": "Core 6 Ratio",
         "LabelUser": "Core 6 Ratio",
         "Unit": "x",
-        "Value": "45,8 x",
-        "ValueMin": "28,8 x",
-        "ValueMax": "47,5 x",
-        "ValueAvg": "39,6 x"
+        "Value": "46,8 x",
+        "ValueMin": "36,0 x",
+        "ValueMax": "47,8 x",
+        "ValueAvg": "42,5 x"
       },
       "4026532608-0-134217735": {
         "SensorType": 8,
@@ -1636,10 +1636,10 @@
         "LabelOrig": "Core 7 Ratio",
         "LabelUser": "Core 7 Ratio",
         "Unit": "x",
-        "Value": "45,8 x",
+        "Value": "37,4 x",
         "ValueMin": "28,8 x",
-        "ValueMax": "47,0 x",
-        "ValueAvg": "38,6 x"
+        "ValueMax": "47,2 x",
+        "ValueAvg": "40,2 x"
       },
       "4026532608-0-134217736": {
         "SensorType": 8,
@@ -1647,10 +1647,10 @@
         "LabelOrig": "Core 8 Ratio",
         "LabelUser": "Core 8 Ratio",
         "Unit": "x",
-        "Value": "45,8 x",
+        "Value": "36,0 x",
         "ValueMin": "28,8 x",
         "ValueMax": "46,0 x",
-        "ValueAvg": "36,3 x"
+        "ValueAvg": "38,4 x"
       },
       "4026532608-0-134217737": {
         "SensorType": 8,
@@ -1658,10 +1658,10 @@
         "LabelOrig": "Core 9 Ratio",
         "LabelUser": "Core 9 Ratio",
         "Unit": "x",
-        "Value": "36,6 x",
+        "Value": "36,0 x",
         "ValueMin": "28,8 x",
         "ValueMax": "46,2 x",
-        "ValueAvg": "36,2 x"
+        "ValueAvg": "37,0 x"
       },
       "4026532608-0-134217738": {
         "SensorType": 8,
@@ -1669,10 +1669,10 @@
         "LabelOrig": "Core 10 Ratio",
         "LabelUser": "Core 10 Ratio",
         "Unit": "x",
-        "Value": "36,6 x",
+        "Value": "36,0 x",
         "ValueMin": "28,8 x",
         "ValueMax": "45,8 x",
-        "ValueAvg": "36,2 x"
+        "ValueAvg": "37,4 x"
       },
       "4026532608-0-134217739": {
         "SensorType": 8,
@@ -1680,10 +1680,10 @@
         "LabelOrig": "Core 11 Ratio",
         "LabelUser": "Core 11 Ratio",
         "Unit": "x",
-        "Value": "36,6 x",
+        "Value": "36,0 x",
         "ValueMin": "28,8 x",
         "ValueMax": "46,2 x",
-        "ValueAvg": "36,2 x"
+        "ValueAvg": "36,8 x"
       },
       "4026532608-0-134217740": {
         "SensorType": 8,
@@ -1691,10 +1691,10 @@
         "LabelOrig": "Core 12 Ratio",
         "LabelUser": "Core 12 Ratio",
         "Unit": "x",
-        "Value": "36,6 x",
+        "Value": "36,0 x",
         "ValueMin": "28,8 x",
         "ValueMax": "45,8 x",
-        "ValueAvg": "36,2 x"
+        "ValueAvg": "37,2 x"
       },
       "4026532608-0-134217741": {
         "SensorType": 8,
@@ -1702,10 +1702,10 @@
         "LabelOrig": "Core 13 Ratio",
         "LabelUser": "Core 13 Ratio",
         "Unit": "x",
-        "Value": "36,6 x",
+        "Value": "36,0 x",
         "ValueMin": "28,8 x",
         "ValueMax": "46,2 x",
-        "ValueAvg": "36,2 x"
+        "ValueAvg": "36,9 x"
       },
       "4026532608-0-134217742": {
         "SensorType": 8,
@@ -1713,10 +1713,10 @@
         "LabelOrig": "Core 14 Ratio",
         "LabelUser": "Core 14 Ratio",
         "Unit": "x",
-        "Value": "36,6 x",
+        "Value": "36,0 x",
         "ValueMin": "28,8 x",
         "ValueMax": "46,0 x",
-        "ValueAvg": "36,3 x"
+        "ValueAvg": "37,9 x"
       },
       "4026532608-0-134217743": {
         "SensorType": 8,
@@ -1724,10 +1724,10 @@
         "LabelOrig": "Core 15 Ratio",
         "LabelUser": "Core 15 Ratio",
         "Unit": "x",
-        "Value": "36,6 x",
+        "Value": "36,0 x",
         "ValueMin": "28,8 x",
         "ValueMax": "46,5 x",
-        "ValueAvg": "36,2 x"
+        "ValueAvg": "37,6 x"
       }
     }
   },
@@ -1754,10 +1754,10 @@
         "LabelOrig": "Core 0 C0 Residency",
         "LabelUser": "Core 0 C0 Residency",
         "Unit": "%",
-        "Value": "26,8 %",
-        "ValueMin": "5,0 %",
-        "ValueMax": "99,4 %",
-        "ValueAvg": "10,7 %"
+        "Value": "15,0 %",
+        "ValueMin": "6,8 %",
+        "ValueMax": "99,2 %",
+        "ValueAvg": "39,8 %"
       },
       "4026532610-0-117440526": {
         "SensorType": 7,
@@ -1765,10 +1765,10 @@
         "LabelOrig": "Core 1 C0 Residency",
         "LabelUser": "Core 1 C0 Residency",
         "Unit": "%",
-        "Value": "10,8 %",
-        "ValueMin": "0,9 %",
-        "ValueMax": "86,1 %",
-        "ValueAvg": "6,4 %"
+        "Value": "6,0 %",
+        "ValueMin": "2,2 %",
+        "ValueMax": "97,7 %",
+        "ValueAvg": "16,5 %"
       },
       "4026532610-0-117440528": {
         "SensorType": 7,
@@ -1776,10 +1776,10 @@
         "LabelOrig": "Core 2 C0 Residency",
         "LabelUser": "Core 2 C0 Residency",
         "Unit": "%",
-        "Value": "87,9 %",
-        "ValueMin": "27,6 %",
+        "Value": "59,5 %",
+        "ValueMin": "19,4 %",
         "ValueMax": "100,0 %",
-        "ValueAvg": "77,6 %"
+        "ValueAvg": "81,7 %"
       },
       "4026532610-0-117440530": {
         "SensorType": 7,
@@ -1787,10 +1787,10 @@
         "LabelOrig": "Core 3 C0 Residency",
         "LabelUser": "Core 3 C0 Residency",
         "Unit": "%",
-        "Value": "72,1 %",
-        "ValueMin": "21,7 %",
-        "ValueMax": "99,9 %",
-        "ValueAvg": "72,6 %"
+        "Value": "93,4 %",
+        "ValueMin": "17,6 %",
+        "ValueMax": "100,0 %",
+        "ValueAvg": "81,0 %"
       },
       "4026532610-0-117440532": {
         "SensorType": 7,
@@ -1798,10 +1798,10 @@
         "LabelOrig": "Core 4 C0 Residency",
         "LabelUser": "Core 4 C0 Residency",
         "Unit": "%",
-        "Value": "8,7 %",
-        "ValueMin": "1,6 %",
-        "ValueMax": "93,6 %",
-        "ValueAvg": "6,8 %"
+        "Value": "4,5 %",
+        "ValueMin": "1,3 %",
+        "ValueMax": "98,4 %",
+        "ValueAvg": "18,4 %"
       },
       "4026532610-0-117440534": {
         "SensorType": 7,
@@ -1809,10 +1809,10 @@
         "LabelOrig": "Core 5 C0 Residency",
         "LabelUser": "Core 5 C0 Residency",
         "Unit": "%",
-        "Value": "10,0 %",
-        "ValueMin": "0,6 %",
-        "ValueMax": "77,8 %",
-        "ValueAvg": "5,4 %"
+        "Value": "4,6 %",
+        "ValueMin": "0,4 %",
+        "ValueMax": "96,6 %",
+        "ValueAvg": "12,9 %"
       },
       "4026532610-0-117440536": {
         "SensorType": 7,
@@ -1820,10 +1820,10 @@
         "LabelOrig": "Core 6 C0 Residency",
         "LabelUser": "Core 6 C0 Residency",
         "Unit": "%",
-        "Value": "14,3 %",
+        "Value": "7,9 %",
         "ValueMin": "3,1 %",
-        "ValueMax": "97,2 %",
-        "ValueAvg": "7,4 %"
+        "ValueMax": "98,5 %",
+        "ValueAvg": "25,6 %"
       },
       "4026532610-0-117440538": {
         "SensorType": 7,
@@ -1831,10 +1831,10 @@
         "LabelOrig": "Core 7 C0 Residency",
         "LabelUser": "Core 7 C0 Residency",
         "Unit": "%",
-        "Value": "11,0 %",
-        "ValueMin": "0,4 %",
-        "ValueMax": "65,4 %",
-        "ValueAvg": "5,0 %"
+        "Value": "6,7 %",
+        "ValueMin": "0,3 %",
+        "ValueMax": "93,0 %",
+        "ValueAvg": "11,4 %"
       },
       "4026532610-0-117440540": {
         "SensorType": 7,
@@ -1842,10 +1842,10 @@
         "LabelOrig": "Core 8 C0 Residency",
         "LabelUser": "Core 8 C0 Residency",
         "Unit": "%",
-        "Value": "2,1 %",
-        "ValueMin": "0,3 %",
-        "ValueMax": "53,6 %",
-        "ValueAvg": "0,8 %"
+        "Value": "1,2 %",
+        "ValueMin": "0,2 %",
+        "ValueMax": "87,4 %",
+        "ValueAvg": "7,2 %"
       },
       "4026532610-0-117440542": {
         "SensorType": 7,
@@ -1853,10 +1853,10 @@
         "LabelOrig": "Core 9 C0 Residency",
         "LabelUser": "Core 9 C0 Residency",
         "Unit": "%",
-        "Value": "0,7 %",
+        "Value": "0,9 %",
         "ValueMin": "0,2 %",
-        "ValueMax": "37,0 %",
-        "ValueAvg": "0,6 %"
+        "ValueMax": "43,8 %",
+        "ValueAvg": "3,5 %"
       },
       "4026532610-0-117440544": {
         "SensorType": 7,
@@ -1864,10 +1864,10 @@
         "LabelOrig": "Core 10 C0 Residency",
         "LabelUser": "Core 10 C0 Residency",
         "Unit": "%",
-        "Value": "0,9 %",
-        "ValueMin": "0,3 %",
-        "ValueMax": "39,0 %",
-        "ValueAvg": "0,6 %"
+        "Value": "1,0 %",
+        "ValueMin": "0,2 %",
+        "ValueMax": "63,9 %",
+        "ValueAvg": "4,4 %"
       },
       "4026532610-0-117440546": {
         "SensorType": 7,
@@ -1876,9 +1876,9 @@
         "LabelUser": "Core 11 C0 Residency",
         "Unit": "%",
         "Value": "0,6 %",
-        "ValueMin": "0,2 %",
-        "ValueMax": "99,1 %",
-        "ValueAvg": "0,7 %"
+        "ValueMin": "0,1 %",
+        "ValueMax": "99,9 %",
+        "ValueAvg": "2,8 %"
       },
       "4026532610-0-117440548": {
         "SensorType": 7,
@@ -1886,10 +1886,10 @@
         "LabelOrig": "Core 12 C0 Residency",
         "LabelUser": "Core 12 C0 Residency",
         "Unit": "%",
-        "Value": "0,8 %",
-        "ValueMin": "0,3 %",
-        "ValueMax": "38,0 %",
-        "ValueAvg": "0,6 %"
+        "Value": "0,6 %",
+        "ValueMin": "0,2 %",
+        "ValueMax": "57,0 %",
+        "ValueAvg": "3,2 %"
       },
       "4026532610-0-117440550": {
         "SensorType": 7,
@@ -1897,10 +1897,10 @@
         "LabelOrig": "Core 13 C0 Residency",
         "LabelUser": "Core 13 C0 Residency",
         "Unit": "%",
-        "Value": "0,7 %",
-        "ValueMin": "0,3 %",
-        "ValueMax": "37,6 %",
-        "ValueAvg": "0,6 %"
+        "Value": "0,5 %",
+        "ValueMin": "0,2 %",
+        "ValueMax": "49,7 %",
+        "ValueAvg": "2,6 %"
       },
       "4026532610-0-117440552": {
         "SensorType": 7,
@@ -1908,10 +1908,10 @@
         "LabelOrig": "Core 14 C0 Residency",
         "LabelUser": "Core 14 C0 Residency",
         "Unit": "%",
-        "Value": "1,3 %",
-        "ValueMin": "0,3 %",
-        "ValueMax": "42,5 %",
-        "ValueAvg": "0,7 %"
+        "Value": "0,9 %",
+        "ValueMin": "0,2 %",
+        "ValueMax": "79,6 %",
+        "ValueAvg": "5,4 %"
       },
       "4026532610-0-117440554": {
         "SensorType": 7,
@@ -1919,10 +1919,10 @@
         "LabelOrig": "Core 15 C0 Residency",
         "LabelUser": "Core 15 C0 Residency",
         "Unit": "%",
-        "Value": "1,0 %",
+        "Value": "0,7 %",
         "ValueMin": "0,2 %",
-        "ValueMax": "40,5 %",
-        "ValueAvg": "0,6 %"
+        "ValueMax": "72,4 %",
+        "ValueAvg": "4,2 %"
       },
       "4026532610-0-117440556": {
         "SensorType": 7,
@@ -1930,10 +1930,10 @@
         "LabelOrig": "Core 0 C1 Residency",
         "LabelUser": "Core 0 C1 Residency",
         "Unit": "%",
-        "Value": "73,2 %",
-        "ValueMin": "0,6 %",
-        "ValueMax": "94,6 %",
-        "ValueAvg": "89,1 %"
+        "Value": "85,0 %",
+        "ValueMin": "0,8 %",
+        "ValueMax": "93,1 %",
+        "ValueAvg": "60,0 %"
       },
       "4026532610-0-117440557": {
         "SensorType": 7,
@@ -1941,10 +1941,10 @@
         "LabelOrig": "Core 1 C1 Residency",
         "LabelUser": "Core 1 C1 Residency",
         "Unit": "%",
-        "Value": "89,2 %",
-        "ValueMin": "13,9 %",
-        "ValueMax": "97,7 %",
-        "ValueAvg": "70,0 %"
+        "Value": "94,0 %",
+        "ValueMin": "2,3 %",
+        "ValueMax": "97,8 %",
+        "ValueAvg": "83,1 %"
       },
       "4026532610-0-117440558": {
         "SensorType": 7,
@@ -1952,10 +1952,10 @@
         "LabelOrig": "Core 2 C1 Residency",
         "LabelUser": "Core 2 C1 Residency",
         "Unit": "%",
-        "Value": "12,1 %",
+        "Value": "40,5 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "72,4 %",
-        "ValueAvg": "22,4 %"
+        "ValueMax": "80,6 %",
+        "ValueAvg": "18,3 %"
       },
       "4026532610-0-117440559": {
         "SensorType": 7,
@@ -1963,10 +1963,10 @@
         "LabelOrig": "Core 3 C1 Residency",
         "LabelUser": "Core 3 C1 Residency",
         "Unit": "%",
-        "Value": "27,9 %",
-        "ValueMin": "0,1 %",
-        "ValueMax": "78,3 %",
-        "ValueAvg": "27,4 %"
+        "Value": "6,6 %",
+        "ValueMin": "0,0 %",
+        "ValueMax": "82,4 %",
+        "ValueAvg": "19,0 %"
       },
       "4026532610-0-117440560": {
         "SensorType": 7,
@@ -1974,10 +1974,10 @@
         "LabelOrig": "Core 4 C1 Residency",
         "LabelUser": "Core 4 C1 Residency",
         "Unit": "%",
-        "Value": "91,3 %",
-        "ValueMin": "6,4 %",
-        "ValueMax": "97,8 %",
-        "ValueAvg": "76,6 %"
+        "Value": "95,5 %",
+        "ValueMin": "1,6 %",
+        "ValueMax": "97,4 %",
+        "ValueAvg": "77,0 %"
       },
       "4026532610-0-117440561": {
         "SensorType": 7,
@@ -1985,10 +1985,10 @@
         "LabelOrig": "Core 5 C1 Residency",
         "LabelUser": "Core 5 C1 Residency",
         "Unit": "%",
-        "Value": "84,2 %",
-        "ValueMin": "3,6 %",
-        "ValueMax": "97,9 %",
-        "ValueAvg": "51,3 %"
+        "Value": "68,2 %",
+        "ValueMin": "0,9 %",
+        "ValueMax": "97,5 %",
+        "ValueAvg": "70,2 %"
       },
       "4026532610-0-117440562": {
         "SensorType": 7,
@@ -1996,10 +1996,10 @@
         "LabelOrig": "Core 6 C1 Residency",
         "LabelUser": "Core 6 C1 Residency",
         "Unit": "%",
-        "Value": "85,7 %",
-        "ValueMin": "2,8 %",
-        "ValueMax": "96,6 %",
-        "ValueAvg": "90,5 %"
+        "Value": "92,1 %",
+        "ValueMin": "1,5 %",
+        "ValueMax": "95,8 %",
+        "ValueAvg": "72,5 %"
       },
       "4026532610-0-117440563": {
         "SensorType": 7,
@@ -2007,10 +2007,10 @@
         "LabelOrig": "Core 7 C1 Residency",
         "LabelUser": "Core 7 C1 Residency",
         "Unit": "%",
-        "Value": "77,0 %",
+        "Value": "60,8 %",
         "ValueMin": "0,7 %",
-        "ValueMax": "97,9 %",
-        "ValueAvg": "39,9 %"
+        "ValueMax": "97,1 %",
+        "ValueAvg": "63,5 %"
       },
       "4026532610-0-117440564": {
         "SensorType": 7,
@@ -2018,10 +2018,10 @@
         "LabelOrig": "Core 8 C1 Residency",
         "LabelUser": "Core 8 C1 Residency",
         "Unit": "%",
-        "Value": "22,3 %",
-        "ValueMin": "0,4 %",
-        "ValueMax": "97,6 %",
-        "ValueAvg": "3,4 %"
+        "Value": "7,6 %",
+        "ValueMin": "0,5 %",
+        "ValueMax": "97,2 %",
+        "ValueAvg": "33,7 %"
       },
       "4026532610-0-117440565": {
         "SensorType": 7,
@@ -2029,10 +2029,10 @@
         "LabelOrig": "Core 9 C1 Residency",
         "LabelUser": "Core 9 C1 Residency",
         "Unit": "%",
-        "Value": "4,5 %",
-        "ValueMin": "0,3 %",
-        "ValueMax": "97,7 %",
-        "ValueAvg": "1,9 %"
+        "Value": "3,9 %",
+        "ValueMin": "0,4 %",
+        "ValueMax": "97,4 %",
+        "ValueAvg": "22,7 %"
       },
       "4026532610-0-117440566": {
         "SensorType": 7,
@@ -2040,10 +2040,10 @@
         "LabelOrig": "Core 10 C1 Residency",
         "LabelUser": "Core 10 C1 Residency",
         "Unit": "%",
-        "Value": "7,1 %",
+        "Value": "4,2 %",
         "ValueMin": "0,4 %",
-        "ValueMax": "95,0 %",
-        "ValueAvg": "1,5 %"
+        "ValueMax": "94,3 %",
+        "ValueAvg": "20,1 %"
       },
       "4026532610-0-117440567": {
         "SensorType": 7,
@@ -2051,10 +2051,10 @@
         "LabelOrig": "Core 11 C1 Residency",
         "LabelUser": "Core 11 C1 Residency",
         "Unit": "%",
-        "Value": "3,3 %",
-        "ValueMin": "0,2 %",
-        "ValueMax": "97,7 %",
-        "ValueAvg": "2,7 %"
+        "Value": "4,2 %",
+        "ValueMin": "0,1 %",
+        "ValueMax": "95,0 %",
+        "ValueAvg": "12,0 %"
       },
       "4026532610-0-117440568": {
         "SensorType": 7,
@@ -2062,10 +2062,10 @@
         "LabelOrig": "Core 12 C1 Residency",
         "LabelUser": "Core 12 C1 Residency",
         "Unit": "%",
-        "Value": "5,3 %",
-        "ValueMin": "0,4 %",
-        "ValueMax": "96,6 %",
-        "ValueAvg": "1,4 %"
+        "Value": "4,4 %",
+        "ValueMin": "0,5 %",
+        "ValueMax": "92,9 %",
+        "ValueAvg": "17,1 %"
       },
       "4026532610-0-117440569": {
         "SensorType": 7,
@@ -2073,10 +2073,10 @@
         "LabelOrig": "Core 13 C1 Residency",
         "LabelUser": "Core 13 C1 Residency",
         "Unit": "%",
-        "Value": "4,7 %",
+        "Value": "4,6 %",
         "ValueMin": "0,4 %",
-        "ValueMax": "97,7 %",
-        "ValueAvg": "1,7 %"
+        "ValueMax": "97,5 %",
+        "ValueAvg": "14,8 %"
       },
       "4026532610-0-117440570": {
         "SensorType": 7,
@@ -2084,10 +2084,10 @@
         "LabelOrig": "Core 14 C1 Residency",
         "LabelUser": "Core 14 C1 Residency",
         "Unit": "%",
-        "Value": "16,2 %",
+        "Value": "7,6 %",
         "ValueMin": "0,5 %",
-        "ValueMax": "93,8 %",
-        "ValueAvg": "1,9 %"
+        "ValueMax": "96,7 %",
+        "ValueAvg": "26,8 %"
       },
       "4026532610-0-117440571": {
         "SensorType": 7,
@@ -2095,10 +2095,10 @@
         "LabelOrig": "Core 15 C1 Residency",
         "LabelUser": "Core 15 C1 Residency",
         "Unit": "%",
-        "Value": "10,5 %",
-        "ValueMin": "0,4 %",
-        "ValueMax": "97,3 %",
-        "ValueAvg": "2,2 %"
+        "Value": "5,2 %",
+        "ValueMin": "0,5 %",
+        "ValueMax": "96,8 %",
+        "ValueAvg": "22,4 %"
       },
       "4026532610-0-117440636": {
         "SensorType": 7,
@@ -2108,7 +2108,7 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "17,6 %",
+        "ValueMax": "11,5 %",
         "ValueAvg": "0,2 %"
       },
       "4026532610-0-117440637": {
@@ -2119,8 +2119,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "85,1 %",
-        "ValueAvg": "23,6 %"
+        "ValueMax": "48,0 %",
+        "ValueAvg": "0,4 %"
       },
       "4026532610-0-117440638": {
         "SensorType": 7,
@@ -2130,7 +2130,7 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "0,7 %",
+        "ValueMax": "0,2 %",
         "ValueAvg": "0,0 %"
       },
       "4026532610-0-117440639": {
@@ -2141,7 +2141,7 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "0,4 %",
+        "ValueMax": "0,1 %",
         "ValueAvg": "0,0 %"
       },
       "4026532610-0-117440640": {
@@ -2152,8 +2152,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "60,1 %",
-        "ValueAvg": "16,6 %"
+        "ValueMax": "86,6 %",
+        "ValueAvg": "4,6 %"
       },
       "4026532610-0-117440641": {
         "SensorType": 7,
@@ -2161,10 +2161,10 @@
         "LabelOrig": "Core 5 C6 Residency",
         "LabelUser": "Core 5 C6 Residency",
         "Unit": "%",
-        "Value": "5,8 %",
+        "Value": "27,2 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "95,8 %",
-        "ValueAvg": "43,3 %"
+        "ValueMax": "98,7 %",
+        "ValueAvg": "16,9 %"
       },
       "4026532610-0-117440642": {
         "SensorType": 7,
@@ -2174,8 +2174,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "23,3 %",
-        "ValueAvg": "2,1 %"
+        "ValueMax": "37,0 %",
+        "ValueAvg": "1,9 %"
       },
       "4026532610-0-117440643": {
         "SensorType": 7,
@@ -2183,10 +2183,10 @@
         "LabelOrig": "Core 7 C6 Residency",
         "LabelUser": "Core 7 C6 Residency",
         "Unit": "%",
-        "Value": "12,0 %",
+        "Value": "32,5 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "98,6 %",
-        "ValueAvg": "55,1 %"
+        "ValueMax": "99,0 %",
+        "ValueAvg": "25,1 %"
       },
       "4026532610-0-117440644": {
         "SensorType": 7,
@@ -2194,10 +2194,10 @@
         "LabelOrig": "Core 8 C6 Residency",
         "LabelUser": "Core 8 C6 Residency",
         "Unit": "%",
-        "Value": "75,6 %",
+        "Value": "91,2 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "99,3 %",
-        "ValueAvg": "95,8 %"
+        "ValueMax": "99,2 %",
+        "ValueAvg": "59,1 %"
       },
       "4026532610-0-117440645": {
         "SensorType": 7,
@@ -2205,10 +2205,10 @@
         "LabelOrig": "Core 9 C6 Residency",
         "LabelUser": "Core 9 C6 Residency",
         "Unit": "%",
-        "Value": "94,8 %",
+        "Value": "95,1 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "99,5 %",
-        "ValueAvg": "97,5 %"
+        "ValueMax": "99,4 %",
+        "ValueAvg": "73,8 %"
       },
       "4026532610-0-117440646": {
         "SensorType": 7,
@@ -2216,10 +2216,10 @@
         "LabelOrig": "Core 10 C6 Residency",
         "LabelUser": "Core 10 C6 Residency",
         "Unit": "%",
-        "Value": "92,0 %",
-        "ValueMin": "0,1 %",
+        "Value": "94,9 %",
+        "ValueMin": "0,0 %",
         "ValueMax": "99,3 %",
-        "ValueAvg": "97,9 %"
+        "ValueAvg": "75,5 %"
       },
       "4026532610-0-117440647": {
         "SensorType": 7,
@@ -2227,10 +2227,10 @@
         "LabelOrig": "Core 11 C6 Residency",
         "LabelUser": "Core 11 C6 Residency",
         "Unit": "%",
-        "Value": "96,0 %",
+        "Value": "95,2 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "99,6 %",
-        "ValueAvg": "96,7 %"
+        "ValueMax": "99,5 %",
+        "ValueAvg": "85,2 %"
       },
       "4026532610-0-117440648": {
         "SensorType": 7,
@@ -2238,10 +2238,10 @@
         "LabelOrig": "Core 12 C6 Residency",
         "LabelUser": "Core 12 C6 Residency",
         "Unit": "%",
-        "Value": "93,9 %",
-        "ValueMin": "0,1 %",
+        "Value": "94,9 %",
+        "ValueMin": "0,0 %",
         "ValueMax": "99,3 %",
-        "ValueAvg": "98,0 %"
+        "ValueAvg": "79,7 %"
       },
       "4026532610-0-117440649": {
         "SensorType": 7,
@@ -2249,10 +2249,10 @@
         "LabelOrig": "Core 13 C6 Residency",
         "LabelUser": "Core 13 C6 Residency",
         "Unit": "%",
-        "Value": "94,6 %",
+        "Value": "94,8 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "99,4 %",
-        "ValueAvg": "97,7 %"
+        "ValueMax": "99,3 %",
+        "ValueAvg": "82,7 %"
       },
       "4026532610-0-117440650": {
         "SensorType": 7,
@@ -2260,10 +2260,10 @@
         "LabelOrig": "Core 14 C6 Residency",
         "LabelUser": "Core 14 C6 Residency",
         "Unit": "%",
-        "Value": "82,5 %",
+        "Value": "91,5 %",
         "ValueMin": "0,0 %",
         "ValueMax": "99,2 %",
-        "ValueAvg": "97,4 %"
+        "ValueAvg": "67,7 %"
       },
       "4026532610-0-117440651": {
         "SensorType": 7,
@@ -2271,10 +2271,10 @@
         "LabelOrig": "Core 15 C6 Residency",
         "LabelUser": "Core 15 C6 Residency",
         "Unit": "%",
-        "Value": "88,6 %",
+        "Value": "94,1 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "99,2 %",
-        "ValueAvg": "97,2 %"
+        "ValueMax": "99,3 %",
+        "ValueAvg": "73,5 %"
       }
     }
   },
@@ -2290,10 +2290,10 @@
         "LabelOrig": "Memory Clock",
         "LabelUser": "Memory Clock",
         "Unit": "MHz",
-        "Value": "1.979,4 MHz",
-        "ValueMin": "1.979,4 MHz",
-        "ValueMax": "1.979,4 MHz",
-        "ValueAvg": "1.979,4 MHz"
+        "Value": "1.981,2 MHz",
+        "ValueMin": "1.981,2 MHz",
+        "ValueMax": "1.981,2 MHz",
+        "ValueAvg": "1.981,2 MHz"
       },
       "4026532609-1-134217728": {
         "SensorType": 8,
@@ -2397,10 +2397,10 @@
         "LabelOrig": "CPU (Tctl/Tdie)",
         "LabelUser": "CPU (Tctl/Tdie)",
         "Unit": "°C",
-        "Value": "59,6 °C",
-        "ValueMin": "51,2 °C",
-        "ValueMax": "73,1 °C",
-        "ValueAvg": "57,5 °C"
+        "Value": "63,8 °C",
+        "ValueMin": "54,8 °C",
+        "ValueMax": "70,5 °C",
+        "ValueAvg": "61,0 °C"
       },
       "4026533121-0-16777219": {
         "SensorType": 1,
@@ -2408,10 +2408,10 @@
         "LabelOrig": "CPU Die (average)",
         "LabelUser": "CPU Die (average)",
         "Unit": "°C",
-        "Value": "58,4 °C",
-        "ValueMin": "43,3 °C",
-        "ValueMax": "72,9 °C",
-        "ValueAvg": "56,6 °C"
+        "Value": "59,4 °C",
+        "ValueMin": "49,9 °C",
+        "ValueMax": "68,7 °C",
+        "ValueAvg": "58,3 °C"
       },
       "4026533121-0-16777224": {
         "SensorType": 1,
@@ -2419,10 +2419,10 @@
         "LabelOrig": "CPU CCD1 (Tdie)",
         "LabelUser": "CPU CCD1 (Tdie)",
         "Unit": "°C",
-        "Value": "50,8 °C",
+        "Value": "55,0 °C",
         "ValueMin": "33,8 °C",
-        "ValueMax": "71,0 °C",
-        "ValueAvg": "54,9 °C"
+        "ValueMax": "71,8 °C",
+        "ValueAvg": "56,4 °C"
       },
       "4026533121-0-16777225": {
         "SensorType": 1,
@@ -2431,9 +2431,9 @@
         "LabelUser": "CPU CCD2 (Tdie)",
         "Unit": "°C",
         "Value": "36,8 °C",
-        "ValueMin": "31,8 °C",
-        "ValueMax": "56,5 °C",
-        "ValueAvg": "33,9 °C"
+        "ValueMin": "31,2 °C",
+        "ValueMax": "60,0 °C",
+        "ValueAvg": "36,4 °C"
       },
       "4026533121-0-16777344": {
         "SensorType": 1,
@@ -2441,10 +2441,10 @@
         "LabelOrig": "Core0 (CCD1)",
         "LabelUser": "Core0 (CCD1)",
         "Unit": "°C",
-        "Value": "46,0 °C",
-        "ValueMin": "38,8 °C",
-        "ValueMax": "65,7 °C",
-        "ValueAvg": "41,9 °C"
+        "Value": "44,3 °C",
+        "ValueMin": "37,0 °C",
+        "ValueMax": "63,8 °C",
+        "ValueAvg": "47,0 °C"
       },
       "4026533121-0-16777345": {
         "SensorType": 1,
@@ -2452,10 +2452,10 @@
         "LabelOrig": "Core1 (CCD1)",
         "LabelUser": "Core1 (CCD1)",
         "Unit": "°C",
-        "Value": "42,3 °C",
-        "ValueMin": "37,3 °C",
-        "ValueMax": "59,4 °C",
-        "ValueAvg": "40,2 °C"
+        "Value": "44,1 °C",
+        "ValueMin": "35,5 °C",
+        "ValueMax": "59,7 °C",
+        "ValueAvg": "43,0 °C"
       },
       "4026533121-0-16777346": {
         "SensorType": 1,
@@ -2463,10 +2463,10 @@
         "LabelOrig": "Core2 (CCD1)",
         "LabelUser": "Core2 (CCD1)",
         "Unit": "°C",
-        "Value": "55,9 °C",
-        "ValueMin": "42,4 °C",
-        "ValueMax": "72,5 °C",
-        "ValueAvg": "51,5 °C"
+        "Value": "49,7 °C",
+        "ValueMin": "39,8 °C",
+        "ValueMax": "68,4 °C",
+        "ValueAvg": "54,8 °C"
       },
       "4026533121-0-16777347": {
         "SensorType": 1,
@@ -2474,10 +2474,10 @@
         "LabelOrig": "Core3 (CCD1)",
         "LabelUser": "Core3 (CCD1)",
         "Unit": "°C",
-        "Value": "51,0 °C",
-        "ValueMin": "40,4 °C",
-        "ValueMax": "65,4 °C",
-        "ValueAvg": "49,4 °C"
+        "Value": "58,0 °C",
+        "ValueMin": "38,9 °C",
+        "ValueMax": "65,7 °C",
+        "ValueAvg": "53,4 °C"
       },
       "4026533121-0-16777348": {
         "SensorType": 1,
@@ -2485,10 +2485,10 @@
         "LabelOrig": "Core4 (CCD1)",
         "LabelUser": "Core4 (CCD1)",
         "Unit": "°C",
-        "Value": "44,5 °C",
-        "ValueMin": "37,2 °C",
-        "ValueMax": "67,2 °C",
-        "ValueAvg": "41,6 °C"
+        "Value": "43,8 °C",
+        "ValueMin": "33,9 °C",
+        "ValueMax": "61,5 °C",
+        "ValueAvg": "45,1 °C"
       },
       "4026533121-0-16777349": {
         "SensorType": 1,
@@ -2496,10 +2496,10 @@
         "LabelOrig": "Core5 (CCD1)",
         "LabelUser": "Core5 (CCD1)",
         "Unit": "°C",
-        "Value": "42,3 °C",
-        "ValueMin": "34,4 °C",
-        "ValueMax": "58,8 °C",
-        "ValueAvg": "40,5 °C"
+        "Value": "43,9 °C",
+        "ValueMin": "32,5 °C",
+        "ValueMax": "62,0 °C",
+        "ValueAvg": "42,8 °C"
       },
       "4026533121-0-16777350": {
         "SensorType": 1,
@@ -2507,10 +2507,10 @@
         "LabelOrig": "Core6 (CCD1)",
         "LabelUser": "Core6 (CCD1)",
         "Unit": "°C",
-        "Value": "42,9 °C",
-        "ValueMin": "37,6 °C",
-        "ValueMax": "66,4 °C",
-        "ValueAvg": "39,9 °C"
+        "Value": "42,8 °C",
+        "ValueMin": "35,0 °C",
+        "ValueMax": "62,2 °C",
+        "ValueAvg": "44,0 °C"
       },
       "4026533121-0-16777351": {
         "SensorType": 1,
@@ -2518,10 +2518,10 @@
         "LabelOrig": "Core7 (CCD1)",
         "LabelUser": "Core7 (CCD1)",
         "Unit": "°C",
-        "Value": "40,4 °C",
-        "ValueMin": "33,5 °C",
-        "ValueMax": "54,7 °C",
-        "ValueAvg": "38,5 °C"
+        "Value": "41,7 °C",
+        "ValueMin": "31,7 °C",
+        "ValueMax": "59,3 °C",
+        "ValueAvg": "40,5 °C"
       },
       "4026533121-0-16777352": {
         "SensorType": 1,
@@ -2529,10 +2529,10 @@
         "LabelOrig": "Core8 (CCD2)",
         "LabelUser": "Core8 (CCD2)",
         "Unit": "°C",
-        "Value": "34,6 °C",
-        "ValueMin": "32,2 °C",
-        "ValueMax": "47,2 °C",
-        "ValueAvg": "33,1 °C"
+        "Value": "35,8 °C",
+        "ValueMin": "31,4 °C",
+        "ValueMax": "53,9 °C",
+        "ValueAvg": "35,6 °C"
       },
       "4026533121-0-16777353": {
         "SensorType": 1,
@@ -2540,10 +2540,10 @@
         "LabelOrig": "Core9 (CCD2)",
         "LabelUser": "Core9 (CCD2)",
         "Unit": "°C",
-        "Value": "31,7 °C",
-        "ValueMin": "30,0 °C",
-        "ValueMax": "38,5 °C",
-        "ValueAvg": "30,5 °C"
+        "Value": "33,2 °C",
+        "ValueMin": "29,3 °C",
+        "ValueMax": "42,8 °C",
+        "ValueAvg": "32,3 °C"
       },
       "4026533121-0-16777354": {
         "SensorType": 1,
@@ -2551,10 +2551,10 @@
         "LabelOrig": "Core10 (CCD2)",
         "LabelUser": "Core10 (CCD2)",
         "Unit": "°C",
-        "Value": "34,6 °C",
-        "ValueMin": "32,4 °C",
-        "ValueMax": "45,0 °C",
-        "ValueAvg": "33,3 °C"
+        "Value": "36,1 °C",
+        "ValueMin": "31,4 °C",
+        "ValueMax": "52,3 °C",
+        "ValueAvg": "35,4 °C"
       },
       "4026533121-0-16777355": {
         "SensorType": 1,
@@ -2562,10 +2562,10 @@
         "LabelOrig": "Core11 (CCD2)",
         "LabelUser": "Core11 (CCD2)",
         "Unit": "°C",
-        "Value": "31,8 °C",
-        "ValueMin": "30,1 °C",
-        "ValueMax": "57,2 °C",
-        "ValueAvg": "30,6 °C"
+        "Value": "33,3 °C",
+        "ValueMin": "29,3 °C",
+        "ValueMax": "56,5 °C",
+        "ValueAvg": "32,3 °C"
       },
       "4026533121-0-16777356": {
         "SensorType": 1,
@@ -2573,10 +2573,10 @@
         "LabelOrig": "Core12 (CCD2)",
         "LabelUser": "Core12 (CCD2)",
         "Unit": "°C",
-        "Value": "34,4 °C",
-        "ValueMin": "32,2 °C",
-        "ValueMax": "44,3 °C",
-        "ValueAvg": "33,1 °C"
+        "Value": "35,8 °C",
+        "ValueMin": "31,2 °C",
+        "ValueMax": "51,4 °C",
+        "ValueAvg": "35,1 °C"
       },
       "4026533121-0-16777357": {
         "SensorType": 1,
@@ -2584,10 +2584,10 @@
         "LabelOrig": "Core13 (CCD2)",
         "LabelUser": "Core13 (CCD2)",
         "Unit": "°C",
-        "Value": "31,9 °C",
-        "ValueMin": "30,2 °C",
-        "ValueMax": "38,9 °C",
-        "ValueAvg": "30,7 °C"
+        "Value": "33,4 °C",
+        "ValueMin": "29,4 °C",
+        "ValueMax": "45,6 °C",
+        "ValueAvg": "32,4 °C"
       },
       "4026533121-0-16777358": {
         "SensorType": 1,
@@ -2595,10 +2595,10 @@
         "LabelOrig": "Core14 (CCD2)",
         "LabelUser": "Core14 (CCD2)",
         "Unit": "°C",
-        "Value": "34,3 °C",
-        "ValueMin": "32,1 °C",
-        "ValueMax": "45,8 °C",
-        "ValueAvg": "32,8 °C"
+        "Value": "35,5 °C",
+        "ValueMin": "31,0 °C",
+        "ValueMax": "52,7 °C",
+        "ValueAvg": "35,1 °C"
       },
       "4026533121-0-16777359": {
         "SensorType": 1,
@@ -2606,10 +2606,10 @@
         "LabelOrig": "Core15 (CCD2)",
         "LabelUser": "Core15 (CCD2)",
         "Unit": "°C",
-        "Value": "32,1 °C",
-        "ValueMin": "30,3 °C",
-        "ValueMax": "41,1 °C",
-        "ValueAvg": "30,8 °C"
+        "Value": "33,5 °C",
+        "ValueMin": "29,5 °C",
+        "ValueMax": "48,0 °C",
+        "ValueAvg": "32,8 °C"
       },
       "4026533121-0-16777440": {
         "SensorType": 1,
@@ -2617,10 +2617,10 @@
         "LabelOrig": "L3 Cache (CCD1)",
         "LabelUser": "L3 Cache (CCD1)",
         "Unit": "°C",
-        "Value": "38,4 °C",
-        "ValueMin": "35,4 °C",
-        "ValueMax": "43,5 °C",
-        "ValueAvg": "36,5 °C"
+        "Value": "39,5 °C",
+        "ValueMin": "34,5 °C",
+        "ValueMax": "45,1 °C",
+        "ValueAvg": "38,1 °C"
       },
       "4026533121-0-16777441": {
         "SensorType": 1,
@@ -2628,10 +2628,10 @@
         "LabelOrig": "L3 Cache (CCD2)",
         "LabelUser": "L3 Cache (CCD2)",
         "Unit": "°C",
-        "Value": "33,9 °C",
-        "ValueMin": "32,3 °C",
-        "ValueMax": "38,3 °C",
-        "ValueAvg": "32,8 °C"
+        "Value": "35,3 °C",
+        "ValueMin": "31,3 °C",
+        "ValueMax": "41,5 °C",
+        "ValueAvg": "34,0 °C"
       },
       "4026533121-0-16777464": {
         "SensorType": 1,
@@ -2639,10 +2639,10 @@
         "LabelOrig": "CPU IOD Hotspot",
         "LabelUser": "CPU IOD Hotspot",
         "Unit": "°C",
-        "Value": "33,0 °C",
-        "ValueMin": "29,8 °C",
-        "ValueMax": "36,5 °C",
-        "ValueAvg": "32,0 °C"
+        "Value": "34,5 °C",
+        "ValueMin": "29,5 °C",
+        "ValueMax": "39,2 °C",
+        "ValueAvg": "33,4 °C"
       },
       "4026533121-0-16777465": {
         "SensorType": 1,
@@ -2650,10 +2650,10 @@
         "LabelOrig": "CPU IOD Average",
         "LabelUser": "CPU IOD Average",
         "Unit": "°C",
-        "Value": "30,3 °C",
-        "ValueMin": "27,8 °C",
-        "ValueMax": "33,6 °C",
-        "ValueAvg": "29,0 °C"
+        "Value": "32,1 °C",
+        "ValueMin": "27,5 °C",
+        "ValueMax": "36,3 °C",
+        "ValueAvg": "30,3 °C"
       },
       "4026533121-0-33554432": {
         "SensorType": 2,
@@ -2661,10 +2661,10 @@
         "LabelOrig": "CPU Core Voltage (SVI2 TFN)",
         "LabelUser": "CPU Core Voltage (SVI2 TFN)",
         "Unit": "V",
-        "Value": "1,381 V",
-        "ValueMin": "1,331 V",
+        "Value": "1,394 V",
+        "ValueMin": "1,319 V",
         "ValueMax": "1,413 V",
-        "ValueAvg": "1,398 V"
+        "ValueAvg": "1,386 V"
       },
       "4026533121-0-33554433": {
         "SensorType": 2,
@@ -2673,7 +2673,7 @@
         "LabelUser": "SoC Voltage (SVI2 TFN)",
         "Unit": "V",
         "Value": "1,087 V",
-        "ValueMin": "1,087 V",
+        "ValueMin": "1,081 V",
         "ValueMax": "1,087 V",
         "ValueAvg": "1,087 V"
       },
@@ -2683,10 +2683,10 @@
         "LabelOrig": "CPU Core VID (Effective)",
         "LabelUser": "CPU Core VID (Effective)",
         "Unit": "V",
-        "Value": "1,413 V",
-        "ValueMin": "1,381 V",
-        "ValueMax": "1,438 V",
-        "ValueAvg": "1,423 V"
+        "Value": "1,419 V",
+        "ValueMin": "1,369 V",
+        "ValueMax": "1,431 V",
+        "ValueAvg": "1,417 V"
       },
       "4026533121-0-67108864": {
         "SensorType": 4,
@@ -2694,10 +2694,10 @@
         "LabelOrig": "CPU Core Current (SVI2 TFN)",
         "LabelUser": "CPU Core Current (SVI2 TFN)",
         "Unit": "A",
-        "Value": "35,5 A",
-        "ValueMin": "18,1 A",
-        "ValueMax": "73,4 A",
-        "ValueAvg": "31,7 A"
+        "Value": "33,8 A",
+        "ValueMin": "21,9 A",
+        "ValueMax": "90,8 A",
+        "ValueAvg": "38,6 A"
       },
       "4026533121-0-67108865": {
         "SensorType": 4,
@@ -2706,9 +2706,9 @@
         "LabelUser": "SoC Current (SVI2 TFN)",
         "Unit": "A",
         "Value": "12,0 A",
-        "ValueMin": "10,8 A",
-        "ValueMax": "13,9 A",
-        "ValueAvg": "11,1 A"
+        "ValueMin": "11,0 A",
+        "ValueMax": "14,5 A",
+        "ValueAvg": "12,1 A"
       },
       "4026533121-0-67108866": {
         "SensorType": 4,
@@ -2716,10 +2716,10 @@
         "LabelOrig": "CPU TDC",
         "LabelUser": "CPU TDC",
         "Unit": "A",
-        "Value": "35,5 A",
-        "ValueMin": "18,1 A",
-        "ValueMax": "73,5 A",
-        "ValueAvg": "31,7 A"
+        "Value": "33,7 A",
+        "ValueMin": "21,9 A",
+        "ValueMax": "90,7 A",
+        "ValueAvg": "38,6 A"
       },
       "4026533121-0-67108867": {
         "SensorType": 4,
@@ -2727,10 +2727,10 @@
         "LabelOrig": "CPU EDC",
         "LabelUser": "CPU EDC",
         "Unit": "A",
-        "Value": "35,5 A",
-        "ValueMin": "18,1 A",
-        "ValueMax": "118,7 A",
-        "ValueAvg": "31,8 A"
+        "Value": "33,7 A",
+        "ValueMin": "21,9 A",
+        "ValueMax": "159,7 A",
+        "ValueAvg": "43,1 A"
       },
       "4026533121-0-83886080": {
         "SensorType": 5,
@@ -2738,10 +2738,10 @@
         "LabelOrig": "CPU Package Power",
         "LabelUser": "CPU Package Power",
         "Unit": "W",
-        "Value": "78,8 W",
-        "ValueMin": "53,1 W",
-        "ValueMax": "131,3 W",
-        "ValueAvg": "72,3 W"
+        "Value": "76,0 W",
+        "ValueMin": "59,6 W",
+        "ValueMax": "154,3 W",
+        "ValueAvg": "83,1 W"
       },
       "4026533121-0-83886081": {
         "SensorType": 5,
@@ -2749,10 +2749,10 @@
         "LabelOrig": "Core 0 Power",
         "LabelUser": "Core 0 Power",
         "Unit": "W",
-        "Value": "5,0 W",
-        "ValueMin": "2,4 W",
-        "ValueMax": "10,4 W",
-        "ValueAvg": "3,7 W"
+        "Value": "4,1 W",
+        "ValueMin": "2,6 W",
+        "ValueMax": "10,8 W",
+        "ValueAvg": "5,5 W"
       },
       "4026533121-0-83886082": {
         "SensorType": 5,
@@ -2760,10 +2760,10 @@
         "LabelOrig": "Core 1 Power",
         "LabelUser": "Core 1 Power",
         "Unit": "W",
-        "Value": "3,8 W",
-        "ValueMin": "0,5 W",
-        "ValueMax": "9,3 W",
-        "ValueAvg": "2,4 W"
+        "Value": "3,6 W",
+        "ValueMin": "1,4 W",
+        "ValueMax": "9,5 W",
+        "ValueAvg": "3,9 W"
       },
       "4026533121-0-83886083": {
         "SensorType": 5,
@@ -2771,10 +2771,10 @@
         "LabelOrig": "Core 2 Power",
         "LabelUser": "Core 2 Power",
         "Unit": "W",
-        "Value": "9,7 W",
-        "ValueMin": "4,2 W",
-        "ValueMax": "13,0 W",
-        "ValueAvg": "8,6 W"
+        "Value": "6,8 W",
+        "ValueMin": "3,8 W",
+        "ValueMax": "12,8 W",
+        "ValueAvg": "8,9 W"
       },
       "4026533121-0-83886084": {
         "SensorType": 5,
@@ -2782,10 +2782,10 @@
         "LabelOrig": "Core 3 Power",
         "LabelUser": "Core 3 Power",
         "Unit": "W",
-        "Value": "8,2 W",
-        "ValueMin": "3,4 W",
-        "ValueMax": "12,4 W",
-        "ValueAvg": "8,0 W"
+        "Value": "10,2 W",
+        "ValueMin": "3,6 W",
+        "ValueMax": "12,8 W",
+        "ValueAvg": "8,8 W"
       },
       "4026533121-0-83886085": {
         "SensorType": 5,
@@ -2793,10 +2793,10 @@
         "LabelOrig": "Core 4 Power",
         "LabelUser": "Core 4 Power",
         "Unit": "W",
-        "Value": "3,9 W",
-        "ValueMin": "1,0 W",
-        "ValueMax": "10,4 W",
-        "ValueAvg": "2,7 W"
+        "Value": "3,6 W",
+        "ValueMin": "0,5 W",
+        "ValueMax": "9,7 W",
+        "ValueAvg": "4,1 W"
       },
       "4026533121-0-83886086": {
         "SensorType": 5,
@@ -2804,10 +2804,10 @@
         "LabelOrig": "Core 5 Power",
         "LabelUser": "Core 5 Power",
         "Unit": "W",
-        "Value": "3,4 W",
-        "ValueMin": "0,2 W",
-        "ValueMax": "8,8 W",
-        "ValueAvg": "1,8 W"
+        "Value": "2,4 W",
+        "ValueMin": "0,1 W",
+        "ValueMax": "9,2 W",
+        "ValueAvg": "3,2 W"
       },
       "4026533121-0-83886087": {
         "SensorType": 5,
@@ -2815,10 +2815,10 @@
         "LabelOrig": "Core 6 Power",
         "LabelUser": "Core 6 Power",
         "Unit": "W",
-        "Value": "4,2 W",
-        "ValueMin": "2,0 W",
-        "ValueMax": "11,0 W",
-        "ValueAvg": "3,3 W"
+        "Value": "3,7 W",
+        "ValueMin": "1,7 W",
+        "ValueMax": "10,2 W",
+        "ValueAvg": "4,6 W"
       },
       "4026533121-0-83886088": {
         "SensorType": 5,
@@ -2826,10 +2826,10 @@
         "LabelOrig": "Core 7 Power",
         "LabelUser": "Core 7 Power",
         "Unit": "W",
-        "Value": "3,3 W",
+        "Value": "2,5 W",
         "ValueMin": "0,1 W",
-        "ValueMax": "7,6 W",
-        "ValueAvg": "1,4 W"
+        "ValueMax": "8,8 W",
+        "ValueAvg": "2,8 W"
       },
       "4026533121-0-83886089": {
         "SensorType": 5,
@@ -2837,10 +2837,10 @@
         "LabelOrig": "Core 8 Power",
         "LabelUser": "Core 8 Power",
         "Unit": "W",
-        "Value": "0,4 W",
+        "Value": "0,2 W",
         "ValueMin": "0,0 W",
-        "ValueMax": "5,0 W",
-        "ValueAvg": "0,1 W"
+        "ValueMax": "7,2 W",
+        "ValueAvg": "0,9 W"
       },
       "4026533121-0-83886090": {
         "SensorType": 5,
@@ -2850,8 +2850,8 @@
         "Unit": "W",
         "Value": "0,1 W",
         "ValueMin": "0,0 W",
-        "ValueMax": "2,1 W",
-        "ValueAvg": "0,1 W"
+        "ValueMax": "4,1 W",
+        "ValueAvg": "0,5 W"
       },
       "4026533121-0-83886091": {
         "SensorType": 5,
@@ -2859,10 +2859,10 @@
         "LabelOrig": "Core 10 Power",
         "LabelUser": "Core 10 Power",
         "Unit": "W",
-        "Value": "0,2 W",
+        "Value": "0,1 W",
         "ValueMin": "0,0 W",
-        "ValueMax": "2,8 W",
-        "ValueAvg": "0,1 W"
+        "ValueMax": "5,6 W",
+        "ValueAvg": "0,5 W"
       },
       "4026533121-0-83886092": {
         "SensorType": 5,
@@ -2873,7 +2873,7 @@
         "Value": "0,1 W",
         "ValueMin": "0,0 W",
         "ValueMax": "9,1 W",
-        "ValueAvg": "0,1 W"
+        "ValueAvg": "0,3 W"
       },
       "4026533121-0-83886093": {
         "SensorType": 5,
@@ -2883,8 +2883,8 @@
         "Unit": "W",
         "Value": "0,1 W",
         "ValueMin": "0,0 W",
-        "ValueMax": "2,5 W",
-        "ValueAvg": "0,1 W"
+        "ValueMax": "5,1 W",
+        "ValueAvg": "0,4 W"
       },
       "4026533121-0-83886094": {
         "SensorType": 5,
@@ -2894,8 +2894,8 @@
         "Unit": "W",
         "Value": "0,1 W",
         "ValueMin": "0,0 W",
-        "ValueMax": "2,1 W",
-        "ValueAvg": "0,1 W"
+        "ValueMax": "4,4 W",
+        "ValueAvg": "0,4 W"
       },
       "4026533121-0-83886095": {
         "SensorType": 5,
@@ -2903,10 +2903,10 @@
         "LabelOrig": "Core 14 Power",
         "LabelUser": "Core 14 Power",
         "Unit": "W",
-        "Value": "0,3 W",
+        "Value": "0,2 W",
         "ValueMin": "0,0 W",
-        "ValueMax": "4,0 W",
-        "ValueAvg": "0,1 W"
+        "ValueMax": "6,5 W",
+        "ValueAvg": "0,7 W"
       },
       "4026533121-0-83886096": {
         "SensorType": 5,
@@ -2914,10 +2914,10 @@
         "LabelOrig": "Core 15 Power",
         "LabelUser": "Core 15 Power",
         "Unit": "W",
-        "Value": "0,2 W",
+        "Value": "0,1 W",
         "ValueMin": "0,0 W",
-        "ValueMax": "3,0 W",
-        "ValueAvg": "0,1 W"
+        "ValueMax": "5,8 W",
+        "ValueAvg": "0,6 W"
       },
       "4026533121-0-83886097": {
         "SensorType": 5,
@@ -2925,10 +2925,10 @@
         "LabelOrig": "CPU Core Power (SVI2 TFN)",
         "LabelUser": "CPU Core Power (SVI2 TFN)",
         "Unit": "W",
-        "Value": "49,5 W",
-        "ValueMin": "24,4 W",
-        "ValueMax": "98,6 W",
-        "ValueAvg": "44,3 W"
+        "Value": "47,0 W",
+        "ValueMin": "30,7 W",
+        "ValueMax": "120,9 W",
+        "ValueAvg": "53,3 W"
       },
       "4026533121-0-83886098": {
         "SensorType": 5,
@@ -2937,9 +2937,9 @@
         "LabelUser": "CPU SoC Power (SVI2 TFN)",
         "Unit": "W",
         "Value": "13,0 W",
-        "ValueMin": "11,7 W",
-        "ValueMax": "15,1 W",
-        "ValueAvg": "12,0 W"
+        "ValueMin": "12,0 W",
+        "ValueMax": "15,8 W",
+        "ValueAvg": "13,2 W"
       },
       "4026533121-0-83886099": {
         "SensorType": 5,
@@ -2947,10 +2947,10 @@
         "LabelOrig": "Core+SoC Power (SVI2 TFN)",
         "LabelUser": "Core+SoC Power (SVI2 TFN)",
         "Unit": "W",
-        "Value": "76,6 W",
-        "ValueMin": "36,7 W",
-        "ValueMax": "150,7 W",
-        "ValueAvg": "63,6 W"
+        "Value": "66,0 W",
+        "ValueMin": "37,6 W",
+        "ValueMax": "165,5 W",
+        "ValueAvg": "74,2 W"
       },
       "4026533121-0-83886100": {
         "SensorType": 5,
@@ -2958,10 +2958,10 @@
         "LabelOrig": "CPU PPT",
         "LabelUser": "CPU PPT",
         "Unit": "W",
-        "Value": "76,9 W",
-        "ValueMin": "51,9 W",
-        "ValueMax": "128,1 W",
-        "ValueAvg": "70,5 W"
+        "Value": "74,2 W",
+        "ValueMin": "58,2 W",
+        "ValueMax": "150,5 W",
+        "ValueAvg": "81,1 W"
       },
       "4026533121-0-100663296": {
         "SensorType": 6,
@@ -2991,10 +2991,10 @@
         "LabelOrig": "L3 Cache (CCD1)",
         "LabelUser": "L3 Cache (CCD1)",
         "Unit": "MHz",
-        "Value": "4.683,6 MHz",
-        "ValueMin": "4.294,3 MHz",
-        "ValueMax": "4.718,4 MHz",
-        "ValueAvg": "4.693,3 MHz"
+        "Value": "4.674,0 MHz",
+        "ValueMin": "4.435,4 MHz",
+        "ValueMax": "4.750,9 MHz",
+        "ValueAvg": "4.616,9 MHz"
       },
       "4026533121-0-100663301": {
         "SensorType": 6,
@@ -3002,10 +3002,10 @@
         "LabelOrig": "L3 Cache (CCD2)",
         "LabelUser": "L3 Cache (CCD2)",
         "Unit": "MHz",
-        "Value": "3.654,1 MHz",
-        "ValueMin": "3.602,8 MHz",
-        "ValueMax": "4.475,6 MHz",
-        "ValueAvg": "3.615,3 MHz"
+        "Value": "3.627,1 MHz",
+        "ValueMin": "3.604,6 MHz",
+        "ValueMax": "4.546,5 MHz",
+        "ValueAvg": "3.730,3 MHz"
       },
       "4026533121-0-100663333": {
         "SensorType": 6,
@@ -3013,10 +3013,10 @@
         "LabelOrig": "Frequency Limit - Global",
         "LabelUser": "Frequency Limit - Global",
         "Unit": "MHz",
-        "Value": "4.683,4 MHz",
-        "ValueMin": "4.482,3 MHz",
-        "ValueMax": "4.892,3 MHz",
-        "ValueAvg": "4.708,2 MHz"
+        "Value": "4.674,1 MHz",
+        "ValueMin": "4.458,4 MHz",
+        "ValueMax": "4.802,2 MHz",
+        "ValueAvg": "4.681,0 MHz"
       },
       "4026533121-0-117440512": {
         "SensorType": 7,
@@ -3024,10 +3024,10 @@
         "LabelOrig": "CPU PPT Limit",
         "LabelUser": "CPU PPT Limit",
         "Unit": "%",
-        "Value": "19,5 %",
-        "ValueMin": "13,1 %",
-        "ValueMax": "32,4 %",
-        "ValueAvg": "17,9 %"
+        "Value": "18,8 %",
+        "ValueMin": "14,7 %",
+        "ValueMax": "38,1 %",
+        "ValueAvg": "20,5 %"
       },
       "4026533121-0-117440513": {
         "SensorType": 7,
@@ -3035,10 +3035,10 @@
         "LabelOrig": "CPU TDC Limit",
         "LabelUser": "CPU TDC Limit",
         "Unit": "%",
-        "Value": "13,9 %",
-        "ValueMin": "7,1 %",
-        "ValueMax": "28,8 %",
-        "ValueAvg": "12,4 %"
+        "Value": "13,2 %",
+        "ValueMin": "8,6 %",
+        "ValueMax": "35,6 %",
+        "ValueAvg": "15,1 %"
       },
       "4026533121-0-117440514": {
         "SensorType": 7,
@@ -3046,10 +3046,10 @@
         "LabelOrig": "CPU EDC Limit",
         "LabelUser": "CPU EDC Limit",
         "Unit": "%",
-        "Value": "17,8 %",
-        "ValueMin": "9,0 %",
-        "ValueMax": "59,3 %",
-        "ValueAvg": "15,9 %"
+        "Value": "16,9 %",
+        "ValueMin": "10,9 %",
+        "ValueMax": "79,9 %",
+        "ValueAvg": "21,6 %"
       },
       "4026533121-0-117440532": {
         "SensorType": 7,
@@ -3057,10 +3057,10 @@
         "LabelOrig": "Power Reporting Deviation (Accuracy)",
         "LabelUser": "Power Reporting Deviation (Accuracy)",
         "Unit": "%",
-        "Value": "117,1 %",
-        "ValueMin": "101,3 %",
-        "ValueMax": "163,6 %",
-        "ValueAvg": "139,1 %"
+        "Value": "125,6 %",
+        "ValueMin": "93,4 %",
+        "ValueMax": "146,8 %",
+        "ValueAvg": "120,0 %"
       },
       "4026533121-0-134217728": {
         "SensorType": 8,
@@ -3101,10 +3101,10 @@
         "LabelOrig": "DRAM Read Bandwidth",
         "LabelUser": "DRAM Read Bandwidth",
         "Unit": "Gbps",
-        "Value": "0,943126916885376 Gbps",
-        "ValueMin": "0,10990647971630096 Gbps",
-        "ValueMax": "8,672017097473145 Gbps",
-        "ValueAvg": "0,23132094870203945 Gbps"
+        "Value": "0,4614591598510742 Gbps",
+        "ValueMin": "0,11669378727674484 Gbps",
+        "ValueMax": "13,96054458618164 Gbps",
+        "ValueAvg": "2,31776005257749 Gbps"
       },
       "4026533121-0-134217736": {
         "SensorType": 8,
@@ -3112,10 +3112,10 @@
         "LabelOrig": "DRAM Write Bandwidth",
         "LabelUser": "DRAM Write Bandwidth",
         "Unit": "Gbps",
-        "Value": "0,19688338041305542 Gbps",
-        "ValueMin": "0,015353750437498093 Gbps",
-        "ValueMax": "3,1163837909698486 Gbps",
-        "ValueAvg": "0,052007154911671086 Gbps"
+        "Value": "0,10660319030284882 Gbps",
+        "ValueMin": "0,015393819659948349 Gbps",
+        "ValueMax": "6,475088119506836 Gbps",
+        "ValueAvg": "0,7326946289806314 Gbps"
       },
       "4026533121-0-134217739": {
         "SensorType": 8,
@@ -3123,10 +3123,10 @@
         "LabelOrig": "Average Active Core Count",
         "LabelUser": "Average Active Core Count",
         "Unit": "",
-        "Value": "2,4954288005828857",
-        "ValueMin": "0,869209349155426",
-        "ValueMax": "9,492974281311035",
-        "ValueAvg": "1,9697737012339316"
+        "Value": "2,04018497467041",
+        "ValueMin": "1,1273994445800781",
+        "ValueMax": "12,779318809509277",
+        "ValueAvg": "3,2056428259942287"
       }
     }
   },
@@ -3142,10 +3142,10 @@
         "LabelOrig": "Motherboard",
         "LabelUser": "Motherboard",
         "Unit": "°C",
-        "Value": "41,0 °C",
-        "ValueMin": "40,0 °C",
-        "ValueMax": "45,0 °C",
-        "ValueAvg": "40,3 °C"
+        "Value": "44,0 °C",
+        "ValueMin": "39,0 °C",
+        "ValueMax": "49,0 °C",
+        "ValueAvg": "41,9 °C"
       },
       "4144396672-0-16777223": {
         "SensorType": 1,
@@ -3153,10 +3153,10 @@
         "LabelOrig": "CPU Package",
         "LabelUser": "CPU Package",
         "Unit": "°C",
-        "Value": "59,0 °C",
-        "ValueMin": "50,0 °C",
-        "ValueMax": "73,0 °C",
-        "ValueAvg": "57,1 °C"
+        "Value": "63,0 °C",
+        "ValueMin": "54,0 °C",
+        "ValueMax": "70,0 °C",
+        "ValueAvg": "60,5 °C"
       },
       "4144396672-0-16777224": {
         "SensorType": 1,
@@ -3164,10 +3164,10 @@
         "LabelOrig": "CPU",
         "LabelUser": "CPU",
         "Unit": "°C",
-        "Value": "48,0 °C",
-        "ValueMin": "39,0 °C",
-        "ValueMax": "61,0 °C",
-        "ValueAvg": "46,1 °C"
+        "Value": "53,0 °C",
+        "ValueMin": "43,0 °C",
+        "ValueMax": "59,0 °C",
+        "ValueAvg": "49,6 °C"
       },
       "4144396672-0-16777225": {
         "SensorType": 1,
@@ -3186,10 +3186,10 @@
         "LabelOrig": "TSI0 (CPU)",
         "LabelUser": "TSI0 (CPU)",
         "Unit": "°C",
-        "Value": "59,0 °C",
-        "ValueMin": "50,0 °C",
-        "ValueMax": "73,0 °C",
-        "ValueAvg": "57,1 °C"
+        "Value": "63,0 °C",
+        "ValueMin": "54,0 °C",
+        "ValueMax": "70,0 °C",
+        "ValueAvg": "60,5 °C"
       },
       "4144396672-0-16777229": {
         "SensorType": 1,
@@ -3197,10 +3197,10 @@
         "LabelOrig": "TSI1 (PCH)",
         "LabelUser": "TSI1 (PCH)",
         "Unit": "°C",
-        "Value": "61,0 °C",
-        "ValueMin": "61,0 °C",
-        "ValueMax": "63,0 °C",
-        "ValueAvg": "61,2 °C"
+        "Value": "63,0 °C",
+        "ValueMin": "59,0 °C",
+        "ValueMax": "65,0 °C",
+        "ValueAvg": "62,0 °C"
       },
       "4144396672-0-33554432": {
         "SensorType": 2,
@@ -3209,9 +3209,9 @@
         "LabelUser": "Vcore",
         "Unit": "V",
         "Value": "1,392 V",
-        "ValueMin": "0,984 V",
-        "ValueMax": "1,408 V",
-        "ValueAvg": "1,394 V"
+        "ValueMin": "1,000 V",
+        "ValueMax": "1,400 V",
+        "ValueAvg": "1,370 V"
       },
       "4144396672-0-33554433": {
         "SensorType": 2,
@@ -3222,7 +3222,7 @@
         "Value": "5,040 V",
         "ValueMin": "5,000 V",
         "ValueMax": "5,040 V",
-        "ValueAvg": "5,038 V"
+        "ValueAvg": "5,033 V"
       },
       "4144396672-0-33554434": {
         "SensorType": 2,
@@ -3244,7 +3244,7 @@
         "Value": "3,360 V",
         "ValueMin": "3,344 V",
         "ValueMax": "3,360 V",
-        "ValueAvg": "3,360 V"
+        "ValueAvg": "3,359 V"
       },
       "4144396672-0-33554436": {
         "SensorType": 2,
@@ -3255,7 +3255,7 @@
         "Value": "12,040 V",
         "ValueMin": "11,984 V",
         "ValueMax": "12,096 V",
-        "ValueAvg": "12,040 V"
+        "ValueAvg": "12,039 V"
       },
       "4144396672-0-33554437": {
         "SensorType": 2,
@@ -3276,7 +3276,7 @@
         "Unit": "V",
         "Value": "1,080 V",
         "ValueMin": "1,072 V",
-        "ValueMax": "1,088 V",
+        "ValueMax": "1,080 V",
         "ValueAvg": "1,080 V"
       },
       "4144396672-0-33554439": {
@@ -3296,10 +3296,10 @@
         "LabelOrig": "VBAT",
         "LabelUser": "VBAT",
         "Unit": "V",
-        "Value": "3,360 V",
+        "Value": "3,344 V",
         "ValueMin": "3,344 V",
         "ValueMax": "3,360 V",
-        "ValueAvg": "3,345 V"
+        "ValueAvg": "3,351 V"
       },
       "4144396672-0-33554441": {
         "SensorType": 2,
@@ -3318,10 +3318,10 @@
         "LabelOrig": "VIN6",
         "LabelUser": "VIN6",
         "Unit": "V",
-        "Value": "0,176 V",
+        "Value": "0,192 V",
         "ValueMin": "0,176 V",
         "ValueMax": "0,192 V",
-        "ValueAvg": "0,176 V"
+        "ValueAvg": "0,177 V"
       },
       "4144396672-0-33554444": {
         "SensorType": 2,
@@ -3331,7 +3331,7 @@
         "Unit": "V",
         "Value": "1,843 V",
         "ValueMin": "1,843 V",
-        "ValueMax": "1,858 V",
+        "ValueMax": "1,843 V",
         "ValueAvg": "1,843 V"
       },
       "4144396672-0-33554445": {
@@ -3362,10 +3362,10 @@
         "LabelOrig": "VIN9",
         "LabelUser": "VIN9",
         "Unit": "V",
-        "Value": "0,728 V",
-        "ValueMin": "0,672 V",
+        "Value": "0,680 V",
+        "ValueMin": "0,608 V",
         "ValueMax": "0,752 V",
-        "ValueAvg": "0,744 V"
+        "ValueAvg": "0,715 V"
       },
       "4144396672-0-33554448": {
         "SensorType": 2,
@@ -3373,7 +3373,7 @@
         "LabelOrig": "VHIF",
         "LabelUser": "VHIF",
         "Unit": "V",
-        "Value": "3,424 V",
+        "Value": "3,408 V",
         "ValueMin": "3,408 V",
         "ValueMax": "3,424 V",
         "ValueAvg": "3,409 V"
@@ -3384,10 +3384,10 @@
         "LabelOrig": "CPU",
         "LabelUser": "CPU",
         "Unit": "RPM",
-        "Value": "2.410 RPM",
-        "ValueMin": "2.393 RPM",
-        "ValueMax": "2.436 RPM",
-        "ValueAvg": "2.416 RPM"
+        "Value": "2.415 RPM",
+        "ValueMin": "2.397 RPM",
+        "ValueMax": "2.441 RPM",
+        "ValueAvg": "2.417 RPM"
       }
     }
   },
@@ -3403,10 +3403,10 @@
         "LabelOrig": "Chipset",
         "LabelUser": "Chipset",
         "Unit": "°C",
-        "Value": "61,8 °C",
-        "ValueMin": "61,4 °C",
-        "ValueMax": "63,5 °C",
-        "ValueAvg": "61,7 °C"
+        "Value": "63,2 °C",
+        "ValueMin": "59,8 °C",
+        "ValueMax": "65,0 °C",
+        "ValueAvg": "62,3 °C"
       }
     }
   },
@@ -3422,10 +3422,10 @@
         "LabelOrig": "VRM",
         "LabelUser": "VRM",
         "Unit": "°C",
-        "Value": "46,0 °C",
+        "Value": "47,0 °C",
         "ValueMin": "44,0 °C",
-        "ValueMax": "48,0 °C",
-        "ValueAvg": "45,1 °C"
+        "ValueMax": "50,0 °C",
+        "ValueAvg": "45,9 °C"
       },
       "4041999618-0-16777217": {
         "SensorType": 1,
@@ -3433,10 +3433,10 @@
         "LabelOrig": "Chipset",
         "LabelUser": "Chipset",
         "Unit": "°C",
-        "Value": "61,0 °C",
-        "ValueMin": "61,0 °C",
-        "ValueMax": "63,0 °C",
-        "ValueAvg": "61,2 °C"
+        "Value": "63,0 °C",
+        "ValueMin": "59,0 °C",
+        "ValueMax": "65,0 °C",
+        "ValueAvg": "62,0 °C"
       },
       "4041999618-0-33554432": {
         "SensorType": 2,
@@ -3444,7 +3444,7 @@
         "LabelOrig": "1.00V SB Voltage",
         "LabelUser": "1.00V SB Voltage",
         "Unit": "V",
-        "Value": "1,001 V",
+        "Value": "1,007 V",
         "ValueMin": "0,998 V",
         "ValueMax": "1,010 V",
         "ValueAvg": "1,005 V"
@@ -3455,9 +3455,9 @@
         "LabelOrig": "COV/VRM HS Fan",
         "LabelUser": "COV/VRM HS Fan",
         "Unit": "RPM",
-        "Value": "4.138 RPM",
-        "ValueMin": "4.117 RPM",
-        "ValueMax": "4.192 RPM",
+        "Value": "4.185 RPM",
+        "ValueMin": "4.110 RPM",
+        "ValueMax": "4.206 RPM",
         "ValueAvg": "4.149 RPM"
       },
       "4041999618-0-50331650": {
@@ -3466,10 +3466,10 @@
         "LabelOrig": "Chipset Fan",
         "LabelUser": "Chipset Fan",
         "Unit": "RPM",
-        "Value": "3.991 RPM",
-        "ValueMin": "3.943 RPM",
-        "ValueMax": "4.054 RPM",
-        "ValueAvg": "3.989 RPM"
+        "Value": "4.054 RPM",
+        "ValueMin": "3.936 RPM",
+        "ValueMax": "4.103 RPM",
+        "ValueAvg": "3.996 RPM"
       },
       "4041999618-0-67108864": {
         "SensorType": 4,
@@ -3477,10 +3477,10 @@
         "LabelOrig": "CPU Core Current",
         "LabelUser": "CPU Core Current",
         "Unit": "A",
-        "Value": "41,0 A",
+        "Value": "31,0 A",
         "ValueMin": "4,0 A",
-        "ValueMax": "102,0 A",
-        "ValueAvg": "32,3 A"
+        "ValueMax": "107,0 A",
+        "ValueAvg": "39,0 A"
       },
       "4041999618-0-83886080": {
         "SensorType": 5,
@@ -3488,10 +3488,10 @@
         "LabelOrig": "CPU Core Power",
         "LabelUser": "CPU Core Power",
         "Unit": "W",
-        "Value": "57,1 W",
-        "ValueMin": "4,0 W",
-        "ValueMax": "133,8 W",
-        "ValueAvg": "45,0 W"
+        "Value": "43,2 W",
+        "ValueMin": "4,1 W",
+        "ValueMax": "146,4 W",
+        "ValueAvg": "53,6 W"
       }
     }
   },
@@ -3507,10 +3507,10 @@
         "LabelOrig": "DIMM[0] Temperature (BANK 0/DIMM_A1)",
         "LabelUser": "DIMM[0] Temperature (BANK 0/DIMM_A1)",
         "Unit": "°C",
-        "Value": "36,5 °C",
-        "ValueMin": "36,0 °C",
-        "ValueMax": "38,0 °C",
-        "ValueAvg": "36,2 °C"
+        "Value": "38,2 °C",
+        "ValueMin": "35,8 °C",
+        "ValueMax": "40,8 °C",
+        "ValueAvg": "37,2 °C"
       },
       "4076863490-0-16777218": {
         "SensorType": 1,
@@ -3518,10 +3518,10 @@
         "LabelOrig": "DIMM[2] Temperature (BANK 2/DIMM_B1)",
         "LabelUser": "DIMM[2] Temperature (BANK 2/DIMM_B1)",
         "Unit": "°C",
-        "Value": "34,8 °C",
+        "Value": "36,2 °C",
         "ValueMin": "34,2 °C",
-        "ValueMax": "36,2 °C",
-        "ValueAvg": "34,4 °C"
+        "ValueMax": "38,8 °C",
+        "ValueAvg": "35,4 °C"
       }
     }
   },
@@ -3537,10 +3537,10 @@
         "LabelOrig": "Drive Temperature",
         "LabelUser": "Drive Temperature",
         "Unit": "°C",
-        "Value": "37,0 °C",
-        "ValueMin": "35,0 °C",
-        "ValueMax": "40,0 °C",
-        "ValueAvg": "36,2 °C"
+        "Value": "39,0 °C",
+        "ValueMin": "36,0 °C",
+        "ValueMax": "41,0 °C",
+        "ValueAvg": "37,2 °C"
       },
       "4026532096-0-117440512": {
         "SensorType": 7,
@@ -3581,10 +3581,10 @@
         "LabelOrig": "Total Host Writes",
         "LabelUser": "Total Host Writes",
         "Unit": "GB",
-        "Value": "13.218 GB",
-        "ValueMin": "13.213 GB",
-        "ValueMax": "13.218 GB",
-        "ValueAvg": "13.217 GB"
+        "Value": "13.248 GB",
+        "ValueMin": "13.241 GB",
+        "ValueMax": "13.248 GB",
+        "ValueAvg": "13.244 GB"
       },
       "4026532096-0-134217732": {
         "SensorType": 8,
@@ -3592,10 +3592,10 @@
         "LabelOrig": "Total Host Reads",
         "LabelUser": "Total Host Reads",
         "Unit": "GB",
-        "Value": "22.500 GB",
-        "ValueMin": "22.486 GB",
-        "ValueMax": "22.500 GB",
-        "ValueAvg": "22.496 GB"
+        "Value": "22.544 GB",
+        "ValueMin": "22.530 GB",
+        "ValueMax": "22.544 GB",
+        "ValueAvg": "22.540 GB"
       }
     }
   },
@@ -3611,10 +3611,10 @@
         "LabelOrig": "Read Activity",
         "LabelUser": "Read Activity",
         "Unit": "%",
-        "Value": "5,7 %",
+        "Value": "0,0 %",
         "ValueMin": "0,0 %",
         "ValueMax": "100,0 %",
-        "ValueAvg": "2,0 %"
+        "ValueAvg": "4,2 %"
       },
       "4026532097-0-117440513": {
         "SensorType": 7,
@@ -3622,10 +3622,10 @@
         "LabelOrig": "Write Activity",
         "LabelUser": "Write Activity",
         "Unit": "%",
-        "Value": "10,5 %",
+        "Value": "5,2 %",
         "ValueMin": "0,0 %",
         "ValueMax": "100,0 %",
-        "ValueAvg": "6,9 %"
+        "ValueAvg": "13,5 %"
       },
       "4026532097-0-117440514": {
         "SensorType": 7,
@@ -3633,10 +3633,10 @@
         "LabelOrig": "Total Activity",
         "LabelUser": "Total Activity",
         "Unit": "%",
-        "Value": "16,2 %",
+        "Value": "5,2 %",
         "ValueMin": "0,0 %",
         "ValueMax": "100,0 %",
-        "ValueAvg": "8,7 %"
+        "ValueAvg": "17,5 %"
       },
       "4026532097-0-134217728": {
         "SensorType": 8,
@@ -3644,10 +3644,10 @@
         "LabelOrig": "Read Rate",
         "LabelUser": "Read Rate",
         "Unit": "MB/s",
-        "Value": "3,550 MB/s",
+        "Value": "0,064 MB/s",
         "ValueMin": "0,000 MB/s",
-        "ValueMax": "363,688 MB/s",
-        "ValueAvg": "0,840 MB/s"
+        "ValueMax": "388,657 MB/s",
+        "ValueAvg": "2,085 MB/s"
       },
       "4026532097-0-134217729": {
         "SensorType": 8,
@@ -3655,10 +3655,10 @@
         "LabelOrig": "Write Rate",
         "LabelUser": "Write Rate",
         "Unit": "MB/s",
-        "Value": "1,068 MB/s",
+        "Value": "0,620 MB/s",
         "ValueMin": "0,000 MB/s",
-        "ValueMax": "57,748 MB/s",
-        "ValueAvg": "0,291 MB/s"
+        "ValueMax": "120,138 MB/s",
+        "ValueAvg": "0,953 MB/s"
       },
       "4026532097-0-134217730": {
         "SensorType": 8,
@@ -3666,10 +3666,10 @@
         "LabelOrig": "Read Total",
         "LabelUser": "Read Total",
         "Unit": "MB",
-        "Value": "16.830 MB",
-        "ValueMin": "2.230 MB",
-        "ValueMax": "16.830 MB",
-        "ValueAvg": "13.315 MB"
+        "Value": "17.267 MB",
+        "ValueMin": "2.432 MB",
+        "ValueMax": "17.267 MB",
+        "ValueAvg": "13.281 MB"
       },
       "4026532097-0-134217731": {
         "SensorType": 8,
@@ -3677,10 +3677,10 @@
         "LabelOrig": "Write Total",
         "LabelUser": "Write Total",
         "Unit": "MB",
-        "Value": "5.346 MB",
-        "ValueMin": "295 MB",
-        "ValueMax": "5.346 MB",
-        "ValueAvg": "3.920 MB"
+        "Value": "7.018 MB",
+        "ValueMin": "253 MB",
+        "ValueMax": "7.018 MB",
+        "ValueAvg": "3.909 MB"
       }
     }
   },
@@ -3696,10 +3696,10 @@
         "LabelOrig": "GPU Temperature",
         "LabelUser": "GPU Temperature",
         "Unit": "°C",
-        "Value": "60,2 °C",
-        "ValueMin": "51,9 °C",
-        "ValueMax": "65,3 °C",
-        "ValueAvg": "53,8 °C"
+        "Value": "53,1 °C",
+        "ValueMin": "52,0 °C",
+        "ValueMax": "78,5 °C",
+        "ValueAvg": "59,9 °C"
       },
       "3758104576-0-16777220": {
         "SensorType": 1,
@@ -3707,10 +3707,10 @@
         "LabelOrig": "GPU Memory Junction Temperature",
         "LabelUser": "GPU Memory Junction Temperature",
         "Unit": "°C",
-        "Value": "64,0 °C",
-        "ValueMin": "52,0 °C",
-        "ValueMax": "74,0 °C",
-        "ValueAvg": "55,6 °C"
+        "Value": "56,0 °C",
+        "ValueMin": "54,0 °C",
+        "ValueMax": "86,0 °C",
+        "ValueAvg": "62,6 °C"
       },
       "3758104576-0-16777221": {
         "SensorType": 1,
@@ -3718,10 +3718,10 @@
         "LabelOrig": "GPU Hot Spot Temperature",
         "LabelUser": "GPU Hot Spot Temperature",
         "Unit": "°C",
-        "Value": "66,3 °C",
-        "ValueMin": "57,3 °C",
-        "ValueMax": "72,9 °C",
-        "ValueAvg": "59,4 °C"
+        "Value": "59,1 °C",
+        "ValueMin": "58,0 °C",
+        "ValueMax": "85,3 °C",
+        "ValueAvg": "65,9 °C"
       },
       "3758104576-0-33554432": {
         "SensorType": 2,
@@ -3729,10 +3729,10 @@
         "LabelOrig": "GPU Core Voltage",
         "LabelUser": "GPU Core Voltage",
         "Unit": "V",
-        "Value": "0,744 V",
-        "ValueMin": "0,000 V",
-        "ValueMax": "0,900 V",
-        "ValueAvg": "0,751 V"
+        "Value": "0,750 V",
+        "ValueMin": "0,738 V",
+        "ValueMax": "1,081 V",
+        "ValueAvg": "0,765 V"
       },
       "3758104576-0-33554437": {
         "SensorType": 2,
@@ -3740,10 +3740,10 @@
         "LabelOrig": "GPU PCIe +12V Input Voltage",
         "LabelUser": "GPU PCIe +12V Input Voltage",
         "Unit": "V",
-        "Value": "12,216 V",
-        "ValueMin": "12,149 V",
-        "ValueMax": "12,240 V",
-        "ValueAvg": "12,220 V"
+        "Value": "12,238 V",
+        "ValueMin": "12,059 V",
+        "ValueMax": "12,256 V",
+        "ValueAvg": "12,227 V"
       },
       "3758104576-0-33554438": {
         "SensorType": 2,
@@ -3751,10 +3751,10 @@
         "LabelOrig": "GPU 8-pin #1 Input Voltage",
         "LabelUser": "GPU 8-pin #1 Input Voltage",
         "Unit": "V",
-        "Value": "12,227 V",
-        "ValueMin": "12,201 V",
-        "ValueMax": "12,248 V",
-        "ValueAvg": "12,236 V"
+        "Value": "12,245 V",
+        "ValueMin": "12,130 V",
+        "ValueMax": "12,254 V",
+        "ValueAvg": "12,243 V"
       },
       "3758104576-0-33554439": {
         "SensorType": 2,
@@ -3762,10 +3762,10 @@
         "LabelOrig": "GPU 8-pin #2 Input Voltage",
         "LabelUser": "GPU 8-pin #2 Input Voltage",
         "Unit": "V",
-        "Value": "12,251 V",
-        "ValueMin": "12,228 V",
-        "ValueMax": "12,265 V",
-        "ValueAvg": "12,255 V"
+        "Value": "12,258 V",
+        "ValueMin": "12,152 V",
+        "ValueMax": "12,261 V",
+        "ValueAvg": "12,256 V"
       },
       "3758104576-0-33554440": {
         "SensorType": 2,
@@ -3773,10 +3773,10 @@
         "LabelOrig": "GPU Misc0 Input Voltage",
         "LabelUser": "GPU Misc0 Input Voltage",
         "Unit": "V",
-        "Value": "12,107 V",
-        "ValueMin": "11,956 V",
-        "ValueMax": "12,136 V",
-        "ValueAvg": "12,119 V"
+        "Value": "12,065 V",
+        "ValueMin": "11,838 V",
+        "ValueMax": "12,101 V",
+        "ValueAvg": "12,066 V"
       },
       "3758104576-0-33554441": {
         "SensorType": 2,
@@ -3784,10 +3784,10 @@
         "LabelOrig": "GPU Misc1 Input Voltage",
         "LabelUser": "GPU Misc1 Input Voltage",
         "Unit": "V",
-        "Value": "12,154 V",
-        "ValueMin": "12,092 V",
-        "ValueMax": "12,187 V",
-        "ValueAvg": "12,171 V"
+        "Value": "12,166 V",
+        "ValueMin": "11,960 V",
+        "ValueMax": "12,204 V",
+        "ValueAvg": "12,167 V"
       },
       "3758104576-0-33554442": {
         "SensorType": 2,
@@ -3795,10 +3795,10 @@
         "LabelOrig": "GPU Misc2 Input Voltage",
         "LabelUser": "GPU Misc2 Input Voltage",
         "Unit": "V",
-        "Value": "12,147 V",
-        "ValueMin": "12,085 V",
-        "ValueMax": "12,175 V",
-        "ValueAvg": "12,158 V"
+        "Value": "12,153 V",
+        "ValueMin": "11,936 V",
+        "ValueMax": "12,191 V",
+        "ValueAvg": "12,156 V"
       },
       "3758104576-0-33554453": {
         "SensorType": 2,
@@ -3806,10 +3806,10 @@
         "LabelOrig": "GPU SRAM Output Voltage",
         "LabelUser": "GPU SRAM Output Voltage",
         "Unit": "V",
-        "Value": "0,769 V",
-        "ValueMin": "0,769 V",
-        "ValueMax": "0,912 V",
-        "ValueAvg": "0,776 V"
+        "Value": "0,775 V",
+        "ValueMin": "0,762 V",
+        "ValueMax": "1,081 V",
+        "ValueAvg": "0,788 V"
       },
       "3758104576-0-50331648": {
         "SensorType": 3,
@@ -3817,10 +3817,10 @@
         "LabelOrig": "GPU Fan1",
         "LabelUser": "GPU Fan1",
         "Unit": "RPM",
-        "Value": "482 RPM",
+        "Value": "0 RPM",
         "ValueMin": "0 RPM",
-        "ValueMax": "1.273 RPM",
-        "ValueAvg": "32 RPM"
+        "ValueMax": "1.927 RPM",
+        "ValueAvg": "220 RPM"
       },
       "3758104576-0-50331649": {
         "SensorType": 3,
@@ -3828,10 +3828,10 @@
         "LabelOrig": "GPU Fan2",
         "LabelUser": "GPU Fan2",
         "Unit": "RPM",
-        "Value": "483 RPM",
+        "Value": "0 RPM",
         "ValueMin": "0 RPM",
-        "ValueMax": "1.275 RPM",
-        "ValueAvg": "32 RPM"
+        "ValueMax": "1.928 RPM",
+        "ValueAvg": "219 RPM"
       },
       "3758104576-0-83886080": {
         "SensorType": 5,
@@ -3839,10 +3839,10 @@
         "LabelOrig": "GPU Power",
         "LabelUser": "GPU Power",
         "Unit": "W",
-        "Value": "50,3 W",
-        "ValueMin": "21,2 W",
-        "ValueMax": "124,1 W",
-        "ValueAvg": "30,4 W"
+        "Value": "37,7 W",
+        "ValueMin": "27,3 W",
+        "ValueMax": "347,6 W",
+        "ValueAvg": "55,4 W"
       },
       "3758104576-0-83886082": {
         "SensorType": 5,
@@ -3850,10 +3850,10 @@
         "LabelOrig": "GPU Core (NVVDD) Input Power (sum)",
         "LabelUser": "GPU Core (NVVDD) Input Power (sum)",
         "Unit": "W",
-        "Value": "14,3 W",
-        "ValueMin": "6,8 W",
-        "ValueMax": "28,2 W",
-        "ValueAvg": "9,6 W"
+        "Value": "9,8 W",
+        "ValueMin": "9,6 W",
+        "ValueMax": "191,3 W",
+        "ValueAvg": "16,6 W"
       },
       "3758104576-0-83886083": {
         "SensorType": 5,
@@ -3861,10 +3861,10 @@
         "LabelOrig": "GPU SRAM Input Power (sum)",
         "LabelUser": "GPU SRAM Input Power (sum)",
         "Unit": "W",
-        "Value": "8,9 W",
+        "Value": "5,4 W",
         "ValueMin": "4,8 W",
-        "ValueMax": "19,1 W",
-        "ValueAvg": "5,6 W"
+        "ValueMax": "54,5 W",
+        "ValueAvg": "7,9 W"
       },
       "3758104576-0-83886085": {
         "SensorType": 5,
@@ -3872,10 +3872,10 @@
         "LabelOrig": "GPU PCIe +12V Input Power",
         "LabelUser": "GPU PCIe +12V Input Power",
         "Unit": "W",
-        "Value": "8,6 W",
-        "ValueMin": "2,4 W",
-        "ValueMax": "27,3 W",
-        "ValueAvg": "3,8 W"
+        "Value": "5,5 W",
+        "ValueMin": "2,7 W",
+        "ValueMax": "64,6 W",
+        "ValueAvg": "9,4 W"
       },
       "3758104576-0-83886086": {
         "SensorType": 5,
@@ -3883,10 +3883,10 @@
         "LabelOrig": "GPU 8-pin #1 Input Power",
         "LabelUser": "GPU 8-pin #1 Input Power",
         "Unit": "W",
-        "Value": "22,4 W",
-        "ValueMin": "12,2 W",
-        "ValueMax": "54,1 W",
-        "ValueAvg": "14,4 W"
+        "Value": "17,5 W",
+        "ValueMin": "13,1 W",
+        "ValueMax": "137,4 W",
+        "ValueAvg": "24,1 W"
       },
       "3758104576-0-83886087": {
         "SensorType": 5,
@@ -3894,10 +3894,10 @@
         "LabelOrig": "GPU 8-pin #2 Input Power",
         "LabelUser": "GPU 8-pin #2 Input Power",
         "Unit": "W",
-        "Value": "19,2 W",
-        "ValueMin": "9,9 W",
-        "ValueMax": "45,0 W",
-        "ValueAvg": "12,2 W"
+        "Value": "14,7 W",
+        "ValueMin": "11,2 W",
+        "ValueMax": "153,8 W",
+        "ValueAvg": "21,8 W"
       },
       "3758104576-0-83886088": {
         "SensorType": 5,
@@ -3905,10 +3905,10 @@
         "LabelOrig": "GPU Misc0 Input Power",
         "LabelUser": "GPU Misc0 Input Power",
         "Unit": "W",
-        "Value": "4,3 W",
-        "ValueMin": "1,9 W",
-        "ValueMax": "9,2 W",
-        "ValueAvg": "2,6 W"
+        "Value": "2,4 W",
+        "ValueMin": "2,4 W",
+        "ValueMax": "66,7 W",
+        "ValueAvg": "4,9 W"
       },
       "3758104576-0-83886089": {
         "SensorType": 5,
@@ -3916,10 +3916,10 @@
         "LabelOrig": "GPU Misc1 Input Power",
         "LabelUser": "GPU Misc1 Input Power",
         "Unit": "W",
-        "Value": "4,4 W",
+        "Value": "2,7 W",
         "ValueMin": "2,4 W",
-        "ValueMax": "9,5 W",
-        "ValueAvg": "2,8 W"
+        "ValueMax": "27,3 W",
+        "ValueAvg": "4,0 W"
       },
       "3758104576-0-83886090": {
         "SensorType": 5,
@@ -3927,10 +3927,10 @@
         "LabelOrig": "GPU Misc2 Input Power",
         "LabelUser": "GPU Misc2 Input Power",
         "Unit": "W",
-        "Value": "8,6 W",
-        "ValueMin": "4,1 W",
-        "ValueMax": "16,2 W",
-        "ValueAvg": "6,0 W"
+        "Value": "6,4 W",
+        "ValueMin": "6,2 W",
+        "ValueMax": "106,0 W",
+        "ValueAvg": "10,1 W"
       },
       "3758104576-0-83886092": {
         "SensorType": 5,
@@ -3938,10 +3938,10 @@
         "LabelOrig": "GPU Core (NVVDD2) Input Power (sum)",
         "LabelUser": "GPU Core (NVVDD2) Input Power (sum)",
         "Unit": "W",
-        "Value": "23,2 W",
-        "ValueMin": "12,3 W",
-        "ValueMax": "47,0 W",
-        "ValueAvg": "15,2 W"
+        "Value": "15,2 W",
+        "ValueMin": "14,5 W",
+        "ValueMax": "242,5 W",
+        "ValueAvg": "24,6 W"
       },
       "3758104576-0-83886093": {
         "SensorType": 5,
@@ -3949,10 +3949,10 @@
         "LabelOrig": "GPU Input PP Source Power (sum)",
         "LabelUser": "GPU Input PP Source Power (sum)",
         "Unit": "W",
-        "Value": "27,1 W",
-        "ValueMin": "11,7 W",
-        "ValueMax": "79,3 W",
-        "ValueAvg": "15,2 W"
+        "Value": "22,6 W",
+        "ValueMin": "12,4 W",
+        "ValueMax": "116,8 W",
+        "ValueAvg": "30,6 W"
       },
       "3758104576-0-83886096": {
         "SensorType": 5,
@@ -3960,10 +3960,10 @@
         "LabelOrig": "GPU HV0 Input Power (sum)",
         "LabelUser": "GPU HV0 Input Power (sum)",
         "Unit": "W",
-        "Value": "41,6 W",
-        "ValueMin": "22,1 W",
-        "ValueMax": "97,9 W",
-        "ValueAvg": "26,6 W"
+        "Value": "32,2 W",
+        "ValueMin": "24,4 W",
+        "ValueMax": "290,4 W",
+        "ValueAvg": "45,8 W"
       },
       "3758104576-0-83886098": {
         "SensorType": 5,
@@ -3971,10 +3971,10 @@
         "LabelOrig": "GPU Core (NVVDD) Output Power (sum)",
         "LabelUser": "GPU Core (NVVDD) Output Power (sum)",
         "Unit": "W",
-        "Value": "19,4 W",
-        "ValueMin": "11,5 W",
-        "ValueMax": "28,8 W",
-        "ValueAvg": "12,8 W"
+        "Value": "13,6 W",
+        "ValueMin": "13,2 W",
+        "ValueMax": "231,5 W",
+        "ValueAvg": "21,0 W"
       },
       "3758104576-0-83886099": {
         "SensorType": 5,
@@ -3982,10 +3982,10 @@
         "LabelOrig": "GPU Core (NVVDD) Output Power",
         "LabelUser": "GPU Core (NVVDD) Output Power",
         "Unit": "W",
-        "Value": "2,7 W",
+        "Value": "2,3 W",
         "ValueMin": "2,2 W",
-        "ValueMax": "10,5 W",
-        "ValueAvg": "2,3 W"
+        "ValueMax": "88,4 W",
+        "ValueAvg": "3,9 W"
       },
       "3758104576-0-83886100": {
         "SensorType": 5,
@@ -3993,10 +3993,10 @@
         "LabelOrig": "GPU Core (NVVDD) Output Power",
         "LabelUser": "GPU Core (NVVDD) Output Power",
         "Unit": "W",
-        "Value": "13,0 W",
-        "ValueMin": "8,7 W",
-        "ValueMax": "16,8 W",
-        "ValueAvg": "9,5 W"
+        "Value": "9,2 W",
+        "ValueMin": "8,9 W",
+        "ValueMax": "178,8 W",
+        "ValueAvg": "14,8 W"
       },
       "3758104576-0-83886101": {
         "SensorType": 5,
@@ -4004,10 +4004,10 @@
         "LabelOrig": "GPU SRAM Output Power",
         "LabelUser": "GPU SRAM Output Power",
         "Unit": "W",
-        "Value": "6,4 W",
-        "ValueMin": "2,8 W",
-        "ValueMax": "12,0 W",
-        "ValueAvg": "3,3 W"
+        "Value": "4,4 W",
+        "ValueMin": "3,2 W",
+        "ValueMax": "52,7 W",
+        "ValueAvg": "6,2 W"
       },
       "3758104576-0-100663296": {
         "SensorType": 6,
@@ -4015,10 +4015,10 @@
         "LabelOrig": "GPU Clock",
         "LabelUser": "GPU Clock",
         "Unit": "MHz",
-        "Value": "810,0 MHz",
+        "Value": "210,0 MHz",
         "ValueMin": "210,0 MHz",
-        "ValueMax": "1.725,0 MHz",
-        "ValueAvg": "288,1 MHz"
+        "ValueMax": "1.935,0 MHz",
+        "ValueAvg": "427,1 MHz"
       },
       "3758104576-0-100663300": {
         "SensorType": 6,
@@ -4026,10 +4026,10 @@
         "LabelOrig": "GPU Memory Clock",
         "LabelUser": "GPU Memory Clock",
         "Unit": "MHz",
-        "Value": "202,5 MHz",
+        "Value": "101,2 MHz",
         "ValueMin": "101,2 MHz",
         "ValueMax": "2.375,5 MHz",
-        "ValueAvg": "157,3 MHz"
+        "ValueAvg": "380,4 MHz"
       },
       "3758104576-0-100663301": {
         "SensorType": 6,
@@ -4037,10 +4037,10 @@
         "LabelOrig": "GPU Video Clock",
         "LabelUser": "GPU Video Clock",
         "Unit": "MHz",
-        "Value": "930,0 MHz",
+        "Value": "555,0 MHz",
         "ValueMin": "555,0 MHz",
-        "ValueMax": "1.515,0 MHz",
-        "ValueAvg": "584,9 MHz"
+        "ValueMax": "1.695,0 MHz",
+        "ValueAvg": "693,0 MHz"
       },
       "3758104576-0-100663302": {
         "SensorType": 6,
@@ -4048,10 +4048,10 @@
         "LabelOrig": "GPU Effective Clock",
         "LabelUser": "GPU Effective Clock",
         "Unit": "MHz",
-        "Value": "810,0 MHz",
-        "ValueMin": "13,2 MHz",
-        "ValueMax": "1.724,9 MHz",
-        "ValueAvg": "134,3 MHz"
+        "Value": "233,6 MHz",
+        "ValueMin": "25,0 MHz",
+        "ValueMax": "1.912,3 MHz",
+        "ValueAvg": "442,0 MHz"
       },
       "3758104576-0-117440512": {
         "SensorType": 7,
@@ -4059,10 +4059,10 @@
         "LabelOrig": "GPU Core Load",
         "LabelUser": "GPU Core Load",
         "Unit": "%",
-        "Value": "25,0 %",
+        "Value": "1,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "70,0 %",
-        "ValueAvg": "2,6 %"
+        "ValueMax": "99,0 %",
+        "ValueAvg": "9,4 %"
       },
       "3758104576-0-117440513": {
         "SensorType": 7,
@@ -4070,10 +4070,10 @@
         "LabelOrig": "GPU Memory Controller Load",
         "LabelUser": "GPU Memory Controller Load",
         "Unit": "%",
-        "Value": "24,0 %",
+        "Value": "9,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "55,0 %",
-        "ValueAvg": "2,5 %"
+        "ValueMax": "71,0 %",
+        "ValueAvg": "10,3 %"
       },
       "3758104576-0-117440514": {
         "SensorType": 7,
@@ -4081,10 +4081,10 @@
         "LabelOrig": "GPU Video Engine Load",
         "LabelUser": "GPU Video Engine Load",
         "Unit": "%",
-        "Value": "40,0 %",
+        "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "93,0 %",
-        "ValueAvg": "5,9 %"
+        "ValueMax": "88,0 %",
+        "ValueAvg": "4,3 %"
       },
       "3758104576-0-117440515": {
         "SensorType": 7,
@@ -4094,8 +4094,8 @@
         "Unit": "%",
         "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "4,0 %",
-        "ValueAvg": "0,0 %"
+        "ValueMax": "7,0 %",
+        "ValueAvg": "0,1 %"
       },
       "3758104576-0-117440520": {
         "SensorType": 7,
@@ -4103,10 +4103,10 @@
         "LabelOrig": "GPU Memory Usage",
         "LabelUser": "GPU Memory Usage",
         "Unit": "%",
-        "Value": "10,0 %",
-        "ValueMin": "3,8 %",
-        "ValueMax": "14,0 %",
-        "ValueAvg": "7,3 %"
+        "Value": "10,4 %",
+        "ValueMin": "3,7 %",
+        "ValueMax": "89,7 %",
+        "ValueAvg": "12,5 %"
       },
       "3758104576-0-117440521": {
         "SensorType": 7,
@@ -4114,10 +4114,10 @@
         "LabelOrig": "GPU D3D Usage",
         "LabelUser": "GPU D3D Usage",
         "Unit": "%",
-        "Value": "18,4 %",
+        "Value": "0,2 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "21,4 %",
-        "ValueAvg": "1,6 %"
+        "ValueMax": "99,5 %",
+        "ValueAvg": "5,6 %"
       },
       "3758104576-0-117440522": {
         "SensorType": 7,
@@ -4125,10 +4125,10 @@
         "LabelOrig": "GPU Video Decode 0 Usage",
         "LabelUser": "GPU Video Decode 0 Usage",
         "Unit": "%",
-        "Value": "41,6 %",
+        "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "65,5 %",
-        "ValueAvg": "5,9 %"
+        "ValueMax": "64,8 %",
+        "ValueAvg": "4,3 %"
       },
       "3758104576-0-117440532": {
         "SensorType": 7,
@@ -4158,10 +4158,10 @@
         "LabelOrig": "GPU Fan1",
         "LabelUser": "GPU Fan1",
         "Unit": "%",
-        "Value": "14,0 %",
+        "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "38,0 %",
-        "ValueAvg": "1,1 %"
+        "ValueMax": "58,0 %",
+        "ValueAvg": "7,7 %"
       },
       "3758104576-0-134217729": {
         "SensorType": 8,
@@ -4169,10 +4169,10 @@
         "LabelOrig": "GPU Fan2",
         "LabelUser": "GPU Fan2",
         "Unit": "%",
-        "Value": "14,0 %",
+        "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "38,0 %",
-        "ValueAvg": "1,1 %"
+        "ValueMax": "58,0 %",
+        "ValueAvg": "7,7 %"
       },
       "3758104576-0-134217738": {
         "SensorType": 8,
@@ -4182,8 +4182,8 @@
         "Unit": "Yes/No",
         "Value": "No",
         "ValueMin": "No",
-        "ValueMax": "No",
-        "ValueAvg": "No"
+        "ValueMax": "Yes",
+        "ValueAvg": "Yes"
       },
       "3758104576-0-134217739": {
         "SensorType": 8,
@@ -4204,8 +4204,8 @@
         "Unit": "Yes/No",
         "Value": "No",
         "ValueMin": "No",
-        "ValueMax": "No",
-        "ValueAvg": "No"
+        "ValueMax": "Yes",
+        "ValueAvg": "Yes"
       },
       "3758104576-0-134217741": {
         "SensorType": 8,
@@ -4215,8 +4215,8 @@
         "Unit": "Yes/No",
         "Value": "No",
         "ValueMin": "No",
-        "ValueMax": "No",
-        "ValueAvg": "No"
+        "ValueMax": "Yes",
+        "ValueAvg": "Yes"
       },
       "3758104576-0-134217742": {
         "SensorType": 8,
@@ -4225,7 +4225,7 @@
         "LabelUser": "Performance Limit - Utilization",
         "Unit": "Yes/No",
         "Value": "Yes",
-        "ValueMin": "Yes",
+        "ValueMin": "No",
         "ValueMax": "Yes",
         "ValueAvg": "Yes"
       },
@@ -4246,10 +4246,10 @@
         "LabelOrig": "Total GPU Power (normalized) [% of TDP]",
         "LabelUser": "Total GPU Power (normalized) [% of TDP]",
         "Unit": "%",
-        "Value": "14,4 %",
-        "ValueMin": "7,6 %",
-        "ValueMax": "37,0 %",
-        "ValueAvg": "9,5 %"
+        "Value": "10,8 %",
+        "ValueMin": "8,0 %",
+        "ValueMax": "120,5 %",
+        "ValueAvg": "15,9 %"
       },
       "3758104576-0-134217979": {
         "SensorType": 8,
@@ -4257,10 +4257,10 @@
         "LabelOrig": "Total GPU Power [% of TDP]",
         "LabelUser": "Total GPU Power [% of TDP]",
         "Unit": "%",
-        "Value": "14,4 %",
-        "ValueMin": "7,1 %",
-        "ValueMax": "35,8 %",
-        "ValueAvg": "8,7 %"
+        "Value": "10,8 %",
+        "ValueMin": "7,7 %",
+        "ValueMax": "101,4 %",
+        "ValueAvg": "15,8 %"
       },
       "3758104576-0-134217980": {
         "SensorType": 8,
@@ -4268,10 +4268,10 @@
         "LabelOrig": "GPU Memory Allocated",
         "LabelUser": "GPU Memory Allocated",
         "Unit": "MB",
-        "Value": "1.223 MB",
-        "ValueMin": "469 MB",
-        "ValueMax": "1.723 MB",
-        "ValueAvg": "891 MB"
+        "Value": "1.280 MB",
+        "ValueMin": "454 MB",
+        "ValueMax": "10.939 MB",
+        "ValueAvg": "1.532 MB"
       },
       "3758104576-0-134217981": {
         "SensorType": 8,
@@ -4279,10 +4279,10 @@
         "LabelOrig": "GPU D3D Memory Dedicated",
         "LabelUser": "GPU D3D Memory Dedicated",
         "Unit": "MB",
-        "Value": "1.050 MB",
-        "ValueMin": "294 MB",
-        "ValueMax": "1.550 MB",
-        "ValueAvg": "718 MB"
+        "Value": "1.107 MB",
+        "ValueMin": "279 MB",
+        "ValueMax": "10.889 MB",
+        "ValueAvg": "1.359 MB"
       },
       "3758104576-0-134217982": {
         "SensorType": 8,
@@ -4290,10 +4290,10 @@
         "LabelOrig": "GPU D3D Memory Dynamic",
         "LabelUser": "GPU D3D Memory Dynamic",
         "Unit": "MB",
-        "Value": "152 MB",
-        "ValueMin": "58 MB",
-        "ValueMax": "236 MB",
-        "ValueAvg": "82 MB"
+        "Value": "119 MB",
+        "ValueMin": "70 MB",
+        "ValueMax": "220 MB",
+        "ValueAvg": "114 MB"
       },
       "3758104576-0-134217983": {
         "SensorType": 8,
@@ -4301,10 +4301,10 @@
         "LabelOrig": "PCIe Link Speed",
         "LabelUser": "PCIe Link Speed",
         "Unit": "GT/s",
-        "Value": "5,0 GT/s",
+        "Value": "2,5 GT/s",
         "ValueMin": "2,5 GT/s",
         "ValueMax": "16,0 GT/s",
-        "ValueAvg": "3,1 GT/s"
+        "ValueAvg": "4,4 GT/s"
       }
     }
   },
@@ -4320,10 +4320,10 @@
         "LabelOrig": "GPU Right Fan",
         "LabelUser": "GPU Right Fan",
         "Unit": "RPM",
-        "Value": "456 RPM",
+        "Value": "0 RPM",
         "ValueMin": "0 RPM",
-        "ValueMax": "1.278 RPM",
-        "ValueAvg": "28 RPM"
+        "ValueMax": "1.932 RPM",
+        "ValueAvg": "204 RPM"
       },
       "3758105091-17-134217728": {
         "SensorType": 8,
@@ -4331,14 +4331,44 @@
         "LabelOrig": "GPU Right Fan PWM",
         "LabelUser": "GPU Right Fan PWM",
         "Unit": "%",
-        "Value": "13,0 %",
+        "Value": "0,0 %",
         "ValueMin": "0,0 %",
-        "ValueMax": "38,0 %",
-        "ValueAvg": "0,8 %"
+        "ValueMax": "58,0 %",
+        "ValueAvg": "6,0 %"
       }
     }
   },
   "13": {
+    "SensorId": 4027535360,
+    "SensorInstance": 0,
+    "SensorNameOrig": "RTSS",
+    "SensorNameUser": "RTSS",
+    "Elements": {
+      "4027535360-0-134217728": {
+        "SensorType": 8,
+        "ElementId": 134217728,
+        "LabelOrig": "Framerate",
+        "LabelUser": "Framerate",
+        "Unit": "FPS",
+        "Value": "0 FPS",
+        "ValueMin": "0 FPS",
+        "ValueMax": "121 FPS",
+        "ValueAvg": "20 FPS"
+      },
+      "4027535360-0-134217731": {
+        "SensorType": 8,
+        "ElementId": 134217731,
+        "LabelOrig": "Frame Time",
+        "LabelUser": "Frame Time",
+        "Unit": "ms",
+        "Value": "11,99 ms",
+        "ValueMin": "0 ms",
+        "ValueMax": "375154,009 ms",
+        "ValueAvg": "1837,8259558359564 ms"
+      }
+    }
+  },
+  "14": {
     "SensorId": 4026591744,
     "SensorInstance": 0,
     "SensorNameOrig": "Network: Intel Wi-Fi 6 AX200 160MHz",
@@ -4390,7 +4420,7 @@
       }
     }
   },
-  "14": {
+  "15": {
     "SensorId": 4026591744,
     "SensorInstance": 1,
     "SensorNameOrig": "Network: Intel I211AT Copper (Pearsonville) Network Adapter",
@@ -4402,10 +4432,10 @@
         "LabelOrig": "Total DL",
         "LabelUser": "Total DL",
         "Unit": "MB",
-        "Value": "114 MB",
-        "ValueMin": "0 MB",
-        "ValueMax": "114 MB",
-        "ValueAvg": "68 MB"
+        "Value": "2.793 MB",
+        "ValueMin": "1 MB",
+        "ValueMax": "2.793 MB",
+        "ValueAvg": "1.945 MB"
       },
       "4026591744-1-134217729": {
         "SensorType": 8,
@@ -4413,10 +4443,10 @@
         "LabelOrig": "Total UP",
         "LabelUser": "Total UP",
         "Unit": "MB",
-        "Value": "36 MB",
+        "Value": "68 MB",
         "ValueMin": "0 MB",
-        "ValueMax": "36 MB",
-        "ValueAvg": "29 MB"
+        "ValueMax": "68 MB",
+        "ValueAvg": "32 MB"
       },
       "4026591744-1-134217730": {
         "SensorType": 8,
@@ -4424,10 +4454,10 @@
         "LabelOrig": "Current DL rate",
         "LabelUser": "Current DL rate",
         "Unit": "KB/s",
-        "Value": "0,672 KB/s",
+        "Value": "1,007 KB/s",
         "ValueMin": "0,000 KB/s",
-        "ValueMax": "7.569,401 KB/s",
-        "ValueAvg": "6,424 KB/s"
+        "ValueMax": "39.354,140 KB/s",
+        "ValueAvg": "384,984 KB/s"
       },
       "4026591744-1-134217731": {
         "SensorType": 8,
@@ -4435,14 +4465,14 @@
         "LabelOrig": "Current UP rate",
         "LabelUser": "Current UP rate",
         "Unit": "KB/s",
-        "Value": "0,646 KB/s",
+        "Value": "0,274 KB/s",
         "ValueMin": "0,000 KB/s",
-        "ValueMax": "1.337,230 KB/s",
-        "ValueAvg": "2,027 KB/s"
+        "ValueMax": "1.005,552 KB/s",
+        "ValueAvg": "9,363 KB/s"
       }
     }
   },
-  "15": {
+  "16": {
     "SensorId": 4026535584,
     "SensorInstance": 0,
     "SensorNameOrig": "Windows Hardware Errors (WHEA)",

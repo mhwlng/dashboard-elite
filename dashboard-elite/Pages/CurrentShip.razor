@@ -42,7 +42,7 @@
                     {
                         <tr>
                             <td class="nowrap">In System</td>
-                            <td class="data">@currentShip.StarSystem</td>
+                            <td class="data"><NavLink class="system-link" @onclick="() => Clipboard(currentShip.StarSystem)" >@currentShip.StarSystem</NavLink></td>
                         </tr>
                     }
                     @if (onFoot && currentShip.Distance > 0)

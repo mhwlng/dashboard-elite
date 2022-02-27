@@ -30,6 +30,26 @@ td.spacer {
     white-space: nowrap;
 }
 
+.system-link {
+    color: #FFB000;
+    white-space: nowrap;
+    text-decoration: underline;
+}
+
+.system-link:hover {
+    cursor:pointer
+}
+
+.system-link:not(:active) {
+    transition: all 1000ms step-end;
+    transition-property: background-color, color;
+}
+
+.system-link:active {
+    background: yellow;
+    color: black;
+}
+
 .datawrap {
     color: #FFB000;
     line-height: normal !important;

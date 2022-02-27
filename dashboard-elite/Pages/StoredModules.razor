@@ -34,7 +34,7 @@
         {
             <tr>
                 <td class="nowrap">In System</td>
-                <td class="data">@storedModuleLocation.StarSystem</td>
+                <td class="data"><NavLink class="system-link" @onclick="() => Clipboard(storedModuleLocation.StarSystem)" >@storedModuleLocation.StarSystem</NavLink></td>
             </tr>
         }
         @if (storedModuleLocation.Distance > 0)

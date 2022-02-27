@@ -153,7 +153,7 @@
             }
                 <tr>
                     <td class="nowrap">In System</td>
-                    <td class="data">@Data.LocationData.StarSystem</td>
+                    <td class="data"><NavLink class="system-link" @onclick="() => Clipboard(Data.LocationData.StarSystem)" >@Data.LocationData.StarSystem</NavLink></td>
                 </tr>
 
                 @if (!string.IsNullOrEmpty(Data.LocationData.SystemSecurity))

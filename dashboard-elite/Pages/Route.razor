@@ -102,7 +102,7 @@
                     <tbody>
                         <tr>
                             <td class="nowrap" style="width:50%">Jump #@jumpCount</td>
-                            <td class="data">@m.StarSystem</td>
+                            <td class="data"><NavLink class="system-link" @onclick="() => Clipboard(m.StarSystem)" >@m.StarSystem</NavLink></td>
                         </tr>
                         @if (m.Distance > 0)
                         {

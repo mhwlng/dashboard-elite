@@ -4,6 +4,7 @@ using dashboard_elite.EliteData;
 using dashboard_elite.Helpers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
+using TextCopy;
 
 namespace dashboard_elite.Shared
 {
@@ -91,6 +92,12 @@ namespace dashboard_elite.Shared
             {
                 await hubConnection.DisposeAsync();
             }
+        }
+
+
+        public async Task Clipboard(string system)
+        {
+            await ClipboardService.SetTextAsync(system);
         }
 
     }
