@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -47,7 +48,12 @@ namespace dashboard_elite.ImportData
 
             if (File.Exists(path))
             {
-                var serializer = new JsonSerializer();
+                var serializer = new JsonSerializer
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    DefaultValueHandling = DefaultValueHandling.Ignore
+                };
+
                 using (var s = File.Open(path, FileMode.Open))
                 {
                     using (var sr = new StreamReader(s))
@@ -75,7 +81,11 @@ namespace dashboard_elite.ImportData
 
             if (!File.Exists(path))
             {
-                var serializer = new JsonSerializer();
+                var serializer = new JsonSerializer
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    DefaultValueHandling = DefaultValueHandling.Ignore
+                };
 
                 using (var sw = new StreamWriter(File.Open(path, FileMode.Create)))
                 {
@@ -83,7 +93,7 @@ namespace dashboard_elite.ImportData
 
                     //Program.WebClient.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
                     //Program.WebClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Encoding", "gzip, deflate");
-
+                    
                     using var response = await Program.WebClient.GetAsync(url);
                     using var stream = await response.Content.ReadAsStreamAsync();
                     if (gzip)
@@ -210,7 +220,8 @@ namespace dashboard_elite.ImportData
 
             var serializer = new JsonSerializer
             {
-                NullValueHandling = NullValueHandling.Ignore
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Ignore
             };
 
             using (var sw = new StreamWriter(path))
@@ -248,12 +259,15 @@ namespace dashboard_elite.ImportData
         public class CNBSystemData
         {
             [JsonProperty("x")]
+            [DefaultValue(0)]
             public double X { get; set; }
 
             [JsonProperty("y")]
+            [DefaultValue(0)]
             public double Y { get; set; }
 
             [JsonProperty("z")]
+            [DefaultValue(0)]
             public double Z { get; set; }
 
             [JsonProperty("beac")]
@@ -266,7 +280,8 @@ namespace dashboard_elite.ImportData
             public string SystemSecurity { get; set; }
 
             [JsonProperty("systempopulation")]
-            public long? SystemPopulation { get; set; }
+            [DefaultValue(0)]
+            public long SystemPopulation { get; set; }
 
             [JsonProperty("powerplaystate")]
             public string PowerplayState { get; set; }
@@ -324,7 +339,8 @@ namespace dashboard_elite.ImportData
 
             var serializer = new JsonSerializer
             {
-                NullValueHandling = NullValueHandling.Ignore
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Ignore
             };
 
             using (var sw = new StreamWriter(fullPath))
@@ -397,7 +413,8 @@ namespace dashboard_elite.ImportData
 
             var serializer = new JsonSerializer
             {
-                NullValueHandling = NullValueHandling.Ignore
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Ignore
             };
 
             using (var sw = new StreamWriter(fullPath))
@@ -413,7 +430,8 @@ namespace dashboard_elite.ImportData
 
             var serializer = new JsonSerializer
             {
-                NullValueHandling = NullValueHandling.Ignore
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Ignore
             };
 
             using (var sw = new StreamWriter(fullPath))
@@ -547,7 +565,7 @@ namespace dashboard_elite.ImportData
                 Type = x.StationEDSM?.Type,
 
                 SystemSecurity = x.StationEDSM?.PopulatedSystemEDDB?.Security,
-                SystemPopulation = x.StationEDSM?.PopulatedSystemEDDB?.Population,
+                SystemPopulation = x.StationEDSM?.PopulatedSystemEDDB?.Population ?? 0,
 
                 PowerplayState = x.StationEDSM?.PopulatedSystemEDDB?.PowerState,
                 Powers = x.StationEDSM?.PopulatedSystemEDDB?.Power,
@@ -571,7 +589,8 @@ namespace dashboard_elite.ImportData
 
             var serializer = new JsonSerializer
             {
-                NullValueHandling = NullValueHandling.Ignore
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Ignore
             };
 
             using (var sw = new StreamWriter(fullPath))
@@ -711,11 +730,11 @@ namespace dashboard_elite.ImportData
 
                 populatedSystemsEDDBList = JsonReaderExtensions.ParseJson<PopulatedSystemEDDB>(@"Data\populatedsystemsEDDB.json").ToList();
 
+                var populatedSystemsEDDBbyName = populatedSystemsEDDBList
+                    .ToDictionary(x => x.Name);
+
                 if (NeedToUpdateFile(@"Data\cnbsystems.json", 1440))
                 {
-                    var populatedSystemsEDDBbyName = populatedSystemsEDDBList
-                        .ToDictionary(x => x.Name);
-
                     await DownloadCnbSystems(@"Data\cnbsystems.json", populatedSystemsEDDBbyName);
                 }
 
@@ -753,7 +772,18 @@ namespace dashboard_elite.ImportData
                         z.AdditionalStationDataEDDB = station;
 
                         populatedSystemsEDDBbyEdsmId.TryGetValue(z.SystemId, out var system);
-                        z.PopulatedSystemEDDB = system;
+                        if (system != null)
+                        {
+                            z.PopulatedSystemEDDB = system;
+                        }
+                        else
+                        {
+                            populatedSystemsEDDBbyName.TryGetValue(z.SystemName, out var system2);
+                            if (system2 != null)
+                            {
+                                z.PopulatedSystemEDDB = system2;
+                            }
+                        }
 
                         z.PrimaryEconomy = z.AdditionalStationDataEDDB?.Economies?.FirstOrDefault() ?? z.PopulatedSystemEDDB?.PrimaryEconomy ?? z.Economy;
 
@@ -1127,6 +1157,24 @@ namespace dashboard_elite.ImportData
 
                     StationSerialize(fullStationList, @"Data\fullstationlist.json");
 
+                    //Colonia Bridge
+                    var coloniaBridge = stationsEDSM
+                        .Where(x =>
+                            x.Name.StartsWith("CB-") &&
+                            x.Type == "Mega ship" &&
+                            x.AdditionalStationDataEDDB?.ControllingMinorFactionId == 77645
+                        ).ToList();
+
+                    StationSerialize(coloniaBridge, @"Data\coloniabridge.json");
+
+                    //Odyssey Settlements
+                    var odysseySettlements = stationsEDSM
+                        .Where(x =>
+                            x.Type == "Odyssey Settlement" 
+                        ).ToList();
+
+                    StationSerialize(odysseySettlements, @"Data\odysseysettlements.json");
+
                 }
 
                 await DownloadHotspotSystems(@"Data\painitesystems.json", "http://edtools.cc/miner?a=r&n=", "Painite");
@@ -1143,7 +1191,7 @@ namespace dashboard_elite.ImportData
 
                 // stopped working 1 dec 2020
                 //DownloadCommunityGoals(@"Data\communitygoals.json", "https://elitedangerous-website-backend-production.elitedangerous.com/api/initiatives/list?_format=json&lang=en"); 
-                await DownloadCommunityGoals(@"Data\communitygoals.json", "https://api.orerve.net/2.0/website/initiatives/list?lang=en"); 
+                await DownloadCommunityGoals(@"Data\communitygoals.json", "https://api.orerve.net/2.0/website/initiatives/list?lang=en");
 
             }
             catch (Exception ex)

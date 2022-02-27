@@ -22,6 +22,8 @@ namespace dashboard_elite.Helpers
             Navigation,
             Route,
             SystemMap,
+            OdysseySettlements,
+            ColoniaBridge,
             Missions,
             ChatLog,
             Materials,
@@ -46,6 +48,8 @@ namespace dashboard_elite.Helpers
                                                   0,  // navigation
                                                   0,  // route
                                                   0,  // systemmap
+                                                  0,  // odysseysettlements
+                                                  0,  // coloniabridge
                                                   0,  // missions
                                                   7,  // chatlog
                                                   3,  // materials

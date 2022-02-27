@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
@@ -37,6 +38,7 @@ namespace dashboard_elite.EliteData
         public string SystemSecurity { get; set; }
 
         [JsonProperty("systempopulation")]
+        [DefaultValue(0)]
         public long SystemPopulation { get; set; }
 
         [JsonProperty("powerplaystate")]
@@ -46,16 +48,19 @@ namespace dashboard_elite.EliteData
         public string Powers { get; set; }
 
         [JsonProperty("x")]
+        [DefaultValue(0)]
         public double X { get; set; }
 
         [JsonProperty("y")]
+        [DefaultValue(0)]
         public double Y { get; set; }
 
         [JsonProperty("z")]
+        [DefaultValue(0)]
         public double Z { get; set; }
 
         [JsonProperty("body")]
-        public Body Body { get; set; }
+        public dashboard_elite.ImportData.Body Body { get; set; }
 
         [JsonProperty("marketId")]
         public long MarketId { get; set; }
@@ -127,6 +132,10 @@ namespace dashboard_elite.EliteData
 
         public static Dictionary<long, StationData> MarketIdStations = new Dictionary<long, StationData>();
 
+        public static List<StationData> ColoniaBridge = new List<StationData>();
+
+        public static Dictionary<string, List<StationData>> OdysseySettlements = new Dictionary<string, List<StationData>>();
+
         public static List<Data.EngineerData> GetEngineers(string path)
         {
             try
@@ -160,6 +169,44 @@ namespace dashboard_elite.EliteData
             catch (Exception ex)
             {
                 Log.Logger.Error(ex.ToString());
+            }
+
+            return new List<StationData>();
+
+        }
+
+        public static List<StationData> GetNearestColoniaBridge(List<double> starPos, List<StationData> stationData)
+        {
+
+            if (stationData?.Any() == true && starPos?.Count == 3)
+            {
+                //starPos[0] = -297.625;
+                //starPos[1] = -26.59375;
+                //starPos[2] = 3839.40625;
+
+                stationData.ForEach(stationItem =>
+                {
+                    var xs = starPos[0];
+                    var ys = starPos[1];
+                    var zs = starPos[2];
+
+                    var xd = stationItem.X;
+                    var yd = stationItem.Y;
+                    var zd = stationItem.Z;
+
+                    var deltaX = xs - xd;
+                    var deltaY = ys - yd;
+                    var deltaZ = zs - zd;
+
+                    stationItem.Distance = Math.Sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
+                });
+
+                var stationList = stationData.Where(x => x.Distance >= 0).OrderBy(x => x.Distance);
+                var id = int.Parse(stationList.FirstOrDefault()?.Name.Replace("CB-", "").Split(' ')[0] ?? "1");
+
+                return stationData
+                    .Where(x => x.Distance > 0 && int.Parse(x.Name.Replace("CB-", "").Split(' ')[0] ?? "1") >= id)
+                    .OrderBy(x => x.Distance).ToList();
             }
 
             return new List<StationData>();

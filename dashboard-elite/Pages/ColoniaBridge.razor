@@ -1,0 +1,88 @@
+﻿@page "/navigation/coloniabridge"
+@inherits PageBase
+@layout PageLayout
+
+@{
+    var skipFirst = true;
+
+    var coloniaBridge= Station.GetNearestColoniaBridge(Data.LocationData.StarPos, Station.ColoniaBridge);
+
+
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+    
+    @if (coloniaBridge != null)
+    {
+        @foreach (var m in coloniaBridge)
+        {
+            if (!skipFirst)
+            {
+                <tr>
+                    <td class="divider" colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="spacer" colspan="2">&nbsp;</td>
+                </tr>
+
+            }
+            skipFirst = false;
+
+            if (!string.IsNullOrEmpty(m.SystemName))
+            {
+                <tr>
+                    <td class="nowrap">In System</td>
+                    <td class="data"><NavLink class="system-link" @onclick="() => Clipboard(m.SystemName)" >@m.SystemName</NavLink></td>
+                </tr>
+            }
+            if (m.Distance > 0)
+            {
+                <tr>
+                    <td class="nowrap">Distance</td>
+                    <td class="data">@m.Distance.ToString("N0") Ly</td>
+                </tr>
+            }
+            if (!string.IsNullOrEmpty(m.SystemState) && m.SystemState != "None")
+            {
+                <tr>
+                    <td class="nowrap">State</td>
+                    <td class="datawrap">@m.SystemState</td>
+                </tr>
+            }
+            if (m.Body != null && !string.IsNullOrEmpty(m.Body.Name))
+            {
+                <tr>
+                    <td class="nowrap">Body</td>
+                    <td class="data">@m.Body.Name</td>
+                </tr>
+            }
+
+            if (!string.IsNullOrEmpty(m.Name))
+            {
+                <tr>
+                    <td class="nowrap">Station</td>
+                    <td class="data">@m.Name</td>
+                </tr>
+            }
+            if (m.DistanceToArrival > 0)
+            {
+                <tr>
+                    <td class="nowrap">Dist. from star</td>
+                    <td class="data">@m.DistanceToArrival.ToString("N0") Ls</td>
+                </tr>
+            }
+
+            if (!string.IsNullOrEmpty(m.SystemSecurity))
+            {
+                <tr>
+                    <td class="nowrap">Security</td>
+                    <td class="data">@m.SystemSecurity</td>
+                </tr>
+            }
+
+        }
+
+    }
+    </tbody>
+</MudSimpleTable>

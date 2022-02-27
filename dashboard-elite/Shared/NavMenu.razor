@@ -1,9 +1,12 @@
 ﻿@using dashboard_elite.Helpers
+@using EliteJournalReader.Events
 <MudNavMenu class="large-font">
     <MudNavGroup Title="Navigation" Expanded="@(NavSection == "navigation")">
         <MudNavLink Href="@("navigation/" + PageHelper.Page.Navigation)" Match="NavLinkMatch.Prefix" >Navigation</MudNavLink>
         <MudNavLink Href="@("navigation/" + PageHelper.Page.Route)" Match="NavLinkMatch.Prefix" >Route</MudNavLink>
         <MudNavLink Href="@("navigation/" + PageHelper.Page.SystemMap)" Match="NavLinkMatch.Prefix" >System Map</MudNavLink>
+        <MudNavLink Href="@("navigation/" + PageHelper.Page.OdysseySettlements)" Match="NavLinkMatch.Prefix" >OD. Settlements</MudNavLink>
+        <MudNavLink Href="@("navigation/" + PageHelper.Page.ColoniaBridge)" Match="NavLinkMatch.Prefix" >Colonia Bridge</MudNavLink>
     </MudNavGroup>
     <MudNavGroup Title="Information" Expanded="@(NavSection == "information")">
         <MudNavLink Href="@("information/" + PageHelper.Page.Commander)" Match="NavLinkMatch.Prefix" >Commander</MudNavLink>

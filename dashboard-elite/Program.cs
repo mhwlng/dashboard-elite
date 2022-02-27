@@ -115,6 +115,8 @@ namespace dashboard_elite
 
         public static async Task<int> MainImpl(string[] args)
         {
+            WebClient.Timeout = new TimeSpan(0, 0, 0, 200, 0);
+
             ExePath = GetExePath();
 
             Directory.SetCurrentDirectory(ExePath);

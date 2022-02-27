@@ -103,7 +103,7 @@ namespace dashboard_elite.ImportData
         public ControllingFaction ControllingFaction { get; set; }
 
         [JsonProperty("body")]
-        public EliteData.Body Body { get; set; }
+        public dashboard_elite.ImportData.Body Body { get; set; }
 
         [JsonIgnore]
         public PopulatedSystemEDDB PopulatedSystemEDDB { get; set; }

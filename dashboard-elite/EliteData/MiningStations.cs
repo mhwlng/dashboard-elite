@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
@@ -58,7 +59,8 @@ namespace dashboard_elite.EliteData
             public string SystemSecurity { get; set; }
 
             [JsonProperty("systempopulation")]
-            public long? SystemPopulation { get; set; }
+            [DefaultValue(0)]
+            public long SystemPopulation { get; set; }
 
             [JsonProperty("powerplaystate")]
             public string PowerplayState { get; set; }
@@ -68,12 +70,15 @@ namespace dashboard_elite.EliteData
 
 
             [JsonProperty("x")]
+            [DefaultValue(0)]
             public double X { get; set; }
 
             [JsonProperty("y")]
+            [DefaultValue(0)]
             public double Y { get; set; }
 
             [JsonProperty("z")]
+            [DefaultValue(0)]
             public double Z { get; set; }
 
 
@@ -89,7 +94,7 @@ namespace dashboard_elite.EliteData
             public int Demand { get; set; }
 
             [JsonProperty("body")]
-            public Body Body { get; set; }
+            public dashboard_elite.ImportData.Body Body { get; set; }
 
             [JsonProperty("economies")]
             public string Economies { get; set; }

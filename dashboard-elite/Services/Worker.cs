@@ -477,14 +477,19 @@ namespace dashboard_elite
                 
                 Station.FullPowerStationList[Station.PowerTypes.ZeminaTorval] = Station.GetAllStations(@"Data\zeminatorval.json");
 
-                
+               
                 Station.SystemStations = Station.GetAllStations(@"Data\fullstationlist.json").GroupBy(x => x.SystemName)
                     .ToDictionary(x => x.Key, x => x.OrderBy(y => y.DistanceToArrival).ToList());
 
                 Station.MarketIdStations = Station.GetAllStations(@"Data\fullstationlist.json").GroupBy(x => x.MarketId)
                     .ToDictionary(x => x.Key, x => x.FirstOrDefault());
 
-                
+                Station.ColoniaBridge = Station.GetAllStations(@"Data\coloniabridge.json");
+
+                Station.OdysseySettlements = Station.GetAllStations(@"Data\odysseysettlements.json").GroupBy(x => x.SystemName)
+                    .ToDictionary(x => x.Key, x => x.OrderBy(y => y.DistanceToArrival).ToList());
+
+
                 CnbSystems.FullCnbSystemsList = CnbSystems.GetAllCnbSystems(@"Data\cnbsystems.json");
 
                 

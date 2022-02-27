@@ -1,0 +1,95 @@
+﻿@page "/navigation/odysseysettlements"
+@inherits PageBase
+@layout PageLayout
+
+@{
+    var skipFirst = true;
+
+    Station.OdysseySettlements.TryGetValue(Data.LocationData.StarSystem,
+        out var odysseySettlements);
+
+
+}
+
+<MudSimpleTable Hover="false" Dense="true" FixedHeader="false" Class="PageTable large-font flex-grow-1 flex-shrink-1" Style="min-height: 0;">
+    <tbody>
+    
+    @if (odysseySettlements != null)
+    {
+        @foreach (var m in odysseySettlements)
+        {
+            if (!skipFirst)
+            {
+                <tr>
+                    <td class="divider" colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="spacer" colspan="2">&nbsp;</td>
+                </tr>
+
+            }
+            skipFirst = false;
+
+            if (m.Body != null && !string.IsNullOrEmpty(m.Body.Name))
+            {
+                <tr>
+                    <td class="nowrap">Body</td>
+                    <td class="data">@m.Body.Name</td>
+                </tr>
+            }
+
+            if (!string.IsNullOrEmpty(m.Name))
+            {
+                <tr>
+                    <td class="nowrap">Settlement</td>
+                    <td class="data">@m.Name</td>
+                </tr>
+            }
+            if (m.DistanceToArrival > 0)
+            {
+                <tr>
+                    <td class="nowrap">Dist. from star</td>
+                    <td class="data">@m.DistanceToArrival.ToString("N0") Ls</td>
+                </tr>
+            }
+
+
+            if (!string.IsNullOrEmpty(m.Government))
+            {
+                <tr>
+                    <td class="nowrap">Government</td>
+                    <td class="data">@m.Government</td>
+                </tr>
+            }
+            if (!string.IsNullOrEmpty(m.Allegiance))
+            {
+                <tr>
+                    <td class="nowrap">Allegiance</td>
+                    <td class="data">@m.Allegiance</td>
+                </tr>
+            }
+            if (!string.IsNullOrEmpty(m.Faction))
+            {
+                <tr>
+                    <td class="nowrap">Faction</td>
+                    <td class="datawrap">@m.Faction</td>
+                </tr>
+            }
+            if (!string.IsNullOrEmpty(m.Economies))
+            {
+                <tr>
+                    <td class="nowrap">Economy</td>
+                    <td class="datawrap">@m.Economies</td>
+                </tr>
+            }
+            if (!string.IsNullOrEmpty(m.PowerplayState))
+            {
+                <tr>
+                    <td class="nowrap">Powerplay State</td>
+                    <td class="data">@m.PowerplayState</td>
+                </tr>
+            }
+        }
+    }
+    </tbody>
+</MudSimpleTable>
