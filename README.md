@@ -148,7 +148,8 @@ Using Edge on Android, you can select the option 'add to phone'.
 That will add an icon to the Android home screen, which wil start the browser full screen.
 Using Chrome on Android, the option is called 'add to home screen'.
 
-It doesn't work on IOS, at the moment.
+I have tested on safari 15.3 on macos, that looks ok. 
+I have tested on safari on IOS 12.5.5 (old ipad mini) and that doesn't look right. I don't know about newer IOS versions?
 
 When system names are underlined, clicking them will put the name on the clipboard. (So that the name can then be pasted in the galaxy map search box.)
 When using this feature on an external browser, then the system name is put on the clipboard of the elite dangerous PC, not the external device.
