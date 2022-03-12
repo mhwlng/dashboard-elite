@@ -143,7 +143,7 @@ The local and external URLs are added to the log file, like :
 The external browser should be running full screen / kiosk mode.
 Using Edge on Android, you can select the option 'add to phone'. 
 That will add an icon to the Android home screen, which wil start the browser full screen.
-Using Chrome on Android and safari onn IOS 15.3, the option is called 'add to home screen'.
+Using Chrome on Android and safari on iOS 15.3, the option is called 'add to home screen'.
 
 I have tested on safari 15.3 on macos 12.2.1 and safari on iOS 15.3.1, that works ok. 
 
