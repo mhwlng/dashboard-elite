@@ -1,9 +1,6 @@
 # dashboard-elite
 Use a wide 'bar style' touch screen as a game dashboard (like [fip-panels](https://github.com/mhwlng/fip-elite)) and button box (like [streamdeck](https://github.com/mhwlng/streamdeck-elite)) for Elite Dangerous :
 
-
-BETA RELEASE
-
 ![touch screen](https://i.imgur.com/14rxi5R.jpg)
 
 ![touch screen](https://i.imgur.com/EjXtSoY.jpg)
