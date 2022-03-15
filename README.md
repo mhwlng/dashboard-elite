@@ -1,6 +1,9 @@
 # dashboard-elite
 Use a wide 'bar style' touch screen as a game dashboard (like [fip-panels](https://github.com/mhwlng/fip-elite)) and button box (like [streamdeck](https://github.com/mhwlng/streamdeck-elite)) for Elite Dangerous :
 
+
+BETA RELEASE
+
 ![touch screen](https://i.imgur.com/14rxi5R.jpg)
 
 ![touch screen](https://i.imgur.com/EjXtSoY.jpg)
@@ -140,14 +143,11 @@ The local and external URLs are added to the log file, like :
 - Listening on address: http://127.0.0.1:59765
 - Listening on address: http://192.168.2.35:5001
 
-The external browser should be running full screen / kiosk mode.
-Using Edge on Android, you can select the option 'add to phone'. 
-That will add an icon to the Android home screen, which wil start the browser full screen.
-Using Chrome on Android and Safari on iOS 15.3, the option is called 'add to home screen'.
+The external browser should be running full screen / kiosk mode. Using Edge on Android, you can select the option 'add to phone'. That will add an icon to the Android home screen, which wil start the browser full screen. Using Chrome on Android and Safari on iOS 15.3, the option is called 'add to home screen'.
 
-I have tested on Safari 15.3 on macos 12.2.1 and Safari on iOS 15.3.1. That works ok. 
+I have tested on Safari 15.3 on macos 12.2.1 and Safari on iOS 15.3.1. That works ok.
 
-I have tested on Safari on iOS 12.5.5 and that doesn't work correctly. 
+I have tested on Safari on iOS 12.5.5 and that doesn't work correctly.
 
 When system names are underlined, clicking them will put the name on the clipboard. (So that the name can then be pasted in the galaxy map search box.)
 When using this feature on an external browser, then the system name is put on the clipboard of the elite dangerous PC, not the external device.
