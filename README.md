@@ -77,7 +77,11 @@ The actual on/off state of a button comes from the game.
 
 When pressing a button on the touch screen, it will send the e.g. 'toggle light' keypress (from the game keyboard binding file) to the game.
 
-Big display 1920x515 (12.6 inch, IPS panel):
+Big display 3840x1100 (14 inch, IPS panel, note used usb-c connector):
+
+https://www.aliexpress.com/item/1005003332731770.html
+
+Medium display 1920x515 (12.6 inch, IPS panel):
 
 https://www.aliexpress.com/item/1005001966967133.html
 
@@ -89,7 +93,7 @@ Angled mini HDM cable (use the 'UP' version) :
 
 https://www.aliexpress.com/item/1005002750546378.html
 
-Angled micro USB cable (use the 'UP' version) :
+Angled micro USB cable (use the 'UP' version, not for the big version) :
 
 https://www.aliexpress.com/item/32901092351.html
 
@@ -520,3 +524,5 @@ https://www.edsm.net/ for the galaxy image
 https://edassets.org/ CMDR Qohen Leth and CMDR Nuse for the ship images
 
 http://edtools.ddns.net/
+
+https://edastro.com/poi/
