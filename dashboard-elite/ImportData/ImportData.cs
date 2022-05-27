@@ -406,6 +406,28 @@ namespace dashboard_elite.ImportData
             }
         }
 
+        private async Task DownloadPoiGEC(string path, string url)
+        {
+            try
+            {
+                path = Path.Combine(GetExePath(), path);
+
+                DeleteExpiredFile(path, 1440);
+
+                if (!File.Exists(path))
+                {
+                    Log.Logger.Information("looking up GEC POIs");
+
+                    var data = await Program.WebClient.GetStringAsync(url);
+
+                    File.WriteAllText(path, data);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Information(ex.ToString());
+            }
+        }
 
         private void GalnetSerialize(List<GalnetData> galnet, string fullPath)
         {
@@ -484,7 +506,7 @@ namespace dashboard_elite.ImportData
                             }
                         });
 
-                        GalnetSerialize(galnetJson, path);                    
+                        GalnetSerialize(galnetJson, path);
                     }
                 }
             }
@@ -555,7 +577,7 @@ namespace dashboard_elite.ImportData
                 Price = x.Price,
                 Pad = x.Pad,
                 AgoSec = x.AgoSec,
-                Demand =x.Demand,
+                Demand = x.Demand,
 
                 X = x.StationEDSM?.PopulatedSystemEDDB?.X ?? 0,
                 Y = x.StationEDSM?.PopulatedSystemEDDB?.Y ?? 0,
@@ -576,11 +598,11 @@ namespace dashboard_elite.ImportData
                 Economies = string.Join(",", x.StationEDSM?.AdditionalStationDataEDDB?.Economies ?? new List<string>() { x.StationEDSM?.Economy }),
                 Faction = x.StationEDSM?.ControllingFaction?.Name,
 
-                Body  = x.StationEDSM?.Body,
+                Body = x.StationEDSM?.Body,
 
                 SystemState = string.Join(",", x.StationEDSM?.PopulatedSystemEDDB?.States?.Select(y => y.Name) ?? new List<string>())
 
-                }).ToList();
+            }).ToList();
         }
 
         private void MiningStationsSerialize(List<MiningStations.MiningStationData> stations, string fullPath)
@@ -631,10 +653,10 @@ namespace dashboard_elite.ImportData
                     .Select(tr => tr.Elements("td").ToList())
                     .Select(td => new HotspotStationData
                     {
-                        Station = td[0].Descendants("span").FirstOrDefault()?.InnerText?.Replace(" | ","") ?? "?",
+                        Station = td[0].Descendants("span").FirstOrDefault()?.InnerText?.Replace(" | ", "") ?? "?",
                         System = td[0].Descendants("span").Skip(1).FirstOrDefault()?.InnerText ?? "?",
                         Price = Convert.ToInt32(td[5].GetAttributeValue("data-order", "0")),
-                        Demand = Convert.ToInt32(td[4].GetAttributeValue("data-order","0")),
+                        Demand = Convert.ToInt32(td[4].GetAttributeValue("data-order", "0")),
                         Pad = td[1].InnerText, //tr[5],
                         AgoSec = (int)(currentTime - Convert.ToInt64(td[7].GetAttributeValue("data-order", "0")))
                     })
@@ -643,7 +665,7 @@ namespace dashboard_elite.ImportData
                 var stationsData = GetMiningStationsData(stationInfo, stationsEDSM);
 
                 MiningStationsSerialize(stationsData, path);
-                        
+                       
             }
             catch (Exception ex)
             {
@@ -670,18 +692,18 @@ namespace dashboard_elite.ImportData
                     id = "table-stations-min-buy";
                 }
 
-                var stationInfo = doc.DocumentNode.SelectSingleNode("//table[@id='"+id+"']")
+                var stationInfo = doc.DocumentNode.SelectSingleNode("//table[@id='" + id + "']")
                     .Descendants("tr")
                     .Where(tr => tr.Elements("td").Count() == 7)
                     .Select(tr => tr.Elements("td").Select(td => td.InnerText.Trim()).ToList())
-                    .Select( tr => new HotspotStationData
+                    .Select(tr => new HotspotStationData
                     {
                         Station = tr[0],
                         System = tr[1],
-                        Price = Convert.ToInt32(tr[2].Replace(",","").Replace(".", "")),
-                        Demand = Convert.ToInt32(tr[4].Replace(",","").Replace(".", "")),
+                        Price = Convert.ToInt32(tr[2].Replace(",", "").Replace(".", "")),
+                        Demand = Convert.ToInt32(tr[4].Replace(",", "").Replace(".", "")),
                         Pad = tr[5],
-                        AgoSec = Convert.ToInt32(tr[6].Substring(2, tr[6].IndexOf("}", StringComparison.Ordinal)-2))
+                        AgoSec = Convert.ToInt32(tr[6].Substring(2, tr[6].IndexOf("}", StringComparison.Ordinal) - 2))
                     })
                     .ToList();
 
@@ -710,21 +732,27 @@ namespace dashboard_elite.ImportData
 
                 var wasAnyUpdated = false;
 
-                Log.Logger.Information("checking populated systems from EDDB");
 
-                //DownloadJson(@"Data\populatedsystemsEDDB.json", "https://eddb.io/archive/v6/systems_populated.json", ref wasAnyUpdated);
-                wasAnyUpdated = await JsonReaderExtensions.DownloadJson<PopulatedSystemEDDB>("https://eddb.io/archive/v6/systems_populated.json", @"Data\populatedsystemsEDDB.json", wasAnyUpdated, false);
+                //Console.WriteLine("downloading station list from Spansh");
+                //wasAnyUpdated = await JsonReaderExtensions.DownloadJson<SystemSpansh>("https://downloads.spansh.co.uk/galaxy_stations.json.gz", @"Data\stationsSpansh.json", wasAnyUpdated, true);
 
-                Log.Logger.Information("checking station list from EDDB");
+                Log.Logger.Information("downloading station list from EDSM");
 
-                //DownloadJson(@"Data\stationsEDDB.json", "https://eddb.io/archive/v6/stations.json", ref wasAnyUpdated);
-                wasAnyUpdated = await JsonReaderExtensions.DownloadJson<StationEDDB>("https://eddb.io/archive/v6/stations.json", @"Data\stationsEDDB.json", wasAnyUpdated, false);
-
-                Log.Logger.Information("checking station list from EDSM");
-
-                //DownloadJson(@"Data\stationsEDSM.json", "https://www.edsm.net/dump/stations.json.gz", ref wasAnyUpdated);
+                ///DownloadJson(@"Data\stationsEDDB.json", "https://eddb.io/archive/v6/stations.json", ref wasAnyUpdated);
+                //JsonReaderExtensions.DownloadJson<StationEDDB>("https://eddb.io/archive/v6/stations.json", @"Data\stationsEDDB.json", ref wasAnyUpdated);
                 wasAnyUpdated = await JsonReaderExtensions.DownloadJson<StationEDSM>("https://www.edsm.net/dump/stations.json.gz", @"Data\stationsEDSM.json", wasAnyUpdated, true);
 
+                Log.Logger.Information("downloading populated systems from EDDB");
+
+                //DownloadJson(@"Data\stationsEDSM.json", "https://www.edsm.net/dump/stations.json.gz", ref wasAnyUpdated);
+                //JsonReaderExtensions.DownloadJson<StationEDSM>("https://www.edsm.net/dump/stations.json.gz", @"Data\stationsEDSM.json", ref wasAnyUpdated);
+                wasAnyUpdated = await JsonReaderExtensions.DownloadJson<PopulatedSystemEDDB>("https://eddb.io/archive/v6/systems_populated.json", @"Data\populatedsystemsEDDB.json", wasAnyUpdated, false);
+
+                Log.Logger.Information("downloading station list from EDDB");
+
+                //DownloadJson(@"Data\populatedsystemsEDDB.json", "https://eddb.io/archive/v6/systems_populated.json", ref wasAnyUpdated);
+                //JsonReaderExtensions.DownloadJson<PopulatedSystemEDDB>("https://eddb.io/archive/v6/systems_populated.json", @"Data\populatedsystemsEDDB.json", ref wasAnyUpdated);
+                wasAnyUpdated = await JsonReaderExtensions.DownloadJson<StationEDDB>("https://eddb.io/archive/v6/stations.json", @"Data\stationsEDDB.json", wasAnyUpdated, false);
 
                 Log.Logger.Information("checking station and system data");
 
@@ -802,7 +830,7 @@ namespace dashboard_elite.ImportData
                     await DownloadInaraMiningStationsHtml(@"Data\painitestations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=84", "Painite", stationsEDSM);
                     await DownloadInaraMiningStationsHtml(@"Data\ltdstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=144", "LTD", stationsEDSM);
                     await DownloadInaraMiningStationsHtml(@"Data\platinumstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=81", "Platinum", stationsEDSM);
-                    await DownloadInaraMiningStationsHtml(@"Data\tritiumstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=10269", "Tritium",stationsEDSM);
+                    await DownloadInaraMiningStationsHtml(@"Data\tritiumstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=10269", "Tritium", stationsEDSM);
                     await DownloadInaraMiningStationsHtml(@"Data\tritiumbuystations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=buymin&refid=10269", "Tritium", stationsEDSM);
 
                     //await DownloadEddbMiningStationsHtml(@"Data\painitestations.json", "https://eddb.io/commodity/", "Painite", 83, stationsEDSM, true);
@@ -1062,7 +1090,7 @@ namespace dashboard_elite.ImportData
                                     x.PrimaryEconomy != "Military" &&
                                     x.PrimaryEconomy != "Industrial" &&
 
-                                    (x.PrimaryEconomy  == "Extraction" || x.PrimaryEconomy == "Refinery"  || x.SecondaryEconomy == "Extraction" || x.SecondaryEconomy == "Refinery") &&
+                                    (x.PrimaryEconomy == "Extraction" || x.PrimaryEconomy == "Refinery" || x.SecondaryEconomy == "Extraction" || x.SecondaryEconomy == "Refinery") &&
                                     
                                     x.OtherServices.Any(y => y == "Material Trader") &&
                                     x.PopulatedSystemEDDB != null &&
@@ -1170,7 +1198,7 @@ namespace dashboard_elite.ImportData
                     //Odyssey Settlements
                     var odysseySettlements = stationsEDSM
                         .Where(x =>
-                            x.Type == "Odyssey Settlement" 
+                            x.Type == "Odyssey Settlement"
                         ).ToList();
 
                     StationSerialize(odysseySettlements, @"Data\odysseysettlements.json");
@@ -1181,13 +1209,15 @@ namespace dashboard_elite.ImportData
                 await DownloadHotspotSystems(@"Data\ltdsystems.json", "http://edtools.cc/miner?a=r&n=", "LTD");
                 await DownloadHotspotSystems(@"Data\platinumsystems.json", "http://edtools.cc/miner?a=r&n=", "Platinum");
 
+                await DownloadPoiGEC(@"Data\poigec.json", "https://edastro.com/poi/json/all");
+
                 // https://gist.github.com/corenting/b6ac5cf8f446f54856e08b6e287fe835
 
 
                 // stopped woring 29/05/2021
                 //"https://elitedangerous-website-backend-production.elitedangerous.com/api/galnet?_format=json"
 
-                await DownloadGalnet(@"Data\galnet.json", "https://cms.zaonce.net/en-GB/jsonapi/node/galnet_article?&sort=-published_at&page[offset]=0&page[limit]=100");  
+                await DownloadGalnet(@"Data\galnet.json", "https://cms.zaonce.net/en-GB/jsonapi/node/galnet_article?&sort=-published_at&page[offset]=0&page[limit]=100");
 
                 // stopped working 1 dec 2020
                 //DownloadCommunityGoals(@"Data\communitygoals.json", "https://elitedangerous-website-backend-production.elitedangerous.com/api/initiatives/list?_format=json&lang=en"); 

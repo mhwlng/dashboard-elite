@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using dashboard_elite.EliteData;
@@ -13,9 +14,11 @@ using dashboard_elite.Helpers;
 using dashboard_elite.Hubs;
 using dashboard_elite.Services;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.Net.Http.Headers;
 using MudBlazor.Services;
 using Serilog;
-
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.FileProviders;
 
 namespace dashboard_elite
 {
@@ -80,6 +83,12 @@ namespace dashboard_elite
             {
                 app.UseExceptionHandler("/Error");
             }
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(dashboard_elite.Program.ExePath, @"wwwroot")),
+            });
 
             app.UseStaticFiles();
 

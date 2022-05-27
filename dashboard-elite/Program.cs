@@ -115,7 +115,7 @@ namespace dashboard_elite
 
         public static async Task<int> MainImpl(string[] args)
         {
-            WebClient.Timeout = new TimeSpan(0, 0, 0, 200, 0);
+            WebClient.Timeout = new TimeSpan(0, 0, 5, 0, 0);
 
             ExePath = GetExePath();
 
@@ -245,6 +245,11 @@ namespace dashboard_elite
 
             Minimized = configuration.GetValue<bool>("Dimensions:Minimized");
 
+            bool Debug = false;
+#if DEBUG
+            Debug = true;
+#endif
+
             mainWindow = new PhotinoWindow()
 
                 .SetIconFile(iconFile)
@@ -260,8 +265,8 @@ namespace dashboard_elite
                 //.SetFullScreen(fullScreen)
                 //.SetTopMost(fullScreen)
                 .SetChromeless(fullScreen)
-                .SetContextMenuEnabled(!fullScreen)
-                .SetDevToolsEnabled(!fullScreen)
+                .SetContextMenuEnabled(!fullScreen || Debug)
+                .SetDevToolsEnabled(!fullScreen || Debug)
                 .SetZoom(zoom)
                 //.RegisterCustomSchemeHandler("appscript", AppCustomSchemeUsed)
                 /*

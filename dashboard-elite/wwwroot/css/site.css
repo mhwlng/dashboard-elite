@@ -333,3 +333,49 @@ td.indent {
 
 }
 
+
+@media screen and (min-width: 2190px) {
+    .buttonblock > .mud-icon-button-size-large.mud-button > .mud-icon-button-label > .mud-icon-size-large {
+        font-size: 4.3rem;
+        letter-spacing: -0.001em;
+    }
+
+    .buttonblockwidth {
+        width: 540px;
+        min-width: 540px !important;
+    }
+
+    .large-font.mud-simple-table table * tr > td,
+    .large-font .mud-simple-table table * tr > td,
+    .mud-simple-table table * tr th {
+        font-size: 1.2rem;
+    }
+
+    .galnetbody table * tr > td, .galnetbody table * tr th {
+        font-size: 1.2rem !important;
+    }
+
+    .galnetbody p {
+        font-size: 1.1rem !important;
+    }
+
+    .pagebarcaption {
+        font-size: 2rem;
+    }
+
+    td.engineerimage {
+        display: table-cell !important;
+        width: 1px;
+        vertical-align: top !important;
+    }
+
+    img.engineerimage {
+        display: block;
+        width: 200px;
+    }
+
+    img.engineerimagetop {
+        display: none;
+        width: 0;
+    }
+}

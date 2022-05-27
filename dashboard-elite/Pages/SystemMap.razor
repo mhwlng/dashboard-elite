@@ -91,7 +91,7 @@
                                                         <td style="padding-bottom: 0 !important;padding-top: 0 !important;">
                                                             <table style="border-spacing: 0px;">
                                                                 <tbody>
-                                                                <tr>
+                                                                @*<tr>
                                                                     <td class="nowrap" colspan="2">
                                                                         @m.subType
                                                                         @(m.isScoopable == true ? ", Fuel Star" : "")
@@ -107,7 +107,26 @@
                                                                             }
                                                                         }
                                                                     </td>
+                                                                </tr>*@
+                                                                <tr>
+                                                                    <td class="nowrap">@m.subType</td>
+                                                                    <td class="data right">
+                                                                        @(m.isScoopable == true ? "Fuel Star":"")
+                                                                        @if (m.isLandable == true)
+                                                                        {
+                                                                            if (!string.IsNullOrEmpty(m.atmosphereType) && m.atmosphereType.ToLower().Contains("thin"))
+                                                                            {
+                                                                                @((MarkupString)"<span class=\"alarm2\">&nbsp;Landable&nbsp;</span>")
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                @((MarkupString)"<span class=\"alarm\">&nbsp;Landable&nbsp;</span>")
+                                                                            }
+                                                                        }
+                                                                    </td>
                                                                 </tr>
+
+
                                                                 <tr>
                                                                     <td class="nowrap">Distance</td>
                                                                     <td class="data right">@m.distanceToArrival.ToString("N0") Ls</td>

@@ -576,6 +576,8 @@ namespace dashboard_elite
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading POI Items...");
                 _poi.FullPoiList = await _poi.GetAllPois(); //?.GroupBy(x => x.System.Trim().ToLower()).ToDictionary(x => x.Key, x => x.ToList());
 
+                _poi.FullPoiList = _poi.GetGECPois(@"Data\poigec.json", _poi.FullPoiList);
+
                 await _myHub.Clients.All.SendAsync("LoadingMessage", "Loading JSON Items...");
                 RefreshJson();
 
