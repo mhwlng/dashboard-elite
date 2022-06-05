@@ -133,7 +133,7 @@ namespace dashboard_elite.Components.Buttons
                 {
                     for (var f = 0; f < -cycle; f++)
                     {
-                        CommandTools.SendKeypress(Program.Binding[BindingType.Ship].CycleFireGroupPrevious);
+                        CommandTools.SendKeypress(Common.Binding[BindingType.Ship].CycleFireGroupPrevious);
                         Thread.Sleep(70);
                     }
                 }
@@ -141,18 +141,18 @@ namespace dashboard_elite.Components.Buttons
                 {
                     for (var f = 0; f < cycle; f++)
                     {
-                        CommandTools.SendKeypress(Program.Binding[BindingType.Ship].CycleFireGroupNext);
+                        CommandTools.SendKeypress(Common.Binding[BindingType.Ship].CycleFireGroupNext);
                         Thread.Sleep(70);
                     }
                 }
 
 
-                Program.PlaySound(ref _clickSound, ButtonData.ClickSound);
+                Common.PlaySound(ref _clickSound, ButtonData.ClickSound);
 
             }
             else
             {
-                Program.PlaySound(ref _errorSound, ButtonData.ErrorSound);
+                Common.PlaySound(ref _errorSound, ButtonData.ErrorSound);
             }
 
 

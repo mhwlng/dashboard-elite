@@ -19,7 +19,7 @@ namespace dashboard_elite.JsInterop
         [JSInvokable]
         public static void JsClick()
         {
-            Program.PlayClickSound();
+            Common.PlayClickSound();
 
         }
     }

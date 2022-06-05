@@ -356,7 +356,7 @@ namespace dashboard_elite
                 //Log.Information( "using " + fileName);
 
                 var reader = new StreamReader(fileName);
-                Program.Binding[bindingType] = (UserBindings)serializer.Deserialize(reader);
+                Common.Binding[bindingType] = (UserBindings)serializer.Deserialize(reader);
                 reader.Close();
 
 
@@ -440,7 +440,7 @@ namespace dashboard_elite
 
         private void RefreshJson()
         {
-            lock (Program.RefreshJsonLock)
+            lock (Common.RefreshJsonLock)
             {
                 
                 Station.FullStationList[Station.PoiTypes.InterStellarFactors] = Station.GetAllStations(@"Data\interstellarfactors.json");
@@ -709,7 +709,7 @@ namespace dashboard_elite
 
             await _myHub.Clients.All.SendAsync("LoadingDone");
 
-            if (!Program.mainWindow.Chromeless  && Program.Minimized)
+            if (!Program.mainWindow.Chromeless  && Common.Minimized)
             {
                 Program.mainWindow.SetMinimized(true);
             }

@@ -40,7 +40,7 @@ namespace dashboard_elite.Components.Buttons
 
         private void ButtonClick()
         {
-            Program.PlaySound(ref _clickSound, ProfileData.Value.ClickSound);
+            Common.PlaySound(ref _clickSound, ProfileData.Value.ClickSound);
 
             ActiveButtonBlock = ProfileData.Key;
         }

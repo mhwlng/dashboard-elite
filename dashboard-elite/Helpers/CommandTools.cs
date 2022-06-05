@@ -275,7 +275,7 @@ namespace dashboard_elite.Helpers
                 {
                     var matchText = match.ToString().ToUpperInvariant().Replace("{", "").Replace("}", "");
 
-                    if (Program.Binding[BindingType.OnFoot].KeyboardLayout == "en-US")
+                    if (Common.Binding[BindingType.OnFoot].KeyboardLayout == "en-US")
                     {
                         // http://kbdlayout.info/kbdusx/shiftstates+scancodes/base
 
@@ -284,7 +284,7 @@ namespace dashboard_elite.Helpers
                         // THIRD ROW  DIKSEMICOLON      DIKAPOSTROPHE
                         // FOURTH ROW DIKCOMMA          DIKPERIOD       DIKSLASH
                     }
-                    else if (Program.Binding[BindingType.OnFoot].KeyboardLayout == "es-ES")
+                    else if (Common.Binding[BindingType.OnFoot].KeyboardLayout == "es-ES")
                     {
                         // http://kbdlayout.info/kbdsp/shiftstates+scancodes/base
 
@@ -295,7 +295,7 @@ namespace dashboard_elite.Helpers
 
                         // all the keys are the same as en-US in binding file , for some reason ????
                     }
-                    else if (Program.Binding[BindingType.OnFoot].KeyboardLayout == "en-GB")
+                    else if (Common.Binding[BindingType.OnFoot].KeyboardLayout == "en-GB")
                     {
                         // http://kbdlayout.info/kbduk/shiftstates+scancodes/base
 
@@ -307,7 +307,7 @@ namespace dashboard_elite.Helpers
                                 break;
                         }
                     }
-                    else if (Program.Binding[BindingType.OnFoot].KeyboardLayout == "fr-FR")
+                    else if (Common.Binding[BindingType.OnFoot].KeyboardLayout == "fr-FR")
                     {
                         // http://kbdlayout.info/kbdfr/shiftstates+scancodes/base
 
@@ -400,7 +400,7 @@ namespace dashboard_elite.Helpers
                         }
 
                     }
-                    else if (Program.Binding[BindingType.OnFoot].KeyboardLayout == "de-DE")
+                    else if (Common.Binding[BindingType.OnFoot].KeyboardLayout == "de-DE")
                     {
                         // http://kbdlayout.info/kbdgr/shiftstates+scancodes/base
 
@@ -449,7 +449,7 @@ namespace dashboard_elite.Helpers
                         }
 
                     }
-                    else if (Program.Binding[BindingType.OnFoot].KeyboardLayout == "de-CH")
+                    else if (Common.Binding[BindingType.OnFoot].KeyboardLayout == "de-CH")
                     {
                         // http://kbdlayout.info/kbdsg/shiftstates+scancodes/base
 
@@ -499,7 +499,7 @@ namespace dashboard_elite.Helpers
                         }
 
                     }
-                    else if (Program.Binding[BindingType.OnFoot].KeyboardLayout == "da-DK")
+                    else if (Common.Binding[BindingType.OnFoot].KeyboardLayout == "da-DK")
                     {
                         // http://kbdlayout.info/kbdda/shiftstates+scancodes/base
 
@@ -542,7 +542,7 @@ namespace dashboard_elite.Helpers
                         }
 
                     }
-                    else if (Program.Binding[BindingType.OnFoot].KeyboardLayout == "it-IT")
+                    else if (Common.Binding[BindingType.OnFoot].KeyboardLayout == "it-IT")
                     {
                         // http://kbdlayout.info/kbdit/shiftstates+scancodes/base
 
@@ -586,7 +586,7 @@ namespace dashboard_elite.Helpers
 
                     }
 
-                    else if (Program.Binding[BindingType.OnFoot].KeyboardLayout == "pt-PT")
+                    else if (Common.Binding[BindingType.OnFoot].KeyboardLayout == "pt-PT")
                     {
                         // http://kbdlayout.info/kbdpo/shiftstates+scancodes/base
 
@@ -657,7 +657,7 @@ namespace dashboard_elite.Helpers
             // usa
             // http://kbdlayout.info/kbdusx/shiftstates+scancodes/base
 
-            if (Program.Binding[BindingType.OnFoot].KeyboardLayout != "en-US")
+            if (Common.Binding[BindingType.OnFoot].KeyboardLayout != "en-US")
             {
                 Log.Logger.Information(scanCode.ToString() + " " + ((ushort)scanCode).ToString("X"));
 

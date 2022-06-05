@@ -68,13 +68,13 @@ namespace dashboard_elite.Components.Buttons
             {
                 if (Data.StatusData.GuiFocus == StatusGuiFocus.FSSMode)
                 {
-                    CommandTools.SendKeypress(Program.Binding[BindingType.Ship].ExplorationFSSQuit);
+                    CommandTools.SendKeypress(Common.Binding[BindingType.Ship].ExplorationFSSQuit);
 
                     if (!ButtonData.DontSwitchToCombatMode && Data.StatusData.HudInAnalysisMode)
                     {
                         Thread.Sleep(300);
 
-                        CommandTools.SendKeypress(Program.Binding[BindingType.Ship]
+                        CommandTools.SendKeypress(Common.Binding[BindingType.Ship]
                             .PlayerHUDModeToggle); // back to combat mode
                     }
                 }
@@ -82,20 +82,20 @@ namespace dashboard_elite.Components.Buttons
                 {
                     if (!Data.StatusData.HudInAnalysisMode)
                     {
-                        CommandTools.SendKeypress(Program.Binding[BindingType.Ship]
+                        CommandTools.SendKeypress(Common.Binding[BindingType.Ship]
                             .PlayerHUDModeToggle); // to analysis mode
                         Thread.Sleep(100);
                     }
 
-                    CommandTools.SendKeypress(Program.Binding[BindingType.Ship].ExplorationFSSEnter);
+                    CommandTools.SendKeypress(Common.Binding[BindingType.Ship].ExplorationFSSEnter);
                 }
 
-                Program.PlaySound(ref _clickSound, ButtonData.ClickSound);
+                Common.PlaySound(ref _clickSound, ButtonData.ClickSound);
 
             }
             else
             {
-                Program.PlaySound(ref _errorSound, ButtonData.ErrorSound);
+                Common.PlaySound(ref _errorSound, ButtonData.ErrorSound);
             }
 
         }

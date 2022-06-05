@@ -76,7 +76,7 @@ namespace dashboard_elite.EliteData
         {
             try
             {
-                path = Path.Combine(dashboard_elite.Program.ExePath, path);
+                path = Path.Combine(dashboard_elite.Common.ExePath, path);
 
                 if (File.Exists(path))
                 {
@@ -99,7 +99,7 @@ namespace dashboard_elite.EliteData
         {
             try
             {
-                var directory = Path.Combine(dashboard_elite.Program.ExePath, "wwwroot\\img\\galnet");
+                var directory = Path.Combine(dashboard_elite.Common.ExePath, "wwwroot\\img\\galnet");
 
                 foreach (var l in GalnetList)
                 {
@@ -117,7 +117,7 @@ namespace dashboard_elite.EliteData
                                 {
                                     try
                                     {
-                                        var data = Task.Run(() => Program.WebClient.GetByteArrayAsync("https://hosting.zaonce.net/elite-dangerous/galnet/" + imageName)).Result;
+                                        var data = Task.Run(() => Common.WebClient.GetByteArrayAsync("https://hosting.zaonce.net/elite-dangerous/galnet/" + imageName)).Result;
 
                                         File.WriteAllBytes(imgPath, data);
                                     }

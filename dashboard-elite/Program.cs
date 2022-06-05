@@ -32,71 +32,6 @@ namespace dashboard_elite
 
     public class Program
     {
-        private static HttpClientHandler httpClientHandler = new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate };
-        public static readonly HttpClient WebClient = new HttpClient(httpClientHandler);
-
-        public static readonly object RefreshJsonLock = new object();
-        public static readonly object RefreshSystemLock = new object();
-
-        public static string ExePath;
-        public static string WebRootPath;
-
-        public static bool Minimized;
-        public static int FullScreenBorder;
-
-        public static IConfigurationRoot Configuration;
-
-        private static CachedSound _clickSound = null;
-
-        public static Dictionary<BindingType, UserBindings> Binding = new Dictionary<BindingType, UserBindings>();
-
-        public static void PlayClickSound()
-        {
-            if (_clickSound != null)
-            {
-                try
-                {
-                    AudioPlaybackEngine.Instance.PlaySound(_clickSound);
-                }
-                catch (Exception ex)
-                {
-                    Log.Error($"PlaySound: {ex}");
-                }
-            }
-        }
-
-        public static void PlaySound(ref CachedSound clickSound, string fileName)
-        {
-            if (!string.IsNullOrEmpty(fileName) && clickSound == null)
-            {
-                var path = Path.Combine(dashboard_elite.Program.ExePath, "Sounds", fileName);
-
-                if (File.Exists(path))
-                {
-                    try
-                    {
-                        clickSound = new CachedSound(path);
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Logger.Error(ex, $"CachedSound: {fileName}");
-                        clickSound = null;
-                    }
-                }
-            }
-
-            if (clickSound != null)
-            {
-                try
-                {
-                    AudioPlaybackEngine.Instance.PlaySound(clickSound);
-                }
-                catch (Exception ex)
-                {
-                    Log.Logger.Error(ex, $"PlaySound: {fileName}");
-                }
-            }
-        }
 
         public static PhotinoWindow mainWindow;
 
@@ -106,62 +41,16 @@ namespace dashboard_elite
             return MainImpl(args).Result;
         }
 
-        private static string GetExePath()
-        {
-            var strExeFilePath = Assembly.GetEntryAssembly().Location;
-            return Path.GetDirectoryName(strExeFilePath);
-        }
-
 
         public static async Task<int> MainImpl(string[] args)
         {
-            WebClient.Timeout = new TimeSpan(0, 0, 5, 0, 0);
-
-            ExePath = GetExePath();
-
-            Directory.SetCurrentDirectory(ExePath);
-
-            Configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-                .Enrich.FromLogContext()
-                .ReadFrom.Configuration(Configuration)
-                .CreateLogger();
-
-
-            Log.Information("Starting");
-
-            _clickSound = null;
-
-            var soundpath = Configuration.GetValue<string>("ClickSound");
-
-            var fileName = Path.Combine(ExePath, "Sounds", soundpath);
-
-            if (File.Exists(fileName))
-            {
-                try
-                {
-                    _clickSound = new CachedSound(fileName);
-                }
-                catch (Exception ex)
-                {
-                    _clickSound = null;
-
-                    Log.Error($"CachedSound: {ex}");
-                }
-
-            }
-
-            var host = CreateHostBuilder(args, Configuration).Build();
+            Common.Startup();
+            
+            var host = Common.CreateHostBuilder(args, Common.ConfigurationRoot).Build();
 
             var applicationLifetime =
                 host.Services.GetService(typeof(IHostApplicationLifetime)) as IHostApplicationLifetime;
 
-            //[Special for DesktopLoveBlazorWeb]
             TaskCompletionSource<string> futureAddr = new TaskCompletionSource<string>();
             applicationLifetime?.ApplicationStarted.Register((futureAddrObj) =>
             {
@@ -178,54 +67,18 @@ namespace dashboard_elite
                 (futureAddrObj as TaskCompletionSource<string>).SetResult(addr);
             }, futureAddr);
 
-            //[Special for DesktopLoveBlazorWeb]
 #pragma warning disable CS4014
             host.RunAsync();
 #pragma warning restore CS4014
 
-            //[Special for DesktopLoveBlazorWeb]
-            OpenInLine(await futureAddr.Task, Configuration);
+            OpenInLine(await futureAddr.Task, Common.ConfigurationRoot);
 
             //TODO
             return 0;
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args, IConfigurationRoot configuration) =>
-            Host.CreateDefaultBuilder(args)
-                .UseSerilog()
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.ConfigureKestrel(serverOptions =>
-                    {
-                        serverOptions.Listen(IPAddress.Loopback, 0);
 
-                        var externalPort = Configuration.GetValue<int>("ExternalPort");
-
-                        if (externalPort > 0)
-                        {
-                            foreach (NetworkInterface item in NetworkInterface.GetAllNetworkInterfaces())
-                            {
-                                if (!item.Description.Contains("virtual", StringComparison.CurrentCultureIgnoreCase) &&
-                                    item.NetworkInterfaceType != NetworkInterfaceType.Loopback &&
-                                    item.OperationalStatus == OperationalStatus.Up)
-                                {
-                                    foreach (UnicastIPAddressInformation ip in item.GetIPProperties().UnicastAddresses)
-                                    {
-                                        if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
-                                        {
-                                            serverOptions.Listen(ip.Address, externalPort);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                    });
-                    webBuilder.UseStaticWebAssets();
-                    webBuilder.UseStartup<Startup>();
-                });
-
-        public static void OpenInLine(string address, IConfigurationRoot configuration)
+        public static void OpenInLine(string address, IConfigurationRoot configurationRoot)
         {
             string windowTitle = "Elite Dangerous Dashboard";
             var iconFile = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
@@ -233,17 +86,17 @@ namespace dashboard_elite
                 : "wwwroot/img/elite.png";
 
 
-            var top = configuration.GetValue<int>("Dimensions:Top");
-            var left = configuration.GetValue<int>("Dimensions:left");
-            var height = configuration.GetValue<int>("Dimensions:Height");
-            var width = configuration.GetValue<int>("Dimensions:Width");
-            var fullScreen = configuration.GetValue<bool>("Dimensions:FullScreen");
-            var zoom = configuration.GetValue<int>("Dimensions:Zoom");
+            var top = configurationRoot.GetValue<int>("Dimensions:Top");
+            var left = configurationRoot.GetValue<int>("Dimensions:left");
+            var height = configurationRoot.GetValue<int>("Dimensions:Height");
+            var width = configurationRoot.GetValue<int>("Dimensions:Width");
+            var fullScreen = configurationRoot.GetValue<bool>("Dimensions:FullScreen");
+            var zoom = configurationRoot.GetValue<int>("Dimensions:Zoom");
 
-            FullScreenBorder = configuration.GetValue<int>("Dimensions:FullScreenBorder");
+            Common.FullScreenBorder = configurationRoot.GetValue<int>("Dimensions:FullScreenBorder");
 
 
-            Minimized = configuration.GetValue<bool>("Dimensions:Minimized");
+            Common.Minimized = configurationRoot.GetValue<bool>("Dimensions:Minimized");
 
             bool Debug = false;
 #if DEBUG
@@ -261,36 +114,13 @@ namespace dashboard_elite
                 .SetLeft(left)
                 .SetTop(top)
                 .SetResizable(!fullScreen)
-                //.SetMaximized(fullScreen)
-                //.SetFullScreen(fullScreen)
-                //.SetTopMost(fullScreen)
                 .SetChromeless(fullScreen)
                 .SetContextMenuEnabled(!fullScreen || Debug)
                 .SetDevToolsEnabled(!fullScreen || Debug)
                 .SetZoom(zoom)
-                //.RegisterCustomSchemeHandler("appscript", AppCustomSchemeUsed)
-                /*
-                .RegisterCustomSchemeHandler("app",
-                    (object sender, string scheme, string url, out string contentType) =>
-                    {
-                        contentType = "text/javascript";
-                        return new MemoryStream(Encoding.UTF8.GetBytes(@"
-                        (() =>{
-                            window.setTimeout(() => {
-                                alert(`YYY Dynamically inserted JavaScript.`);
-                            }, 5000);
-                        })();
-                    "));
-                    })*/
-                .RegisterWindowCreatingHandler(WindowCreating)
                 .RegisterWindowCreatedHandler(WindowCreated)
                 .RegisterLocationChangedHandler(WindowLocationChanged)
                 .RegisterSizeChangedHandler(WindowSizeChanged)
-                .RegisterWebMessageReceivedHandler(MessageReceivedFromWindow)
-                .RegisterWindowClosingHandler(WindowIsClosing)
-
-                //.SetTemporaryFilesPath(@"C:\Temp")
-
                 .SetLogVerbosity(2)
 
                 .Load(address);
@@ -299,73 +129,29 @@ namespace dashboard_elite
 
         }
 
-        //These are the event handlers I'm hooking up
-        /*
-        private static Stream AppCustomSchemeUsed(object sender, string scheme, string url, out string contentType)
-        {
-            Log.Information($"Custom scheme '{scheme}' was used.");
-            var currentWindow = sender as PhotinoWindow;
-
-            contentType = "text/javascript";
-
-            var js =
-                @"
-(() =>{
-    window.setTimeout(() => {
-        const title = document.getElementById('Title');
-        const lineage = document.getElementById('Lineage');
-        title.innerHTML = "
-
-                + $"'{currentWindow.Title}';" + "\n"
-
-                + $"        lineage.innerHTML = `PhotinoWindow Id: {currentWindow.Id} <br>`;" + "\n";
-
-            //show lineage of this window
-            var p = currentWindow.Parent;
-            while (p != null)
-            {
-                js += $"        lineage.innerHTML += `Parent Id: {p.Id} <br>`;" + "\n";
-                p = p.Parent;
-            }
-
-            js +=
-                @"        alert(`XXX Dynamically inserted JavaScript.`);
-    }, 1000);
-})();
-";
-            return new MemoryStream(Encoding.UTF8.GetBytes(js));
-        }*/
-
-        private static void MessageReceivedFromWindow(object sender, string message)
-        {
-            //Log.Information($"MessageRecievedFromWindow Callback Fired.");
-        }
-
-        private static void WindowCreating(object sender, EventArgs e)
-        {
-            //Log.Information("WindowCreating Callback Fired.");
-        }
-
         private static void WindowCreated(object sender, EventArgs e)
         {
+            var window = sender as PhotinoWindow;
+
+
             //Log.Information("WindowCreated Callback Fired.");
 
-            var currentState = Program.mainWindow.Chromeless;
+            var currentState = window.Chromeless;
 
             if (currentState)
             {
 
-                var monitor = CommandTools.MonitorFromWindow(mainWindow.WindowHandle, CommandTools.MONITOR_DEFAULTTONEAREST);
+                var monitor = CommandTools.MonitorFromWindow(window.WindowHandle, CommandTools.MONITOR_DEFAULTTONEAREST);
 
                 if (monitor != IntPtr.Zero)
                 {
                     var monitorInfo = new CommandTools.NativeMonitorInfo();
                     CommandTools.GetMonitorInfo(monitor, monitorInfo);
 
-                    mainWindow.SetLeft(monitorInfo.Monitor.Left - FullScreenBorder);
-                    mainWindow.SetTop(monitorInfo.Monitor.Top - FullScreenBorder);
-                    mainWindow.SetWidth(monitorInfo.Monitor.Right - monitorInfo.Monitor.Left + (FullScreenBorder*2));
-                    mainWindow.SetHeight(monitorInfo.Monitor.Bottom - monitorInfo.Monitor.Top + (FullScreenBorder*2));
+                    window.SetLeft(monitorInfo.Monitor.Left - Common.FullScreenBorder);
+                    window.SetTop(monitorInfo.Monitor.Top - Common.FullScreenBorder);
+                    window.SetWidth(monitorInfo.Monitor.Right - monitorInfo.Monitor.Left + (Common.FullScreenBorder *2));
+                    window.SetHeight(monitorInfo.Monitor.Bottom - monitorInfo.Monitor.Top + (Common.FullScreenBorder *2));
                 }
             }
 
@@ -373,9 +159,11 @@ namespace dashboard_elite
 
         private static void WindowLocationChanged(object sender, Point location)
         {
-            var currentstate = Program.mainWindow.Chromeless;
+            var window = sender as PhotinoWindow;
 
-            if ((currentstate || !Minimized) && location.Y > 0 && location.X > 0)
+            var currentstate = window.Chromeless;
+
+            if ((currentstate || !Common.Minimized) && location.Y > 0 && location.X > 0)
             {
                 CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Top", location.Y);
                 CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Left", location.X);
@@ -386,9 +174,11 @@ namespace dashboard_elite
 
         private static void WindowSizeChanged(object sender, Size size)
         {
-            var currentstate = Program.mainWindow.Chromeless;
+            var window = sender as PhotinoWindow;
 
-            if (currentstate || !Minimized && size.Height > 300 && size.Width > 600)
+            var currentstate = window.Chromeless;
+
+            if (currentstate || !Common.Minimized && size.Height > 300 && size.Width > 600)
             {
                 CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Height", size.Height);
                 CommandTools.AddOrUpdateAppSetting<int>("Dimensions:Width", size.Width);
@@ -397,11 +187,6 @@ namespace dashboard_elite
             //Log.Information( $"WindowSizeChanged Callback Fired.  Height: {size.Height}  Width: {size.Width}");
         }
 
-        private static bool WindowIsClosing(object sender, EventArgs e)
-        {
-            //Log.Information("WindowIsClosing Callback Fired.");
-            return false;   //return true to block closing of the window
-        }
     }
 
 }

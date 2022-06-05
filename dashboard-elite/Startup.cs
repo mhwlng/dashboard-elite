@@ -87,7 +87,7 @@ namespace dashboard_elite
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-                    Path.Combine(dashboard_elite.Program.ExePath, @"wwwroot")),
+                    Path.Combine(dashboard_elite.Common.ExePath, @"wwwroot")),
             });
 
             app.UseStaticFiles();

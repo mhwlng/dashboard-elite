@@ -288,37 +288,37 @@ namespace dashboard_elite.Components.Buttons
                 Thread.Sleep(100);
             }
 
-            Program.PlaySound(ref _clickSound, ButtonData.ClickSound);
+            Common.PlaySound(ref _clickSound, ButtonData.ClickSound);
 
             switch (ButtonData.Function.ToLower())
             {
                 case "sys":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].IncreaseSystemsPower_Buggy, focusChange);
+                        CommandTools.SendKeypressQueue(Common.Binding[BindingType.Srv].IncreaseSystemsPower_Buggy, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].IncreaseSystemsPower, focusChange);
+                        CommandTools.SendKeypressQueue(Common.Binding[BindingType.Ship].IncreaseSystemsPower, focusChange);
                     //AdjustPips(0);
                     break;
                 case "eng":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].IncreaseEnginesPower_Buggy, focusChange);
+                        CommandTools.SendKeypressQueue(Common.Binding[BindingType.Srv].IncreaseEnginesPower_Buggy, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].IncreaseEnginesPower, focusChange);
+                        CommandTools.SendKeypressQueue(Common.Binding[BindingType.Ship].IncreaseEnginesPower, focusChange);
 
                     //AdjustPips(1);
                     break;
                 case "wep":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].IncreaseWeaponsPower_Buggy, focusChange);
+                        CommandTools.SendKeypressQueue(Common.Binding[BindingType.Srv].IncreaseWeaponsPower_Buggy, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].IncreaseWeaponsPower, focusChange);
+                        CommandTools.SendKeypressQueue(Common.Binding[BindingType.Ship].IncreaseWeaponsPower, focusChange);
                     //AdjustPips(2);
                     break;
                 case "rst":
                     if (Data.StatusData.InSRV)
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Srv].ResetPowerDistribution_Buggy, focusChange);
+                        CommandTools.SendKeypressQueue(Common.Binding[BindingType.Srv].ResetPowerDistribution_Buggy, focusChange);
                     else
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].ResetPowerDistribution, focusChange);
+                        CommandTools.SendKeypressQueue(Common.Binding[BindingType.Ship].ResetPowerDistribution, focusChange);
 
                     //Pips[0] = 4;
                     //Pips[1] = 4;

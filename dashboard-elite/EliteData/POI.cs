@@ -221,7 +221,7 @@ namespace dashboard_elite.EliteData
 
                 };
 
-                using var response = await Program.WebClient.GetAsync(PoiSpreadsheet, HttpCompletionOption.ResponseHeadersRead);
+                using var response = await Common.WebClient.GetAsync(PoiSpreadsheet, HttpCompletionOption.ResponseHeadersRead);
                 using var stream = await response.Content.ReadAsStreamAsync();
                 using var streamReader = new StreamReader(stream);
 
@@ -248,7 +248,7 @@ namespace dashboard_elite.EliteData
             {
                 //fullPoiList = new List<PoiItem>();
 
-                path = Path.Combine(dashboard_elite.Program.ExePath, path);
+                path = Path.Combine(dashboard_elite.Common.ExePath, path);
 
                 if (File.Exists(path))
                 {

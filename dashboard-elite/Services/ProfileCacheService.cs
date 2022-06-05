@@ -29,7 +29,7 @@ namespace dashboard_elite.Services
         {
             _env = env;
 
-            var profilePath = Path.Combine(dashboard_elite.Program.ExePath, "Data\\");
+            var profilePath = Path.Combine(dashboard_elite.Common.ExePath, "Data\\");
 
             ProfileCache =
                 JsonConvert.DeserializeObject<Dictionary<string, ProfileData>>(

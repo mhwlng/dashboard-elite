@@ -54,7 +54,7 @@ namespace dashboard_elite.Services
         {
             _env = env;
 
-            var buttonPath = Path.Combine(dashboard_elite.Program.ExePath, "Data\\ButtonBlocks\\");
+            var buttonPath = Path.Combine(dashboard_elite.Common.ExePath, "Data\\ButtonBlocks\\");
 
             var fileEntries = Directory.GetFiles(buttonPath);
             foreach (var fileName in fileEntries)

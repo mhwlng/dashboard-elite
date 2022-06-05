@@ -87,24 +87,24 @@ namespace dashboard_elite.Components.Buttons
                 Thread.Sleep(100);
             }
 
-            Program.PlaySound(ref _clickSound, ButtonData.ClickSound);
+            Common.PlaySound(ref _clickSound, ButtonData.ClickSound);
 
             switch (ButtonData.Function.ToLower())
             {
                 case "selecthighestthreat":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].SelectHighestThreat, focusChange);
+                    CommandTools.SendKeypressQueue(Common.Binding[BindingType.Ship].SelectHighestThreat, focusChange);
                     UnderAttack = false;
                     break;
                 case "deploychaff":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].FireChaffLauncher, focusChange);
+                    CommandTools.SendKeypressQueue(Common.Binding[BindingType.Ship].FireChaffLauncher, focusChange);
                     UnderAttack = false;
                     break;
 
                 case "deployheatsink":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].DeployHeatSink, focusChange);
+                    CommandTools.SendKeypressQueue(Common.Binding[BindingType.Ship].DeployHeatSink, focusChange);
                     break;
                 case "deployshieldcell":
-                    CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].UseShieldCell, focusChange);
+                    CommandTools.SendKeypressQueue(Common.Binding[BindingType.Ship].UseShieldCell, focusChange);
                     break;
             }
         }

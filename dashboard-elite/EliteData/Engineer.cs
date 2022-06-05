@@ -38,7 +38,7 @@ namespace dashboard_elite.EliteData
         {
             try
             {
-                path = Path.Combine(dashboard_elite.Program.ExePath, path);
+                path = Path.Combine(dashboard_elite.Common.ExePath, path);
 
                 if (File.Exists(path))
                 {
@@ -60,7 +60,7 @@ namespace dashboard_elite.EliteData
         {
             try
             {
-                path = Path.Combine(dashboard_elite.Program.ExePath, path);
+                path = Path.Combine(dashboard_elite.Common.ExePath, path);
 
                 if (File.Exists(path))
                 {
@@ -85,7 +85,7 @@ namespace dashboard_elite.EliteData
         {
             try
             {
-                path = Path.Combine(dashboard_elite.Program.ExePath, path);
+                path = Path.Combine(dashboard_elite.Common.ExePath, path);
 
                 if (File.Exists(path))
                 {
@@ -138,7 +138,7 @@ namespace dashboard_elite.EliteData
         {
             try
             {
-                path = Path.Combine(dashboard_elite.Program.ExePath, path);
+                path = Path.Combine(dashboard_elite.Common.ExePath, path);
 
                 if (File.Exists(path))
                 {
@@ -166,7 +166,7 @@ namespace dashboard_elite.EliteData
         {
             try
             {
-                var utf8 = await Program.WebClient.GetStringAsync(url);
+                var utf8 = await Common.WebClient.GetStringAsync(url);
 
                 return utf8;
 

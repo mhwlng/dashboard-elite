@@ -91,10 +91,10 @@ namespace dashboard_elite.ImportData
                 {
                     using var jsonWriter = new JsonTextWriter(sw);
 
-                    //Program.WebClient.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
-                    //Program.WebClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Encoding", "gzip, deflate");
+                    //Common.WebClient.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
+                    //Common.WebClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Encoding", "gzip, deflate");
                     
-                    using var response = await Program.WebClient.GetAsync(url);
+                    using var response = await Common.WebClient.GetAsync(url);
                     using var stream = await response.Content.ReadAsStreamAsync();
                     if (gzip)
                     {
@@ -307,7 +307,7 @@ namespace dashboard_elite.ImportData
         {
             try
             {
-                var data = await Program.WebClient.GetStringAsync(url);
+                var data = await Common.WebClient.GetStringAsync(url);
 
                 var jObj = JObject.Parse(data);
 
@@ -395,7 +395,7 @@ namespace dashboard_elite.ImportData
                 {
                     Log.Logger.Information("looking up " + material + " Hotspots");
 
-                    var data = await Program.WebClient.GetStringAsync(url + material);
+                    var data = await Common.WebClient.GetStringAsync(url + material);
 
                     File.WriteAllText(path, data);
                 }
@@ -418,7 +418,7 @@ namespace dashboard_elite.ImportData
                 {
                     Log.Logger.Information("looking up GEC POIs");
 
-                    var data = await Program.WebClient.GetStringAsync(url);
+                    var data = await Common.WebClient.GetStringAsync(url);
 
                     File.WriteAllText(path, data);
                 }
@@ -475,7 +475,7 @@ namespace dashboard_elite.ImportData
                 {
                     Log.Logger.Information("looking up galnet");
 
-                    var data = await Program.WebClient.GetStringAsync(url);
+                    var data = await Common.WebClient.GetStringAsync(url);
 
                     var galnetJson = JsonConvert.DeserializeObject<GalnetRoot>(data)?.Data.Select(x => x.Attributes).ToList();
 
@@ -528,7 +528,7 @@ namespace dashboard_elite.ImportData
                 {
                     Log.Logger.Information("looking up community goals");
 
-                    var data = await Program.WebClient.GetStringAsync(url);
+                    var data = await Common.WebClient.GetStringAsync(url);
 
                     var cgJson = JsonConvert.DeserializeObject<CommunityGoalsData>(data);
 
@@ -638,7 +638,7 @@ namespace dashboard_elite.ImportData
 
                 Log.Logger.Information("looking up " + material + " Stations");
 
-                var data = await Program.WebClient.GetStringAsync(url);
+                var data = await Common.WebClient.GetStringAsync(url);
 
                 var doc = new HtmlDocument();
                 doc.LoadHtml(data);
@@ -681,7 +681,7 @@ namespace dashboard_elite.ImportData
 
                 Log.Logger.Information("looking up " + material + " Stations");
 
-                var data = await Program.WebClient.GetStringAsync(url + cid);
+                var data = await Common.WebClient.GetStringAsync(url + cid);
 
                 var doc = new HtmlDocument();
                 doc.LoadHtml(data);

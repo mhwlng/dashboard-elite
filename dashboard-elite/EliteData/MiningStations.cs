@@ -114,7 +114,7 @@ namespace dashboard_elite.EliteData
         {
             try
             {
-                path = Path.Combine(dashboard_elite.Program.ExePath, path);
+                path = Path.Combine(dashboard_elite.Common.ExePath, path);
 
                 if (File.Exists(path))
                 {

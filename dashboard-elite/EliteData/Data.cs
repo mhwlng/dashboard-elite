@@ -229,7 +229,7 @@ namespace dashboard_elite.EliteData
 		
         public void HandleJson()
         {
-            lock (Program.RefreshJsonLock)
+            lock (Common.RefreshJsonLock)
             {
                 NearbyStationList[Station.PoiTypes.InterStellarFactors] =
                     Station.GetNearestStations(LocationData.StarPos, Station.FullStationList[Station.PoiTypes.InterStellarFactors]);

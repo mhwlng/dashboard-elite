@@ -153,22 +153,22 @@ namespace dashboard_elite.Components.Buttons
                 {
                     case "hypersupercombination"
                         : // context dependent, i.e. jump if another system is targeted, supercruise if not.
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].HyperSuperCombination, focusChange);
+                        CommandTools.SendKeypressQueue(Common.Binding[BindingType.Ship].HyperSuperCombination, focusChange);
                         break;
                     case "supercruise": // supercruise even if another system targeted
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].Supercruise, focusChange);
+                        CommandTools.SendKeypressQueue(Common.Binding[BindingType.Ship].Supercruise, focusChange);
                         break;
                     case "hyperspace": // jump
-                        CommandTools.SendKeypressQueue(Program.Binding[BindingType.Ship].Hyperspace, focusChange);
+                        CommandTools.SendKeypressQueue(Common.Binding[BindingType.Ship].Hyperspace, focusChange);
                         break;
                 }
 
-                Program.PlaySound(ref _clickSound, ButtonData.ClickSound);
+                Common.PlaySound(ref _clickSound, ButtonData.ClickSound);
 
             }
             else
             {
-                Program.PlaySound(ref _errorSound, ButtonData.ErrorSound);
+                Common.PlaySound(ref _errorSound, ButtonData.ErrorSound);
             }
 
 

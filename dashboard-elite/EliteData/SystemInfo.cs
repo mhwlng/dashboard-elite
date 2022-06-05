@@ -283,7 +283,7 @@ namespace dashboard_elite.EliteData
 
         private  async Task<string> GetJson(string url)
         {
-            var utf8 = await Program.WebClient.GetStringAsync(url);
+            var utf8 = await Common.WebClient.GetStringAsync(url);
 
             return utf8;
         }
@@ -325,7 +325,7 @@ namespace dashboard_elite.EliteData
 
                             var progress = (double) data.bodies.Count / (double) data.bodyCount * 100.0;
 
-                            lock (dashboard_elite.Program.RefreshSystemLock)
+                            lock (dashboard_elite.Common.RefreshSystemLock)
                             {
                                 SystemData.StarSystem = starSystem;
                                 SystemData.Progress = progress;
@@ -363,7 +363,7 @@ namespace dashboard_elite.EliteData
                                     File.WriteAllText(fullPath, json);
                                 }
 
-                                lock (dashboard_elite.Program.RefreshSystemLock)
+                                lock (dashboard_elite.Common.RefreshSystemLock)
                                 {
                                     SystemData.StarSystem = starSystem;
                                     SystemData.Progress = progress;
@@ -372,7 +372,7 @@ namespace dashboard_elite.EliteData
                             }
                             else
                             {
-                                lock (dashboard_elite.Program.RefreshSystemLock)
+                                lock (dashboard_elite.Common.RefreshSystemLock)
                                 {
                                     SystemData.StarSystem = starSystem;
                                     SystemData.Progress = 0;
