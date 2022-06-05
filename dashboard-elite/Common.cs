@@ -21,7 +21,6 @@ using dashboard_elite.EliteData;
 using dashboard_elite.Helpers;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
-using PhotinoNET;
 using Serilog;
 using Serilog.Events;
 using Serilog.Formatting;
@@ -44,6 +43,8 @@ namespace dashboard_elite
         public static int FullScreenBorder;
 
         public static IConfigurationRoot ConfigurationRoot;
+
+        public static string Address;
 
         public static CachedSound _clickSound = null;
 
@@ -139,7 +140,7 @@ namespace dashboard_elite
                     webBuilder.UseStartup<Startup>();
                 });
 
-        public static void Startup()
+        public static void Startup(string[] args)
         {
             WebClient.Timeout = new TimeSpan(0, 0, 5, 0, 0);
 
@@ -180,6 +181,34 @@ namespace dashboard_elite
                 }
 
             }
+
+            var host = Common.CreateHostBuilder(args, Common.ConfigurationRoot).Build();
+
+            var applicationLifetime =
+                host.Services.GetService(typeof(IHostApplicationLifetime)) as IHostApplicationLifetime;
+
+            TaskCompletionSource<string> futureAddr = new TaskCompletionSource<string>();
+            applicationLifetime?.ApplicationStarted.Register((futureAddrObj) =>
+            {
+                var server = host.Services.GetService(typeof(IServer)) as IServer;
+                var logger = host.Services.GetService(typeof(ILogger<Program>)) as ILogger<Program>;
+
+                var addressFeature = server.Features.Get<IServerAddressesFeature>();
+                foreach (var addresses in addressFeature.Addresses)
+                {
+                    logger.LogInformation("Listening on address: " + addresses);
+                }
+
+                var addr = addressFeature.Addresses.First();
+                (futureAddrObj as TaskCompletionSource<string>).SetResult(addr);
+            }, futureAddr);
+
+#pragma warning disable CS4014
+            host.RunAsync();
+#pragma warning restore CS4014
+
+            Address = futureAddr.Task.GetAwaiter().GetResult();
+
 
         }
     }

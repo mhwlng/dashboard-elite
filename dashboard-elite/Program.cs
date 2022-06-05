@@ -38,46 +38,13 @@ namespace dashboard_elite
         [STAThread]
         public static int Main(string[] args)
         {
-            return MainImpl(args).Result;
-        }
+            Common.Startup(args);
 
+            OpenInLine(Common.Address, Common.ConfigurationRoot);
 
-        public static async Task<int> MainImpl(string[] args)
-        {
-            Common.Startup();
-            
-            var host = Common.CreateHostBuilder(args, Common.ConfigurationRoot).Build();
-
-            var applicationLifetime =
-                host.Services.GetService(typeof(IHostApplicationLifetime)) as IHostApplicationLifetime;
-
-            TaskCompletionSource<string> futureAddr = new TaskCompletionSource<string>();
-            applicationLifetime?.ApplicationStarted.Register((futureAddrObj) =>
-            {
-                var server = host.Services.GetService(typeof(IServer)) as IServer;
-                var logger = host.Services.GetService(typeof(ILogger<Program>)) as ILogger<Program>;
-
-                var addressFeature = server.Features.Get<IServerAddressesFeature>();
-                foreach (var addresses in addressFeature.Addresses)
-                {
-                    logger.LogInformation("Listening on address: " + addresses);
-                }
-
-                var addr = addressFeature.Addresses.First();
-                (futureAddrObj as TaskCompletionSource<string>).SetResult(addr);
-            }, futureAddr);
-
-#pragma warning disable CS4014
-            host.RunAsync();
-#pragma warning restore CS4014
-
-            OpenInLine(await futureAddr.Task, Common.ConfigurationRoot);
-
-            //TODO
             return 0;
         }
-
-
+        
         public static void OpenInLine(string address, IConfigurationRoot configurationRoot)
         {
             string windowTitle = "Elite Dangerous Dashboard";
