@@ -17,16 +17,17 @@
             <MudIconButton Icon="@Icons.Material.Filled.Keyboard" Color="@(HideKeyboard ? @Color.Secondary : @Color.Inherit)" OnClick="KeyboardToggle" />
         }
 
-        @if (Data.ImportData)
+        @if (Window == WindowCount && Data.ImportData)
         {
             <MudIcon Icon="@SvgCacheService.ButtonIcon("loading.svg")" Color="Color.Inherit"  />
         }
-        else if (NavigationManager.Uri.Contains("127.0.0.1"))
+        else if (Window == WindowCount && NavigationManager.Uri.Contains("127.0.0.1"))
         {
             <MudIconButton Icon="@Icons.Material.Filled.Maximize" Color="Color.Inherit" OnClick="Maximize" />
 
             <MudIconButton Icon="@Icons.Material.Filled.Close" Color="Color.Inherit" OnClick="Close" />
         }
+       
 
     </MudAppBar>
     <MudDrawer @bind-Open="_drawerOpen" Elevation="1" Variant="DrawerVariant.Temporary" >

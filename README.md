@@ -54,6 +54,8 @@ BETA RELEASE
 
 ![touch screen](https://i.imgur.com/1LV8CUK.png)
 
+![touch screen](https://i.imgur.com/wDFQfMi.png)
+
 Technology used:
 - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0)  install : ASP.NET Core Runtime \ x64 and .NET Desktop Runtime \ x64
 - [WebView2 Runtime](https://go.microsoft.com/fwlink/p/?LinkId=2124703)
@@ -76,6 +78,9 @@ Fullscreen mode won't work, unless you only use an external device via a web bro
 The actual on/off state of a button comes from the game.
 
 When pressing a button on the touch screen, it will send the e.g. 'toggle light' keypress (from the game keyboard binding file) to the game.
+
+You can show multiple windows and hide the button box on the touch screen. appsettings.json contains the 'Windows' value with the number of windows.( The default value is 1)
+This option has no effect on external devices.
 
 Big display 3840x1100 (14 inch, IPS panel, uses usb-c connector):
 

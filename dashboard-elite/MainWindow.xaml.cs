@@ -37,6 +37,8 @@ namespace dashboard_elite
 
             var zoom = Common.ConfigurationRoot.GetValue<int>("Dimensions:Zoom");
 
+            var windows = Common.ConfigurationRoot.GetValue<int>("Windows");
+
             var fullScreen = Common.ConfigurationRoot.GetValue<bool>("Dimensions:FullScreen");
 
             Common.FullScreenBorder = Common.ConfigurationRoot.GetValue<int>("Dimensions:FullScreenBorder");
@@ -47,26 +49,18 @@ namespace dashboard_elite
 
             grd.RowDefinitions.Add(new RowDefinition());
 
-            grd.ColumnDefinitions.Add(new ColumnDefinition());
-            var wv1 = new WebView2();
-            wv1.Name = "webView1";
-            wv1.ZoomFactor = zoom / 100.0;
-            wv1.Source = new Uri(Common.Address);
-            RegisterName(wv1.Name, wv1);
-            Grid.SetRow(wv1, 0);
-            Grid.SetColumn(wv1, 0);
-            grd.Children.Add(wv1);
-
-            /*
-            grd.ColumnDefinitions.Add(new ColumnDefinition());
-            var wv2 = new WebView2();
-            wv2.Name = "webView2";
-            wv2.ZoomFactor = zoom / 100.0;
-            wv2.Source = new Uri(Common.Address);
-            RegisterName(wv2.Name, wv2);
-            Grid.SetRow(wv2, 0);
-            Grid.SetColumn(wv2, 1);
-            grd.Children.Add(wv2);*/
+            for (var i = 0; i < windows; i++)
+            {
+                grd.ColumnDefinitions.Add(new ColumnDefinition());
+                var wv1 = new WebView2();
+                wv1.Name = $"webView{i+1}";
+                wv1.ZoomFactor = zoom / 100.0;
+                wv1.Source = new Uri($"{Common.Address}#{i+1}-{windows}");
+                RegisterName(wv1.Name, wv1);
+                Grid.SetRow(wv1, i);
+                Grid.SetColumn(wv1, i);
+                grd.Children.Add(wv1);
+            }
 
             InitializeAsync();
 

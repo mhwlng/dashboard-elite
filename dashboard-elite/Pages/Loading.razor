@@ -3,10 +3,13 @@
 @layout EmptyLayout
 
 <MudContainer MaxWidth="MaxWidth.False">
-
-    <MudAlert Severity="Severity.Info" Variant="Variant.Filled" Class="ma-2" Elevation="4">
-        @LoadingMessage
-    </MudAlert>
+    
+    @if (Window == 1)
+    {
+        <MudAlert Severity="Severity.Info" Variant="Variant.Filled" Class="ma-2" Elevation="4">
+            @LoadingMessage
+        </MudAlert>
+    }
 
 </MudContainer>
 

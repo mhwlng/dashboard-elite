@@ -18,25 +18,31 @@ namespace dashboard_elite.Shared
         [Inject] private Data Data { get; set; }
         [Inject] private SvgCacheService SvgCacheService { get; set; }
 
-        [Inject] ProtectedLocalStorage ProtectedLocalStorage { get; set; }
+        [Inject] private ProtectedLocalStorage ProtectedLocalStorage { get; set; }
+        [Inject] private ProtectedSessionStorage ProtectedSessionStorage { get; set; }
 
         private MudTheme _currentTheme = Themes.darkTheme;
 
         bool _drawerOpen = false;
 
+        public int Window { get; set; }
+        public int WindowCount { get; set; }
         public bool HideKeyboard { get; set; } = true;
         public bool HideInformation { get; set; } = true;
 
         private HubConnection hubConnection;
-
+        
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await base.OnAfterRenderAsync(firstRender);
             if (firstRender)
             {
+                Window = (await ProtectedSessionStorage.GetAsync<int>("Window")).Value;
+                WindowCount = (await ProtectedSessionStorage.GetAsync<int>("WindowCount")).Value;
+
                 HideInformation = (await ProtectedLocalStorage.GetAsync<bool>("HideInformation")).Value;
 
-                HideKeyboard = (await ProtectedLocalStorage.GetAsync<bool>("HideKeyboard")).Value;
+                HideKeyboard = (await ProtectedLocalStorage.GetAsync<bool>("HideKeyboard")).Value || WindowCount > 1;
                 StateHasChanged();
             }
         }

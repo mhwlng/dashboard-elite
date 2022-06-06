@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 
 
 
@@ -16,9 +17,14 @@ namespace dashboard_elite.Pages
     {
         [Inject] private NavigationManager NavigationManager { get; set; }
 
+        [Inject] private ProtectedSessionStorage protectedSessionStorage { get; set; }
+
         private HubConnection hubConnection;
 
         private string LoadingMessage;
+
+        public int Window { get; set; }
+        public int WindowCount { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -46,6 +52,26 @@ namespace dashboard_elite.Pages
 
             await hubConnection.StartAsync();
         }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                var fragment = new Uri(NavigationManager.Uri).Fragment;
+                if (!string.IsNullOrEmpty(fragment))
+                {
+                    var fragments = fragment.Replace("#","").Split('-');
+                    if (fragments.Length == 2)
+                    {
+                        Window = Convert.ToInt32(fragments[0]);
+                        WindowCount = Convert.ToInt32(fragments[1]);
+                        await protectedSessionStorage.SetAsync("Window", Window);
+                        await protectedSessionStorage.SetAsync("WindowCount", WindowCount);
+                    }
+                }
+            }
+        }
+
 
         public bool IsConnected =>
             hubConnection.State == HubConnectionState.Connected;
