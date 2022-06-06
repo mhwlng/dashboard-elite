@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using MudBlazor;
+using System.Windows;
 
 namespace dashboard_elite.Shared
 {
@@ -64,20 +65,25 @@ namespace dashboard_elite.Shared
 
         void Close()
         {
-            Program.mainWindow.Close();
+            Common.MainWindow.Dispatcher.Invoke(() => Common.MainWindow.Close());
+
         }
-        
+
         void Maximize()
         {
-            var currentstate = Program.mainWindow.Chromeless;
+            Common.MainWindow.Dispatcher.Invoke(() => {
 
-            Program.mainWindow.SetMaximized(!currentstate);
+                var currentstate = (Common.MainWindow.WindowStyle == WindowStyle.None);
 
-            CommandTools.AddOrUpdateAppSetting<bool>("Dimensions:FullScreen", !currentstate);
+                Common.MainWindow.WindowState = currentstate ? WindowState.Normal : WindowState.Maximized;
 
-            Process.Start(Process.GetCurrentProcess().MainModule.FileName);
+                CommandTools.AddOrUpdateAppSetting<bool>("Dimensions:FullScreen", !currentstate);
 
-            Program.mainWindow.Close();
+                Process.Start(Process.GetCurrentProcess().MainModule.FileName);
+
+                Common.MainWindow.Close();
+
+            });
         }
 
         void DrawerToggle()

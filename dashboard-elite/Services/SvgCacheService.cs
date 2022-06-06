@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace dashboard_elite.Services
 
         private string _svgPath;
 
-        private Dictionary<string, string> SvgCache { get; set; } = new Dictionary<string, string>();
+        private ConcurrentDictionary<string, string> SvgCache { get; set; } = new ConcurrentDictionary<string, string>();
 
         public SvgCacheService(IWebHostEnvironment env)
         {
@@ -31,11 +32,11 @@ namespace dashboard_elite.Services
 
                     if (File.Exists(fileName))
                     {
-                        SvgCache.Add(key, File.ReadAllText(Path.Combine(_svgPath, key)));
+                        SvgCache.TryAdd(key, File.ReadAllText(Path.Combine(_svgPath, key)));
                     }
                     else
                     {
-                        SvgCache.Add(key, File.ReadAllText(Path.Combine(_svgPath, "no-icon.svg")));
+                        SvgCache.TryAdd(key, File.ReadAllText(Path.Combine(_svgPath, "no-icon.svg")));
                     }
                 }
 

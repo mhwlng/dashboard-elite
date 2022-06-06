@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml;
 using System.Xml.Serialization;
 using dashboard_elite.EliteData;
@@ -709,10 +710,13 @@ namespace dashboard_elite
 
             await _myHub.Clients.All.SendAsync("LoadingDone");
 
-            if (!Program.mainWindow.Chromeless  && Common.Minimized)
-            {
-                Program.mainWindow.SetMinimized(true);
-            }
+            Common.MainWindow.Dispatcher.Invoke(() => {
+
+                if (Common.MainWindow.WindowStyle != WindowStyle.None && Common.Minimized)
+                {
+                    Common.MainWindow.WindowState = WindowState.Minimized;
+                }
+            });
 
             stoppingToken.WaitHandle.WaitOne();
 

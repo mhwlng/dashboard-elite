@@ -15,10 +15,9 @@ using dashboard_elite.Hubs;
 using dashboard_elite.Services;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Net.Http.Headers;
-using MudBlazor.Services;
-using Serilog;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.FileProviders;
+using MudBlazor.Services;
 
 namespace dashboard_elite
 {

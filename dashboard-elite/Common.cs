@@ -33,6 +33,8 @@ namespace dashboard_elite
         private static HttpClientHandler httpClientHandler = new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate };
         public static readonly HttpClient WebClient = new HttpClient(httpClientHandler);
 
+        public static MainWindow MainWindow;
+
         public static readonly object RefreshJsonLock = new object();
         public static readonly object RefreshSystemLock = new object();
 

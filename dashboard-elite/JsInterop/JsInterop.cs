@@ -1,5 +1,6 @@
 ﻿using dashboard_elite.Helpers;
 using Microsoft.JSInterop;
+using System.Windows;
 
 namespace dashboard_elite.JsInterop
 {
@@ -8,11 +9,20 @@ namespace dashboard_elite.JsInterop
         [JSInvokable]
         public static void JsMouseUp()
         {
-            var currentstate = Program.mainWindow.Chromeless;
-
-            if (currentstate)
+            try
             {
-                CommandTools.BringMainWindowToFront("EliteDangerous64");
+                Common.MainWindow.Dispatcher.Invoke(() =>
+                {
+
+                    if (Common.MainWindow.WindowStyle == WindowStyle.None)
+                    {
+                        CommandTools.BringMainWindowToFront("EliteDangerous64");
+                    }
+                });
+            }
+            catch
+            {
+                ///
             }
         }
 
