@@ -8,6 +8,8 @@ BETA RELEASE
 
 ![touch screen](https://i.imgur.com/EjXtSoY.jpg)
 
+![touch screen](https://i.imgur.com/YMEyeut.jpg)
+
 ![touch screen](https://i.imgur.com/QLA3Fgm.png)
 
 ![touch screen](https://i.imgur.com/Hh7QCIl.png)
