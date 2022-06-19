@@ -1,0 +1,71 @@
+﻿
+
+
+
+@media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+
+    .buttonblock > .mud-icon-button-size-large.mud-button > .mud-icon-button-label > .mud-icon-size-large {
+        font-size: 4.1rem;
+        letter-spacing: -0.001em;
+    }
+
+
+    .mud-simple-table table * tr > td,
+    .mud-simple-table table * tr th {
+        font-size: 1rem;
+    }
+
+    .large-font.mud-simple-table table * tr > td,
+    .large-font .mud-simple-table table * tr > td,
+    .mud-simple-table table * tr th {
+        font-size: 1rem;
+    }
+
+
+    .galnetbody table * tr > td, .galnetbody table * tr th {
+        font-size: 1rem !important;
+    }
+
+    .galnetbody p {
+        font-size: 1rem !important;
+    }
+
+    .pagebarcaption {
+        font-size: 1rem;
+    }
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+
+    .buttonblock > .mud-icon-button-size-large.mud-button > .mud-icon-button-label > .mud-icon-size-large {
+        font-size: 4.1rem;
+        letter-spacing: -0.001em;
+    }
+
+
+    .mud-simple-table table * tr > td,
+    .mud-simple-table table * tr th {
+        font-size: 1rem;
+    }
+
+    .large-font.mud-simple-table table * tr > td,
+    .large-font .mud-simple-table table * tr > td,
+    .mud-simple-table table * tr th {
+        font-size: 0.8rem;
+    }
+
+
+    .galnetbody table * tr > td, .galnetbody table * tr th {
+        font-size: 1rem !important;
+    }
+
+    .galnetbody p {
+        font-size: 1rem !important;
+    }
+
+    .pagebarcaption {
+        font-size: 1rem;
+    }
+
+}

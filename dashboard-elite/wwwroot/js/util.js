@@ -16,3 +16,19 @@ export function ScrollTableToBottom(className) {
 
     y.scrollTop = y.scrollHeight;
 }
+
+export function IframeReload() {
+
+    parent.location.reload();
+
+}
+
+export function IframeName() {
+
+    var iFrame = window.frameElement;
+    if (iFrame) {
+       return iFrame.name;
+    }
+    return "";
+}
+

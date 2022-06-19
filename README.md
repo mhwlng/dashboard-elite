@@ -8,6 +8,10 @@ BETA RELEASE
 
 ![touch screen](https://i.imgur.com/EjXtSoY.jpg)
 
+![touch screen](https://i.imgur.com/x9qFqRo.jpg)
+
+![touch screen](https://i.imgur.com/RnryjN5.jpg)
+
 ![touch screen](https://i.imgur.com/yfShZKP.jpg)
 
 ![touch screen](https://i.imgur.com/QLA3Fgm.png)
@@ -83,6 +87,8 @@ When pressing a button on the touch screen, it will send the e.g. 'toggle light'
 
 You can show multiple windows and hide the button box on the touch screen. appsettings.json contains the 'Windows' value with the number of windows.( The default value is 1)
 This option has no effect on external devices.
+
+On external devices, there is a button, to show two windows.
 
 Big display 3840x1100 (14 inch, IPS panel, uses usb-c connector):
 

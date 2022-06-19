@@ -1,0 +1,14 @@
+﻿@page "/iframepage"
+
+@layout IFrameLayout
+<MudPaper Class="d-flex" style="height: 100vh; width: 100vw;">
+    @for (var i = 1;i <= WindowCount; i++)
+    {
+        var window = i;
+
+        <MudPaper Class="d-flex flex-grow-1" >
+            <iframe name="@($"iframe{window}")" src="@($"/#{window}-{WindowCount}")" frameborder="0" scrolling="no" style="width: 100%; height: 100%; border: none; margin: 0; padding: 0; overflow: hidden; z-index: 999999;">
+            </iframe>
+        </MudPaper>
+    }
+</MudPaper>

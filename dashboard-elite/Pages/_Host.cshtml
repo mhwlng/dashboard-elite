@@ -44,7 +44,7 @@
     @*<script src="appscript://dynamic.js"></script>*@
 
     </head>
-    <body>
+    <body >
         <component type="typeof(Main)" render-mode="ServerPrerendered" />
 
         <div id="blazor-error-ui">
@@ -60,11 +60,25 @@
 
         <script src="_framework/blazor.server.js"></script>
         <script src="_content/MudBlazor/MudBlazor.min.js"></script>
-        <script src="_content/Microsoft.AspNetCore.ProtectedBrowserStorage/protectedBrowserStorage.js"></script>
-
+ 
         @if (Request.Host.Host.Contains("127.0.0.1"))
         {
             <script src="js/JsInterop.js"></script>
+           
+        }
+        else
+        {
+            <script>
+                if (window.frameElement) {
+                    var head = document.getElementsByTagName('head')[0];
+                    var link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = 'css/site2.css';
+                    head.appendChild(link);
+                }
+
+            </script> 
         }
     </body>
 </html>

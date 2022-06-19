@@ -12,23 +12,36 @@
 
         @if (!NavigationManager.Uri.Contains("127.0.0.1"))
         {
-            <MudIconButton Icon="@Icons.Material.Filled.Article" Color="@(HideInformation ? @Color.Secondary : @Color.Inherit)" OnClick="InformationToggle" />
 
-            <MudIconButton Icon="@Icons.Material.Filled.Keyboard" Color="@(HideKeyboard ? @Color.Secondary : @Color.Inherit)" OnClick="KeyboardToggle" />
+            @if (Window == 0)
+            {
+                <MudIconButton Id="windowstoggle" Icon="@Icons.Material.Filled.Dashboard" Color="@Color.Inherit" OnClick="WindowsToggle"/>
+
+                <MudIconButton Icon="@Icons.Material.Filled.Article" Color="@(HideInformation ? @Color.Secondary : @Color.Inherit)" OnClick="InformationToggle"/>
+
+                <MudIconButton Icon="@Icons.Material.Filled.Keyboard" Color="@(HideKeyboard ? @Color.Secondary : @Color.Inherit)" OnClick="KeyboardToggle"/>
+            }
+            else if (Window == WindowCount && WindowCount > 1)
+            {
+                <MudIconButton Id="windowstoggle" Icon="@Icons.Material.Filled.Article" Color="@Color.Inherit" OnClick="WindowsToggle"/>
+              
+            }
         }
-
-        @if (Window == WindowCount && Data.ImportData)
+        
+        @if (NavigationManager.Uri.Contains("127.0.0.1"))
         {
-            <MudIcon Icon="@SvgCacheService.ButtonIcon("loading.svg")" Color="Color.Inherit"  />
-        }
-        else if (Window == WindowCount && NavigationManager.Uri.Contains("127.0.0.1"))
-        {
-            <MudIconButton Icon="@Icons.Material.Filled.Maximize" Color="Color.Inherit" OnClick="Maximize" />
+            @if (Window == WindowCount && Data.ImportData)
+            {
+                <MudIcon Icon="@SvgCacheService.ButtonIcon("loading.svg")" Color="Color.Inherit"/>
+            }
+            else if (Window == WindowCount)
+            {
+                <MudIconButton Icon="@Icons.Material.Filled.Maximize" Color="Color.Inherit" OnClick="Maximize"/>
 
-            <MudIconButton Icon="@Icons.Material.Filled.Close" Color="Color.Inherit" OnClick="Close" />
+                <MudIconButton Icon="@Icons.Material.Filled.Close" Color="Color.Inherit" OnClick="Close"/>
+            }
         }
-       
-
+  
     </MudAppBar>
     <MudDrawer @bind-Open="_drawerOpen" Elevation="1" Variant="DrawerVariant.Temporary" >
         <MudDrawerHeader>

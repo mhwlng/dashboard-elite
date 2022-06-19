@@ -27,7 +27,7 @@ td.spacer {
 
 .data {
     color: #FFB000;
-    white-space: nowrap;
+   /* white-space: nowrap;*/
 }
 
 .system-link {

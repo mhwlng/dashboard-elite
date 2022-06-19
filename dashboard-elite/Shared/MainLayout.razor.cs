@@ -9,14 +9,16 @@ using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using MudBlazor;
 using System.Windows;
+using Microsoft.JSInterop;
 
 namespace dashboard_elite.Shared
 {
-    public partial class MainLayout
+    public partial class MainLayout : IAsyncDisposable
     {
         [Inject] private NavigationManager NavigationManager { get; set; }
         [Inject] private Data Data { get; set; }
         [Inject] private SvgCacheService SvgCacheService { get; set; }
+        [Inject] private IJSRuntime MyJsRuntime { get; set; }
 
         [Inject] private ProtectedLocalStorage ProtectedLocalStorage { get; set; }
         [Inject] private ProtectedSessionStorage ProtectedSessionStorage { get; set; }
@@ -38,13 +40,30 @@ namespace dashboard_elite.Shared
             if (firstRender)
             {
                 Window = (await ProtectedSessionStorage.GetAsync<int>("Window")).Value;
+
                 WindowCount = (await ProtectedSessionStorage.GetAsync<int>("WindowCount")).Value;
 
                 HideInformation = (await ProtectedLocalStorage.GetAsync<bool>("HideInformation")).Value;
 
-                HideKeyboard = (await ProtectedLocalStorage.GetAsync<bool>("HideKeyboard")).Value || WindowCount > 1;
+                HideKeyboard = (await ProtectedLocalStorage.GetAsync<bool>("HideKeyboard")).Value;
+
+                if (WindowCount > 1)
+                {
+                    HideInformation = false;
+                    HideKeyboard = true;
+                }
+
+                var iframeName = await IframeName();
+
+                if (!string.IsNullOrEmpty(iframeName))
+                {
+                    Window = Convert.ToInt32(iframeName.Replace("iframe", ""));
+                }
+
                 StateHasChanged();
             }
+
+     
         }
 
         protected override async Task OnInitializedAsync()
@@ -61,13 +80,6 @@ namespace dashboard_elite.Shared
         public bool IsConnected =>
             hubConnection.State == HubConnectionState.Connected;
 
-        public async ValueTask DisposeAsync()
-        {
-            if (hubConnection is not null)
-            {
-                await hubConnection.DisposeAsync();
-            }
-        }
 
         void Close()
         {
@@ -97,7 +109,7 @@ namespace dashboard_elite.Shared
             _drawerOpen = !_drawerOpen;
         }
 
-        async void KeyboardToggle()
+        async Task KeyboardToggle()
         {
             HideKeyboard = !HideKeyboard;
 
@@ -107,7 +119,7 @@ namespace dashboard_elite.Shared
 
         }
 
-        async void InformationToggle()
+        async Task InformationToggle()
         {
             HideInformation = !HideInformation;
 
@@ -117,6 +129,58 @@ namespace dashboard_elite.Shared
 
 
         }
+        async Task WindowsToggle()
+        {
+            if (WindowCount < 2)
+            {
+                WindowCount = 2;
+                await ProtectedSessionStorage.SetAsync("Window", 0);
+                await ProtectedSessionStorage.SetAsync("WindowCount", WindowCount);
+                await ProtectedLocalStorage.SetAsync("WindowCount", WindowCount);
 
+                NavigationManager.NavigateTo($"/iframepage");
+            }
+            else
+            {
+                WindowCount = 0;
+
+                await ProtectedSessionStorage.SetAsync("Window", 0);
+                await ProtectedSessionStorage.SetAsync("WindowCount", WindowCount);
+                await ProtectedLocalStorage.SetAsync("WindowCount", WindowCount);
+
+                await IframeReload();
+            }
+
+
+        }
+
+        private Task<IJSObjectReference> _moduleReference;
+        private Task<IJSObjectReference> ModuleReference => _moduleReference ??= MyJsRuntime.InvokeAsync<IJSObjectReference>("import", "./js/util.js").AsTask();
+
+        async Task IframeReload()
+        {
+            var module = await ModuleReference;
+            await module.InvokeVoidAsync("IframeReload");
+        }
+
+        async Task<string> IframeName()
+        {
+            var module = await ModuleReference; 
+            return await module.InvokeAsync<string>("IframeName");
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            if (hubConnection is not null)
+            {
+                await hubConnection.DisposeAsync();
+            }
+
+            if (_moduleReference != null)
+            {
+                var module = await _moduleReference;
+                await module.DisposeAsync();
+            }
+        }
     }
 }

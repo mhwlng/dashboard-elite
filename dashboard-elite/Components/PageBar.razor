@@ -290,3 +290,52 @@ PageType == PageHelper.Page.SystemMap)
 
 
 }
+else
+{
+
+    <div class="center flex-grow-1 pagebarcaption">
+        @switch (PageType)
+        {
+            case PageHelper.Page.Commander:
+                <text>Commander</text>
+                break;
+            case PageHelper.Page.Galnet:
+                <text>Galnet</text>
+                break;
+            case PageHelper.Page.HWInfo:
+                <text>HWInfo</text>
+                break;
+            case PageHelper.Page.CurrentShip:
+                <text>Current Ship</text>
+                break;
+            case PageHelper.Page.Target:
+                <text>Target</text>
+                break;
+            case PageHelper.Page.Navigation:
+                <text>Navigation</text>
+                break;
+            case PageHelper.Page.Route:
+                <text>Route</text>
+                break;
+            case PageHelper.Page.SystemMap:
+                <text>System Map</text>
+                break;
+            case PageHelper.Page.OdysseySettlements:
+                <text>Odyssey Settlements</text>
+                break;
+            case PageHelper.Page.ColoniaBridge:
+                <text>Colonia Bridge</text>
+                break;
+            case PageHelper.Page.Missions:
+                <text>Missions</text>
+                break;
+            case PageHelper.Page.Cargo:
+                <text>Cargo</text>
+                break;
+            case PageHelper.Page.GalaxyMap:
+                <text>Galaxy Map</text>
+                break;
+        }
+    </div>
+
+}

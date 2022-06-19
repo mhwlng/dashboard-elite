@@ -10,7 +10,7 @@ using Microsoft.JSInterop;
 
 namespace dashboard_elite.Components
 {
-    public partial class PageBar
+    public partial class PageBar : IAsyncDisposable
     {
         [Inject] private NavigationManager NavigationManager { get; set; }
 
