@@ -43,7 +43,9 @@ namespace dashboard_elite.Pages
                 hubConnection.On<string>("LoadingMessage", (loadingMessage) =>
                 {
                     LoadingMessage = loadingMessage;
-                    StateHasChanged();
+                    //StateHasChanged();
+                    InvokeAsync(StateHasChanged);
+
                 });
 
                 hubConnection.On("LoadingDone", () => { NavigationManager.NavigateTo("/information/commander"); });

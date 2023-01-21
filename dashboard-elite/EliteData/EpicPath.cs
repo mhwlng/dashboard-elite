@@ -40,6 +40,20 @@ namespace dashboard_elite.EliteData
                                     {
                                         return controlSchemePath;
                                     }
+
+                                    controlSchemePath = Path.Combine(installLocation, @"Products\elite-dangerous-odyssey-64\ControlSchemes\");
+
+                                    if (Directory.Exists(controlSchemePath))
+                                    {
+                                        return controlSchemePath;
+                                    }
+
+                                    controlSchemePath = Path.Combine(installLocation, @"Products\FORC-FDEV-DO-38-IN-40\ControlSchemes\");
+
+                                    if (Directory.Exists(controlSchemePath))
+                                    {
+                                        return controlSchemePath;
+                                    }
                                 }
                             }
                         }

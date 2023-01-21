@@ -12,8 +12,11 @@
 
         @if (!NavigationManager.Uri.Contains("127.0.0.1"))
         {
-
-            @if (Window == 0)
+            @if (Window == WindowCount && Data.ImportData)
+            {
+                <MudIcon Icon="@SvgCacheService.ButtonIcon("loading.svg")" Color="Color.Inherit"/>
+            }
+            else if (Window == 0)
             {
                 <MudIconButton Id="windowstoggle" Icon="@Icons.Material.Filled.Dashboard" Color="@Color.Inherit" OnClick="WindowsToggle"/>
 
@@ -27,21 +30,21 @@
               
             }
         }
-        
-        @if (NavigationManager.Uri.Contains("127.0.0.1"))
+        else if(Window == WindowCount)
         {
-            @if (Window == WindowCount && Data.ImportData)
+            @if (Data.ImportData)
             {
                 <MudIcon Icon="@SvgCacheService.ButtonIcon("loading.svg")" Color="Color.Inherit"/>
             }
-            else if (Window == WindowCount)
+            else
             {
-                <MudIconButton Icon="@Icons.Material.Filled.Maximize" Color="Color.Inherit" OnClick="Maximize"/>
+                <MudIconButton Icon="@Icons.Material.Filled.Maximize" Color="@Color.Inherit" OnClick="@Maximize"/>
 
-                <MudIconButton Icon="@Icons.Material.Filled.Close" Color="Color.Inherit" OnClick="Close"/>
-            }
+                <MudIconButton Icon="@Icons.Material.Filled.Close" Color="@Color.Inherit" OnClick="@Close"/>
+            }      
         }
-  
+      
+
     </MudAppBar>
     <MudDrawer @bind-Open="_drawerOpen" Elevation="1" Variant="DrawerVariant.Temporary" >
         <MudDrawerHeader>

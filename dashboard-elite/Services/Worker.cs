@@ -763,7 +763,7 @@ namespace dashboard_elite
 
             try
             {
-                HWInfoTask?.Wait(jsonToken);
+                HWInfoTask?.Wait(hwInfoToken);
             }
             catch (OperationCanceledException)
             {
