@@ -51,10 +51,15 @@ namespace dashboard_elite.Helpers
         {
             public uint SensorId;
             public uint SensorInstance;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = HWINFO_SENSORS_STRING_LEN)]
-            public string SensorNameOrig;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = HWINFO_SENSORS_STRING_LEN)]
-            public string SensorNameUser;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = HWINFO_SENSORS_STRING_LEN)]
+            public byte[] SensorNameOrig;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = HWINFO_SENSORS_STRING_LEN)]
+            public byte[] SensorNameUser;
+
+            // Version 2+ new:
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = HWINFO_SENSORS_STRING_LEN)]
+            public byte[] UtfSensorNameUser; // Sensor name displayed, which might be translated or renamed by user [UTF-8 string]
+
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -63,16 +68,22 @@ namespace dashboard_elite.Helpers
             public SENSOR_TYPE SensorType;
             public uint SensorIndex;
             public uint ElementId;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = HWINFO_SENSORS_STRING_LEN)]
-            public string LabelOrig;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = HWINFO_SENSORS_STRING_LEN)]
-            public string LabelUser;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = HWINFO_UNIT_STRING_LEN)]
-            public string Unit;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = HWINFO_SENSORS_STRING_LEN)]
+            public byte[] LabelOrig;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = HWINFO_SENSORS_STRING_LEN)]
+            public byte[] LabelUser;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = HWINFO_UNIT_STRING_LEN)]
+            public byte[] Unit;
             public double Value;
             public double ValueMin;
             public double ValueMax;
             public double ValueAvg;
+
+            // Version 2+ new:
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = HWINFO_SENSORS_STRING_LEN)]
+            public byte[] UtfLabelUser; // Label displayed, which might be translated or renamed by user [UTF-8 string]
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = HWINFO_UNIT_STRING_LEN)]
+            public byte[] UtfUnit;          // e.g. "RPM" [UTF-8 string]
         }
         
         public class ElementObj
@@ -132,11 +143,13 @@ namespace dashboard_elite.Helpers
             {
                 try
                 {
-                    var mmf = MemoryMappedFile.OpenExisting(HWINFO_SHARED_MEM_FILE_NAME, MemoryMappedFileRights.Read);
-                    var accessor = mmf.CreateViewAccessor(0L, Marshal.SizeOf(typeof(_HWiNFO_SHARED_MEM)), MemoryMappedFileAccess.Read);
-                    
+                    var mmf = MemoryMappedFile.OpenExisting(HWINFO_SHARED_MEM_FILE_NAME,
+                        MemoryMappedFileRights.Read);
+                    var accessor = mmf.CreateViewAccessor(0L, Marshal.SizeOf(typeof(_HWiNFO_SHARED_MEM)),
+                        MemoryMappedFileAccess.Read);
+
                     accessor.Read(0L, out _HWiNFO_SHARED_MEM hWiNFOMemory);
-                    
+
                     ReadSensors(mmf, hWiNFOMemory);
 
                     if (IncData == null)
@@ -175,12 +188,27 @@ namespace dashboard_elite.Helpers
                     
                     if (!FullSensorData.ContainsKey(index))
                     {
+                        //var sensorNameOrig = Encoding.GetEncoding(1252).GetString(structure.SensorNameOrig).TrimEnd((char)0);
+                        var sensorNameOrig = Encoding.UTF8.GetString(structure.SensorNameOrig).TrimEnd((char)0);
+
+                        var sensorName = ""; 
+
+                        if (hWiNFOMemory.Version > 1)
+                        {
+                            sensorName = Encoding.UTF8.GetString(structure.UtfSensorNameUser).TrimEnd((char)0);
+                        }
+                        else
+                        {
+                            //sensorName = Encoding.GetEncoding(1252).GetString(structure.SensorNameUser).TrimEnd((char)0);
+                            sensorName = Encoding.UTF8.GetString(structure.SensorNameUser).TrimEnd((char)0);
+                        }
+
                         var sensor = new SensorObj
                         {
                             SensorId = structure.SensorId,
                             SensorInstance = structure.SensorInstance,
-                            SensorNameOrig = structure.SensorNameOrig,
-                            SensorNameUser = structure.SensorNameUser,
+                            SensorNameOrig = sensorNameOrig,
+                            SensorNameUser = sensorName,
                             Elements = new Dictionary<string, ElementObj>()
                         };
 
@@ -209,20 +237,46 @@ namespace dashboard_elite.Helpers
 
                     var elementKey = sensor.SensorId + "-" + sensor.SensorInstance + "-" + structure.ElementId;
 
+                    //var labelOrig = Encoding.GetEncoding(1252).GetString(structure.LabelOrig).TrimEnd((char)0);
+                    var labelOrig = Encoding.UTF8.GetString(structure.LabelOrig).TrimEnd((char)0);
+
+                    var unit = "";
+
+                    if (hWiNFOMemory.Version > 1)
+                    {
+                        unit = Encoding.UTF8.GetString(structure.UtfUnit).TrimEnd((char)0); 
+                    } else
+                    {
+                        //unit = Encoding.GetEncoding(1252).GetString(structure.Unit).TrimEnd((char)0);
+                        unit = Encoding.UTF8.GetString(structure.Unit).TrimEnd((char)0);
+                    }
+
+                    var label = "?";
+
+                    if (hWiNFOMemory.Version > 1)
+                    {
+                        label = Encoding.UTF8.GetString(structure.UtfLabelUser).TrimEnd((char)0); 
+                    }
+                    else
+                    {
+                        //label = System.Text.Encoding.GetEncoding(1252).GetString(structure.LabelUser).TrimEnd((char)0);
+                        label = System.Text.Encoding.UTF8.GetString(structure.LabelUser).TrimEnd((char)0);
+                    }
+
                     var element = new ElementObj
                     {
                         ElementKey = elementKey,
 
                         SensorType = structure.SensorType,
                         ElementId = structure.ElementId,
-                        LabelOrig = structure.LabelOrig,
-                        LabelUser = structure.LabelUser,
-                        Unit = structure.Unit,
+                        LabelOrig = labelOrig,
+                        LabelUser = label,
+                        Unit = unit,
                         NumericValue = (float)structure.Value,
-                        Value = structure.SensorType.NumberFormat(structure.Unit, structure.Value),
-                        ValueMin = structure.SensorType.NumberFormat(structure.Unit, structure.ValueMin),
-                        ValueMax = structure.SensorType.NumberFormat(structure.Unit, structure.ValueMax),
-                        ValueAvg = structure.SensorType.NumberFormat(structure.Unit,structure.ValueAvg)
+                        Value = structure.SensorType.NumberFormat(unit, structure.Value),
+                        ValueMin = structure.SensorType.NumberFormat(unit, structure.ValueMin),
+                        ValueMax = structure.SensorType.NumberFormat(unit, structure.ValueMax),
+                        ValueAvg = structure.SensorType.NumberFormat(unit,structure.ValueAvg)
                     };
 
                     sensor.Elements[elementKey] = element;

@@ -17,8 +17,8 @@ namespace dashboard_elite.EliteData
         public enum MaterialTypes
         {
             Painite = 0,
-            LTD = 2,
-            Platinum = 4
+            LTD = 1, //2,
+            Platinum = 2 //4
 
         }
 

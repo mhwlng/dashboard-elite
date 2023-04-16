@@ -38,7 +38,7 @@ namespace dashboard_elite.Helpers
                                                   37, // engineers
                                                   0,  // galnet
                                                   8,  // poi
-                                                  8,  // mining
+                                                  3,  // mining
                                                   11, // powers
                                                   0,  // hwinfo
                                                   0,  // currentship

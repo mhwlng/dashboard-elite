@@ -268,20 +268,7 @@
                             <td class="data">@m.Government</td>
                         </tr>
                     }
-                    if (!string.IsNullOrEmpty(m.Allegiance))
-                    {
-                        <tr>
-                            <td class="nowrap">Allegiance</td>
-                            <td class="data">@m.Allegiance</td>
-                        </tr>
-                    }
-                    if (!string.IsNullOrEmpty(m.ControllingMinorFaction))
-                    {
-                        <tr>
-                            <td class="nowrap">Faction</td>
-                            <td class="data">@m.ControllingMinorFaction</td>
-                        </tr>
-                    }
+                 
                     if (!string.IsNullOrEmpty(m.PrimaryEconomy))
                     {
                         <tr>
@@ -289,20 +276,7 @@
                             <td class="data">@m.PrimaryEconomy</td>
                         </tr>
                     }
-                    if (!string.IsNullOrEmpty(m.Powers))
-                    {
-                        <tr>
-                            <td class="nowrap">Power</td>
-                            <td class="data">@m.Powers</td>
-                        </tr>
-                        if (!string.IsNullOrEmpty(m.PowerplayState))
-                        {
-                            <tr>
-                                <td class="nowrap">Powerplay State</td>
-                                <td class="data">@m.PowerplayState</td>
-                            </tr>
-                        }
-                    }
+                 
 
                 }
                 break;

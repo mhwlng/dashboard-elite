@@ -494,7 +494,7 @@ namespace dashboard_elite
                 CnbSystems.FullCnbSystemsList = CnbSystems.GetAllCnbSystems(@"Data\cnbsystems.json");
 
                 
-                PopulatedSystems.SystemList = PopulatedSystems.GetAllPopupulatedSystems(@"Data\populatedsystemsEDDB.json").GroupBy(x => x.Name)
+                PopulatedSystems.SystemList = PopulatedSystems.GetAllPopupulatedSystems(@"Data\populatedsystemsEDSM.json").GroupBy(x => x.Name)
                     .ToDictionary(x => x.Key, x => x.First());
 
                 
@@ -507,19 +507,6 @@ namespace dashboard_elite
                 HotspotSystems.FullHotspotSystemsList[HotspotSystems.MaterialTypes.Platinum] = HotspotSystems.GetAllHotspotSystems(@"Data\platinumsystems.json");
 
                 
-                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.Painite] = MiningStations.GetAllMiningStations(@"Data\painitestations.json");
-
-                
-                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.LTD] = MiningStations.GetAllMiningStations(@"Data\ltdstations.json");
-
-                
-                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.Platinum] = MiningStations.GetAllMiningStations(@"Data\platinumstations.json");
-
-                
-                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.TritiumBuy] = MiningStations.GetAllMiningStations(@"Data\tritiumbuystations.json");
-
-                
-                MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.TritiumSell] = MiningStations.GetAllMiningStations(@"Data\tritiumstations.json");
 
                 
                 var cg = CommunityGoals.GetCommunityGoals(@"Data\communitygoals.json");

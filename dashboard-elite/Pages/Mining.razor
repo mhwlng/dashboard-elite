@@ -13,12 +13,6 @@
         hotspotSystems = Data.NearbyHotspotSystemsList[(HotspotSystems.MaterialTypes)CurrentPage];
     }
 
-    List<MiningStations.MiningStationData> miningSystems = null;
-
-    if (Data.NearbyMiningStationsList?.ContainsKey((MiningStations.MaterialTypes)CurrentPage) == true)
-    {
-        miningSystems = Data.NearbyMiningStationsList[(MiningStations.MaterialTypes)CurrentPage];
-    }
 
 }
 
@@ -28,8 +22,8 @@
         @switch (CurrentPage)
         {
             case 0:
+            case 1:
             case 2:
-            case 4:
             {
                 @if (hotspotSystems != null)
                 {
@@ -73,92 +67,7 @@
                 }
                 break;
             }
-            case 1:
-            case 3:
-            case 5:
-            case 6:
-            case 7:
-            {
-                @if (miningSystems != null)
-                {
-                    foreach (var m in miningSystems)
-                    {
-                        if (!skipFirst)
-                        {
-                            <tr>
-                                <td class="divider" colspan="2">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="spacer" colspan="2">&nbsp;</td>
-                            </tr>
-
-                        }
-                        skipFirst = false;
-
-                        if (!string.IsNullOrEmpty(m.SystemName))
-                        {
-                            <tr>
-                                <td class="nowrap">System</td>
-                                <td class="data"><NavLink class="system-link" @onclick="() => Clipboard(m.SystemName)" >@m.SystemName</NavLink></td>
-                            </tr>
-                        }
-                        if (m.Distance > 0)
-                        {
-                            <tr>
-                                <td class="nowrap">Distance</td>
-                                <td class="data">@m.Distance.ToString("N0") Ly</td>
-                            </tr>
-                        }
-                        if (m.Body != null && !string.IsNullOrEmpty(m.Body.Name))
-                        {
-                            <tr>
-                                <td class="nowrap">Body</td>
-                                <td class="data">@m.Body.Name</td>
-                            </tr>
-                        }
-
-                        if (!string.IsNullOrEmpty(m.Name))
-                        {
-                            <tr>
-                                <td class="nowrap">Station</td>
-                                <td class="data">@m.Name (@m.Pad)</td>
-                            </tr>
-                        }
-                        if (m.DistanceToArrival > 0)
-                        {
-                            <tr>
-                                <td class="nowrap">Dist. from star</td>
-                                <td class="data">@(((double)m.DistanceToArrival).ToString("N0")) Ls</td>
-                            </tr>
-                        }
-
-                        if (m.Price > 0)
-                        {
-                            <tr>
-                                <td class="nowrap">Price</td>
-                                <td class="data">@m.Price.ToString("N0") CR</td>
-                            </tr>
-                        }
-                        if (m.Price > 0)
-                        {
-                            <tr>
-                                <td class="nowrap">Quantity</td>
-                                <td class="data">@m.Demand.ToString("N0")</td>
-                            </tr>
-                        }
-                        if (m.AgoSec > 0)
-                        {
-                            <tr>
-                                <td class="nowrap">Last Updated</td>
-                                <td class="data">@PageHelper.SinceText(m.AgoSec, m.UpdatedTime) ago</td>
-                            </tr>
-                        }
-
-
-                    }
-                }
-                break;
-            }
+ 
         }
     </tbody>
 </MudSimpleTable>

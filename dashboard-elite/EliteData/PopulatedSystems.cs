@@ -14,23 +14,13 @@ namespace dashboard_elite.EliteData
     {
         public static Dictionary<string, PopulatedSystem> SystemList = new Dictionary<string, PopulatedSystems.PopulatedSystem>();
 
-        public class State
-        {
-
-            [JsonProperty("id")]
-            public int Id { get; set; }
-
-            [JsonProperty("name")]
-            public string Name { get; set; }
-        }
-
-        public class PopulatedSystem
+      public class PopulatedSystem
         {
             [JsonProperty("name")]
             public string Name { get; set; }
 
-            [JsonProperty("states")]
-            public IList<State> States { get; set; }
+            [JsonProperty("state")]
+            public string State { get; set; }
         }
 
         public static List<PopulatedSystem> GetAllPopupulatedSystems(string path)
@@ -57,9 +47,9 @@ namespace dashboard_elite.EliteData
         {
             SystemList.TryGetValue(name, out var value);
 
-            if (value != null && value.States?.Any() == true)
+            if (!string.IsNullOrEmpty(value?.State))
             {
-                return string.Join(",", value.States.Select(x => x.Name));
+                return value.State;
             }
 
             return "";

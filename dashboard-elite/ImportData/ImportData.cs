@@ -171,27 +171,27 @@ namespace dashboard_elite.ImportData
                 Type = x.Type,
 
                 SystemName = x.SystemName,
-                SystemSecurity = x.PopulatedSystemEDDB?.Security,
-                SystemPopulation = x.PopulatedSystemEDDB?.Population ?? 0,
+                SystemSecurity = x.Security,
+                SystemPopulation = x.Population ?? 0,
 
-                PowerplayState = x.PopulatedSystemEDDB?.PowerState,
-                Powers = x.PopulatedSystemEDDB?.Power,
+                PowerplayState = x.PowerplayEDSM?.powerState,
+                Powers = x.PowerplayEDSM?.power,
 
                 Allegiance = x.Allegiance,
                 Government = x.Government,
                 Economy = x.Economy,
-                Economies = string.Join(",", x.AdditionalStationDataEDDB?.Economies ?? new List<string>() { x.Economy }),
+                Economies = string.Join(",", x.Economies ?? new List<string>() { x.Economy }),
                 Faction = x.ControllingFaction?.Name,
 
-                X = x.PopulatedSystemEDDB?.X ?? 0,
-                Y = x.PopulatedSystemEDDB?.Y ?? 0,
-                Z = x.PopulatedSystemEDDB?.Z ?? 0,
+                X = x.X ?? 0,
+                Y = x.Y ?? 0,
+                Z = x.Z ?? 0,
 
                 Body = x.Body,
 
                 MarketId = x.MarketId ?? 0,
 
-                SystemState = string.Join(",", x.PopulatedSystemEDDB?.States?.Select(y => y.Name) ?? new List<string>())
+                SystemState = string.Join(",", x.States ?? new List<string>() {"None"})
 
             }).ToList();
 
@@ -283,11 +283,6 @@ namespace dashboard_elite.ImportData
             [DefaultValue(0)]
             public long SystemPopulation { get; set; }
 
-            [JsonProperty("powerplaystate")]
-            public string PowerplayState { get; set; }
-
-            [JsonProperty("powers")]
-            public string Powers { get; set; }
 
             [JsonProperty("allegiance")]
             public string Allegiance { get; set; }
@@ -297,9 +292,6 @@ namespace dashboard_elite.ImportData
 
             [JsonProperty("government")]
             public string Government { get; set; }
-
-            [JsonProperty("controlling_minor_faction")]
-            public string ControllingMinorFaction { get; set; }
 
         }
 
@@ -350,7 +342,7 @@ namespace dashboard_elite.ImportData
             }
         }
 
-        private async Task DownloadCnbSystems(string path, Dictionary<string, PopulatedSystemEDDB> populatedSystemsEDDBbyName)
+        private async Task DownloadCnbSystems(string path, Dictionary<string, SystemSpansh> systemSpanshListByName)
         {
             path = Path.Combine(GetExePath(), path);
 
@@ -364,17 +356,14 @@ namespace dashboard_elite.ImportData
 
                 cnbSystems.ForEach(z =>
                 {
-                    if (populatedSystemsEDDBbyName.ContainsKey(z.Name))
+                    if (systemSpanshListByName.ContainsKey(z.Name))
                     {
-                        var systemInfo = populatedSystemsEDDBbyName[z.Name];
+                        var systemInfo = systemSpanshListByName[z.Name];
 
                         z.SystemSecurity = systemInfo.Security;
                         z.SystemPopulation = systemInfo.Population;
-                        z.PowerplayState = systemInfo.PowerState;
-                        z.Powers = systemInfo.Power;
                         z.PrimaryEconomy = systemInfo.PrimaryEconomy;
                         z.Government = systemInfo.Government;
-                        z.ControllingMinorFaction = systemInfo.ControllingMinorFaction;
                         z.Allegiance = systemInfo.Allegiance;
                     }
                 });
@@ -545,506 +534,299 @@ namespace dashboard_elite.ImportData
         }
 
 
-        private class HotspotStationData
-        {
-            public string System { get; set; }
-            public string Station { get; set; }
-            public int Price { get; set; }
-            public string Pad { get; set; }
-            public int AgoSec { get; set; }
-            public int Demand { get; set; }
-
-            [JsonIgnore]
-            public StationEDSM StationEDSM { get; set; }
-        }
-
-        private List<MiningStations.MiningStationData> GetMiningStationsData(List<HotspotStationData> stations, List<StationEDSM> stationsEDSM)
-        {
-            if (stationsEDSM != null)
-            {
-                foreach (var s in stations)
-                {
-                    s.StationEDSM = stationsEDSM.FirstOrDefault(x => x.Name == s.Station && x.SystemName == s.System);
-                }
-            }
-
-            return stations.Where(x => x.StationEDSM?.AdditionalStationDataEDDB?.IsPlanetary == false)
-                .Select(x => new MiningStations.MiningStationData
-            {
-                Name = x.Station,
-                SystemName = x.System,
-
-                Price = x.Price,
-                Pad = x.Pad,
-                AgoSec = x.AgoSec,
-                Demand = x.Demand,
-
-                X = x.StationEDSM?.PopulatedSystemEDDB?.X ?? 0,
-                Y = x.StationEDSM?.PopulatedSystemEDDB?.Y ?? 0,
-                Z = x.StationEDSM?.PopulatedSystemEDDB?.Z ?? 0,
-
-                DistanceToArrival = x.StationEDSM?.DistanceToArrival,
-                Type = x.StationEDSM?.Type,
-
-                SystemSecurity = x.StationEDSM?.PopulatedSystemEDDB?.Security,
-                SystemPopulation = x.StationEDSM?.PopulatedSystemEDDB?.Population ?? 0,
-
-                PowerplayState = x.StationEDSM?.PopulatedSystemEDDB?.PowerState,
-                Powers = x.StationEDSM?.PopulatedSystemEDDB?.Power,
-
-                Allegiance = x.StationEDSM?.Allegiance,
-                Government = x.StationEDSM?.Government,
-                Economy = x.StationEDSM?.Economy,
-                Economies = string.Join(",", x.StationEDSM?.AdditionalStationDataEDDB?.Economies ?? new List<string>() { x.StationEDSM?.Economy }),
-                Faction = x.StationEDSM?.ControllingFaction?.Name,
-
-                Body = x.StationEDSM?.Body,
-
-                SystemState = string.Join(",", x.StationEDSM?.PopulatedSystemEDDB?.States?.Select(y => y.Name) ?? new List<string>())
-
-            }).ToList();
-        }
-
-        private void MiningStationsSerialize(List<MiningStations.MiningStationData> stations, string fullPath)
-        {
-            new FileInfo(fullPath).Directory?.Create();
-
-            var serializer = new JsonSerializer
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                DefaultValueHandling = DefaultValueHandling.Ignore
-            };
-
-            using (var sw = new StreamWriter(fullPath))
-            using (var writer = new JsonTextWriter(sw))
-            {
-
-                serializer.Serialize(writer, stations);
-            }
-        }
-
-        public double ConvertToUnixTimestamp(DateTime date)
-        {
-            DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            TimeSpan diff = date.ToUniversalTime() - origin;
-            return Math.Floor(diff.TotalSeconds);
-        }
-
-        private async Task DownloadInaraMiningStationsHtml(string path, string url, string material, List<StationEDSM> stationsEDSM)
-        {
-            try
-            {
-                path = Path.Combine(GetExePath(), path);
-
-                Log.Logger.Information("looking up " + material + " Stations");
-
-                var data = await Common.WebClient.GetStringAsync(url);
-
-                var doc = new HtmlDocument();
-                doc.LoadHtml(data);
-
-                var currentTime = ConvertToUnixTimestamp(DateTime.UtcNow);
-
-
-                var stationInfo = doc.DocumentNode.SelectSingleNode("//table[@class='tablesorterintab']")
-                    .Descendants("tr")
-                    .Skip(1)
-                    .Where(tr => !tr.HasClass("hideable1") /*&& !tr.HasClass("hideable2")*/ && !tr.HasClass("hideable3"))
-                    .Select(tr => tr.Elements("td").ToList())
-                    .Select(td => new HotspotStationData
-                    {
-                        Station = td[0].Descendants("span").FirstOrDefault()?.InnerText?.Replace(" | ", "") ?? "?",
-                        System = td[0].Descendants("span").Skip(1).FirstOrDefault()?.InnerText ?? "?",
-                        Price = Convert.ToInt32(td[5].GetAttributeValue("data-order", "0")),
-                        Demand = Convert.ToInt32(td[4].GetAttributeValue("data-order", "0")),
-                        Pad = td[1].InnerText, //tr[5],
-                        AgoSec = (int)(currentTime - Convert.ToInt64(td[7].GetAttributeValue("data-order", "0")))
-                    })
-                    .ToList();
-
-                var stationsData = GetMiningStationsData(stationInfo, stationsEDSM);
-
-                MiningStationsSerialize(stationsData, path);
-                       
-            }
-            catch (Exception ex)
-            {
-                Log.Logger.Information(ex.ToString());
-            }
-        }
-
-        private async Task DownloadEddbMiningStationsHtml(string path, string url, string material, int cid, List<StationEDSM> stationsEDSM, bool sell)
-        {
-            try
-            {
-                path = Path.Combine(GetExePath(), path);
-
-                Log.Logger.Information("looking up " + material + " Stations");
-
-                var data = await Common.WebClient.GetStringAsync(url + cid);
-
-                var doc = new HtmlDocument();
-                doc.LoadHtml(data);
-
-                var id = "table-stations-max-sell";
-                if (!sell)
-                {
-                    id = "table-stations-min-buy";
-                }
-
-                var stationInfo = doc.DocumentNode.SelectSingleNode("//table[@id='" + id + "']")
-                    .Descendants("tr")
-                    .Where(tr => tr.Elements("td").Count() == 7)
-                    .Select(tr => tr.Elements("td").Select(td => td.InnerText.Trim()).ToList())
-                    .Select(tr => new HotspotStationData
-                    {
-                        Station = tr[0],
-                        System = tr[1],
-                        Price = Convert.ToInt32(tr[2].Replace(",", "").Replace(".", "")),
-                        Demand = Convert.ToInt32(tr[4].Replace(",", "").Replace(".", "")),
-                        Pad = tr[5],
-                        AgoSec = Convert.ToInt32(tr[6].Substring(2, tr[6].IndexOf("}", StringComparison.Ordinal) - 2))
-                    })
-                    .ToList();
-
-                var stationsData = GetMiningStationsData(stationInfo, stationsEDSM);
-
-                MiningStationsSerialize(stationsData, path);
-            }
-            catch (Exception ex)
-            {
-                Log.Logger.Information(ex.ToString());
-            }
-        }
-
         public async Task Import()
         {
             Log.Logger.Information("ImportData started");
 
             try
             {
-                List<StationEDSM> stationsEDSM = null;
-                List<StationEDDB> stationsEDDBList = null;
-                Dictionary<string,StationEDDB> stationsEDDB;
-                List<PopulatedSystemEDDB> populatedSystemsEDDBList;
-                Dictionary<int, PopulatedSystemEDDB> populatedSystemsEDDBbyEdsmId;
-                Dictionary<int, PopulatedSystemEDDB> populatedSystemsEDDBbyId;
+                List<StationEDSM> stationsEDSM;
+                List<PopulatedSystemEDSM> populatedSystemsEDSM;
+                Dictionary<long, PowerplayEDSM> powerplayEDSM;
+                List<SystemSpansh> systemSpansh;
+
+                Dictionary<long, SystemSpansh> systemSpanshDictionary;
 
                 var wasAnyUpdated = false;
 
+                Log.Logger.Information("downloading populated systems from EDSM");
+                wasAnyUpdated = await JsonReaderExtensions.DownloadJson<PopulatedSystemEDSM>("https://www.edsm.net/dump/systemsPopulated.json.gz", @"Data\populatedsystemsEDSM.json", wasAnyUpdated, true);
 
-                //Console.WriteLine("downloading station list from Spansh");
-                //wasAnyUpdated = await JsonReaderExtensions.DownloadJson<SystemSpansh>("https://downloads.spansh.co.uk/galaxy_stations.json.gz", @"Data\stationsSpansh.json", wasAnyUpdated, true);
+                Log.Logger.Information("downloading powerplay systems from EDSM");
+                wasAnyUpdated = await JsonReaderExtensions.DownloadJson<PowerplayEDSM>("https://www.edsm.net/dump/powerPlay.json.gz", @"Data\powerplayEDSM.json", wasAnyUpdated, true);
 
                 Log.Logger.Information("downloading station list from EDSM");
-
-                ///DownloadJson(@"Data\stationsEDDB.json", "https://eddb.io/archive/v6/stations.json", ref wasAnyUpdated);
-                //JsonReaderExtensions.DownloadJson<StationEDDB>("https://eddb.io/archive/v6/stations.json", @"Data\stationsEDDB.json", ref wasAnyUpdated);
                 wasAnyUpdated = await JsonReaderExtensions.DownloadJson<StationEDSM>("https://www.edsm.net/dump/stations.json.gz", @"Data\stationsEDSM.json", wasAnyUpdated, true);
 
-                Log.Logger.Information("downloading populated systems from EDDB");
+                Log.Logger.Information("downloading station list from Spansh");
+                wasAnyUpdated = await JsonReaderExtensions.DownloadJson<SystemSpansh>("https://downloads.spansh.co.uk/galaxy_stations.json.gz", @"Data\stationsSpansh.json", wasAnyUpdated, true);
 
-                //DownloadJson(@"Data\stationsEDSM.json", "https://www.edsm.net/dump/stations.json.gz", ref wasAnyUpdated);
-                //JsonReaderExtensions.DownloadJson<StationEDSM>("https://www.edsm.net/dump/stations.json.gz", @"Data\stationsEDSM.json", ref wasAnyUpdated);
-                wasAnyUpdated = await JsonReaderExtensions.DownloadJson<PopulatedSystemEDDB>("https://eddb.io/archive/v6/systems_populated.json", @"Data\populatedsystemsEDDB.json", wasAnyUpdated, false);
+                Log.Logger.Information("looking up edsm populated systems");
 
-                Log.Logger.Information("downloading station list from EDDB");
+                populatedSystemsEDSM = JsonReaderExtensions.ParseJson<PopulatedSystemEDSM>(@"Data\populatedsystemsEDSM.json").ToList();
 
-                //DownloadJson(@"Data\populatedsystemsEDDB.json", "https://eddb.io/archive/v6/systems_populated.json", ref wasAnyUpdated);
-                //JsonReaderExtensions.DownloadJson<PopulatedSystemEDDB>("https://eddb.io/archive/v6/systems_populated.json", @"Data\populatedsystemsEDDB.json", ref wasAnyUpdated);
-                wasAnyUpdated = await JsonReaderExtensions.DownloadJson<StationEDDB>("https://eddb.io/archive/v6/stations.json", @"Data\stationsEDDB.json", wasAnyUpdated, false);
+                Log.Logger.Information("looking up edsm powerplay systems");
 
-                Log.Logger.Information("checking station and system data");
+                powerplayEDSM = JsonReaderExtensions.ParseJson<PowerplayEDSM>(@"Data\powerplayEDSM.json").ToList()
+                    .GroupBy(x => x.id64).Select(x => x.First())
+                    .ToDictionary(x => x.id64);
 
-                populatedSystemsEDDBList = JsonReaderExtensions.ParseJson<PopulatedSystemEDDB>(@"Data\populatedsystemsEDDB.json").ToList();
+                Log.Logger.Information("looking up edsm stations");
 
-                var populatedSystemsEDDBbyName = populatedSystemsEDDBList
+                stationsEDSM = JsonReaderExtensions.ParseJson<StationEDSM>(@"Data\stationsEDSM.json").ToList();
+
+                stationsEDSM = stationsEDSM.Where(x =>
+                        x.Type != "Fleet Carrier" &&
+                        x.Government != "Fleet Carrier" &&
+                        x.Economy != "Fleet Carrier" &&
+                        !string.IsNullOrEmpty(x.Type) &&
+                        !string.IsNullOrEmpty(x.Government) &&
+                        !string.IsNullOrEmpty(x.Economy))
+                    .ToList();
+
+                Log.Logger.Information("looking up spansh stations");
+
+                systemSpansh = JsonReaderExtensions.ParseJson<SystemSpansh>(@"Data\stationsSpansh.json").ToList();
+
+                systemSpanshDictionary = systemSpansh
+                    .GroupBy(x => x.Id64).Select(x => x.First())
+                    .ToDictionary(x => x.Id64);
+
+                var systemSpanshListByName = systemSpansh
                     .ToDictionary(x => x.Name);
 
                 if (NeedToUpdateFile(@"Data\cnbsystems.json", 1440))
                 {
-                    await DownloadCnbSystems(@"Data\cnbsystems.json", populatedSystemsEDDBbyName);
+                    await DownloadCnbSystems(@"Data\cnbsystems.json", systemSpanshListByName);
                 }
 
-                if (wasAnyUpdated || NeedToUpdateFile(@"Data\painitestations.json", 15))
+                stationsEDSM.ForEach(z =>
                 {
-                    populatedSystemsEDDBbyId = populatedSystemsEDDBList
-                        .ToDictionary(x => x.Id);
+                    powerplayEDSM.TryGetValue(z.SystemId64, out var powerplay);
+                    z.PowerplayEDSM = powerplay;
 
-                    populatedSystemsEDDBbyEdsmId = populatedSystemsEDDBList
-                        .Where(x => x.EdsmId != null)
-                        .ToDictionary(x => (int) x.EdsmId);
+                    systemSpanshDictionary.TryGetValue(z.SystemId64, out var spansh);
 
-                    stationsEDDBList = JsonReaderExtensions.ParseJson<StationEDDB>(@"Data\stationsEDDB.json").ToList();
-
-                    stationsEDDBList.ForEach(z =>
+                    if (spansh != null)
                     {
-                        populatedSystemsEDDBbyId.TryGetValue(z.SystemId, out var system);
-                        z.SystemName = system?.Name;
-                    });
+                        //z.Economy = spansh.PrimaryEconomy;
+                        //z.SecondEconomy = spansh.SecondaryEconomy;
 
-                    // there are multiple stations with the same name ???
-                    stationsEDDB = stationsEDDBList
-                        .GroupBy(x => x.SystemName + x.Name).Select(x => x.First())
-                        .ToDictionary(x => x.SystemName + x.Name);
-
-                    Log.Logger.Information("looking up additional EDDB station information for all stations");
-
-                    stationsEDSM = JsonReaderExtensions.ParseJson<StationEDSM>(@"Data\stationsEDSM.json").ToList();
-
-                    Log.Logger.Information("looking up EDDB system information for all stations");
-
-                    stationsEDSM.ForEach(z =>
-                    {
-                        stationsEDDB.TryGetValue(z.SystemName + z.Name, out var station);
-                        z.AdditionalStationDataEDDB = station;
-
-                        populatedSystemsEDDBbyEdsmId.TryGetValue(z.SystemId, out var system);
-                        if (system != null)
+                        if (!string.IsNullOrEmpty(z.Economy))
                         {
-                            z.PopulatedSystemEDDB = system;
-                        }
-                        else
-                        {
-                            populatedSystemsEDDBbyName.TryGetValue(z.SystemName, out var system2);
-                            if (system2 != null)
+                            z.Economies = new List<string>() { z.Economy };
+                            if (!string.IsNullOrEmpty(z.SecondEconomy))
                             {
-                                z.PopulatedSystemEDDB = system2;
+                                z.Economies.Add(z.SecondEconomy);
                             }
                         }
 
-                        z.PrimaryEconomy = z.AdditionalStationDataEDDB?.Economies?.FirstOrDefault() ?? z.PopulatedSystemEDDB?.PrimaryEconomy ?? z.Economy;
+                        z.SystemName = spansh.Name;
+                        z.X = spansh.Coords?.X ?? 0;
+                        z.Y = spansh.Coords?.Y ?? 0;
+                        z.Z = spansh.Coords?.Z ?? 0;
 
-                        z.SecondaryEconomy = z.AdditionalStationDataEDDB?.Economies?.LastOrDefault() ?? z.PopulatedSystemEDDB?.PrimaryEconomy ?? z.Economy;
+                        z.Security = spansh.Security;
+                        z.Population = spansh.Population;
 
-                        if (z.AdditionalStationDataEDDB?.Economies?.Count == 2 && !string.IsNullOrEmpty(z.PopulatedSystemEDDB?.PrimaryEconomy) && z.PrimaryEconomy != z.PopulatedSystemEDDB.PrimaryEconomy)
+                        if (spansh.Factions?.Any() == true)
                         {
-                            z.SecondaryEconomy = z.PrimaryEconomy;
-                            z.PrimaryEconomy = z.PopulatedSystemEDDB.PrimaryEconomy;
-
-                            z.AdditionalStationDataEDDB.Economies[0] = z.PrimaryEconomy;
-                            z.AdditionalStationDataEDDB.Economies[1] = z.SecondaryEconomy;
+                            z.States = spansh.Factions.Where(x => x.State != "None").Select(x => x.State).Distinct().ToList();
+                            if (!z.States.Any())
+                            {
+                                z.States = new List<string>() { "None" };
+                            }
                         }
-                    });
 
-                    //await DownloadInaraMiningStationsHtml(@"Data\painitestations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=84", "Painite", stationsEDSM);
-                    //await DownloadInaraMiningStationsHtml(@"Data\ltdstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=144", "LTD", stationsEDSM);
-                    //await DownloadInaraMiningStationsHtml(@"Data\platinumstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=81", "Platinum", stationsEDSM);
-                    //await DownloadInaraMiningStationsHtml(@"Data\tritiumstations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=sellmax&refid=10269", "Tritium", stationsEDSM);
-                    //await DownloadInaraMiningStationsHtml(@"Data\tritiumbuystations.json", "https://inara.cz/ajaxaction.php?act=goodsdata&refid2=1261&refname=buymin&refid=10269", "Tritium", stationsEDSM);
-                    
-                    await DownloadEddbMiningStationsHtml(@"Data\painitestations.json", "https://eddb.io/commodity/", "Painite", 83, stationsEDSM, true);
-                    await DownloadEddbMiningStationsHtml(@"Data\ltdstations.json", "https://eddb.io/commodity/", "LTD", 276, stationsEDSM, true);
-                    await DownloadEddbMiningStationsHtml(@"Data\platinumstations.json", "https://eddb.io/commodity/", "Platinum", 46, stationsEDSM, true);
-                    await DownloadEddbMiningStationsHtml(@"Data\tritiumstations.json", "https://eddb.io/commodity/", "Tritium", 362, stationsEDSM, true);
-                    await DownloadEddbMiningStationsHtml(@"Data\tritiumbuystations.json", "https://eddb.io/commodity/", "Tritium", 362, stationsEDSM, false);
-                }
+                        if (spansh.Stations?.Any() == true)
+                        {
+                            var spanshStation =
+                                spansh.Stations.FirstOrDefault(x =>
+                                    x.Id == z.MarketId); // .FirstOrDefault(x => x.Name == z.Name);
 
+                            if (spanshStation != null)
+                            {
+                                z.SpanshStation = spanshStation;
+                            }
+
+                        }
+                    }
+
+                });
+                
                 if (wasAnyUpdated)
                 {
-                    //-------------------------
-
                     Log.Logger.Information("finding Engineers stations");
                     var engineers = stationsEDSM
                         .Where(x =>
-                            x.PopulatedSystemEDDB != null && // now missing Cloe Sedesi in an uninhabited system !!!!!!!!!
                             x.Government == "Workshop (Engineer)" &&
                             x.SystemName != "Maia").ToList(); // gets rid of second professor palin
-                    
+
                     StationSerialize(engineers, @"Data\engineers.json");
 
                     Log.Logger.Information("finding Aisling Duval stations");
                     var aislingDuval = stationsEDSM
                         .Where(x =>
-                            x.Type != "Fleet Carrier" &&
-                            x.Government != "Fleet Carrier" &&
-                            x.Economy != "Fleet Carrier" &&
-                            !string.IsNullOrEmpty(x.Type) &&
-                            !string.IsNullOrEmpty(x.Government) &&
-                            !string.IsNullOrEmpty(x.Economy) &&
-                            x.PopulatedSystemEDDB != null &&
-                            x.PopulatedSystemEDDB.Power == "Aisling Duval" &&
-                            x.PopulatedSystemEDDB.PowerState == "Control" &&
-                            x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                            x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+                            x.PowerplayEDSM != null &&
+                            x.PowerplayEDSM.power == "Aisling Duval" &&
+                            x.PowerplayEDSM.powerState == "Controlled" &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
                     StationSerialize(aislingDuval, @"Data\aislingduval.json");
 
                     Log.Logger.Information("finding Archon Delaine stations");
                     var archonDelaine = stationsEDSM
                         .Where(x =>
-                            x.Type != "Fleet Carrier" &&
-                            x.Government != "Fleet Carrier" &&
-                            x.Economy != "Fleet Carrier" &&
-                            !string.IsNullOrEmpty(x.Type) &&
-                            !string.IsNullOrEmpty(x.Government) &&
-                            !string.IsNullOrEmpty(x.Economy) &&
-                            x.PopulatedSystemEDDB != null &&
-                            x.PopulatedSystemEDDB.Power == "Archon Delaine" &&
-                            x.PopulatedSystemEDDB.PowerState == "Control" &&
-                            x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                            x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+                            x.PowerplayEDSM != null &&
+                            x.PowerplayEDSM.power == "Archon Delaine" &&
+                            x.PowerplayEDSM.powerState == "Controlled" &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
                     StationSerialize(archonDelaine, @"Data\archondelaine.json");
 
                     Log.Logger.Information("finding Arissa Lavigny-Duval stations");
                     var arissaLavignyDuval = stationsEDSM
                         .Where(x =>
-                            x.Type != "Fleet Carrier" &&
-                            x.Government != "Fleet Carrier" &&
-                            x.Economy != "Fleet Carrier" &&
-                            !string.IsNullOrEmpty(x.Type) &&
-                            !string.IsNullOrEmpty(x.Government) &&
-                            !string.IsNullOrEmpty(x.Economy) &&
-                            x.PopulatedSystemEDDB != null &&
-                            x.PopulatedSystemEDDB.Power == "Arissa Lavigny-Duval" &&
-                            x.PopulatedSystemEDDB.PowerState == "Control" &&
-                            x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                            x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+                            x.PowerplayEDSM != null &&
+                            x.PowerplayEDSM.power == "A. Lavigny-Duval" &&
+                            x.PowerplayEDSM.powerState == "Controlled" &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
                     StationSerialize(arissaLavignyDuval, @"Data\arissalavignyduval.json");
 
                     Log.Logger.Information("finding Denton Patreus stations");
                     var dentonPatreus = stationsEDSM
                         .Where(x =>
-                            x.Type != "Fleet Carrier" &&
-                            x.Government != "Fleet Carrier" &&
-                            x.Economy != "Fleet Carrier" &&
-                            !string.IsNullOrEmpty(x.Type) &&
-                            !string.IsNullOrEmpty(x.Government) &&
-                            !string.IsNullOrEmpty(x.Economy) &&
-                            x.PopulatedSystemEDDB != null &&
-                            x.PopulatedSystemEDDB.Power == "Denton Patreus" &&
-                            x.PopulatedSystemEDDB.PowerState == "Control" &&
-                            x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                            x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+                            x.PowerplayEDSM != null &&
+                            x.PowerplayEDSM.power == "Denton Patreus" &&
+                            x.PowerplayEDSM.powerState == "Controlled" &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
                     StationSerialize(dentonPatreus, @"Data\dentonpatreus.json");
 
                     Log.Logger.Information("finding Edmund Mahon stations");
                     var edmundMahon = stationsEDSM
                         .Where(x =>
-                            x.Type != "Fleet Carrier" &&
-                            x.Government != "Fleet Carrier" &&
-                            x.Economy != "Fleet Carrier" &&
-                            !string.IsNullOrEmpty(x.Type) &&
-                            !string.IsNullOrEmpty(x.Government) &&
-                            !string.IsNullOrEmpty(x.Economy) &&
-                            x.PopulatedSystemEDDB != null &&
-                            x.PopulatedSystemEDDB.Power == "Edmund Mahon" &&
-                            x.PopulatedSystemEDDB.PowerState == "Control" &&
-                            x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                            x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+                            x.PowerplayEDSM != null &&
+                            x.PowerplayEDSM.power == "Edmund Mahon" &&
+                            x.PowerplayEDSM.powerState == "Controlled" &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
                     StationSerialize(edmundMahon, @"Data\edmundmahon.json");
 
                     Log.Logger.Information("finding Felicia Winters stations");
                     var feliciaWinters = stationsEDSM
                         .Where(x =>
-                            x.Type != "Fleet Carrier" &&
-                            x.Government != "Fleet Carrier" &&
-                            x.Economy != "Fleet Carrier" &&
-                            !string.IsNullOrEmpty(x.Type) &&
-                            !string.IsNullOrEmpty(x.Government) &&
-                            !string.IsNullOrEmpty(x.Economy) &&
-                            x.PopulatedSystemEDDB != null &&
-                            x.PopulatedSystemEDDB.Power == "Felicia Winters" &&
-                            x.PopulatedSystemEDDB.PowerState == "Control" &&
-                            x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                            x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+                            x.PowerplayEDSM != null &&
+                            x.PowerplayEDSM.power == "Felicia Winters" &&
+                            x.PowerplayEDSM.powerState == "Controlled" &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
                     StationSerialize(feliciaWinters, @"Data\feliciawinters.json");
 
                     Log.Logger.Information("finding Li Yong-Rui stations");
                     var liYongRui = stationsEDSM
                         .Where(x =>
-                            x.Type != "Fleet Carrier" &&
-                            x.Government != "Fleet Carrier" &&
-                            x.Economy != "Fleet Carrier" &&
-                            !string.IsNullOrEmpty(x.Type) &&
-                            !string.IsNullOrEmpty(x.Government) &&
-                            !string.IsNullOrEmpty(x.Economy) &&
-                            x.PopulatedSystemEDDB != null &&
-                            x.PopulatedSystemEDDB.Power == "Li Yong-Rui" &&
-                            x.PopulatedSystemEDDB.PowerState == "Control" &&
-                            x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                            x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+                            x.PowerplayEDSM != null &&
+                            x.PowerplayEDSM.power == "Li Yong-Rui" &&
+                            x.PowerplayEDSM.powerState == "Controlled" &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
                     StationSerialize(liYongRui, @"Data\liyongrui.json");
 
                     Log.Logger.Information("finding Pranav Antal stations");
                     var pranavAntal = stationsEDSM
                         .Where(x =>
-                            x.Type != "Fleet Carrier" &&
-                            x.Government != "Fleet Carrier" &&
-                            x.Economy != "Fleet Carrier" &&
-                            !string.IsNullOrEmpty(x.Type) &&
-                            !string.IsNullOrEmpty(x.Government) &&
-                            !string.IsNullOrEmpty(x.Economy) &&
-                            x.PopulatedSystemEDDB != null &&
-                            x.PopulatedSystemEDDB.Power == "Pranav Antal" &&
-                            x.PopulatedSystemEDDB.PowerState == "Control" &&
-                            x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                            x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+                            x.PowerplayEDSM != null &&
+                            x.PowerplayEDSM.power == "Pranav Antal" &&
+                            x.PowerplayEDSM.powerState == "Controlled" &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
                     StationSerialize(pranavAntal, @"Data\pranavantal.json");
 
                     Log.Logger.Information("finding Yuri Grom stations");
                     var yuriGrom = stationsEDSM
                         .Where(x =>
-                            x.Type != "Fleet Carrier" &&
-                            x.Government != "Fleet Carrier" &&
-                            x.Economy != "Fleet Carrier" &&
-                            !string.IsNullOrEmpty(x.Type) &&
-                            !string.IsNullOrEmpty(x.Government) &&
-                            !string.IsNullOrEmpty(x.Economy) &&
-                            x.PopulatedSystemEDDB != null &&
-                            x.PopulatedSystemEDDB.Power == "Yuri Grom" &&
-                            x.PopulatedSystemEDDB.PowerState == "Control" &&
-                            x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                            x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+                            x.PowerplayEDSM != null &&
+                            x.PowerplayEDSM.power == "Yuri Grom" &&
+                            x.PowerplayEDSM.powerState == "Controlled" &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
                     StationSerialize(yuriGrom, @"Data\yurigrom.json");
 
                     Log.Logger.Information("finding Zachary Hudson stations");
                     var zacharyHudson = stationsEDSM
                         .Where(x =>
-                            x.Type != "Fleet Carrier" &&
-                            x.Government != "Fleet Carrier" &&
-                            x.Economy != "Fleet Carrier" &&
-                            !string.IsNullOrEmpty(x.Type) &&
-                            !string.IsNullOrEmpty(x.Government) &&
-                            !string.IsNullOrEmpty(x.Economy) &&
-                            x.PopulatedSystemEDDB != null &&
-                            x.PopulatedSystemEDDB.Power == "Zachary Hudson" &&
-                            x.PopulatedSystemEDDB.PowerState == "Control" &&
-                            x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                            x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+                            x.PowerplayEDSM != null &&
+                            x.PowerplayEDSM.power == "Zachary Hudson" &&
+                            x.PowerplayEDSM.powerState == "Controlled" &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
                     StationSerialize(zacharyHudson, @"Data\zacharyhudson.json");
 
                     Log.Logger.Information("finding Zemina Torval stations");
                     var zeminaTorval = stationsEDSM
                         .Where(x =>
-                            x.Type != "Fleet Carrier" &&
-                            x.Government != "Fleet Carrier" &&
-                            x.Economy != "Fleet Carrier" &&
-                            !string.IsNullOrEmpty(x.Type) &&
-                            !string.IsNullOrEmpty(x.Government) &&
-                            !string.IsNullOrEmpty(x.Economy) &&
-                            x.PopulatedSystemEDDB != null &&
-                            x.PopulatedSystemEDDB.Power == "Zemina Torval" &&
-                            x.PopulatedSystemEDDB.PowerState == "Control" &&
-                            x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                            x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+                            x.PowerplayEDSM != null &&
+                            x.PowerplayEDSM.power == "Zemina Torval" &&
+                            x.PowerplayEDSM.powerState == "Controlled" &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
                     StationSerialize(zeminaTorval, @"Data\zeminatorval.json");
 
-                    //----------------
+
+                    //Odyssey Settlements
+                    var odysseySettlements = stationsEDSM
+                        .Where(x =>
+                            x.Type == "Odyssey Settlement"
+                        ).ToList();
+
+                    StationSerialize(odysseySettlements, @"Data\odysseysettlements.json");
+
 
                     Log.Logger.Information("finding interstellar factors");
 
                     var interStellarFactors = stationsEDSM
                         .Where(x =>
-                                    x.Type != "Fleet Carrier" &&
-                                    x.Government != "Fleet Carrier" &&
-                                    x.Economy != "Fleet Carrier" &&
-                                    !string.IsNullOrEmpty(x.Type) &&
-                                    !string.IsNullOrEmpty(x.Government) &&
-                                    !string.IsNullOrEmpty(x.Economy) &&
-                                    x.OtherServices.Any(y => y == "Interstellar Factors Contact") &&
-                                    x.PopulatedSystemEDDB != null &&
-                                    x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                                    x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+                            x.OtherServices.Any(y => y == "Interstellar Factors Contact") &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
 
                     StationSerialize(interStellarFactors, @"Data\interstellarfactors.json");
 
@@ -1056,22 +838,19 @@ namespace dashboard_elite.ImportData
                     //Found in systems with medium-high security, a 'high tech' or 'military' economy
                     var encodedDataTraders = stationsEDSM
                         .Where(x =>
-                            x.Type != "Fleet Carrier" &&
-                            x.Government != "Fleet Carrier" &&
-                            x.Economy != "Fleet Carrier" &&
-                            !string.IsNullOrEmpty(x.Type) &&
-                            !string.IsNullOrEmpty(x.Government) &&
-                            !string.IsNullOrEmpty(x.Economy) &&
-                            x.PrimaryEconomy != "Extraction" &&
-                            x.PrimaryEconomy != "Refinery" &&
-                            x.PrimaryEconomy != "Industrial" &&
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
 
-                            (x.PrimaryEconomy == "High Tech" || x.PrimaryEconomy == "Military" || x.SecondaryEconomy == "High Tech" || x.SecondaryEconomy == "Military") &&
+                            x.Economy != "Extraction" &&
+                            x.Economy != "Refinery" &&
+                            x.Economy != "Industrial" &&
+
+                            (x.Economy == "High Tech" || x.Economy == "Military" || x.SecondEconomy == "High Tech" || x.SecondEconomy == "Military") &&
 
                             x.OtherServices.Any(y => y == "Material Trader") &&
-                            x.PopulatedSystemEDDB != null &&
-                            x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                            x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
 
                     StationSerialize(encodedDataTraders, @"Data\encodeddatatraders.json");
 
@@ -1081,22 +860,19 @@ namespace dashboard_elite.ImportData
                     //Found in systems with medium-high security, an 'extraction' or 'refinery' economy
                     var rawMaterialTraders = stationsEDSM
                         .Where(x =>
-                                    x.Type != "Fleet Carrier" &&
-                                    x.Government != "Fleet Carrier" &&
-                                    x.Economy != "Fleet Carrier" &&
-                                    !string.IsNullOrEmpty(x.Type) &&
-                                    !string.IsNullOrEmpty(x.Government) &&
-                                    !string.IsNullOrEmpty(x.Economy) &&
-                                    x.PrimaryEconomy != "High Tech" &&
-                                    x.PrimaryEconomy != "Military" &&
-                                    x.PrimaryEconomy != "Industrial" &&
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
 
-                                    (x.PrimaryEconomy == "Extraction" || x.PrimaryEconomy == "Refinery" || x.SecondaryEconomy == "Extraction" || x.SecondaryEconomy == "Refinery") &&
-                                    
-                                    x.OtherServices.Any(y => y == "Material Trader") &&
-                                    x.PopulatedSystemEDDB != null &&
-                                    x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                                    x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Economy != "High Tech" &&
+                            x.Economy != "Military" &&
+                            x.Economy != "Industrial" &&
+
+                            (x.Economy == "Extraction" || x.Economy == "Refinery" || x.SecondEconomy == "Extraction" || x.SecondEconomy == "Refinery") &&
+
+                            x.OtherServices.Any(y => y == "Material Trader") &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
 
                     StationSerialize(rawMaterialTraders, @"Data\rawmaterialtraders.json");
 
@@ -1106,23 +882,20 @@ namespace dashboard_elite.ImportData
                     //Found in systems with medium-high security, an 'industrial' economy
                     var manufacturedMaterialTraders = stationsEDSM
                         .Where(x =>
-                                    x.Type != "Fleet Carrier" &&
-                                    x.Government != "Fleet Carrier" &&
-                                    x.Economy != "Fleet Carrier" &&
-                                    !string.IsNullOrEmpty(x.Type) &&
-                                    !string.IsNullOrEmpty(x.Government) &&
-                                    !string.IsNullOrEmpty(x.Economy) &&
-                                    x.PrimaryEconomy != "High Tech" &&
-                                    x.PrimaryEconomy != "Military" &&
-                                    x.PrimaryEconomy != "Extraction" &&
-                                    x.PrimaryEconomy != "Refinery" &&
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
 
-                                    (x.PrimaryEconomy == "Industrial" || x.SecondaryEconomy == "Industrial") &&
+                            x.Economy != "High Tech" &&
+                            x.Economy != "Military" &&
+                            x.Economy != "Extraction" &&
+                            x.Economy != "Refinery" &&
 
-                                    x.OtherServices.Any(y => y == "Material Trader") &&
-                                    x.PopulatedSystemEDDB != null &&
-                                    x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                                    x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            (x.Economy == "Industrial" || x.SecondEconomy == "Industrial") &&
+
+                            x.OtherServices.Any(y => y == "Material Trader") &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
 
                     StationSerialize(manufacturedMaterialTraders, @"Data\manufacturedmaterialtraders.json");
 
@@ -1132,18 +905,15 @@ namespace dashboard_elite.ImportData
                     //Found in systems with an 'Industrial' economy
                     var humanTechnologyBrokers = stationsEDSM
                         .Where(x =>
-                                    x.Type != "Fleet Carrier" &&
-                                    x.Government != "Fleet Carrier" &&
-                                    x.Economy != "Fleet Carrier" &&
-                                    !string.IsNullOrEmpty(x.Type) &&
-                                    !string.IsNullOrEmpty(x.Government) &&
-                                    !string.IsNullOrEmpty(x.Economy) &&
-                                    !(x.PrimaryEconomy == "High Tech" || (x.PrimaryEconomy != "Industrial" && x.SecondaryEconomy == "High Tech")) &&
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
 
-                                    x.OtherServices.Any(y => y == "Technology Broker") &&
-                                    x.PopulatedSystemEDDB != null &&
-                                    x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                                    x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            !(x.Economy == "High Tech" || (x.Economy != "Industrial" && x.SecondEconomy == "High Tech")) &&
+
+                            x.OtherServices.Any(y => y == "Technology Broker") &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
 
                     StationSerialize(humanTechnologyBrokers, @"Data\humantechnologybrokers.json");
 
@@ -1153,19 +923,15 @@ namespace dashboard_elite.ImportData
                     //Found in systems with a 'high tech' economy
                     var guardianTechnologyBrokers = stationsEDSM
                         .Where(x =>
-                                    x.Type != "Fleet Carrier" &&
-                                    x.Government != "Fleet Carrier" &&
-                                    x.Economy != "Fleet Carrier" &&
-                                    !string.IsNullOrEmpty(x.Type) &&
-                                    !string.IsNullOrEmpty(x.Type) &&
-                                    !string.IsNullOrEmpty(x.Government) &&
-                                    !string.IsNullOrEmpty(x.Economy) &&
-                                    (x.PrimaryEconomy == "High Tech" || (x.PrimaryEconomy != "Industrial" && x.SecondaryEconomy == "High Tech")) &&
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
 
-                                    x.OtherServices.Any(y => y == "Technology Broker") &&
-                                    x.PopulatedSystemEDDB != null &&
-                                    x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                                    x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            (x.Economy == "High Tech" || (x.Economy != "Industrial" && x.SecondEconomy == "High Tech")) &&
+
+                            x.OtherServices.Any(y => y == "Technology Broker") &&
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
 
                     StationSerialize(guardianTechnologyBrokers, @"Data\guardiantechnologybrokers.json");
 
@@ -1174,36 +940,24 @@ namespace dashboard_elite.ImportData
                     //Full Station List
                     var fullStationList = stationsEDSM
                         .Where(x =>
-                                    x.Type != "Fleet Carrier" &&
-                                    x.Government != "Fleet Carrier" &&
-                                    x.Economy != "Fleet Carrier" &&
-                                    !string.IsNullOrEmpty(x.Type) &&
-                                    !string.IsNullOrEmpty(x.Government) &&
-                                    !string.IsNullOrEmpty(x.Economy) &&
-                                    x.PopulatedSystemEDDB != null &&
-                                    x.AdditionalStationDataEDDB?.IsPlanetary == false &&
-                                    x.AdditionalStationDataEDDB.MaxLandingPadSize == "L").ToList();
+                            x.Type != "Planetary Outpost" &&
+                            x.Type != "Outpost" &&
+                            x.Type != "Planetary Port" &&
+                            x.Type != "Odyssey Settlement" &&
+
+                            x.SpanshStation?.LandingPads?.Large > 0).ToList();
 
                     StationSerialize(fullStationList, @"Data\fullstationlist.json");
 
                     //Colonia Bridge
                     var coloniaBridge = stationsEDSM
                         .Where(x =>
-                            x.Name.StartsWith("CB-") &&
-                            x.Type == "Mega ship" &&
-                            x.AdditionalStationDataEDDB?.ControllingMinorFactionId == 77645
+                                x.Name.StartsWith("CB-") &&
+                                x.Type == "Mega ship" &&
+                                x.ControllingFaction?.Id == 82837//77645
                         ).ToList();
 
                     StationSerialize(coloniaBridge, @"Data\coloniabridge.json");
-
-                    //Odyssey Settlements
-                    var odysseySettlements = stationsEDSM
-                        .Where(x =>
-                            x.Type == "Odyssey Settlement"
-                        ).ToList();
-
-                    StationSerialize(odysseySettlements, @"Data\odysseysettlements.json");
-
                 }
 
                 await DownloadHotspotSystems(@"Data\painitesystems.json", "http://edtools.cc/miner?a=r&n=", "Painite");

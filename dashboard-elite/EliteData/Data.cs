@@ -51,14 +51,6 @@ namespace dashboard_elite.EliteData
         };
 
 
-        public Dictionary<MiningStations.MaterialTypes, List<MiningStations.MiningStationData>> NearbyMiningStationsList = new Dictionary<MiningStations.MaterialTypes, List<MiningStations.MiningStationData>>
-        {
-            {MiningStations.MaterialTypes.Painite, new List<MiningStations.MiningStationData>()},
-            {MiningStations.MaterialTypes.LTD, new List<MiningStations.MiningStationData>()},
-            {MiningStations.MaterialTypes.Platinum, new List<MiningStations.MiningStationData>()},
-            {MiningStations.MaterialTypes.TritiumBuy, new List<MiningStations.MiningStationData>()},
-            {MiningStations.MaterialTypes.TritiumSell, new List<MiningStations.MiningStationData>()}
-        };
 
         public Dictionary<Station.PoiTypes, List<StationData>> NearbyStationList = new Dictionary<Station.PoiTypes, List<StationData>>
         {
@@ -264,13 +256,7 @@ namespace dashboard_elite.EliteData
                 NearbyHotspotSystemsList[HotspotSystems.MaterialTypes.LTD] = HotspotSystems.GetNearestHotspotSystems(LocationData.StarPos, HotspotSystems.FullHotspotSystemsList[HotspotSystems.MaterialTypes.LTD]);
                 NearbyHotspotSystemsList[HotspotSystems.MaterialTypes.Platinum] = HotspotSystems.GetNearestHotspotSystems(LocationData.StarPos, HotspotSystems.FullHotspotSystemsList[HotspotSystems.MaterialTypes.Platinum]);
 
-                NearbyMiningStationsList[MiningStations.MaterialTypes.Painite] = MiningStations.GetNearestMiningStations(LocationData.StarPos, MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.Painite], true);
-                NearbyMiningStationsList[MiningStations.MaterialTypes.LTD] = MiningStations.GetNearestMiningStations(LocationData.StarPos, MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.LTD], true);
-                NearbyMiningStationsList[MiningStations.MaterialTypes.Platinum] = MiningStations.GetNearestMiningStations(LocationData.StarPos, MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.Platinum], true);
-                NearbyMiningStationsList[MiningStations.MaterialTypes.TritiumBuy] = MiningStations.GetNearestMiningStations(LocationData.StarPos, MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.TritiumBuy], false);
-                NearbyMiningStationsList[MiningStations.MaterialTypes.TritiumSell] = MiningStations.GetNearestMiningStations(LocationData.StarPos, MiningStations.FullMiningStationsList[MiningStations.MaterialTypes.TritiumSell], true);
-
-                EngineersList = Station.UpdateEngineersLocation(LocationData.StarPos, EngineersList);
+              EngineersList = Station.UpdateEngineersLocation(LocationData.StarPos, EngineersList);
                
             }
         }

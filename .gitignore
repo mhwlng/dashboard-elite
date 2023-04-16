@@ -343,3 +343,6 @@ healthchecksdb
 stationsEDDB.json
 stationsEDSM.json
 populatedsystemsEDDB.json
+populatedsystemsEDSM.json
+stationsSpansh.json
+odysseysettlements.json

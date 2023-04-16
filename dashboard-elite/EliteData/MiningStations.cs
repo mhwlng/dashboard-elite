@@ -10,7 +10,7 @@ using Serilog;
 
 namespace dashboard_elite.EliteData
 {
-
+    /*
     public static class MiningStations
     {
         public enum MaterialTypes
@@ -161,10 +161,10 @@ namespace dashboard_elite.EliteData
 
                 if (sell)
                     return data.Where(x => x.Distance >= 0)
-                        .OrderByDescending(x => x.Price).ThenBy(x => x.AgoSec)/*.OrderBy(x => x.Distance)*/.Take(20).ToList();
+                        .OrderByDescending(x => x.Price).ThenBy(x => x.AgoSec).Take(20).ToList();
                 else
                     return data.Where(x => x.Distance >= 0)
-                        .OrderBy(x => x.Price).ThenBy(x => x.AgoSec)/*.OrderBy(x => x.Distance)*/.Take(20).ToList();
+                        .OrderBy(x => x.Price).ThenBy(x => x.AgoSec).Take(20).ToList();
             }
 
             return new List<MiningStationData>();
@@ -172,5 +172,5 @@ namespace dashboard_elite.EliteData
         }
 
 
-    }
+    }*/
 }
